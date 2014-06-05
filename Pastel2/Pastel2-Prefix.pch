@@ -14,3 +14,159 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+
+#ifdef DEBUG
+#define LOG(...) NSLog(__VA_ARGS__)
+#define LOG_PRINTF(FORMAT, ...) printf("%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+#define LOG_METHOD NSLog(@"%s", __func__)
+#define LOG_METHOD_AND_ABORT LOG_METHOD; abort()
+#else
+#define LOG(...)
+#define LOG_PRINTF(FORMAT, ...)
+#define LOG_METHOD
+#define LOG_METHOD_AND_ABORT
+#endif
+
+#ifdef DEBUG
+#define LOG_POINT(p) NSLog(@"%f, %f", p.x, p.y)
+#define LOG_SIZE(p) NSLog(@"%f, %f", p.width, p.height)
+#define LOG_RECT(p) NSLog(@"%f, %f - %f, %f", p.origin.x, p.origin.y, p.size.width, p.size.height)
+#else
+#define LOG_POINT(p)
+#define LOG_SIZE(p)
+#define LOG_RECT(p)
+#endif
+
+#define s255(v) v/255.0
+
+#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
+
+
+#import "UIImage+extend.h"
+#import "UIDevice+extend.h"
+#import "UIScreen+extend.h"
+#import "UIView+extend.h"
+#import "UIScrollView+extend.h"
+#import "UIViewController+extend.h"
+#import "UIImagePickerController+extend.h"
+#import "UIImagePickerController+extend.h"
+
+#define IS_IOS7_AND_UP ([[UIDevice currentDevice].systemVersion floatValue] >= 7.0)
+
+typedef NS_ENUM(NSInteger, VnEffectId){
+    VnEffectIdNone = 0,
+    VnEffectIdColorNone,
+    VnEffectIdOverlayNone,
+    VnEffectIdColorBronze,
+    VnEffectIdColorLittleBlueSecret,
+    VnEffectIdColorOphelia,
+    VnEffectIdColorPinkMilk,
+    VnEffectIdColorPotion9,
+    VnEffectIdColorPurePeach,
+    VnEffectIdColorPurrr,
+    VnEffectIdColorRosyVintage,
+    VnEffectIdColorSerenity,
+    VnEffectIdColorSummerSkin,
+    VnEffectIdColorSunnyLight,
+    VnEffectIdColorWildHoney,
+    VnEffectIdColorUrbanCandy,
+    VnEffectIdColorVintageMatte,
+    VnEffectIdColorWarmHaze,
+    VnEffectIdBeachVintage,
+    VnEffectIdDreamyCreamy,
+    VnEffectIdDreamyVintage,
+    VnEffectIdGentleColor,
+    VnEffectIdHazelnut,
+    VnEffectIdFaerieVintage,
+    VnEffectIdHazelnutPink,
+    VnEffectIdVelvetColor,
+    VnEffectIdWeekend,
+    VnEffectIdBlueBerry,
+    VnEffectIdGirder,
+    VnEffectIdCavalleriaRusticana,
+    VnEffectIdJoyful,
+    VnEffectIdSweetFlower,
+    VnEffectIdDonut,
+    VnEffectIdGreenApple,
+    VnEffectIdPurpleBerry,
+    VnEffectIdBluishRose,
+    VnEffectIdPinkBubbleTea,
+    VnEffectIdFruitPop,
+    VnEffectIdCarnival,
+    VnEffectIdFrontpageFaded,
+    VnEffectIdKodakPortra800,
+    VnEffectIdPx680,
+    VnEffectIdFujiSuperia800,
+    VnEffectIdFujiSuperia1600,
+    VnEffectIdFresnoFaded,
+    VnEffectIdQouziFaded,
+    VnEffectIdBellerina,
+    VnEffectIdWaldenFaded,
+    VnEffectIdAmaroFaded,
+    VnEffectIdLanikaiFaded,
+    VnEffectIdDeutanFaded,
+    VnEffectIdBrannanFaded,
+    VnEffectIdXPro2Faded,
+    VnEffectIdFixieFaded,
+    VnEffectIdLeningradFaded,
+    VnEffectIdNashvilleFaded,
+    VnEffectIdGentleMemories,
+    VnEffectIdOverlayBlueHaze,
+    VnEffectIdOverlayHazyLightWarmPink,
+    VnEffectIdOverlayHazyLightWarmPink2,
+    VnEffectIdOverlayLightBrightHaze,
+    VnEffectIdOverlayLightBrightMatte,
+    VnEffectIdOverlayLightBrightPop,
+    VnEffectIdOverlayRetroSun,
+    VnEffectIdOverlaySunhazeLeft,
+    VnEffectIdOverlaySunhazeRight,
+    VnEffectIdOverlayPinkHaze,
+    VnEffectIdOverlayWarmVintage,
+    VnEffectIdOverlayCandyHaze
+};
+
+
+typedef NS_ENUM(NSInteger, VnEffectGroup){
+    VnEffectGroupColor = 1,
+    VnEffectGroupEffects,
+    VnEffectGroupOverlays
+};
+
+typedef NS_ENUM(NSInteger, VnBlendingMode){
+    VnBlendingModeNormal = 1,
+    VnBlendingModeDarken,
+    VnBlendingModeScreen,
+    VnBlendingModeMultiply,
+    VnBlendingModeDarkerColor,
+    VnBlendingModeLighten,
+    VnBlendingModeSoftLight,
+    VnBlendingModeHardLight,
+    VnBlendingModeVividLight,
+    VnBlendingModeOverlay,
+    VnBlendingModeExclusion,
+    VnBlendingModeColorBurn,
+    VnBlendingModeColor,
+    VnBlendingModeColorDodge,
+    VnBlendingModeLinearDodge,
+    VnBlendingModeLinearLight,
+    VnBlendingModeHue,
+    VnBlendingModeSaturation,
+    VnBlendingModeLuminotisy,
+    VnBlendingModeDifference
+};
+
+#import "SVProgressHUD.h"
+#import "PtSharedApp.h"
+#import "LmCmSharedCamera.h"
+#import "PtEdConfig.h"
+#import "PtFtConfig.h"
+#import "PtFtSharedQueueManager.h"
+#import "PtFtSharedFilterManager.h"
+#import "MotionOrientation.h"
+#import "VnViewLabel.h"
+#import "VnViewProgress.h"

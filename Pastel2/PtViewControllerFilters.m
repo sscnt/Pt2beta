@@ -72,7 +72,8 @@
             CGSize size = CGSizeMake(_self.previewImageView.width * [[UIScreen mainScreen] scale], _self.previewImageView.height * [[UIScreen mainScreen] scale]);
             //image = [image resizedImage:size interpolationQuality:kCGInterpolationHigh];
             //image = [image resizeImageAndConvertJpeg:size];
-            image = [UIImage resizedImageUrl:[PtSharedApp originalImageUrl] ToSize:size];
+            //image = [UIImage resizedImageUrl:[PtSharedApp originalImageUrl] ToSize:size];
+            image = [PtUtilImage resizedImageUrl:[PtSharedApp originalImageUrl] ToSize:size];
             _self.previewImage = image;
         }
         dispatch_async(q_main, ^{
@@ -203,7 +204,7 @@
 {
     PtSharedApp* app = [PtSharedApp instance];
     @autoreleasepool {
-        app.imageToProcess = [UIImage mergeSplitImage9:self.originalImageParts WithSize:app.sizeOfImageToProcess];
+        app.imageToProcess = [PtUtilImage mergeSplitImage9:self.originalImageParts WithSize:app.sizeOfImageToProcess];
         [self.originalImageParts removeAllObjects];
     }
     self.view.userInteractionEnabled = YES;
@@ -273,7 +274,7 @@
     dispatch_queue_t q_main = dispatch_get_main_queue();
     dispatch_async(q_global, ^{
         @autoreleasepool {
-            _self.originalImageParts = [UIImage splitImageIn9Parts:[PtSharedApp instance].imageToProcess];
+            _self.originalImageParts = [PtUtilImage splitImageIn9Parts:[PtSharedApp instance].imageToProcess];
             [PtSharedApp instance].imageToProcess = nil;
         }
         dispatch_async(q_main, ^{

@@ -10,7 +10,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <AudioToolbox/AudioToolbox.h>
-#import "LmCmCameraManager.h"
+#import "LmCmCamera.h"
 #import "LmCmViewPreviewOverlay.h"
 #import "LmCmViewPreviewLayer.h"
 #import "LmCmButtonShutter.h"
@@ -29,7 +29,7 @@ typedef NS_ENUM(NSInteger, LmCmViewControllerState){
 };
 
 
-@interface LmCmViewController : UIViewController <CameraManagerDelegate, UIGestureRecognizerDelegate, LmCmViewManagerZoomDelegate, LmCmViewManagerPreviewDelegate, LmCmViewManagerToolsDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface LmCmViewController : UIViewController <LmCmCameraDelegate, UIGestureRecognizerDelegate, LmCmViewManagerZoomDelegate, LmCmViewManagerPreviewDelegate, LmCmViewManagerToolsDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 {
     float initialVolume;
 }
@@ -39,7 +39,7 @@ typedef NS_ENUM(NSInteger, LmCmViewControllerState){
 @property (nonatomic, assign) BOOL isCameraInitializing;
 @property (nonatomic, assign) BOOL isKeepingDisabled;
 
-@property (nonatomic, strong) LmCmCameraManager* cameraManager;
+@property (nonatomic, strong) LmCmCamera* cameraManager;
 @property (nonatomic, strong) LmCmViewPreviewLayer* cameraPreview;
 @property (nonatomic, strong) LmCmViewPreviewOverlay* cameraPreviewOverlay;
 @property (nonatomic, strong) LmCmButtonShutter* shutterButton;

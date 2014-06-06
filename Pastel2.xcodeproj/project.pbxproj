@@ -193,7 +193,7 @@
 		58F3E5021940C8A9001AEB8D /* LmCmViewManagerPreview.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F3E4FE1940C8A9001AEB8D /* LmCmViewManagerPreview.m */; };
 		58F3E5031940C8A9001AEB8D /* LmCmViewManagerTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F3E5001940C8A9001AEB8D /* LmCmViewManagerTools.m */; };
 		58F3E5071940C8BA001AEB8D /* LmCmSharedCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F3E5061940C8BA001AEB8D /* LmCmSharedCamera.m */; };
-		58F3E50C1940C8C1001AEB8D /* LmCmCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F3E5091940C8C1001AEB8D /* LmCmCameraManager.m */; };
+		58F3E50C1940C8C1001AEB8D /* LmCmCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F3E5091940C8C1001AEB8D /* LmCmCamera.m */; };
 		58F3E50D1940C8C1001AEB8D /* LmCmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F3E50B1940C8C1001AEB8D /* LmCmViewController.m */; };
 		58F3E5121940C8E0001AEB8D /* PtSharedApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F3E5111940C8E0001AEB8D /* PtSharedApp.m */; };
 		58F3E5161940C8EE001AEB8D /* PtViewControllerRoot.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F3E5151940C8EE001AEB8D /* PtViewControllerRoot.m */; };
@@ -210,6 +210,7 @@
 		58F3E5361940CA6C001AEB8D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F3E5351940CA6C001AEB8D /* OpenGLES.framework */; };
 		58F3E5381940CA74001AEB8D /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F3E5371940CA74001AEB8D /* CoreVideo.framework */; };
 		58F3E53A1940CA7D001AEB8D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F3E5391940CA7D001AEB8D /* CoreMedia.framework */; };
+		58FD70161941B9A200D1E64F /* PtUtilImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FD70151941B9A200D1E64F /* PtUtilImage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -540,8 +541,8 @@
 		58F3E5001940C8A9001AEB8D /* LmCmViewManagerTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LmCmViewManagerTools.m; sourceTree = "<group>"; };
 		58F3E5051940C8BA001AEB8D /* LmCmSharedCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LmCmSharedCamera.h; sourceTree = "<group>"; };
 		58F3E5061940C8BA001AEB8D /* LmCmSharedCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LmCmSharedCamera.m; sourceTree = "<group>"; };
-		58F3E5081940C8C1001AEB8D /* LmCmCameraManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LmCmCameraManager.h; sourceTree = "<group>"; };
-		58F3E5091940C8C1001AEB8D /* LmCmCameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LmCmCameraManager.m; sourceTree = "<group>"; };
+		58F3E5081940C8C1001AEB8D /* LmCmCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LmCmCamera.h; sourceTree = "<group>"; };
+		58F3E5091940C8C1001AEB8D /* LmCmCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LmCmCamera.m; sourceTree = "<group>"; };
 		58F3E50A1940C8C1001AEB8D /* LmCmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LmCmViewController.h; sourceTree = "<group>"; };
 		58F3E50B1940C8C1001AEB8D /* LmCmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LmCmViewController.m; sourceTree = "<group>"; };
 		58F3E5101940C8E0001AEB8D /* PtSharedApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtSharedApp.h; sourceTree = "<group>"; };
@@ -561,6 +562,8 @@
 		58F3E5351940CA6C001AEB8D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		58F3E5371940CA74001AEB8D /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		58F3E5391940CA7D001AEB8D /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		58FD70141941B9A200D1E64F /* PtUtilImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtUtilImage.h; sourceTree = "<group>"; };
+		58FD70151941B9A200D1E64F /* PtUtilImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PtUtilImage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1152,8 +1155,8 @@
 		58F3E4BE1940C804001AEB8D /* CameraModule */ = {
 			isa = PBXGroup;
 			children = (
-				58F3E5081940C8C1001AEB8D /* LmCmCameraManager.h */,
-				58F3E5091940C8C1001AEB8D /* LmCmCameraManager.m */,
+				58F3E5081940C8C1001AEB8D /* LmCmCamera.h */,
+				58F3E5091940C8C1001AEB8D /* LmCmCamera.m */,
 				58F3E50A1940C8C1001AEB8D /* LmCmViewController.h */,
 				58F3E50B1940C8C1001AEB8D /* LmCmViewController.m */,
 				58F3E5041940C8AE001AEB8D /* Shared */,
@@ -1285,6 +1288,7 @@
 		58F3E50E1940C8CA001AEB8D /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				58FD70131941B97C00D1E64F /* Util */,
 				58F3E5131940C8E5001AEB8D /* Root */,
 				58F3E50F1940C8D7001AEB8D /* Shared */,
 			);
@@ -1326,6 +1330,15 @@
 				58F3E5271940C9E9001AEB8D /* GPUImageTests.octest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		58FD70131941B97C00D1E64F /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				58FD70141941B9A200D1E64F /* PtUtilImage.h */,
+				58FD70151941B9A200D1E64F /* PtUtilImage.m */,
+			);
+			name = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1532,6 +1545,7 @@
 				58F3E4AC1940C7BB001AEB8D /* PtEdViewImagePreviewScrollView.m in Sources */,
 				58F3E34C1940C56A001AEB8D /* VnAdjustmentLayerChannelMixerFilter.m in Sources */,
 				58F3E4671940C6BD001AEB8D /* PtFtViewLayerBarWrapper.m in Sources */,
+				58FD70161941B9A200D1E64F /* PtUtilImage.m in Sources */,
 				58F3E5161940C8EE001AEB8D /* PtViewControllerRoot.m in Sources */,
 				58F3E4881940C72F001AEB8D /* PtFtConfig.m in Sources */,
 				58F3E4901940C743001AEB8D /* PtFtViewManagerFilters.m in Sources */,
@@ -1568,7 +1582,7 @@
 				58F3E4DB1940C850001AEB8D /* LmCmButtonCropListItem.m in Sources */,
 				58F3E3781940C5B5001AEB8D /* VnEffectOverlayLightBrightHaze.m in Sources */,
 				58F3E5011940C8A9001AEB8D /* LmCmViewManagerZoom.m in Sources */,
-				58F3E50C1940C8C1001AEB8D /* LmCmCameraManager.m in Sources */,
+				58F3E50C1940C8C1001AEB8D /* LmCmCamera.m in Sources */,
 				58F3E4911940C743001AEB8D /* PtFtViewManagerSliders.m in Sources */,
 				58F3E34A1940C56A001AEB8D /* VnAdjustmentLayerPhotoFilter.m in Sources */,
 				58F3E2F41940C502001AEB8D /* AppDelegate.m in Sources */,
@@ -1852,6 +1866,7 @@
 				58F3E3171940C503001AEB8D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		58F3E3181940C503001AEB8D /* Build configuration list for PBXNativeTarget "Pastel2Tests" */ = {
 			isa = XCConfigurationList;
@@ -1860,6 +1875,7 @@
 				58F3E31A1940C503001AEB8D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

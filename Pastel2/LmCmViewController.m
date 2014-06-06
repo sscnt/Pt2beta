@@ -23,29 +23,12 @@
         _cameraManager = nil;
     }
     
-    self.cameraManager = [[LmCmCameraManager alloc] init];
+    self.cameraManager = [[LmCmCamera alloc] init];
     self.cameraManager.delegate = self;
     [self.cameraManager setPreview:self.cameraPreview];
     self.isCameraInitializing = NO;
-    return;
-    
-    __block __weak LmCmViewController* _self = self;
-    dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t q_main = dispatch_get_main_queue();
-    dispatch_async(q_global, ^{
-        @autoreleasepool {
-            _self.cameraManager = [[LmCmCameraManager alloc] init];
-            _self.cameraManager.delegate = _self;
-        }
-        dispatch_async(q_main, ^{
-            [_self.cameraManager setPreview:_self.cameraPreview];
-            _self.isCameraInitializing = NO;
-            [_self.cameraPreview blackOut:NO];
-            _self.view.userInteractionEnabled = YES;
-            LOG(@"Camera is ready");
-        });
-        
-    });
+    [self.cameraPreview blackOut:NO];
+    self.view.userInteractionEnabled = YES;
 }
 
 - (void)viewDidLoad
@@ -177,9 +160,9 @@
 {
     [self performSelectorOnMainThread:@selector(flashScreen) withObject:nil waitUntilDone:NO];
     if (lmAsset.image) {
-        lmAsset = [LmCmSharedCamera applyZoomToAsset:lmAsset];
-        lmAsset = [LmCmSharedCamera fixRotationWithNoSoundImageAsset:lmAsset];
-        lmAsset = [LmCmSharedCamera cropAsset:lmAsset];
+        [lmAsset applyZoom];
+        [lmAsset fixRotationToNoSoundImage];
+        [lmAsset crop];
     }
     [self singleImageDidTakeWithAsset:lmAsset];
 }
@@ -187,8 +170,8 @@
 - (void)singleImageByNormalCameraDidTakeWithAsset:(LmCmImageAsset *)lmAsset
 {
     if (lmAsset.image) {
-        lmAsset = [LmCmSharedCamera applyZoomToAsset:lmAsset];
-        lmAsset = [LmCmSharedCamera cropAsset:lmAsset];
+        [lmAsset applyZoom];
+        [lmAsset crop];
     }
     [self singleImageDidTakeWithAsset:lmAsset];
 }
@@ -247,7 +230,6 @@
     }
     self.isPresenting = YES;
     [self.cameraPreview blackOut:YES];
-    [PtSharedApp instance].assetToProcess = self.lastAsset;
     __block __weak LmCmViewController* _self = self;
     
     if ([PtSharedApp instance].useFullResolutionImage) {
@@ -316,7 +298,6 @@
                                          orientation:[representation orientation]];
         }
         dispatch_async(q_main, ^{
-            [PtSharedApp instance].assetToProcess = _self.lastAsset;
             [_self presentEditorViewControllerWithImage:image];
         });
         
@@ -339,10 +320,7 @@
     
     __block __weak LmCmViewController* _self = self;
     [self.assetLibrary assetForURL:url resultBlock:^(ALAsset *asset) {
-        if(_self.loadedImageFromPickerController){
-            //_self.lastAsset = asset;
-            [PtSharedApp instance].assetToProcess = asset;
-            
+        if(_self.loadedImageFromPickerController){            
             ALAssetRepresentation *rep = [asset defaultRepresentation];
             
             Byte *buffer = (Byte*)malloc(rep.size);

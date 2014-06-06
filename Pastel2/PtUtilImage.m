@@ -1,0 +1,400 @@
+//
+//  PtUtilImage.m
+//  Pastel2
+//
+//  Created by SSC on 2014/06/06.
+//  Copyright (c) 2014年 SSC. All rights reserved.
+//
+
+#import "PtUtilImage.h"
+
+@implementation PtUtilImage
+
++ (CGImageRef)imageFromSampleBuffer:(CMSampleBufferRef)sampleBuffer
+{
+    CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+    CVPixelBufferLockBaseAddress(imageBuffer,0);        //      バッファをロック
+    uint8_t *baseAddress = (uint8_t *)CVPixelBufferGetBaseAddressOfPlane(imageBuffer, 0);
+    size_t bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer);
+    size_t width = CVPixelBufferGetWidth(imageBuffer);
+    size_t height = CVPixelBufferGetHeight(imageBuffer);
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    CGContextRef newContext = CGBitmapContextCreate(baseAddress, width, height, 8, bytesPerRow, colorSpace, kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
+    CGImageRef newImage = CGBitmapContextCreateImage(newContext);
+    CGContextRelease(newContext);
+    CGColorSpaceRelease(colorSpace);
+    CVPixelBufferUnlockBaseAddress(imageBuffer,0);      //      バッファをアンロック
+    return newImage;
+}
+
++ (NSMutableArray*)splitImageIn9Parts:(UIImage *)image
+{
+    float cropWidth = floor(image.size.width / 3.0f);
+    float cropHeight = floor(image.size.height / 3.0f);
+    
+    float width1 = cropWidth;
+    float width2 = cropWidth;
+    float width3 = image.size.width - width1 - width2;
+    float height1 = cropHeight;
+    float height2 = cropHeight;
+    float height3 = image.size.height - height1 - height2;
+    
+    NSMutableArray* array = [NSMutableArray array];
+    
+    //// 1
+    @autoreleasepool {
+        UIImage* piece = [image croppedImage:CGRectMake(0.0f, 0.0f, width1, height1)];
+        [array addObject:piece];
+    }
+    //// 2
+    @autoreleasepool {
+        UIImage* piece = [image croppedImage:CGRectMake(width1, 0.0f, width2, height1)];
+        [array addObject:piece];
+    }
+    //// 3
+    @autoreleasepool {
+        UIImage* piece = [image croppedImage:CGRectMake(width1 + width2, 0.0f, width3, height1)];
+        [array addObject:piece];
+    }
+    //// 4
+    @autoreleasepool {
+        UIImage* piece = [image croppedImage:CGRectMake(0.0f, height1, width1, height2)];
+        [array addObject:piece];
+    }
+    //// 5
+    @autoreleasepool {
+        UIImage* piece = [image croppedImage:CGRectMake(width1, height1, width2, height2)];
+        [array addObject:piece];
+    }
+    //// 6
+    @autoreleasepool {
+        UIImage* piece = [image croppedImage:CGRectMake(width1 + width2, height1, width3, height2)];
+        [array addObject:piece];
+    }
+    //// 7
+    @autoreleasepool {
+        UIImage* piece = [image croppedImage:CGRectMake(0.0f, height1 + height2, width1, height3)];
+        [array addObject:piece];
+    }
+    //// 8
+    @autoreleasepool {
+        UIImage* piece = [image croppedImage:CGRectMake(width1, height1 + height2, width2, height3)];
+        [array addObject:piece];
+    }
+    //// 9
+    @autoreleasepool {
+        UIImage* piece = [image croppedImage:CGRectMake(width1 + width2, height1 + height2, width3, height3)];
+        [array addObject:piece];
+    }
+    
+    return  array;
+}
+
+static void bufferFree(void *info, const void *data, size_t size)
+{
+    free((void *)data);
+}
+static size_t align16(size_t size)
+{
+    if(size == 0)
+        return 0;
+    
+    return (((size - 1) >> 4) << 4) + 16;
+}
+
++ (UIImage *)mergeSplitImage9:(NSMutableArray*)array WithSize:(CGSize)size
+{
+    
+    float cropWidth = floor(size.width / 3.0f);
+    float cropHeight = floor(size.height / 3.0f);
+    
+    float width1 = cropWidth;
+    float width2 = cropWidth;
+    float width3 = size.width - width1 - width2;
+    float height1 = cropHeight;
+    float height2 = cropHeight;
+    float height3 = size.height - height1 - height2;
+    
+    size_t width = size.width;
+    size_t height = size.height;
+    size_t bitsPerComponent = 8;
+    size_t bytesPerRow = align16(4 * width);
+    size_t bufferSize = bytesPerRow * height;
+    uint8_t *bytes = malloc(bufferSize);
+    CGBitmapInfo bitmapInfo = kCGImageAlphaPremultipliedFirst | kCGBitmapByteOrderDefault;
+    
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    
+    CGContextRef context = CGBitmapContextCreate(bytes, width, height, bitsPerComponent, bytesPerRow, colorSpace, bitmapInfo);
+    CGContextClearRect(context, CGRectMake(0, 0, width, height));
+    
+    //// 座標系に注意
+    //// 1
+    {
+        UIImage* image = [array objectAtIndex:0];
+        CGContextDrawImage(context, CGRectMake(0.0f, height - image.size.height, image.size.width, image.size.height), image.CGImage);
+        [array removeObjectAtIndex:0];
+    }
+    //// 2
+    {
+        UIImage* image = [array objectAtIndex:1];
+        CGContextDrawImage(context, CGRectMake(width1, height - image.size.height, image.size.width, image.size.height), image.CGImage);
+        [array removeObjectAtIndex:1];
+    }
+    //// 3
+    {
+        UIImage* image = [array objectAtIndex:2];
+        CGContextDrawImage(context, CGRectMake(width1 + width2, height - image.size.height, image.size.width, image.size.height), image.CGImage);
+        [array removeObjectAtIndex:2];
+    }
+    //// 4
+    {
+        UIImage* image = [array objectAtIndex:3];
+        CGContextDrawImage(context, CGRectMake(0.0f, height3, image.size.width, image.size.height), image.CGImage);
+        [array removeObjectAtIndex:3];
+    }
+    //// 5
+    {
+        UIImage* image = [array objectAtIndex:4];
+        CGContextDrawImage(context, CGRectMake(width1, height3, image.size.width, image.size.height), image.CGImage);
+        [array removeObjectAtIndex:4];
+    }
+    //// 6
+    {
+        UIImage* image = [array objectAtIndex:5];
+        CGContextDrawImage(context, CGRectMake(width1 + width2, height3, image.size.width, image.size.height), image.CGImage);
+        [array removeObjectAtIndex:5];
+    }
+    //// 7
+    {
+        UIImage* image = [array objectAtIndex:6];
+        CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, image.size.width, image.size.height), image.CGImage);
+        [array removeObjectAtIndex:6];
+    }
+    //// 8
+    {
+        UIImage* image = [array objectAtIndex:7];
+        CGContextDrawImage(context, CGRectMake(width1, 0.0f, image.size.width, image.size.height), image.CGImage);
+        [array removeObjectAtIndex:7];
+    }
+    //// 9
+    {
+        UIImage* image = [array objectAtIndex:8];
+        CGContextDrawImage(context, CGRectMake(width1 + width2, 0.0f, image.size.width, image.size.height), image.CGImage);
+        [array removeObjectAtIndex:8];
+    }
+    
+    [array removeAllObjects];
+    
+    CGContextRelease(context);
+    context = NULL;
+    
+    CGDataProviderRef dataProvider = CGDataProviderCreateWithData(NULL, bytes, bufferSize, NULL);
+    size_t bitsPerPixel = 32;
+    CGImageRef image = CGImageCreate(width, height, bitsPerComponent, bitsPerPixel, bytesPerRow, colorSpace, bitmapInfo, dataProvider, NULL, NO, kCGRenderingIntentDefault);
+    CGDataProviderRelease(dataProvider);
+    dataProvider = NULL;
+    CGColorSpaceRelease(colorSpace);
+    colorSpace = NULL;
+    UIImage* mergedImage = [UIImage imageWithCGImage:image scale:1.0f orientation:UIImageOrientationUp];
+    NSData* data = UIImageJPEGRepresentation(mergedImage, 0.99);
+    CGImageRelease(image);
+    free(bytes);
+    UIImage* resultImage = [UIImage imageWithData:data];
+    return resultImage;
+}
+
++ (UIImage *)zoomImage:(UIImage *)image ToScale:(float)zoom
+{
+    
+    if (zoom != 1.0f) {
+        float width = roundf(image.size.width / zoom);
+        float height = roundf(image.size.height / zoom);
+        float afterWidth = image.size.width;
+        float afterHeight = image.size.height;
+        float length = MAX(width, height);
+        if (length < 1920.0f) {
+            afterWidth = roundf(afterWidth / 2.0f);
+            afterHeight = roundf(afterHeight / 2.0f);
+        }
+        float x = roundf((image.size.width - width) / 2.0f);
+        float y = roundf((image.size.height - height) / 2.0f);
+        @autoreleasepool {
+            image = [image croppedImage:CGRectMake(x, y, width, height)];
+            if (afterWidth < image.size.width) {
+                image = [image resizedImage:CGSizeMake(afterWidth, afterHeight) interpolationQuality:kCGInterpolationHigh];
+            }
+        }
+    }
+    
+    return image;
+}
+
+
++ (UIImage*)rotateImage:(UIImage*)img angle:(int)angle
+{
+    CGImageRef      imgRef = [img CGImage];
+    CGContextRef    context;
+    
+    switch (angle) {
+        case 90:
+            UIGraphicsBeginImageContextWithOptions(CGSizeMake(img.size.height, img.size.width), YES, img.scale);
+            context = UIGraphicsGetCurrentContext();
+            CGContextTranslateCTM(context, img.size.height, img.size.width);
+            CGContextScaleCTM(context, 1, -1);
+            CGContextRotateCTM(context, M_PI_2);
+            break;
+        case 180:
+            UIGraphicsBeginImageContextWithOptions(CGSizeMake(img.size.width, img.size.height), YES, img.scale);
+            context = UIGraphicsGetCurrentContext();
+            CGContextTranslateCTM(context, img.size.width, 0);
+            CGContextScaleCTM(context, 1, -1);
+            CGContextRotateCTM(context, -M_PI);
+            break;
+        case 270:
+            UIGraphicsBeginImageContextWithOptions(CGSizeMake(img.size.height, img.size.width), YES, img.scale);
+            context = UIGraphicsGetCurrentContext();
+            CGContextScaleCTM(context, 1, -1);
+            CGContextRotateCTM(context, -M_PI_2);
+            break;
+        default:
+            return img;
+            break;
+    }
+    
+    CGContextDrawImage(context, CGRectMake(0, 0, img.size.width, img.size.height), imgRef);
+    UIImage* result = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    result = [UIImage imageWithCGImage:[result CGImage] scale:result.scale orientation:UIImageOrientationUp];
+    return result;
+}
+
++ (UIImage *)fixOrientationOfImageFromCamera:(UIImage *)image {
+    
+    // No-op if the orientation is already correct
+    if (image.imageOrientation == UIImageOrientationUp) return image;
+    
+    // We need to calculate the proper transformation to make the image upright.
+    // We do it in 2 steps: Rotate if Left/Right/Down, and then flip if Mirrored.
+    CGAffineTransform transform = CGAffineTransformIdentity;
+    
+    switch (image.imageOrientation) {
+        case UIImageOrientationDown:
+        case UIImageOrientationDownMirrored:
+            transform = CGAffineTransformTranslate(transform, image.size.width, image.size.height);
+            transform = CGAffineTransformRotate(transform, M_PI);
+            break;
+            
+        case UIImageOrientationLeft:
+        case UIImageOrientationLeftMirrored:
+            transform = CGAffineTransformTranslate(transform, image.size.width, 0);
+            transform = CGAffineTransformRotate(transform, M_PI_2);
+            break;
+            
+        case UIImageOrientationRight:
+        case UIImageOrientationRightMirrored:
+            transform = CGAffineTransformTranslate(transform, 0, image.size.height);
+            transform = CGAffineTransformRotate(transform, -M_PI_2);
+            break;
+        case UIImageOrientationUp:
+        case UIImageOrientationUpMirrored:
+            break;
+    }
+    
+    switch (image.imageOrientation) {
+        case UIImageOrientationUpMirrored:
+        case UIImageOrientationDownMirrored:
+            transform = CGAffineTransformTranslate(transform, image.size.width, 0);
+            transform = CGAffineTransformScale(transform, -1, 1);
+            break;
+            
+        case UIImageOrientationLeftMirrored:
+        case UIImageOrientationRightMirrored:
+            transform = CGAffineTransformTranslate(transform, image.size.height, 0);
+            transform = CGAffineTransformScale(transform, -1, 1);
+            break;
+        case UIImageOrientationUp:
+        case UIImageOrientationDown:
+        case UIImageOrientationLeft:
+        case UIImageOrientationRight:
+            break;
+    }
+    
+    // Now we draw the underlying CGImage into a new context, applying the transform
+    // calculated above.
+    CGContextRef ctx = CGBitmapContextCreate(NULL, image.size.width, image.size.height,
+                                             CGImageGetBitsPerComponent(image.CGImage), 0,
+                                             CGImageGetColorSpace(image.CGImage),
+                                             CGImageGetBitmapInfo(image.CGImage));
+    CGContextConcatCTM(ctx, transform);
+    switch (image.imageOrientation) {
+        case UIImageOrientationLeft:
+        case UIImageOrientationLeftMirrored:
+        case UIImageOrientationRight:
+        case UIImageOrientationRightMirrored:
+            // Grr...
+            CGContextDrawImage(ctx, CGRectMake(0,0,image.size.height,image.size.width), image.CGImage);
+            break;
+            
+        default:
+            CGContextDrawImage(ctx, CGRectMake(0,0,image.size.width,image.size.height), image.CGImage);
+            break;
+    }
+    
+    // And now we just create a new UIImage from the drawing context
+    CGImageRef cgimg = CGBitmapContextCreateImage(ctx);
+    UIImage *img = [UIImage imageWithCGImage:cgimg];
+    CGContextRelease(ctx);
+    CGImageRelease(cgimg);
+    return img;
+}
+
++ (UIImage *)resizedImageUrl:(NSURL *)url ToSize:(CGSize)size
+{
+    int maxPixel = (size.width > size.height) ? size.width : size.height;
+    CGImageSourceRef imageSource = CGImageSourceCreateWithURL((__bridge CFURLRef)url, NULL);
+    if (!imageSource)
+        return nil;
+    
+    CFDictionaryRef   myOptions = NULL;
+    CFStringRef       myKeys[4];
+    CFTypeRef         myValues[4];
+    CFNumberRef       thumbnailSize;
+    
+    thumbnailSize = CFNumberCreate(NULL, kCFNumberIntType, &maxPixel);
+    
+    // Set up the thumbnail options.
+    myKeys[0] = kCGImageSourceCreateThumbnailWithTransform;
+    myValues[0] = (CFTypeRef)kCFBooleanTrue;
+    myKeys[1] = kCGImageSourceCreateThumbnailFromImageAlways;
+    myValues[1] = (CFTypeRef)kCFBooleanTrue;
+    myKeys[2] = kCGImageSourceThumbnailMaxPixelSize;
+    myValues[2] = (CFTypeRef)thumbnailSize;
+    
+    
+    
+    CFDictionaryRef options = (__bridge CFDictionaryRef)[NSDictionary dictionaryWithObjectsAndKeys:
+                                                         (id)kCFBooleanTrue, (id)kCGImageSourceCreateThumbnailWithTransform,
+                                                         (id)kCFBooleanTrue, (id)kCGImageSourceCreateThumbnailFromImageIfAbsent,
+                                                         (id)[NSNumber numberWithFloat:maxPixel], (id)kCGImageSourceThumbnailMaxPixelSize,
+                                                         nil];
+    
+    myOptions = CFDictionaryCreate(NULL, (const void **) myKeys,
+                                   (const void **) myValues, 3,
+                                   &kCFTypeDictionaryKeyCallBacks,
+                                   & kCFTypeDictionaryValueCallBacks);
+    
+    CGImageRef imgRef = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, myOptions);
+    
+    UIImage* scaled = [UIImage imageWithCGImage:imgRef];
+    
+    CGImageRelease(imgRef);
+    CFRelease(imageSource);
+    CFRelease(thumbnailSize);
+    CFRelease(myOptions);
+    
+    
+    return scaled;
+}
+
+@end

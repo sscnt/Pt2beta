@@ -18,4 +18,8 @@
 @property (nonatomic, strong) NSMutableArray* splitImages;
 @property (nonatomic, assign) BOOL frontCamera;
 
+- (void)fixRotationToNoSoundImage;
+- (void)applyZoom;
+- (void)crop;
+
 @end

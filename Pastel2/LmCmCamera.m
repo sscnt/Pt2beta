@@ -6,9 +6,9 @@
 //  Copyright (c) 2013年 takatronix.com. All rights reserved.
 //
 
-#import "LmCmCameraManager.h"
+#import "LmCmCamera.h"
 
-@interface LmCmCameraManager(){
+@interface LmCmCamera(){
     
     AVCaptureSession*               captureSession;
     AVCaptureDeviceInput*           videoInput;             //  現在のビデオ入力デバイス
@@ -28,7 +28,7 @@
 
 @end
 
-@implementation LmCmCameraManager
+@implementation LmCmCamera
 
 
 #pragma mark - カメラ切り替え
@@ -398,17 +398,17 @@
     BOOL isMirrored = self.isUsingFrontCamera;
     
     if (orientation == UIDeviceOrientationPortrait) {
-        image = [LmCmCameraManager rotateImage:self.videoImage angle:270];
+        image = [PtUtilImage rotateImage:self.videoImage angle:270];
     } else if (orientation == UIDeviceOrientationPortraitUpsideDown) {
-        image = [LmCmCameraManager rotateImage:self.videoImage angle:90];
+        image = [PtUtilImage rotateImage:self.videoImage angle:90];
     } else if (orientation == UIDeviceOrientationLandscapeRight) {
         if(isMirrored)
             image = self.videoImage;
         else
-            image = [LmCmCameraManager rotateImage:self.videoImage angle:180];
+            image = [PtUtilImage rotateImage:self.videoImage angle:180];
     }else {
         if(isMirrored)
-            image = [LmCmCameraManager rotateImage:self.videoImage angle:180];
+            image = [PtUtilImage rotateImage:self.videoImage angle:180];
         else
             image = self.videoImage;
     }
@@ -416,173 +416,37 @@
     return image;
 }
 
-+ (UIImage *)fixOrientationOfImage:(UIImage *)image {
-    
-    // No-op if the orientation is already correct
-    if (image.imageOrientation == UIImageOrientationUp) return image;
-    
-    // We need to calculate the proper transformation to make the image upright.
-    // We do it in 2 steps: Rotate if Left/Right/Down, and then flip if Mirrored.
-    CGAffineTransform transform = CGAffineTransformIdentity;
-    
-    switch (image.imageOrientation) {
-        case UIImageOrientationDown:
-        case UIImageOrientationDownMirrored:
-            transform = CGAffineTransformTranslate(transform, image.size.width, image.size.height);
-            transform = CGAffineTransformRotate(transform, M_PI);
-            break;
-            
-        case UIImageOrientationLeft:
-        case UIImageOrientationLeftMirrored:
-            transform = CGAffineTransformTranslate(transform, image.size.width, 0);
-            transform = CGAffineTransformRotate(transform, M_PI_2);
-            break;
-            
-        case UIImageOrientationRight:
-        case UIImageOrientationRightMirrored:
-            transform = CGAffineTransformTranslate(transform, 0, image.size.height);
-            transform = CGAffineTransformRotate(transform, -M_PI_2);
-            break;
-        case UIImageOrientationUp:
-        case UIImageOrientationUpMirrored:
-            break;
-    }
-    
-    switch (image.imageOrientation) {
-        case UIImageOrientationUpMirrored:
-        case UIImageOrientationDownMirrored:
-            transform = CGAffineTransformTranslate(transform, image.size.width, 0);
-            transform = CGAffineTransformScale(transform, -1, 1);
-            break;
-            
-        case UIImageOrientationLeftMirrored:
-        case UIImageOrientationRightMirrored:
-            transform = CGAffineTransformTranslate(transform, image.size.height, 0);
-            transform = CGAffineTransformScale(transform, -1, 1);
-            break;
-        case UIImageOrientationUp:
-        case UIImageOrientationDown:
-        case UIImageOrientationLeft:
-        case UIImageOrientationRight:
-            break;
-    }
-    
-    // Now we draw the underlying CGImage into a new context, applying the transform
-    // calculated above.
-    CGContextRef ctx = CGBitmapContextCreate(NULL, image.size.width, image.size.height,
-                                             CGImageGetBitsPerComponent(image.CGImage), 0,
-                                             CGImageGetColorSpace(image.CGImage),
-                                             CGImageGetBitmapInfo(image.CGImage));
-    CGContextConcatCTM(ctx, transform);
-    switch (image.imageOrientation) {
-        case UIImageOrientationLeft:
-        case UIImageOrientationLeftMirrored:
-        case UIImageOrientationRight:
-        case UIImageOrientationRightMirrored:
-            // Grr...
-            CGContextDrawImage(ctx, CGRectMake(0,0,image.size.height,image.size.width), image.CGImage);
-            break;
-            
-        default:
-            CGContextDrawImage(ctx, CGRectMake(0,0,image.size.width,image.size.height), image.CGImage);
-            break;
-    }
-    
-    // And now we just create a new UIImage from the drawing context
-    CGImageRef cgimg = CGBitmapContextCreateImage(ctx);
-    UIImage *img = [UIImage imageWithCGImage:cgimg];
-    CGContextRelease(ctx);
-    CGImageRelease(cgimg);
-    return img;
-}
 /////////////////////////////////////////////////////////////////////////////////
 //      ビデオキャプチャ時、 新しいフレームが書き込まれた際に通知を受けるデリゲートメソッド
 /////////////////////////////////////////////////////////////////////////////////
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
 {
-    if (_currentCapturedNumber < _allCaptureNumber) {
-        AVCaptureDevice* device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-        if (device.adjustingFocus) {
-            LOG(@"Sorry adjusting focus.");
-            return;
-        }
-        
-        _currentCapturedNumber++;
-        LmCmSharedCamera* camera = [LmCmSharedCamera instance];
-        LmCmImageAsset* asset = [[LmCmImageAsset alloc] init];
-        //UIImage* captureImage = [UIImage imageWithCGImage:cgImage];
-        
-        @autoreleasepool {
-            CGImageRef cgImage = [LmCmCameraManager imageFromSampleBuffer:sampleBuffer];
+    @autoreleasepool {
+        if (_currentCapturedNumber < _allCaptureNumber) {
+            AVCaptureDevice* device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+            if (device.adjustingFocus) {
+                LOG(@"Sorry adjusting focus.");
+                return;
+            }
+            _currentCapturedNumber++;
+            LmCmSharedCamera* camera = [LmCmSharedCamera instance];
+            LmCmImageAsset* asset = [[LmCmImageAsset alloc] init];
+            
+            CGImageRef cgImage = [PtUtilImage imageFromSampleBuffer:sampleBuffer];
             asset.image = [UIImage imageWithCGImage:cgImage];
             CGImageRelease(cgImage);
+            
+            asset.zoom = camera.zoom;
+            asset.cropSize = camera.cropSize;
+            asset.frontCamera = [self isUsingFrontCamera];
+            asset.orientation = [MotionOrientation sharedInstance].deviceOrientation;
+            asset.originalSize = asset.image.size;
+            
+            [self.delegate performSelectorOnMainThread:@selector(singleImageNoSoundDidTakeWithAsset:) withObject:asset waitUntilDone:NO];
+            return;
+            
         }
-        
-        asset.zoom = camera.zoom;
-        asset.cropSize = camera.cropSize;
-        asset.frontCamera = [self isUsingFrontCamera];
-        asset.orientation = [MotionOrientation sharedInstance].deviceOrientation;
-        asset.originalSize = asset.image.size;
-        //asset.image = captureImage;
-        
-        [self.delegate performSelectorOnMainThread:@selector(singleImageNoSoundDidTakeWithAsset:) withObject:asset waitUntilDone:NO];
-        return;
-        
-        
-        
-        
-        /*
-         CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
-         CVPixelBufferLockBaseAddress(imageBuffer,0);
-         
-         size_t bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer);
-         size_t width = CVPixelBufferGetWidth(imageBuffer);
-         size_t height = CVPixelBufferGetHeight(imageBuffer);
-         void *src_buff = CVPixelBufferGetBaseAddress(imageBuffer);
-         
-         LmCmPixelData* data = [[LmCmPixelData alloc] init];
-         data.width = width;
-         data.height = height;
-         data.bytesPerRow = bytesPerRow;
-         data.bufferSize = CVPixelBufferGetDataSize(imageBuffer);
-         data.orientation = [MotionOrientation sharedInstance].deviceOrientation;
-         data.pixelData = [NSData dataWithBytes:src_buff length:bytesPerRow * height];
-         CVPixelBufferUnlockBaseAddress(imageBuffer, 0);
-         
-         LmCmSharedCamera* camera = [LmCmSharedCamera instance];
-         data.zoom = camera.zoom;
-         data.cropSize = camera.cropSize;
-         data.frontCamera = [self isUsingFrontCamera];
-         
-         [self addPixelDataObject:data];
-         */
-        
-        /*
-         CGImageRef cgImage = [CameraManager imageFromSampleBuffer:sampleBuffer];
-         UIImage* captureImage = [UIImage imageWithCGImage:cgImage];
-         CGImageRelease(cgImage);
-         
-         dispatch_async(dispatch_get_main_queue(), ^(void) {
-         [_self.delegate singleImageCaptured:captureImage withOrientation:[MotionOrientation sharedInstance].deviceOrientation];
-         });
-         */
     }
-    /*
-     return;
-     ////////////////////////////////////////////
-     //      メインスレッドでの処理
-     ////////////////////////////////////////////
-     dispatch_async(dispatch_get_main_queue(), ^(void) {
-     self.videoImage = captureImage;
-     self.videoOrientaion = UIDevice.currentDevice.orientation;
-     
-     //      デリゲートの存在確認後画面更新
-     if ([self.delegate respondsToSelector:@selector(videoFrameUpdate:from:)]) {
-     [self.delegate videoFrameUpdate:self.videoImage.CGImage from:self];
-     }
-     });
-     
-     */
     
 }
 
@@ -659,7 +523,7 @@
         connection.videoOrientation = [MotionOrientation sharedInstance].deviceOrientation;
     }
     
-    __block LmCmCameraManager* _self = self;
+    __block LmCmCamera* _self = self;
     //      UIImage化した画像を通知する
     [imageOutput captureStillImageAsynchronouslyFromConnection:connection
                                              completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
@@ -672,7 +536,7 @@
                                                      image = [[UIImage alloc] initWithData:data];
                                                  }
                                                  @autoreleasepool {
-                                                     image = [LmCmCameraManager fixOrientationOfImage:image];
+                                                     image = [PtUtilImage fixOrientationOfImageFromCamera:image];
                                                  }
                                                  
                                                  LmCmSharedCamera* camera = [LmCmSharedCamera instance];
@@ -687,33 +551,6 @@
                                              }];
     
     
-}
-
-#pragma mark - クラス・メソッド
-
-
-//////////////////////////////////////////////////////
-//      SampleBufferをCGImageRefに変換する
-//////////////////////////////////////////////////////
-+ (CGImageRef) imageFromSampleBuffer:(CMSampleBufferRef) sampleBuffer
-{
-    CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
-    CVPixelBufferLockBaseAddress(imageBuffer,0);        //      バッファをロック
-    
-    uint8_t *baseAddress = (uint8_t *)CVPixelBufferGetBaseAddressOfPlane(imageBuffer, 0);
-    size_t bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer);
-    size_t width = CVPixelBufferGetWidth(imageBuffer);
-    size_t height = CVPixelBufferGetHeight(imageBuffer);
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    
-    CGContextRef newContext = CGBitmapContextCreate(baseAddress, width, height, 8, bytesPerRow, colorSpace, kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
-    CGImageRef newImage = CGBitmapContextCreateImage(newContext);
-    CGContextRelease(newContext);
-    
-    CGColorSpaceRelease(colorSpace);
-    CVPixelBufferUnlockBaseAddress(imageBuffer,0);      //      バッファをアンロック
-    
-    return newImage;
 }
 
 

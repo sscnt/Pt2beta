@@ -11,6 +11,7 @@
 @implementation PtSharedApp
 
 static PtSharedApp* sharedPtSharedApp = nil;
+NSString* const pathForOriginalImage = @"tmp/original_image";
 
 + (PtSharedApp*)instance {
 	@synchronized(self) {
@@ -228,6 +229,20 @@ static PtSharedApp* sharedPtSharedApp = nil;
     [ud synchronize];
 }
 
+//// 画像
+
+- (BOOL)lastEditingPhotoExists
+{
+    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForOriginalImage];
+    NSURL *fileURL = [NSURL fileURLWithPath:filePath];
+    NSFileManager *filemgr = [NSFileManager defaultManager];
+    
+    if( [filemgr fileExistsAtPath:filePath] ){
+        return YES;
+    }
+    return NO;
+}
+
 + (void)saveOriginalImageToFile:(UIImage *)image
 {
     NSData *imageData = UIImageJPEGRepresentation(image, 0.99);
@@ -236,14 +251,14 @@ static PtSharedApp* sharedPtSharedApp = nil;
 
 + (void)saveOriginalImageDataToFile:(NSData *)data
 {
-    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"tmp/original_image"];
+    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForOriginalImage];
     BOOL success = [data writeToFile:filePath atomically:YES];
 }
 
 + (UIImage *)loadOriginalImageFromFile
 {
     
-    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"tmp/original_image"];
+    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForOriginalImage];
     NSURL *fileURL = [NSURL fileURLWithPath:filePath];
     NSFileManager *filemgr = [NSFileManager defaultManager];
     
@@ -251,14 +266,12 @@ static PtSharedApp* sharedPtSharedApp = nil;
         UIImage *img = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:fileURL]];
         return img;
     }
-    
     return nil;
-    
 }
 
 + (NSURL *)originalImageUrl
 {
-    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"tmp/original_image"];
+    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForOriginalImage];
     NSURL *fileURL = [NSURL fileURLWithPath:filePath];
     return fileURL;
 }

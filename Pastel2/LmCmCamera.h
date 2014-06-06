@@ -23,46 +23,28 @@
 ////////////////////////////////////////////////
 //      カメラマネージャデリゲート
 ////////////////////////////////////////////////
-@class LmCmCameraManager;
-@protocol CameraManagerDelegate <NSObject>
+@class LmCmCamera;
+@protocol LmCmCameraDelegate <NSObject>
 @optional
--(void)videoFrameUpdate:(CGImageRef)cgImage from:(LmCmCameraManager*)manager;
+-(void)videoFrameUpdate:(CGImageRef)cgImage from:(LmCmCamera*)manager;
 - (void)singleImageNoSoundDidTakeWithAsset:(LmCmImageAsset*)lmAsset;
 - (void)singleImageByNormalCameraDidTakeWithAsset:(LmCmImageAsset*)lmAsset;
 - (void)shootingDidCancel;
 @end
 
-//////////////////////////////////////////////////
-//      カメラマネージャクラス
-//////////////////////////////////////////////////
-@interface LmCmCameraManager : NSObject <AVCaptureAudioDataOutputSampleBufferDelegate, AVCaptureVideoDataOutputSampleBufferDelegate>
+
+@interface LmCmCamera : NSObject <AVCaptureAudioDataOutputSampleBufferDelegate, AVCaptureVideoDataOutputSampleBufferDelegate>
 
 
-/*///////////////////////////////////////////
-            初期化
- presetに以下の値を設定して初期化（デフォルトは640x480)
-AVCaptureSessionPresetLow
-AVCaptureSessionPresetHigh
-AVCaptureSessionPresetMedium
-AVCaptureSessionPresetPhoto
-AVCaptureSessionPreset352x288
-AVCaptureSessionPreset640x480
-AVCaptureSessionPreset1920x1080
-AVCaptureSessionPresetiFrame960x540 
-AVCaptureSessionPresetiFrame1280x720  
-/////////////////////////////////////////////*/
--(id)init;                                              //  640x480
+-(id)init;
 -(id)initWithPreset:(NSString*)preset;
 
-@property(nonatomic, weak) UIViewController<CameraManagerDelegate>* delegate;
+@property(nonatomic, weak) UIViewController<LmCmCameraDelegate>* delegate;
 
 @property (nonatomic, assign) BOOL processingToConvert;
 @property (nonatomic, assign) int currentCapturedNumber;
 @property (nonatomic, assign) int allCaptureNumber;
 @property (nonatomic, assign) BOOL isRunning;
-
-- (void)addAssetToCache:(LmCmImageAsset*)asset;
-- (void)popCacheAndConvert;
 
 - (void)takeOnePicture;
 - (void)takeOnePicutreWithNoSound;
@@ -127,13 +109,5 @@ typedef void (^takePhotoBlock)(UIImage *image, NSError *error);
 //   静止画取得(シャッター音なし) 
 -(UIImage*)rotatedVideoImage;                                      //  デバイスの向きに合わせたビデオイメージを作成
 
-///////////////////////////////////////////////////
-//      クラスメソッド
-///////////////////////////////////////////////////
-//    SampleBuffer -> CGImageRef変換
-+(CGImageRef) imageFromSampleBuffer:(CMSampleBufferRef) sampleBuffer;
-//      画像回転
-+(UIImage*)rotateImage:(UIImage*)img angle:(int)angle;
-+(UIImage*)fixOrientationOfImage:(UIImage *)image;
 
 @end

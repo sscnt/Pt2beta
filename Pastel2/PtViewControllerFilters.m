@@ -70,9 +70,6 @@
         @autoreleasepool {
             UIImage* image = [PtSharedApp instance].imageToProcess;
             CGSize size = CGSizeMake(_self.previewImageView.width * [[UIScreen mainScreen] scale], _self.previewImageView.height * [[UIScreen mainScreen] scale]);
-            //image = [image resizedImage:size interpolationQuality:kCGInterpolationHigh];
-            //image = [image resizeImageAndConvertJpeg:size];
-            //image = [UIImage resizedImageUrl:[PtSharedApp originalImageUrl] ToSize:size];
             image = [PtUtilImage resizedImageUrl:[PtSharedApp originalImageUrl] ToSize:size];
             _self.previewImage = image;
         }
@@ -204,8 +201,9 @@
 {
     PtSharedApp* app = [PtSharedApp instance];
     @autoreleasepool {
-        app.imageToProcess = [PtUtilImage mergeSplitImage9:self.originalImageParts WithSize:app.sizeOfImageToProcess];
-        [self.originalImageParts removeAllObjects];
+        NSData* data = [PtUtilImage mergeSplitImage9:self.originalImageParts WithSize:app.sizeOfImageToProcess];
+        [PtSharedApp saveOriginalImageDataToFile:data];
+        [PtSharedApp instance].imageToProcess = [UIImage imageWithData:data];
     }
     self.view.userInteractionEnabled = YES;
     self.progressView.hidden = YES;

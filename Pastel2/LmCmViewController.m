@@ -294,16 +294,18 @@
     dispatch_async(q_global, ^{
         @autoreleasepool {
             ALAssetRepresentation *rep = [self.lastAsset defaultRepresentation];
-            image = [UIImage imageWithCGImage:[rep fullResolutionImage]
-                                               scale:[rep scale]
+            UIImage* rawImage = [UIImage imageWithCGImage:[rep fullResolutionImage]
+                                        scale:[rep scale]
                                   orientation:[rep orientation]];
-            
-            @autoreleasepool {
-                Byte *buffer = (Byte*)malloc(rep.size);
-                NSUInteger buffered = [rep getBytes:buffer fromOffset:0.0 length:rep.size error:nil];
-                NSData *data = [NSData dataWithBytesNoCopy:buffer length:buffered freeWhenDone:YES];
-                [PtSharedApp saveOriginalImageDataToFile:data];
-            }
+            NSData* data = UIImageJPEGRepresentation(rawImage, 0.99f);
+            [PtSharedApp saveOriginalImageDataToFile:data];
+            image = [UIImage imageWithData:data];
+            /*
+            Byte *buffer = (Byte*)malloc(rep.size);
+            NSUInteger buffered = [rep getBytes:buffer fromOffset:0.0 length:rep.size error:nil];
+            NSData *data = [NSData dataWithBytesNoCopy:buffer length:buffered freeWhenDone:YES];
+            [PtSharedApp saveOriginalImageDataToFile:data];
+            */
         }
         dispatch_async(q_main, ^{
             [_self presentEditorViewControllerWithImage:image];

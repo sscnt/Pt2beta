@@ -102,7 +102,7 @@ static size_t align16(size_t size)
     return (((size - 1) >> 4) << 4) + 16;
 }
 
-+ (UIImage *)mergeSplitImage9:(NSMutableArray*)array WithSize:(CGSize)size
++ (NSData*)mergeSplitImage9:(NSMutableArray*)array WithSize:(CGSize)size
 {
     
     float cropWidth = floor(size.width / 3.0f);
@@ -200,8 +200,7 @@ static size_t align16(size_t size)
     NSData* data = UIImageJPEGRepresentation(mergedImage, 0.99);
     CGImageRelease(image);
     free(bytes);
-    UIImage* resultImage = [UIImage imageWithData:data];
-    return resultImage;
+    return data;
 }
 
 + (UIImage *)zoomImage:(UIImage *)image ToScale:(float)zoom

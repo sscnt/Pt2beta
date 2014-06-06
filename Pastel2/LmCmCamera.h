@@ -26,7 +26,7 @@
 @class LmCmCamera;
 @protocol LmCmCameraDelegate <NSObject>
 @optional
--(void)videoFrameUpdate:(CGImageRef)cgImage from:(LmCmCamera*)manager;
+- (void)videoFrameUpdate:(CGImageRef)cgImage from:(LmCmCamera*)manager;
 - (void)singleImageNoSoundDidTakeWithAsset:(LmCmImageAsset*)lmAsset;
 - (void)singleImageByNormalCameraDidTakeWithAsset:(LmCmImageAsset*)lmAsset;
 - (void)shootingDidCancel;

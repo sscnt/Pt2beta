@@ -130,58 +130,58 @@ static size_t align16(size_t size)
     
     //// 座標系に注意
     //// 1
-    {
+    @autoreleasepool {
         UIImage* image = [array objectAtIndex:0];
         CGContextDrawImage(context, CGRectMake(0.0f, height - image.size.height, image.size.width, image.size.height), image.CGImage);
         [array removeObjectAtIndex:0];
     }
     //// 2
-    {
-        UIImage* image = [array objectAtIndex:1];
+    @autoreleasepool {
+        UIImage* image = [array objectAtIndex:0];
         CGContextDrawImage(context, CGRectMake(width1, height - image.size.height, image.size.width, image.size.height), image.CGImage);
-        [array removeObjectAtIndex:1];
+        [array removeObjectAtIndex:0];
     }
     //// 3
-    {
-        UIImage* image = [array objectAtIndex:2];
+    @autoreleasepool {
+        UIImage* image = [array objectAtIndex:0];
         CGContextDrawImage(context, CGRectMake(width1 + width2, height - image.size.height, image.size.width, image.size.height), image.CGImage);
-        [array removeObjectAtIndex:2];
+        [array removeObjectAtIndex:0];
     }
     //// 4
-    {
-        UIImage* image = [array objectAtIndex:3];
+    @autoreleasepool {
+        UIImage* image = [array objectAtIndex:0];
         CGContextDrawImage(context, CGRectMake(0.0f, height3, image.size.width, image.size.height), image.CGImage);
-        [array removeObjectAtIndex:3];
+        [array removeObjectAtIndex:0];
     }
     //// 5
-    {
-        UIImage* image = [array objectAtIndex:4];
+    @autoreleasepool {
+        UIImage* image = [array objectAtIndex:0];
         CGContextDrawImage(context, CGRectMake(width1, height3, image.size.width, image.size.height), image.CGImage);
-        [array removeObjectAtIndex:4];
+        [array removeObjectAtIndex:0];
     }
     //// 6
-    {
-        UIImage* image = [array objectAtIndex:5];
+    @autoreleasepool {
+        UIImage* image = [array objectAtIndex:0];
         CGContextDrawImage(context, CGRectMake(width1 + width2, height3, image.size.width, image.size.height), image.CGImage);
-        [array removeObjectAtIndex:5];
+        [array removeObjectAtIndex:0];
     }
     //// 7
-    {
-        UIImage* image = [array objectAtIndex:6];
+    @autoreleasepool {
+        UIImage* image = [array objectAtIndex:0];
         CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, image.size.width, image.size.height), image.CGImage);
-        [array removeObjectAtIndex:6];
+        [array removeObjectAtIndex:0];
     }
     //// 8
-    {
-        UIImage* image = [array objectAtIndex:7];
+    @autoreleasepool {
+        UIImage* image = [array objectAtIndex:0];
         CGContextDrawImage(context, CGRectMake(width1, 0.0f, image.size.width, image.size.height), image.CGImage);
-        [array removeObjectAtIndex:7];
+        [array removeObjectAtIndex:0];
     }
     //// 9
-    {
-        UIImage* image = [array objectAtIndex:8];
+    @autoreleasepool {
+        UIImage* image = [array objectAtIndex:0];
         CGContextDrawImage(context, CGRectMake(width1 + width2, 0.0f, image.size.width, image.size.height), image.CGImage);
-        [array removeObjectAtIndex:8];
+        [array removeObjectAtIndex:0];
     }
     
     [array removeAllObjects];

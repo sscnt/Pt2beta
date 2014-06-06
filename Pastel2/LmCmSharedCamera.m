@@ -142,7 +142,7 @@ static LmCmSharedCamera* sharedLmCurrentCamera = nil;
 
 + (UIColor *)cropMaskColor
 {
-    return [UIColor colorWithWhite:0.15f alpha:1.0f];
+    return [UIColor colorWithWhite:0.125f alpha:1.0f];
 }
 
 #pragma mark api

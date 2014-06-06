@@ -382,40 +382,6 @@
     return NO;
 }
 
-
-
-#pragma  mark - 撮影
-//      写真撮影
-//  デバイスの向きに合わせたビデオイメージを作成
--(UIImage*)rotatedVideoImage{
-    
-    if(self.videoImage == nil)
-        return nil;
-    
-    
-    UIImage* image = nil;
-    UIDeviceOrientation orientation = _videoOrientaion;
-    BOOL isMirrored = self.isUsingFrontCamera;
-    
-    if (orientation == UIDeviceOrientationPortrait) {
-        image = [PtUtilImage rotateImage:self.videoImage angle:270];
-    } else if (orientation == UIDeviceOrientationPortraitUpsideDown) {
-        image = [PtUtilImage rotateImage:self.videoImage angle:90];
-    } else if (orientation == UIDeviceOrientationLandscapeRight) {
-        if(isMirrored)
-            image = self.videoImage;
-        else
-            image = [PtUtilImage rotateImage:self.videoImage angle:180];
-    }else {
-        if(isMirrored)
-            image = [PtUtilImage rotateImage:self.videoImage angle:180];
-        else
-            image = self.videoImage;
-    }
-    
-    return image;
-}
-
 /////////////////////////////////////////////////////////////////////////////////
 //      ビデオキャプチャ時、 新しいフレームが書き込まれた際に通知を受けるデリゲートメソッド
 /////////////////////////////////////////////////////////////////////////////////
@@ -444,10 +410,8 @@
             
             [self.delegate performSelectorOnMainThread:@selector(singleImageNoSoundDidTakeWithAsset:) withObject:asset waitUntilDone:NO];
             return;
-            
         }
     }
-    
 }
 
 
@@ -523,7 +487,7 @@
         connection.videoOrientation = [MotionOrientation sharedInstance].deviceOrientation;
     }
     
-    __block LmCmCamera* _self = self;
+    __block __weak LmCmCamera* _self = self;
     //      UIImage化した画像を通知する
     [imageOutput captureStillImageAsynchronouslyFromConnection:connection
                                              completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {

@@ -56,11 +56,6 @@
 
 - (NSString*)presetString;
 
-/////////////////////////////////////////////////////////
-//      プレビュー制御
-////////////////////////////////////////////////////////
-//      プレビューレイヤを直接設定できます
-///     表示の ON/OFFは　previewLayer.hidden = YES/NO
 @property AVCaptureVideoPreviewLayer*     previewLayer;         // プレビューレイヤ
 -(void)setPreview:(UIView*)view;                                // プレビューを表示するビューを設定する
 
@@ -83,8 +78,8 @@
 -(void)flipCamera;                                                 //   フロントカメラ・バックカメラを切り替える
 -(BOOL)isUsingFrontCamera;                                         // 　フロントカメラを使っているか(ミラー表示中)
 //      所有しているカメラデバイスの名称や詳細などを取得できます
-@property AVCaptureDevice*                backCameraDevice;        //   バックカメラデバイス
-@property AVCaptureDevice*                frontCameraDevice;       //   フロントカメラデバイス
+@property AVCaptureDevice* backCameraDevice;        //   バックカメラデバイス
+@property AVCaptureDevice* frontCameraDevice;       //   フロントカメラデバイス
 
 /////////////////////////////////////////////////////////
 //      フォーカス制御
@@ -97,17 +92,7 @@
 //   向きを考慮した静止画を取得(Blockで結果を得る)
 /////////////////////////////////////////////////////////
 typedef void (^takePhotoBlock)(UIImage *image, NSError *error);
--(void)takePhoto:(takePhotoBlock) block;
-
-
-///////////////////////////////////////////
-//      動画撮影
-///////////////////////////////////////////
-@property UIImage*                        videoImage;              //  キャプチャした生ビデオイメージ
-@property UIDeviceOrientation             videoOrientaion;         //  キャプチャイメージの向き
-
-//   静止画取得(シャッター音なし) 
--(UIImage*)rotatedVideoImage;                                      //  デバイスの向きに合わせたビデオイメージを作成
+- (void)takePhoto:(takePhotoBlock) block;
 
 
 @end

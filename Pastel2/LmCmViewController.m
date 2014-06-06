@@ -196,8 +196,9 @@
         [_self.assetLibrary assetForURL:assetURL resultBlock:^(ALAsset *asset) {
             _self.cameraManager.processingToConvert = NO;
             [_self lastAssetDidLoad:asset];
-            _self.shutterButton.shooting = NO;
             [_self imageDidSave:asset];
+            _self.shutterButton.shooting = NO;
+            _self.view.userInteractionEnabled = YES;
         } failureBlock:^(NSError *error) {
             
         }];
@@ -292,10 +293,17 @@
     dispatch_queue_t q_main = dispatch_get_main_queue();
     dispatch_async(q_global, ^{
         @autoreleasepool {
-            ALAssetRepresentation *representation = [self.lastAsset defaultRepresentation];
-            image = [UIImage imageWithCGImage:[representation fullResolutionImage]
-                                               scale:[representation scale]
-                                         orientation:[representation orientation]];
+            ALAssetRepresentation *rep = [self.lastAsset defaultRepresentation];
+            image = [UIImage imageWithCGImage:[rep fullResolutionImage]
+                                               scale:[rep scale]
+                                  orientation:[rep orientation]];
+            
+            @autoreleasepool {
+                Byte *buffer = (Byte*)malloc(rep.size);
+                NSUInteger buffered = [rep getBytes:buffer fromOffset:0.0 length:rep.size error:nil];
+                NSData *data = [NSData dataWithBytesNoCopy:buffer length:buffered freeWhenDone:YES];
+                [PtSharedApp saveOriginalImageDataToFile:data];
+            }
         }
         dispatch_async(q_main, ^{
             [_self presentEditorViewControllerWithImage:image];
@@ -323,10 +331,12 @@
         if(_self.loadedImageFromPickerController){            
             ALAssetRepresentation *rep = [asset defaultRepresentation];
             
-            Byte *buffer = (Byte*)malloc(rep.size);
-            NSUInteger buffered = [rep getBytes:buffer fromOffset:0.0 length:rep.size error:nil];
-            NSData *data = [NSData dataWithBytesNoCopy:buffer length:buffered freeWhenDone:YES];//this is NSData may be what you want
-            [PtSharedApp saveOriginalImageDataToFile:data];
+            @autoreleasepool {
+                Byte *buffer = (Byte*)malloc(rep.size);
+                NSUInteger buffered = [rep getBytes:buffer fromOffset:0.0 length:rep.size error:nil];
+                NSData *data = [NSData dataWithBytesNoCopy:buffer length:buffered freeWhenDone:YES];
+                [PtSharedApp saveOriginalImageDataToFile:data];
+            }
             
             //// Do your stuff
             [_self presentEditorViewControllerWithImage:_self.loadedImageFromPickerController];

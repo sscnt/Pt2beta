@@ -19,101 +19,85 @@
     return self;
 }
 
-- (UIImage*)process
+- (void)makeFilterGroup
 {
     
-    [VnCurrentImage saveTmpImage:self.imageToProcess];
-    
     // Selective Color
-    @autoreleasepool {
-        VnAdjustmentLayerSelectiveColor* selectiveColor = [[VnAdjustmentLayerSelectiveColor alloc] init];
-        [selectiveColor setRedsCyan:59 Magenta:16 Yellow:-39 Black:0];
-        [selectiveColor setYellowsCyan:23 Magenta:29 Yellow:29 Black:0];
-        [selectiveColor setWhitesCyan:-21 Magenta:0 Yellow:12 Black:0];
-        [selectiveColor setNeutralsCyan:10 Magenta:8 Yellow:-6 Black:0];
-        [selectiveColor setBlacksCyan:5 Magenta:0 Yellow:-1 Black:5];
-        
-        [self mergeAndSaveTmpImageWithOverlayFilter:selectiveColor opacity:1.0f blendingMode:VnBlendingModeNormal];
-    }
+    VnAdjustmentLayerSelectiveColor* selectiveColor1 = [[VnAdjustmentLayerSelectiveColor alloc] init];
+    [selectiveColor1 setRedsCyan:59 Magenta:16 Yellow:-39 Black:0];
+    [selectiveColor1 setYellowsCyan:23 Magenta:29 Yellow:29 Black:0];
+    [selectiveColor1 setWhitesCyan:-21 Magenta:0 Yellow:12 Black:0];
+    [selectiveColor1 setNeutralsCyan:10 Magenta:8 Yellow:-6 Black:0];
+    [selectiveColor1 setBlacksCyan:5 Magenta:0 Yellow:-1 Black:5];
+    
     
     // Curve
-    @autoreleasepool {
-        VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"plbr1"];
-        
-        [self mergeAndSaveTmpImageWithOverlayFilter:curveFilter opacity:0.20f blendingMode:VnBlendingModeNormal];
-    }
+    VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"plbr1"];
+    curveFilter1.topLayerOpacity = 0.20f;
     
     // Fill Layer
-    @autoreleasepool {
-        VnFilterSolidColor* solidColor = [[VnFilterSolidColor alloc] init];
-        [solidColor setColorRed:0.0f/255.0f green:8.0f/255.0f blue:28.0f/255.0 alpha:1.0f];
-        
-        [self mergeAndSaveTmpImageWithOverlayFilter:solidColor opacity:1.0f blendingMode:VnBlendingModeExclusion];
-    }
+    VnFilterSolidColor* solidColor1 = [[VnFilterSolidColor alloc] init];
+    [solidColor1 setColorRed:0.0f/255.0f green:8.0f/255.0f blue:28.0f/255.0 alpha:1.0f];
+    solidColor1.blendingMode = VnBlendingModeExclusion;
     
     // Fill Layer
-    @autoreleasepool {
-        VnAdjustmentLayerGradientColorFill* gradientColor = [[VnAdjustmentLayerGradientColorFill alloc] init];
-        [gradientColor forceProcessingAtSize:self.imageSize];
-        [gradientColor setStyle:GradientStyleRadial];
-        [gradientColor setAngleDegree:0.0f];
-        [gradientColor setScalePercent:150];
-        [gradientColor setOffsetX:-18.0f Y:-11.0f];
-        [gradientColor addColorRed:255.0f Green:229.0f Blue:183.0f Opacity:100.0f Location:0 Midpoint:50];
-        [gradientColor addColorRed:127.0f Green:124.0f Blue:59.0f Opacity:0.0f Location:4096 Midpoint:50];
-        
-        [self mergeAndSaveTmpImageWithOverlayFilter:gradientColor opacity:0.20f blendingMode:VnBlendingModeOverlay];
-    }
+    VnAdjustmentLayerGradientColorFill* gradientColor1 = [[VnAdjustmentLayerGradientColorFill alloc] init];
+    [gradientColor1 forceProcessingAtSize:self.imageSize];
+    [gradientColor1 setStyle:GradientStyleRadial];
+    [gradientColor1 setAngleDegree:0.0f];
+    [gradientColor1 setScalePercent:150];
+    [gradientColor1 setOffsetX:-18.0f Y:-11.0f];
+    [gradientColor1 addColorRed:255.0f Green:229.0f Blue:183.0f Opacity:100.0f Location:0 Midpoint:50];
+    [gradientColor1 addColorRed:127.0f Green:124.0f Blue:59.0f Opacity:0.0f Location:4096 Midpoint:50];
+    gradientColor1.topLayerOpacity = 0.20f;
+    gradientColor1.blendingMode = VnBlendingModeOverlay;
+    
     
     // Color Balance
-    @autoreleasepool {
-        VnAdjustmentLayerColorBalance* colorBalance = [[VnAdjustmentLayerColorBalance alloc] init];
-        GPUVector3 shadows;
-        shadows.one = s255(0.0f);
-        shadows.two = s255(0.0f);
-        shadows.three = s255(0.0f);
-        [colorBalance setShadows:shadows];
-        GPUVector3 midtones;
-        midtones.one = s255(5.0f);
-        midtones.two = s255(-2.0f);
-        midtones.three = s255(-2.0f);
-        [colorBalance setMidtones:midtones];
-        GPUVector3 highlights;
-        highlights.one = s255(2.0f);
-        highlights.two = s255(-2.0f);
-        highlights.three = s255(-10.0f);
-        [colorBalance setHighlights:highlights];
-        colorBalance.preserveLuminosity = YES;
-        
-        [self mergeAndSaveTmpImageWithOverlayFilter:colorBalance opacity:1.0f blendingMode:VnBlendingModeNormal];
-    }
+    VnAdjustmentLayerColorBalance* colorBalance1 = [[VnAdjustmentLayerColorBalance alloc] init];
+    GPUVector3 shadows;
+    shadows.one = s255(0.0f);
+    shadows.two = s255(0.0f);
+    shadows.three = s255(0.0f);
+    [colorBalance1 setShadows:shadows];
+    GPUVector3 midtones;
+    midtones.one = s255(5.0f);
+    midtones.two = s255(-2.0f);
+    midtones.three = s255(-2.0f);
+    [colorBalance1 setMidtones:midtones];
+    GPUVector3 highlights;
+    highlights.one = s255(2.0f);
+    highlights.two = s255(-2.0f);
+    highlights.three = s255(-10.0f);
+    [colorBalance1 setHighlights:highlights];
+    colorBalance1.preserveLuminosity = YES;
+    
     
     // Selective Color
-    @autoreleasepool {
-        VnAdjustmentLayerSelectiveColor* selectiveColor = [[VnAdjustmentLayerSelectiveColor alloc] init];
-        [selectiveColor setRedsCyan:2 Magenta:0 Yellow:12 Black:0];
-        [selectiveColor setMagentasCyan:20 Magenta:-12 Yellow:21 Black:0];
-        
-        [self mergeAndSaveTmpImageWithOverlayFilter:selectiveColor opacity:1.0f blendingMode:VnBlendingModeNormal];
-    }
+    VnAdjustmentLayerSelectiveColor* selectiveColor2 = [[VnAdjustmentLayerSelectiveColor alloc] init];
+    [selectiveColor2 setRedsCyan:2 Magenta:0 Yellow:12 Black:0];
+    [selectiveColor2 setMagentasCyan:20 Magenta:-12 Yellow:21 Black:0];
     
     // Fill Layer
-    @autoreleasepool {
-        VnFilterSolidColor* solidColor = [[VnFilterSolidColor alloc] init];
-        [solidColor setColorRed:97.0f/255.0f green:76.0f/255.0f blue:109.0f/255.0 alpha:1.0f];
-        
-        [self mergeAndSaveTmpImageWithOverlayFilter:solidColor opacity:0.15f blendingMode:VnBlendingModeHue];
-    }
+    VnFilterSolidColor* solidColor2 = [[VnFilterSolidColor alloc] init];
+    [solidColor2 setColorRed:97.0f/255.0f green:76.0f/255.0f blue:109.0f/255.0 alpha:1.0f];
+    solidColor2.topLayerOpacity = 0.15f;
+    solidColor2.blendingMode = VnBlendingModeHue;
+    
     
     // Curve
-    @autoreleasepool {
-        VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"plbr2"];
-        
-        [self mergeAndSaveTmpImageWithOverlayFilter:curveFilter opacity:0.20f blendingMode:VnBlendingModeNormal];
-    }
-
+    VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"plbr2"];
+    curveFilter1.topLayerOpacity = 0.20f;
     
-    return [VnCurrentImage tmpImage];
+    self.startFilter = selectiveColor1;
+    [selectiveColor1 addTarget:curveFilter1];
+    [curveFilter1 addTarget:solidColor1];
+    [solidColor1 addTarget:gradientColor1];
+    [gradientColor1 addTarget:colorBalance1];
+    [colorBalance1 addTarget:selectiveColor2];
+    [selectiveColor2 addTarget:solidColor2];
+    [solidColor2 addTarget:curveFilter1];
+    self.endFilter = curveFilter1;
 }
 
 @end

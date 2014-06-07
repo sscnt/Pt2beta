@@ -19,30 +19,22 @@
     return self;
 }
 
-- (UIImage*)process
+- (void)makeFilterGroup
 {
-    
-    [VnCurrentImage saveTmpImage:self.imageToProcess];
-    
     // Hue/Saturation
-    @autoreleasepool {
-        VnAdjustmentLayerHueSaturation* hueSaturation = [[VnAdjustmentLayerHueSaturation alloc] init];
-        hueSaturation.hue = 0.0f;
-        hueSaturation.saturation = -10;
-        hueSaturation.lightness = 0.0f;
-        hueSaturation.colorize = NO;
-        
-        [self mergeAndSaveTmpImageWithOverlayFilter:hueSaturation opacity:1.0f blendingMode:VnBlendingModeSoftLight];
-    }
+    VnAdjustmentLayerHueSaturation* hueSaturation = [[VnAdjustmentLayerHueSaturation alloc] init];
+    hueSaturation.hue = 0.0f;
+    hueSaturation.saturation = -10;
+    hueSaturation.lightness = 0.0f;
+    hueSaturation.colorize = NO;
+    hueSaturation.blendingMode = VnBlendingModeSoftLight;
     
     // Curve
-    @autoreleasepool {
-        VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"fs800"];
-        
-        [self mergeAndSaveTmpImageWithOverlayFilter:curveFilter opacity:1.0f blendingMode:VnBlendingModeNormal];
-    }
+    VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"fs800"];
     
-    return [VnCurrentImage tmpImage];
+    self.startFilter = hueSaturation;
+    [hueSaturation addTarget:curveFilter];
+    self.endFilter = curveFilter;
 }
 
 @end

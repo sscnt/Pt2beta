@@ -19,59 +19,55 @@
     return self;
 }
 
-- (UIImage*)process
+- (void)makeFilterGroup
 {
+    // Levels
+    VnFilterLevels* levelsFilter1 = [[VnFilterLevels alloc] init];
+    [levelsFilter1 setMin:s255(0.0f) gamma:0.92f max:s255(255.0f) minOut:s255(0.0f) maxOut:s255(255.0f)];
+    levelsFilter1.topLayerOpacity = 0.15f;
+    levelsFilter1.blendingMode = VnBlendingModeScreen;
     
-    [VnCurrentImage saveTmpImage:self.imageToProcess];
     
     // Levels
-    @autoreleasepool {
-        VnFilterLevels* levelsFilter = [[VnFilterLevels alloc] init];
-        [levelsFilter setMin:s255(0.0f) gamma:0.92f max:s255(255.0f) minOut:s255(0.0f) maxOut:s255(255.0f)];
-        
-        [self mergeAndSaveTmpImageWithOverlayFilter:levelsFilter opacity:0.15f blendingMode:VnBlendingModeScreen];
-    }
+    VnFilterLevels* levelsFilter2 = [[VnFilterLevels alloc] init];
+    [levelsFilter2 setMin:s255(0.0f) gamma:1.65f max:s255(255.0f) minOut:s255(0.0f) maxOut:s255(255.0f)];
+    levelsFilter2.topLayerOpacity = 0.70f;
+    levelsFilter2.blendingMode = VnBlendingModeSoftLight;
     
-    // Levels
-    @autoreleasepool {
-        VnFilterLevels* levelsFilter = [[VnFilterLevels alloc] init];
-        [levelsFilter setMin:s255(0.0f) gamma:1.65f max:s255(255.0f) minOut:s255(0.0f) maxOut:s255(255.0f)];
-        
-        [self mergeAndSaveTmpImageWithOverlayFilter:levelsFilter opacity:0.70f blendingMode:VnBlendingModeSoftLight];
-    }
+    
     
     // Photo Filter
-    @autoreleasepool {
-        VnAdjustmentLayerPhotoFilter* filter = [[VnAdjustmentLayerPhotoFilter alloc] init];
-        filter.color = (GPUVector3){s255(236.0f), s255(138.0f), 0.0f};
-        filter.density = 0.50f;
-        filter.preserveLuminosity = YES;
-        
-        [self mergeAndSaveTmpImageWithOverlayFilter:filter opacity:0.25f blendingMode:VnBlendingModeNormal];
-    }
+    VnAdjustmentLayerPhotoFilter* photoFilter = [[VnAdjustmentLayerPhotoFilter alloc] init];
+    photoFilter.color = (GPUVector3){s255(236.0f), s255(138.0f), 0.0f};
+    photoFilter.density = 0.50f;
+    photoFilter.preserveLuminosity = YES;
+    photoFilter.topLayerOpacity = 0.25f;
+    
     
     // Hue/Saturation
-    @autoreleasepool {
-        VnAdjustmentLayerHueSaturation* hueSaturation = [[VnAdjustmentLayerHueSaturation alloc] init];
-        hueSaturation.hue = 0.0f;
-        hueSaturation.saturation = 25;
-        hueSaturation.lightness = 0.0f;
-        hueSaturation.colorize = NO;
-        
-        [self mergeAndSaveTmpImageWithOverlayFilter:hueSaturation opacity:0.20f blendingMode:VnBlendingModeNormal];
-    }
+    VnAdjustmentLayerHueSaturation* hueSaturation = [[VnAdjustmentLayerHueSaturation alloc] init];
+    hueSaturation.hue = 0.0f;
+    hueSaturation.saturation = 25;
+    hueSaturation.lightness = 0.0f;
+    hueSaturation.colorize = NO;
+    hueSaturation.topLayerOpacity = 0.25f;
+    
     
     // Gradient Map
-    @autoreleasepool {
-        VnAdjustmentLayerGradientMap* gradientMap = [[VnAdjustmentLayerGradientMap alloc] init];
-        [gradientMap addColorRed:10.0f Green:5.0f Blue:0.0f Opacity:100.0f Location:0 Midpoint:50];
-        [gradientMap addColorRed:251.0f Green:245.0f Blue:245.0f Opacity:100.0f Location:4096 Midpoint:50];
-        
-        [self mergeAndSaveTmpImageWithOverlayFilter:gradientMap opacity:0.15f blendingMode:VnBlendingModeSoftLight];
-    }
+    VnAdjustmentLayerGradientMap* gradientMap = [[VnAdjustmentLayerGradientMap alloc] init];
+    [gradientMap addColorRed:10.0f Green:5.0f Blue:0.0f Opacity:100.0f Location:0 Midpoint:50];
+    [gradientMap addColorRed:251.0f Green:245.0f Blue:245.0f Opacity:100.0f Location:4096 Midpoint:50];
+    gradientMap.topLayerOpacity = 0.15f;
+    gradientMap.blendingMode = VnBlendingModeSoftLight;
+    
+    self.startFilter = levelsFilter1;
+    [levelsFilter1 addTarget:levelsFilter2];
+    [levelsFilter2 addTarget:photoFilter];
+    [photoFilter addTarget:hueSaturation];
+    [hueSaturation addTarget:gradientMap];
+    self.endFilter = gradientMap;
     
     
-    return [VnCurrentImage tmpImage];
 }
 
 @end

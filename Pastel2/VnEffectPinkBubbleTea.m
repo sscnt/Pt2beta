@@ -21,34 +21,28 @@
     return self;
 }
 
-- (UIImage*)process
+- (void)makeFilterGroup
 {
-    [VnCurrentImage saveTmpImage:self.imageToProcess];
-    
     // Fill Layer
-    @autoreleasepool {
-        VnFilterSolidColor* solidColor = [[VnFilterSolidColor alloc] init];
-        [solidColor setColorRed:177.0f/255.0f green:81.0f/255.0f blue:161.0f/255.0 alpha:1.0f];
-        
-        [self mergeAndSaveTmpImageWithOverlayFilter:solidColor opacity:0.25f blendingMode:VnBlendingModeLighten];
-    }
+    VnFilterSolidColor* solidColor1 = [[VnFilterSolidColor alloc] init];
+    [solidColor1 setColorRed:177.0f/255.0f green:81.0f/255.0f blue:161.0f/255.0 alpha:1.0f];
+    solidColor1.topLayerOpacity = 0.25;
+    solidColor1.blendingMode = VnBlendingModeLighten;
     
     // Curve
-    @autoreleasepool {
-        VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"pbt"];
-        
-        [self mergeAndSaveTmpImageWithOverlayFilter:curveFilter opacity:1.0f blendingMode:VnBlendingModeNormal];
-    }
+    VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"pbt"];
     
     // Fill Layer
-    @autoreleasepool {
-        VnFilterSolidColor* solidColor = [[VnFilterSolidColor alloc] init];
-        [solidColor setColorRed:251.0f/255.0f green:223.0f/255.0f blue:109.0f/255.0 alpha:1.0f];
-        
-        [self mergeAndSaveTmpImageWithOverlayFilter:solidColor opacity:0.32f blendingMode:VnBlendingModeMultiply];
-    }
+    VnFilterSolidColor* solidColor2 = [[VnFilterSolidColor alloc] init];
+    [solidColor2 setColorRed:251.0f/255.0f green:223.0f/255.0f blue:109.0f/255.0 alpha:1.0f];
+    solidColor2.topLayerOpacity = 0.32f;
+    solidColor2.blendingMode = VnBlendingModeMultiply;
     
-    return [VnCurrentImage tmpImage];
+    self.startFilter = solidColor1;
+    [solidColor1 addTarget:curveFilter];
+    [curveFilter addTarget:solidColor2];
+    self.endFilter = solidColor2;
+    
 }
 
 @end

@@ -22,8 +22,6 @@
 - (void)makeFilterGroup
 {
     
-    [VnCurrentImage saveTmpImage:self.imageToProcess];
-    
     // Fill Layer
     VnFilterSolidColor* solidColor1 = [[VnFilterSolidColor alloc] init];
     [solidColor1 setColorRed:109.0f/255.0f green:131.0f/255.0f blue:249.0f/255.0 alpha:1.0f];

@@ -19,28 +19,21 @@
     return self;
 }
 
-- (UIImage*)process
+- (void)makeFilterGroup
 {
-    
-    [VnCurrentImage saveTmpImage:self.imageToProcess];
-    
     // Channel Mixer
-    @autoreleasepool {
-        VnAdjustmentLayerChannelMixerFilter* mixerFilter = [[VnAdjustmentLayerChannelMixerFilter alloc] init];
-        mixerFilter.monochrome = YES;
-        [mixerFilter setGreyChannelRed:40 Green:30 Blue:30 Constant:0];
-
-        [self mergeAndSaveTmpImageWithOverlayFilter:mixerFilter opacity:0.20f blendingMode:VnBlendingModeNormal];
-    }
+    VnAdjustmentLayerChannelMixerFilter* mixerFilter = [[VnAdjustmentLayerChannelMixerFilter alloc] init];
+    mixerFilter.monochrome = YES;
+    [mixerFilter setGreyChannelRed:40 Green:30 Blue:30 Constant:0];
+    mixerFilter.topLayerOpacity = 0.20f;
     
     // Curve
-    @autoreleasepool {
-        VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"lngrfd"];
-        
-        [self mergeAndSaveTmpImageWithOverlayFilter:curveFilter opacity:1.0f blendingMode:VnBlendingModeNormal];
-    }
+    VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"lngrfd"];
     
-    return [VnCurrentImage tmpImage];
+    self.startFilter = mixerFilter;
+    [mixerFilter addTarget:curveFilter];
+    self.endFilter = curveFilter;
+    
 }
 
 @end

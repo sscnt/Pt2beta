@@ -21,19 +21,12 @@
     return self;
 }
 
-- (UIImage*)process
+- (void)makeFilterGroup
 {
-    
-    [VnCurrentImage saveTmpImage:self.imageToProcess];
-    
     // Curve
-    @autoreleasepool {
-        VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"wldfd"];
-        
-        [self mergeAndSaveTmpImageWithOverlayFilter:curveFilter opacity:1.0f blendingMode:VnBlendingModeNormal];
-    }
+    VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"wldfd"];
     
-    return [VnCurrentImage tmpImage];
+    self.startFilter = self.endFilter = curveFilter;
 }
 
 @end

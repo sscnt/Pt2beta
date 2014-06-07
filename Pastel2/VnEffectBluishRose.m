@@ -88,14 +88,14 @@
     
     
     // Levels
-    GPUImageLevelsFilter* levelsFilter1 = [[GPUImageLevelsFilter alloc] init];
+    VnFilterLevels* levelsFilter1 = [[VnFilterLevels alloc] init];
     [levelsFilter1 setRedMin:s255(3.0f) gamma:1.01 max:s255(255.0f) minOut:s255(0.0f) maxOut:s255(255.0f)];
     [levelsFilter1 setGreenMin:s255(0.0f) gamma:0.99 max:s255(255.0f) minOut:s255(0.0f) maxOut:s255(255.0f)];
     [levelsFilter1 setBlueMin:s255(6.0f) gamma:1.01f max:s255(236.0f) minOut:s255(18.0f) maxOut:s255(245.0f)];
     
     
     // Levels
-    GPUImageLevelsFilter* levelsFilter2 = [[GPUImageLevelsFilter alloc] init];
+    VnFilterLevels* levelsFilter2 = [[VnFilterLevels alloc] init];
     [levelsFilter2 setMin:s255(22.0) gamma:1.02f max:s255(249.0f) minOut:s255(14.0f) maxOut:s255(252.0f)];
     
     // Fill Layer

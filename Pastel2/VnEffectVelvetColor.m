@@ -26,7 +26,7 @@
     
     // Levels
     @autoreleasepool {
-        GPUImageLevelsFilter* levelsFilter = [[GPUImageLevelsFilter alloc] init];
+        VnFilterLevels* levelsFilter = [[VnFilterLevels alloc] init];
         [levelsFilter setMin:s255(0.0f) gamma:0.92f max:s255(255.0f) minOut:s255(0.0f) maxOut:s255(255.0f)];
         
         [self mergeAndSaveTmpImageWithOverlayFilter:levelsFilter opacity:0.15f blendingMode:VnBlendingModeScreen];
@@ -34,7 +34,7 @@
     
     // Levels
     @autoreleasepool {
-        GPUImageLevelsFilter* levelsFilter = [[GPUImageLevelsFilter alloc] init];
+        VnFilterLevels* levelsFilter = [[VnFilterLevels alloc] init];
         [levelsFilter setMin:s255(0.0f) gamma:1.65f max:s255(255.0f) minOut:s255(0.0f) maxOut:s255(255.0f)];
         
         [self mergeAndSaveTmpImageWithOverlayFilter:levelsFilter opacity:0.70f blendingMode:VnBlendingModeSoftLight];

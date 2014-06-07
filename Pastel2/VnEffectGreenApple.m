@@ -86,7 +86,7 @@
     
     // Levels
     @autoreleasepool {
-        GPUImageLevelsFilter* levelsFilter = [[GPUImageLevelsFilter alloc] init];
+        VnFilterLevels* levelsFilter = [[VnFilterLevels alloc] init];
         [levelsFilter setRedMin:s255(16.0f) gamma:0.62f max:s255(255.0f) minOut:s255(0.0f) maxOut:s255(255.0f)];
         [levelsFilter setGreenMin:s255(1.0f) gamma:1.24f max:s255(255.0f) minOut:s255(0.0f) maxOut:s255(255.0f)];
         [levelsFilter setBlueMin:s255(0.0f) gamma:1.05f max:s255(255.0f) minOut:s255(0.0f) maxOut:s255(255.0f)];

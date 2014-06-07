@@ -19,49 +19,44 @@
     return self;
 }
 
-- (UIImage*)process
+- (void)makeFilterGroup
 {
-    
-    [VnCurrentImage saveTmpImage:self.imageToProcess];
+    // Levels
+    VnFilterLevels* levelsFilter1 = [[VnFilterLevels alloc] init];
+    [levelsFilter1 setMin:s255(0.0f) gamma:0.92f max:s255(255.0f) minOut:s255(0.0f) maxOut:s255(255.0f)];
+    levelsFilter1.topLayerOpacity = 0.15f;
+    levelsFilter1.blendingMode = VnBlendingModeScreen;
     
     // Levels
-    @autoreleasepool {
-        GPUImageLevelsFilter* levelsFilter = [[GPUImageLevelsFilter alloc] init];
-        [levelsFilter setMin:s255(0.0f) gamma:0.92f max:s255(255.0f) minOut:s255(0.0f) maxOut:s255(255.0f)];
-        
-        [self mergeAndSaveTmpImageWithOverlayFilter:levelsFilter opacity:0.15f blendingMode:VnBlendingModeScreen];
-    }
+    VnFilterLevels* levelsFilter2 = [[VnFilterLevels alloc] init];
+    [levelsFilter2 setMin:s255(0.0f) gamma:0.92f max:s255(255.0f) minOut:s255(0.0f) maxOut:s255(255.0f)];
+    levelsFilter2.topLayerOpacity = 0.60f;
+    levelsFilter2.blendingMode = VnBlendingModeSoftLight;
     
-    // Levels
-    @autoreleasepool {
-        GPUImageLevelsFilter* levelsFilter = [[GPUImageLevelsFilter alloc] init];
-        [levelsFilter setMin:s255(0.0f) gamma:0.92f max:s255(255.0f) minOut:s255(0.0f) maxOut:s255(255.0f)];
-        
-        [self mergeAndSaveTmpImageWithOverlayFilter:levelsFilter opacity:0.60f blendingMode:VnBlendingModeSoftLight];
-    }
     
     // Photo Filter
-    @autoreleasepool {
-        VnAdjustmentLayerPhotoFilter* filter = [[VnAdjustmentLayerPhotoFilter alloc] init];
-        filter.color = (GPUVector3){s255(236.0f), s255(138.0f), 0.0f};
-        filter.density = 0.50f;
-        filter.preserveLuminosity = YES;
-        
-        [self mergeAndSaveTmpImageWithOverlayFilter:filter opacity:0.05f blendingMode:VnBlendingModeNormal];
-    }
+    VnAdjustmentLayerPhotoFilter* photoFilter = [[VnAdjustmentLayerPhotoFilter alloc] init];
+    photoFilter.color = (GPUVector3){s255(236.0f), s255(138.0f), 0.0f};
+    photoFilter.density = 0.50f;
+    photoFilter.preserveLuminosity = YES;
+    photoFilter.topLayerOpacity = 0.05f;
+    
+    
     
     // Hue/Saturation
-    @autoreleasepool {
-        VnAdjustmentLayerHueSaturation* hueSaturation = [[VnAdjustmentLayerHueSaturation alloc] init];
-        hueSaturation.hue = 0.0f;
-        hueSaturation.saturation = 25;
-        hueSaturation.lightness = 0.0f;
-        hueSaturation.colorize = NO;
-        
-        [self mergeAndSaveTmpImageWithOverlayFilter:hueSaturation opacity:0.30f blendingMode:VnBlendingModeSoftLight];
-    }
-    
-    return [VnCurrentImage tmpImage];
+    VnAdjustmentLayerHueSaturation* hueSaturation = [[VnAdjustmentLayerHueSaturation alloc] init];
+    hueSaturation.hue = 0.0f;
+    hueSaturation.saturation = 25;
+    hueSaturation.lightness = 0.0f;
+    hueSaturation.colorize = NO;
+    hueSaturation.topLayerOpacity = 0.30f;
+    hueSaturation.blendingMode = VnBlendingModeSoftLight;
+
+    self.startFilter = levelsFilter1;
+    [levelsFilter1 addTarget:levelsFilter2];
+    [levelsFilter2 addTarget:photoFilter];
+    [photoFilter addTarget:hueSaturation];
+    self.endFilter = hueSaturation;
 }
 
 @end

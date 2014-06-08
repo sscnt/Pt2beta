@@ -44,6 +44,8 @@
 		583669141942AE9D00E55C7C /* VnEffectLeningradFaded.m in Sources */ = {isa = PBXBuildFile; fileRef = 583668EE1942AE9D00E55C7C /* VnEffectLeningradFaded.m */; };
 		583669151942AE9D00E55C7C /* VnEffectNashvilleFaded.m in Sources */ = {isa = PBXBuildFile; fileRef = 583668F01942AE9D00E55C7C /* VnEffectNashvilleFaded.m */; };
 		583669161942AE9D00E55C7C /* VnEffectXPro2Faded.m in Sources */ = {isa = PBXBuildFile; fileRef = 583668F21942AE9D00E55C7C /* VnEffectXPro2Faded.m */; };
+		5836691919431CDA00E55C7C /* VnFilterPassThrough.m in Sources */ = {isa = PBXBuildFile; fileRef = 5836691819431CDA00E55C7C /* VnFilterPassThrough.m */; };
+		58AAE037194332AE003E7B09 /* hzl2.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58AAE036194332AE003E7B09 /* hzl2.acv */; };
 		58F3E2E41940C502001AEB8D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F3E2E31940C502001AEB8D /* Foundation.framework */; };
 		58F3E2E61940C502001AEB8D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F3E2E51940C502001AEB8D /* CoreGraphics.framework */; };
 		58F3E2E81940C502001AEB8D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F3E2E71940C502001AEB8D /* UIKit.framework */; };
@@ -143,7 +145,6 @@
 		58F3E40C1940C5F1001AEB8D /* grap3.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58F3E3D21940C5F1001AEB8D /* grap3.acv */; };
 		58F3E40D1940C5F1001AEB8D /* grap4.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58F3E3D31940C5F1001AEB8D /* grap4.acv */; };
 		58F3E40E1940C5F1001AEB8D /* Hzl1.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58F3E3D41940C5F1001AEB8D /* Hzl1.acv */; };
-		58F3E40F1940C5F1001AEB8D /* Hzl2.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58F3E3D51940C5F1001AEB8D /* Hzl2.acv */; };
 		58F3E4101940C5F1001AEB8D /* hzlp2.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58F3E3D61940C5F1001AEB8D /* hzlp2.acv */; };
 		58F3E4111940C5F1001AEB8D /* hzlp1.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58F3E3D71940C5F1001AEB8D /* hzlp1.acv */; };
 		58F3E4121940C5F1001AEB8D /* jf1.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58F3E3D81940C5F1001AEB8D /* jf1.acv */; };
@@ -349,6 +350,9 @@
 		583668F01942AE9D00E55C7C /* VnEffectNashvilleFaded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectNashvilleFaded.m; sourceTree = "<group>"; };
 		583668F11942AE9D00E55C7C /* VnEffectXPro2Faded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectXPro2Faded.h; sourceTree = "<group>"; };
 		583668F21942AE9D00E55C7C /* VnEffectXPro2Faded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectXPro2Faded.m; sourceTree = "<group>"; };
+		5836691719431CDA00E55C7C /* VnFilterPassThrough.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnFilterPassThrough.h; sourceTree = "<group>"; };
+		5836691819431CDA00E55C7C /* VnFilterPassThrough.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnFilterPassThrough.m; sourceTree = "<group>"; };
+		58AAE036194332AE003E7B09 /* hzl2.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = hzl2.acv; sourceTree = "<group>"; };
 		58F3E2E01940C502001AEB8D /* Pastel2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pastel2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58F3E2E31940C502001AEB8D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		58F3E2E51940C502001AEB8D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -500,7 +504,6 @@
 		58F3E3D21940C5F1001AEB8D /* grap3.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = grap3.acv; sourceTree = "<group>"; };
 		58F3E3D31940C5F1001AEB8D /* grap4.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = grap4.acv; sourceTree = "<group>"; };
 		58F3E3D41940C5F1001AEB8D /* Hzl1.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hzl1.acv; sourceTree = "<group>"; };
-		58F3E3D51940C5F1001AEB8D /* Hzl2.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hzl2.acv; sourceTree = "<group>"; };
 		58F3E3D61940C5F1001AEB8D /* hzlp2.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = hzlp2.acv; sourceTree = "<group>"; };
 		58F3E3D71940C5F1001AEB8D /* hzlp1.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = hzlp1.acv; sourceTree = "<group>"; };
 		58F3E3D81940C5F1001AEB8D /* jf1.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = jf1.acv; sourceTree = "<group>"; };
@@ -834,6 +837,8 @@
 				58F3E3301940C546001AEB8D /* VnFilterDuplicate.m */,
 				58F3E3311940C546001AEB8D /* VnImageNormalBlendFilter.h */,
 				58F3E3321940C546001AEB8D /* VnImageNormalBlendFilter.m */,
+				5836691719431CDA00E55C7C /* VnFilterPassThrough.h */,
+				5836691819431CDA00E55C7C /* VnFilterPassThrough.m */,
 			);
 			name = VnFilters;
 			sourceTree = "<group>";
@@ -1065,7 +1070,7 @@
 				58F3E3D21940C5F1001AEB8D /* grap3.acv */,
 				58F3E3D31940C5F1001AEB8D /* grap4.acv */,
 				58F3E3D41940C5F1001AEB8D /* Hzl1.acv */,
-				58F3E3D51940C5F1001AEB8D /* Hzl2.acv */,
+				58AAE036194332AE003E7B09 /* hzl2.acv */,
 				58F3E3D61940C5F1001AEB8D /* hzlp2.acv */,
 				58F3E3D71940C5F1001AEB8D /* hzlp1.acv */,
 				58F3E3D81940C5F1001AEB8D /* jf1.acv */,
@@ -1631,7 +1636,6 @@
 				58F3E41E1940C5F1001AEB8D /* qzfd.acv in Resources */,
 				58F3E4161940C5F1001AEB8D /* lnkfd.acv in Resources */,
 				58F3E3EA1940C5F1001AEB8D /* wldfd.acv in Resources */,
-				58F3E40F1940C5F1001AEB8D /* Hzl2.acv in Resources */,
 				58F3E2FA1940C502001AEB8D /* Main_iPad.storyboard in Resources */,
 				58F3E41D1940C5F1001AEB8D /* px680.acv in Resources */,
 				58F3E3EE1940C5F1001AEB8D /* bnnfd.acv in Resources */,
@@ -1674,6 +1678,7 @@
 				58F3E40E1940C5F1001AEB8D /* Hzl1.acv in Resources */,
 				58F3E2F71940C502001AEB8D /* Main_iPhone.storyboard in Resources */,
 				58F3E41F1940C5F1001AEB8D /* swfl.acv in Resources */,
+				58AAE037194332AE003E7B09 /* hzl2.acv in Resources */,
 				58F3E4231940C5F1001AEB8D /* dnt.acv in Resources */,
 				58F3E4121940C5F1001AEB8D /* jf1.acv in Resources */,
 				58F3E4021940C5F1001AEB8D /* gi4.acv in Resources */,
@@ -1737,6 +1742,7 @@
 				58F3E4AC1940C7BB001AEB8D /* PtEdViewImagePreviewScrollView.m in Sources */,
 				58F3E34C1940C56A001AEB8D /* VnAdjustmentLayerChannelMixerFilter.m in Sources */,
 				58F3E4671940C6BD001AEB8D /* PtFtViewLayerBarWrapper.m in Sources */,
+				5836691919431CDA00E55C7C /* VnFilterPassThrough.m in Sources */,
 				58FD70161941B9A200D1E64F /* PtUtilImage.m in Sources */,
 				58F3E5161940C8EE001AEB8D /* PtViewControllerRoot.m in Sources */,
 				58F3E4881940C72F001AEB8D /* PtFtConfig.m in Sources */,

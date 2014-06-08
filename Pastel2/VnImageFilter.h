@@ -11,8 +11,13 @@
 extern NSString* const kVnImageFilterFragmentShaderString;
 
 @interface VnImageFilter : GPUImageFilter
+{
+    GLint topLayerOpacityUniform;
+    GLint blendingModeUniform;
+}
 
 @property (nonatomic, assign) float topLayerOpacity;
 @property (nonatomic, assign) VnBlendingMode blendingMode;
+@property (nonatomic, assign) int tag;
 
 @end

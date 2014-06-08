@@ -111,7 +111,7 @@
 
 - (void)buttonCamerarollDidTouchUpInside:(PtEdViewBarButton *)button
 {
-    
+    UIImageWriteToSavedPhotosAlbum([PtSharedApp instance].imageToProcess, self, @selector(imageDidSaveToCameraRoll:didFinishSavingWithError:contextInfo:), NULL);
 }
 
 - (void)buttonInstagramDidTouchUpInside:(PtEdViewBarButton *)button
@@ -148,6 +148,13 @@
 }
 
 - (void)buttonSlidersDidTouchUpInside:(PtEdViewBarButton *)button
+{
+    
+}
+
+#pragma mark events
+
+- (void)imageDidSaveToCameraRoll:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
 {
     
 }

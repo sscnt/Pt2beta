@@ -24,8 +24,8 @@
 {
     // Curve
     VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"Hzl1"];
-    curveFilter1.topLayerOpacity = 0.50f;
-    
+    curveFilter1.tag = 1;
+    curveFilter1.topLayerOpacity = 0.5f;
     
     // Fill Layer
     VnFilterSolidColor* solidColor1 = [[VnFilterSolidColor alloc] init];
@@ -46,8 +46,6 @@
     gradientColor1.blendingMode = VnBlendingModeSoftLight;
     
     
-    
-    
     // Gradient
     VnAdjustmentLayerGradientColorFill* gradientColor2 = [[VnAdjustmentLayerGradientColorFill alloc] init];
     [gradientColor2 forceProcessingAtSize:self.imageSize];
@@ -59,7 +57,6 @@
     [gradientColor2 addColorRed:128.0f Green:123.0f Blue:59.0f Opacity:0.0f Location:4096 Midpoint:50];
     gradientColor2.topLayerOpacity = 0.38f;
     gradientColor2.blendingMode = VnBlendingModeOverlay;
-    
     
     
     // Color Balance
@@ -81,15 +78,13 @@
     [colorBalance1 setHighlights:highlights1];
     colorBalance1.preserveLuminosity = YES;
     
-    
-    
     // Fill Layer
     VnFilterSolidColor* solidColor2 = [[VnFilterSolidColor alloc] init];
     [solidColor2 setColorRed:0.0f/255.0f green:50.0f/255.0f blue:175.0f/255.0 alpha:1.0f];
     solidColor2.topLayerOpacity = 0.05f;
     solidColor2.blendingMode = VnBlendingModeColor;
     
-    
+
     // Fill Layer
     VnFilterSolidColor* solidColor3 = [[VnFilterSolidColor alloc] init];
     [solidColor3 setColorRed:177.0f/255.0f green:176.0f/255.0f blue:3.0f/255.0 alpha:1.0f];
@@ -98,7 +93,13 @@
     
     
     // Curve
-    VnFilterToneCurve* curveFilter2 = [[VnFilterToneCurve alloc] initWithACV:@"Hzl2"];
+    VnFilterToneCurve* curveFilter2 = [[VnFilterToneCurve alloc] initWithACV:@"hzl2"];
+
+    // Fill Layer
+    VnFilterSolidColor* solidColor4 = [[VnFilterSolidColor alloc] init];
+    [solidColor4 setColorRed:1.0f green:1.0f blue:1.0f alpha:1.0f];
+    solidColor4.topLayerOpacity = 0.15f;
+    solidColor4.blendingMode = VnBlendingModeHue;
     
     self.startFilter = curveFilter1;
     [curveFilter1 addTarget:solidColor1];
@@ -108,7 +109,8 @@
     [colorBalance1 addTarget:solidColor2];
     [solidColor2 addTarget:solidColor3];
     [solidColor3 addTarget:curveFilter2];
-    self.endFilter = curveFilter2;
+    [curveFilter2 addTarget:solidColor4];
+    self.endFilter = solidColor4;
 }
 
 @end

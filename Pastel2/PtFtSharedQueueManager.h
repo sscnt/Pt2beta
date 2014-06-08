@@ -10,6 +10,7 @@
 #import "PtFtObjectProcessQueue.h"
 #import "VnImageFilter.h"
 #import "VnImageNormalBlendFilter.h"
+#import "VnFilterPassThrough.h"
 
 @class PtViewControllerFilters;
 

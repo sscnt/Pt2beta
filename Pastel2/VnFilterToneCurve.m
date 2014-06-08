@@ -106,9 +106,6 @@ unsigned short vnInt16WithBytes(Byte* bytes) {
 
 @end
 
-@implementation VnFilterToneCurve
-
-
 NSString *const kVnFilterToneCurveFragmentShaderString = SHADER_STRING
 (
  varying highp vec2 textureCoordinate;
@@ -126,6 +123,8 @@ NSString *const kVnFilterToneCurveFragmentShaderString = SHADER_STRING
      gl_FragColor = blendWithBlendingMode(textureColor, vec4(rs.r, rs.g, rs.b, topLayerOpacity), blendingMode);
  }
  );
+
+@implementation VnFilterToneCurve
 
 @synthesize rgbCompositeControlPoints = _rgbCompositeControlPoints;
 @synthesize redControlPoints = _redControlPoints;

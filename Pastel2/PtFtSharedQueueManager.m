@@ -117,6 +117,7 @@ static PtFtSharedQueueManager* sharedPtFtSharedQueueManager = nil;
 
 - (void)processQueueTypePreset:(PtFtObjectProcessQueue *)queue
 {
+    VnEffectId eid = queue.effectId;
     if (queue.effectId == VnEffectIdNone) {
         return;
     }

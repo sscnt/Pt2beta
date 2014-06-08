@@ -12,7 +12,6 @@
 
 NSString* const kVnImageFilterFragmentShaderString = SHADER_STRING
 (
- 
  uniform int blendingMode;
  uniform mediump float topLayerOpacity;
  
@@ -460,6 +459,11 @@ NSString* const kVnImageFilterFragmentShaderString = SHADER_STRING
      if(mode == 20){
          return blendDifference(bottom, top);
      }
+     if(mode == 0){
+         return vec4(1.0, 1.0, 0.0, 1.0);
+         
+     }
+     return vec4(1.0, 0.0, 0.0, 1.0);
  }
  );
 
@@ -474,20 +478,39 @@ NSString* const kVnImageFilterFragmentShaderString = SHADER_STRING
     //LOG(@"%@", shader);
     self = [super initWithFragmentShaderFromString:shader];
     if (self) {
+        topLayerOpacityUniform = [filterProgram uniformIndex:@"topLayerOpacity"];
+        blendingModeUniform = [filterProgram uniformIndex:@"blendingMode"];
         self.blendingMode = VnBlendingModeNormal;
-        self.topLayerOpacity = 1.0f;
+        //self.topLayerOpacity = 1.0f;
     }
     return self;
 }
 
 - (void)setTopLayerOpacity:(float)topLayerOpacity
 {
-    [self setFloat:topLayerOpacity forUniformName:@"topLayerOpacity"];
+    topLayerOpacityUniform = [filterProgram uniformIndex:@"topLayerOpacity"];
+    _topLayerOpacity = topLayerOpacity;
+    [self setFloat:topLayerOpacity forUniform:topLayerOpacityUniform program:filterProgram];
+    //[self setFloat:topLayerOpacity forUniformName:@"topLayerOpacity"];
 }
 
 - (void)setBlendingMode:(VnBlendingMode)blendingMode
 {
-    [self setInteger:(GLuint)blendingMode forUniformName:@"blendingMode"];
+    blendingModeUniform = [filterProgram uniformIndex:@"blendingMode"];
+    _blendingMode = blendingMode;
+    [self setInteger:blendingMode forUniform:blendingModeUniform program:filterProgram];
+    //LOG(@"uniform: %d", blendingModeUniform);
+    //[self setInteger:blendingMode forUniformName:@"blendingMode"];
+}
+
+- (void)setFloat:(GLfloat)floatValue forUniform:(GLint)uniform program:(GLProgram *)shaderProgram;
+{
+    runAsynchronouslyOnVideoProcessingQueue(^{
+        [GPUImageContext setActiveShaderProgram:shaderProgram];
+        [self setAndExecuteUniformStateCallbackAtIndex:uniform forProgram:shaderProgram toBlock:^{
+            glUniform1f(uniform, floatValue);
+        }];
+    });
 }
 
 @end

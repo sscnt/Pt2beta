@@ -37,14 +37,4 @@ NSString *const kVnImageNormalBlendFragmentShaderString = SHADER_STRING
     return self;
 }
 
-- (void)setTopLayerOpacity:(float)topLayerOpacity
-{
-    [self setFloat:topLayerOpacity forUniformName:@"topLayerOpacity"];
-}
-
-- (void)setBlendingMode:(VnBlendingMode)blendingMode
-{
-    [self setInteger:(GLuint)blendingMode forUniformName:@"blendingMode"];
-}
-
 @end

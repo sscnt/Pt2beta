@@ -43,4 +43,6 @@
 - (void)buttonFiltersDidTouchUpInside:(PtEdViewBarButton*)button;
 - (void)buttonSlidersDidTouchUpInside:(PtEdViewBarButton*)button;
 
+- (void)imageDidSaveToCameraRoll:(UIImage*)image didFinishSavingWithError:(NSError*)error contextInfo:(void*)contextInfo;
+
 @end

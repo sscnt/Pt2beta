@@ -24,6 +24,8 @@
 - (void)makeFilterGroup
 {
     [super makeFilterGroup];
+    return;
+
     
     // Curve
     VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"hzlp1"];
@@ -81,8 +83,8 @@
     // Fill Layer
     VnFilterSolidColor* solidColor3 = [[VnFilterSolidColor alloc] init];
     [solidColor3 setColorRed:177.0f/255.0f green:175.0f/255.0f blue:3.0f/255.0 alpha:1.0f];
-    solidColor2.topLayerOpacity = 0.10f;
-    solidColor2.blendingMode = VnBlendingModeHue;
+    solidColor3.topLayerOpacity = 0.10f;
+    solidColor3.blendingMode = VnBlendingModeHue;
     
     
     // Curve

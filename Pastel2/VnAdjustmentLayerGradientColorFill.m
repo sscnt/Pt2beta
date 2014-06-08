@@ -24,6 +24,10 @@ NSString *const kGPUImageGradientColorGeneratorFragmentShaderString = SHADER_STR
  uniform int stopsCount;
  uniform mediump float offsetX;
  uniform mediump float offsetY;
+ uniform mediump float multiplierX;
+ uniform mediump float multiplierY;
+ uniform mediump float addingX;
+ uniform mediump float addingY;
  uniform int style;
  
  float round(float a){
@@ -169,11 +173,9 @@ NSString *const kGPUImageGradientColorGeneratorFragmentShaderString = SHADER_STR
  {
      mediump vec4 pixel   = texture2D(inputImageTexture, textureCoordinate);
      mediump vec4 rs;
-     
-     mediump float m60 = 0.01665;
 
-     mediump float x = textureCoordinate.x - offsetX;
-     mediump float y = textureCoordinate.y - offsetY;
+     mediump float x = (textureCoordinate.x * multiplierX) + addingX - offsetX;
+     mediump float y = (textureCoordinate.y * multiplierY) + addingY - offsetY;
 
      if(style == 1){
          rs = linear(x, y);
@@ -206,6 +208,7 @@ NSString *const kGPUImageGradientColorGeneratorFragmentShaderString = SHADER_STR
     offsetXUniform = [filterProgram uniformIndex:@"offsetX"];
     offsetYUniform = [filterProgram uniformIndex:@"offsetY"];
     styleUniform = [filterProgram uniformIndex:@"style"];
+    multiplierXUniform = [filterProgram uniformIndex:@"multiplierX"];
     self.style = GradientStyleLinear;
     index = 0;
     
@@ -296,6 +299,26 @@ NSString *const kGPUImageGradientColorGeneratorFragmentShaderString = SHADER_STR
         [newTarget setInputSize:inputTextureSize atIndex:textureLocation];
         [newTarget newFrameReadyAtTime:kCMTimeIndefinite atIndex:textureLocation];
     }
+}
+
+- (void)setAddingX:(float)addingX
+{
+    [self setFloat:addingX forUniformName:@"addingX"];
+}
+
+- (void)setAddingY:(float)addingY
+{
+    [self setFloat:addingY forUniformName:@"addingY"];
+}
+
+- (void)setMultiplierX:(float)multiplierX
+{
+    [self setFloat:multiplierX forUniform:multiplierXUniform program:filterProgram];
+}
+
+- (void)setMultiplierY:(float)multiplierY
+{
+    [self setFloat:multiplierY forUniformName:@"multiplierY"];
 }
 
 @end

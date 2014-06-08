@@ -586,4 +586,5 @@ NSString *const kVnFilterToneCurveFragmentShaderString = SHADER_STRING
     [self updateToneCurveTexture];
 }
 
+
 @end

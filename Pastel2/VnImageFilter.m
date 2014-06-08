@@ -481,7 +481,7 @@ NSString* const kVnImageFilterFragmentShaderString = SHADER_STRING
         topLayerOpacityUniform = [filterProgram uniformIndex:@"topLayerOpacity"];
         blendingModeUniform = [filterProgram uniformIndex:@"blendingMode"];
         self.blendingMode = VnBlendingModeNormal;
-        //self.topLayerOpacity = 1.0f;
+        self.topLayerOpacity = 1.0f;
     }
     return self;
 }
@@ -503,14 +503,6 @@ NSString* const kVnImageFilterFragmentShaderString = SHADER_STRING
     //[self setInteger:blendingMode forUniformName:@"blendingMode"];
 }
 
-- (void)setFloat:(GLfloat)floatValue forUniform:(GLint)uniform program:(GLProgram *)shaderProgram;
-{
-    runAsynchronouslyOnVideoProcessingQueue(^{
-        [GPUImageContext setActiveShaderProgram:shaderProgram];
-        [self setAndExecuteUniformStateCallbackAtIndex:uniform forProgram:shaderProgram toBlock:^{
-            glUniform1f(uniform, floatValue);
-        }];
-    });
-}
+
 
 @end

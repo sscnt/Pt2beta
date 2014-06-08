@@ -195,7 +195,7 @@
     return transform;
 }
 
-- (float)maxLength
+- (float)maxPixelSize
 {
     return MAX(self.size.width, self.size.height);
 }

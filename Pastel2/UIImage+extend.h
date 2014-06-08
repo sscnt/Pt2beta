@@ -11,7 +11,7 @@
 
 @interface UIImage (extend)
 
-- (float)maxLength;
+- (float)maxPixelSize;
 - (float)minsLength;
 
 + (UIImage *)resizedImage:(UIImage *)image width:(CGFloat)width height:(CGFloat)height;

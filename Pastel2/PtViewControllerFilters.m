@@ -68,9 +68,8 @@
     dispatch_queue_t q_main = dispatch_get_main_queue();
     dispatch_async(q_global, ^{
         @autoreleasepool {
-            UIImage* image = [PtSharedApp instance].imageToProcess;
             CGSize size = CGSizeMake(_self.previewImageView.width * [[UIScreen mainScreen] scale], _self.previewImageView.height * [[UIScreen mainScreen] scale]);
-            image = [PtUtilImage resizedImageUrl:[PtSharedApp originalImageUrl] ToSize:size];
+            UIImage* image = [PtUtilImage resizedImageUrl:[PtSharedApp originalImageUrl] ToSize:size];
             _self.previewImage = image;
         }
         dispatch_async(q_main, ^{
@@ -78,24 +77,26 @@
         });
         @autoreleasepool {
             UIImage* image = _self.previewImage;
-            //// for preset image
-            CGSize presetImageSizeWithAspect = [PtFtConfig presetBaseImageSize];
-            if (image.size.width > image.size.height) {
-                presetImageSizeWithAspect.width = image.size.width * presetImageSizeWithAspect.height / image.size.height;
-            } else {
-                presetImageSizeWithAspect.height = image.size.height * presetImageSizeWithAspect.width / image.size.width;
+            if (image) {
+                //// for preset image
+                CGSize presetImageSizeWithAspect = [PtFtConfig presetBaseImageSize];
+                if (image.size.width > image.size.height) {
+                    presetImageSizeWithAspect.width = image.size.width * presetImageSizeWithAspect.height / image.size.height;
+                } else {
+                    presetImageSizeWithAspect.height = image.size.height * presetImageSizeWithAspect.width / image.size.width;
+                }
+                image = [image resizedImage:presetImageSizeWithAspect interpolationQuality:kCGInterpolationHigh];
+                float x = 0.0f;
+                float y = 0.0f;
+                CGSize presetImageSize = [PtFtConfig presetBaseImageSize];
+                if (image.size.width > image.size.height) {
+                    x = (image.size.width - presetImageSize.width) / 2.0f;
+                } else {
+                    y = (image.size.height - presetImageSize.height) / 2.0f;
+                }
+                image = [image croppedImage:CGRectMake(x, y, presetImageSize.width, presetImageSize.height)];
+                _self.presetOriginalImage = image;
             }
-            image = [image resizedImage:presetImageSizeWithAspect interpolationQuality:kCGInterpolationHigh];
-            float x = 0.0f;
-            float y = 0.0f;
-            CGSize presetImageSize = [PtFtConfig presetBaseImageSize];
-            if (image.size.width > image.size.height) {
-                x = (image.size.width - presetImageSize.width) / 2.0f;
-            } else {
-                y = (image.size.height - presetImageSize.height) / 2.0f;
-            }
-            image = [image croppedImage:CGRectMake(x, y, presetImageSize.width, presetImageSize.height)];
-            _self.presetOriginalImage = image;
         }
         dispatch_async(q_main, ^{
             [_self.progressView setProgress:0.90f];
@@ -274,6 +275,8 @@
         @autoreleasepool {
             _self.originalImageParts = [PtUtilImage splitImageIn9Parts:[PtSharedApp instance].imageToProcess];
             [PtSharedApp instance].imageToProcess = nil;
+            _self.previewImage = nil;
+            _self.previewImageView.image = nil;
         }
         dispatch_async(q_main, ^{
             [_self.progressView setProgress:0.10f];

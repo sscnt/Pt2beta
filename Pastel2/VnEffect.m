@@ -16,6 +16,10 @@
     if (self) {
         _defaultOpacity = 1.0f;
         _faceOpacity = 1.0f;
+        _addingX = 0.0f;
+        _addingY = 0.0f;
+        _multiplierX = 0.0f;
+        _multiplierY = 0.0f;
     }
     return self;
 }

@@ -13,6 +13,13 @@
 
 @interface PtUtilImage : NSObject
 
+@property (nonatomic, strong) NSMutableArray* lastSplittedImageMultipliers;
+@property (nonatomic, strong) NSMutableArray* lastSplittedImageAddings;
+
++ (PtUtilImage*)instance;
++ (CGPoint)multiplierAtIndex:(int)index;
++ (CGPoint)addingAtIndex:(int)index;
+
 + (CGImageRef)imageFromSampleBuffer:(CMSampleBufferRef) sampleBuffer;
 
 + (NSMutableArray*)splitImageIn9Parts:(UIImage *)image;

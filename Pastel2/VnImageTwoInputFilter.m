@@ -59,8 +59,10 @@ NSString *const kVnImageTwoInputTextureVertexShaderString = SHADER_STRING
     secondFrameWasVideo = NO;
     firstFrameCheckDisabled = NO;
     secondFrameCheckDisabled = NO;
+    
     self.topLayerOpacity = 1.0f;
     self.blendingMode = VnBlendingModeNormal;
+
     
     firstFrameTime = kCMTimeInvalid;
     secondFrameTime = kCMTimeInvalid;

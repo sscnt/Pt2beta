@@ -294,13 +294,21 @@
     dispatch_async(q_global, ^{
         @autoreleasepool {
             ALAssetRepresentation *rep = [self.lastAsset defaultRepresentation];
+            Byte *buffer = (Byte*)malloc(rep.size);
+            NSUInteger buffered = [rep getBytes:buffer fromOffset:0 length:rep.size error:nil];
+            NSData *data = [NSData dataWithBytesNoCopy:buffer length:buffered freeWhenDone:YES];
+            [PtSharedApp saveOriginalImageDataToFile:data];
+            image = [UIImage imageWithContentsOfFile:[PtSharedApp originalImageUrl].path];
+            
+            
+            /*
             UIImage* rawImage = [UIImage imageWithCGImage:[rep fullResolutionImage]
                                         scale:[rep scale]
                                   orientation:[rep orientation]];
             NSData* data = UIImageJPEGRepresentation(rawImage, 0.99f);
             [PtSharedApp saveOriginalImageDataToFile:data];
             image = [UIImage imageWithData:data];
-            /*
+            image = rawImage;
             Byte *buffer = (Byte*)malloc(rep.size);
             NSUInteger buffered = [rep getBytes:buffer fromOffset:0.0 length:rep.size error:nil];
             NSData *data = [NSData dataWithBytesNoCopy:buffer length:buffered freeWhenDone:YES];

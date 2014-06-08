@@ -30,6 +30,7 @@ extern NSString *const kGPUImageGradientColorGeneratorFragmentShaderString;
     GLuint offsetXUniform;
     GLuint offsetYUniform;
     GLuint styleUniform;
+    GLuint multiplierXUniform;
     
     int index;
     float locations[20];
@@ -45,6 +46,10 @@ extern NSString *const kGPUImageGradientColorGeneratorFragmentShaderString;
 }
 
 @property (nonatomic, assign) GradientStyle style;
+@property (nonatomic, assign) float multiplierX;
+@property (nonatomic, assign) float multiplierY;
+@property (nonatomic, assign) float addingX;
+@property (nonatomic, assign) float addingY;
 
 /*
  * red      0.0 - 255.0
@@ -69,6 +74,7 @@ extern NSString *const kGPUImageGradientColorGeneratorFragmentShaderString;
  * percent 0.0 - 100.0
  */
 - (void)setOffsetX:(float)x Y:(float)y;
+
 
 - (void)setup;
 

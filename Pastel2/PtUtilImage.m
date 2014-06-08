@@ -10,6 +10,55 @@
 
 @implementation PtUtilImage
 
+static PtUtilImage* sharedPtUtilImage = nil;
+
++ (PtUtilImage*)instance {
+	@synchronized(self) {
+		if (sharedPtUtilImage == nil) {
+			sharedPtUtilImage = [[self alloc] init];
+		}
+	}
+	return sharedPtUtilImage;
+}
+
++ (id)allocWithZone:(NSZone *)zone {
+	@synchronized(self) {
+		if (sharedPtUtilImage == nil) {
+			sharedPtUtilImage = [super allocWithZone:zone];
+			return sharedPtUtilImage;
+		}
+	}
+	return nil;
+}
+
+- (id)copyWithZone:(NSZone*)zone {
+	return self;  // シングルトン状態を保持するため何もせず self を返す
+}
+
+#pragma mark gradient
+
++ (CGPoint)multiplierAtIndex:(int)index
+{
+    NSMutableArray* arr = [self instance].lastSplittedImageMultipliers;
+    if (arr.count <= index) {
+        return CGPointMake(0.0f, 0.0f);
+    }
+    NSValue* val = [arr objectAtIndex:index];
+    return [val CGPointValue];
+}
+
++ (CGPoint)addingAtIndex:(int)index
+{
+    NSMutableArray* arr = [self instance].lastSplittedImageAddings;
+    if (arr.count <= index) {
+        return CGPointMake(0.0f, 0.0f);
+    }
+    NSValue* val = [arr objectAtIndex:index];
+    return [val CGPointValue];
+}
+
+#pragma mark util
+
 + (CGImageRef)imageFromSampleBuffer:(CMSampleBufferRef)sampleBuffer
 {
     CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
@@ -29,6 +78,17 @@
 
 + (NSMutableArray*)splitImageIn9Parts:(UIImage *)image
 {
+    PtUtilImage* util = [self instance];
+    if (util.lastSplittedImageMultipliers) {
+        [util.lastSplittedImageMultipliers removeAllObjects];
+    }
+    util.lastSplittedImageMultipliers = [NSMutableArray array];
+    
+    if (util.lastSplittedImageAddings) {
+        [util.lastSplittedImageAddings removeAllObjects];
+    }
+    util.lastSplittedImageAddings = [NSMutableArray array];
+    
     float cropWidth = floor(image.size.width / 3.0f);
     float cropHeight = floor(image.size.height / 3.0f);
     
@@ -38,6 +98,33 @@
     float height1 = cropHeight;
     float height2 = cropHeight;
     float height3 = image.size.height - height1 - height2;
+    
+    //// Multiplier
+    
+    NSMutableArray* arr = util.lastSplittedImageMultipliers;
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width1 / image.size.width, height1 / image.size.height)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width2 / image.size.width, height1 / image.size.height)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width3 / image.size.width, height1 / image.size.height)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width1 / image.size.width, height2 / image.size.height)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width2 / image.size.width, height2 / image.size.height)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width3 / image.size.width, height2 / image.size.height)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width1 / image.size.width, height3 / image.size.height)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width2 / image.size.width, height3 / image.size.height)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width3 / image.size.width, height3 / image.size.height)]];
+    
+    //// Multiplier
+    
+    arr = util.lastSplittedImageAddings;
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(0.0f, 0.0f)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width1 / image.size.width, 0.0f)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2) / image.size.width, 0.0f)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(0.0f, height1 / image.size.height)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width1 / image.size.width, height1 / image.size.height)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2) / image.size.width, height1 / image.size.height)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(0.0f, (height1 + height2) / image.size.height)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width1 / image.size.width, (height1 + height2) / image.size.height)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2) / image.size.width, (height1 + height2) / image.size.height)]];
+    
     
     NSMutableArray* array = [NSMutableArray array];
     

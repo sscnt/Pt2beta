@@ -22,10 +22,14 @@
 
 - (void)makeFilterGroup
 {
+    
+    //// Input
+    VnFilterPassThrough* inputFilter = [[VnFilterPassThrough alloc] init];
+    VnImageNormalBlendFilter* normalFilter = [[VnImageNormalBlendFilter alloc] init];
+
     // Curve
     VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"Hzl1"];
-    curveFilter1.tag = 1;
-    curveFilter1.topLayerOpacity = 0.5f;
+    normalFilter.topLayerOpacity = 0.50f;
     
     // Fill Layer
     VnFilterSolidColor* solidColor1 = [[VnFilterSolidColor alloc] init];
@@ -44,6 +48,10 @@
     [gradientColor1 addColorRed:159.0f Green:132.0f Blue:75.0f Opacity:100.0f Location:0 Midpoint:50];
     [gradientColor1 addColorRed:128.0f Green:123.0f Blue:59.0f Opacity:0.0f Location:4096 Midpoint:50];
     gradientColor1.blendingMode = VnBlendingModeSoftLight;
+    gradientColor1.addingX = self.addingX;
+    gradientColor1.addingY = self.addingY;
+    gradientColor1.multiplierX = self.multiplierX;
+    gradientColor1.multiplierY = self.multiplierY;
     
     
     // Gradient
@@ -57,6 +65,10 @@
     [gradientColor2 addColorRed:128.0f Green:123.0f Blue:59.0f Opacity:0.0f Location:4096 Midpoint:50];
     gradientColor2.topLayerOpacity = 0.38f;
     gradientColor2.blendingMode = VnBlendingModeOverlay;
+    gradientColor2.addingX = self.addingX;
+    gradientColor2.addingY = self.addingY;
+    gradientColor2.multiplierX = self.multiplierX;
+    gradientColor2.multiplierY = self.multiplierY;
     
     
     // Color Balance
@@ -101,8 +113,11 @@
     solidColor4.topLayerOpacity = 0.15f;
     solidColor4.blendingMode = VnBlendingModeHue;
     
-    self.startFilter = curveFilter1;
-    [curveFilter1 addTarget:solidColor1];
+    self.startFilter = inputFilter;
+    [inputFilter addTarget:normalFilter];
+    [inputFilter addTarget:curveFilter1];
+    [curveFilter1 addTarget:normalFilter atTextureLocation:1];
+    [normalFilter addTarget:solidColor1];
     [solidColor1 addTarget:gradientColor1];
     [gradientColor1 addTarget:gradientColor2];
     [gradientColor2 addTarget:colorBalance1];

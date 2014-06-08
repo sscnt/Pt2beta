@@ -33,6 +33,10 @@
 @property (nonatomic, strong) VnImageFilter* startFilter;
 @property (nonatomic, strong) VnImageFilter* endFilter;
 @property (nonatomic, assign) CGSize imageSize;
+@property (nonatomic, assign) float multiplierX;
+@property (nonatomic, assign) float multiplierY;
+@property (nonatomic, assign) float addingX;
+@property (nonatomic, assign) float addingY;
 
 + (UIImage*)processImage:(UIImage*)image WithStartFilter:(VnImageFilter*)startFilter EndFilter:(VnImageFilter*)endFilter;
 

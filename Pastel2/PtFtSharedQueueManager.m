@@ -126,30 +126,35 @@ static PtFtSharedQueueManager* sharedPtFtSharedQueueManager = nil;
 
 - (void)processQueueTypePreview:(PtFtObjectProcessQueue *)queue
 {
-    [self setStartAndEndFiltersWithQueue:queue];
+    [self setStartAndEndFiltersWithQueue:queue Multipliers:CGPointMake(1.0f, 1.0f) Adding:CGPointMake(0.0f, 0.0f)];
     dispatch_queue_t q_main = dispatch_get_main_queue();
     __block __weak PtViewControllerFilters* _con = self.delegate;
     dispatch_async(q_main, ^{
-        [_con.progressView setProgress:0.90f];
+        [_con.progressView setProgress:0.60f];
     });
     if (self.startFilter&&self.endFilter) {
         queue.image = [VnEffect processImage:queue.image WithStartFilter:self.startFilter EndFilter:self.endFilter];
     }
     self.startFilter = nil;
     self.endFilter = nil;
+    dispatch_async(q_main, ^{
+        [_con.progressView setProgress:0.80f];
+    });
 }
 
 - (void)processQueueTypeOriginal:(PtFtObjectProcessQueue *)queue
 {
-    [self setStartAndEndFiltersWithQueue:queue];
-    if (self.startFilter == nil) {
-        return;
-    }
     __block __weak PtViewControllerFilters* _con = self.delegate;
     dispatch_queue_t q_main = dispatch_get_main_queue();
     NSMutableArray* parts = self.delegate.originalImageParts;
     for (int i = 0; i < 9; i++) {
         @autoreleasepool {
+            CGPoint mult = [PtUtilImage multiplierAtIndex:i];
+            CGPoint add = [PtUtilImage addingAtIndex:i];
+            [self setStartAndEndFiltersWithQueue:queue Multipliers:mult Adding:add];
+            if (self.startFilter == nil) {
+                continue;
+            }
             UIImage* image = [parts objectAtIndex:i];
             if (image) {
                 image = [VnEffect processImage:image WithStartFilter:self.startFilter EndFilter:self.endFilter];
@@ -164,7 +169,7 @@ static PtFtSharedQueueManager* sharedPtFtSharedQueueManager = nil;
     self.endFilter = nil;
 }
 
-- (void)setStartAndEndFiltersWithQueue:(PtFtObjectProcessQueue *)queue
+- (void)setStartAndEndFiltersWithQueue:(PtFtObjectProcessQueue *)queue Multipliers:(CGPoint)mult Adding:(CGPoint)add
 {
     VnImageFilter* startFilter;
     VnImageFilter* endFilter;
@@ -175,13 +180,17 @@ static PtFtSharedQueueManager* sharedPtFtSharedQueueManager = nil;
         PtFtButtonLayerBar* button = fm.currentColorButton;
         VnEffect* effect = [PtFtSharedFilterManager effectByEffectId:button.effectId];
         if (effect) {
+            effect.multiplierX = mult.x;
+            effect.multiplierY = mult.y;
+            effect.addingX = add.x;
+            effect.addingY = add.y;
             [effect makeFilterGroup];
             effect.imageSize = queue.image.size;
-            VnFilterDuplicate* inputFilter = [[VnFilterDuplicate alloc] init];
+            VnFilterPassThrough* inputFilter = [[VnFilterPassThrough alloc] init];
             VnImageNormalBlendFilter* blendFilter = [[VnImageNormalBlendFilter alloc] init];
             [inputFilter addTarget:blendFilter];
             [inputFilter addTarget:effect.startFilter];
-            [effect.endFilter addTarget:blendFilter];
+            [effect.endFilter addTarget:blendFilter atTextureLocation:1];
             blendFilter.topLayerOpacity = sm.colorOpacity;
             startFilter = inputFilter;
             endFilter = blendFilter;
@@ -193,6 +202,10 @@ static PtFtSharedQueueManager* sharedPtFtSharedQueueManager = nil;
         PtFtButtonLayerBar* button = fm.currentArtisticButton;
         VnEffect* effect = [PtFtSharedFilterManager effectByEffectId:button.effectId];
         if (effect) {
+            effect.multiplierX = mult.x;
+            effect.multiplierY = mult.y;
+            effect.addingX = add.x;
+            effect.addingY = add.y;
             [effect makeFilterGroup];
             effect.imageSize = queue.image.size;
             if (startFilter) {
@@ -203,11 +216,11 @@ static PtFtSharedQueueManager* sharedPtFtSharedQueueManager = nil;
                 blendFilter.topLayerOpacity = sm.artisticOpacity;
                 endFilter = blendFilter;
             }else{
-                VnFilterDuplicate* inputFilter = [[VnFilterDuplicate alloc] init];
+                VnFilterPassThrough* inputFilter = [[VnFilterPassThrough alloc] init];
                 VnImageNormalBlendFilter* blendFilter = [[VnImageNormalBlendFilter alloc] init];
                 [inputFilter addTarget:blendFilter];
                 [inputFilter addTarget:effect.startFilter];
-                [effect.endFilter addTarget:blendFilter];
+                [effect.endFilter addTarget:blendFilter atTextureLocation:1];
                 blendFilter.topLayerOpacity = sm.artisticOpacity;
                 startFilter = inputFilter;
                 endFilter = blendFilter;
@@ -219,6 +232,10 @@ static PtFtSharedQueueManager* sharedPtFtSharedQueueManager = nil;
         PtFtButtonLayerBar* button = fm.currentOverlayButton;
         VnEffect* effect = [PtFtSharedFilterManager effectByEffectId:button.effectId];
         if (effect) {
+            effect.multiplierX = mult.x;
+            effect.multiplierY = mult.y;
+            effect.addingX = add.x;
+            effect.addingY = add.y;
             [effect makeFilterGroup];
             effect.imageSize = queue.image.size;
             if (startFilter) {
@@ -229,11 +246,11 @@ static PtFtSharedQueueManager* sharedPtFtSharedQueueManager = nil;
                 blendFilter.topLayerOpacity = sm.overlayOpacity;
                 endFilter = blendFilter;
             }else{
-                VnFilterDuplicate* inputFilter = [[VnFilterDuplicate alloc] init];
+                VnFilterPassThrough* inputFilter = [[VnFilterPassThrough alloc] init];
                 VnImageNormalBlendFilter* blendFilter = [[VnImageNormalBlendFilter alloc] init];
                 [inputFilter addTarget:blendFilter];
                 [inputFilter addTarget:effect.startFilter];
-                [effect.endFilter addTarget:blendFilter];
+                [effect.endFilter addTarget:blendFilter atTextureLocation:1];
                 blendFilter.topLayerOpacity = sm.overlayOpacity;
                 startFilter = inputFilter;
                 endFilter = blendFilter;

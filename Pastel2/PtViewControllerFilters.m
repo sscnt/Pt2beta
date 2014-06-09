@@ -210,7 +210,7 @@
 {
     PtSharedApp* app = [PtSharedApp instance];
     @autoreleasepool {
-        NSData* data = [PtUtilImage mergeSplitImage9:self.originalImageParts WithSize:app.sizeOfImageToProcess];
+        NSData* data = [PtUtilImage mergeSplitImage25:self.originalImageParts WithSize:app.sizeOfImageToProcess];
         [PtSharedApp saveOriginalImageDataToFile:data];
         [PtSharedApp instance].imageToProcess = [UIImage imageWithData:data];
     }
@@ -281,7 +281,7 @@
     dispatch_queue_t q_main = dispatch_get_main_queue();
     dispatch_async(q_global, ^{
         @autoreleasepool {
-            _self.originalImageParts = [PtUtilImage splitImageIn9Parts:[PtSharedApp instance].imageToProcess];
+            _self.originalImageParts = [PtUtilImage splitImageIn25Parts:[PtSharedApp instance].imageToProcess];
             [PtSharedApp instance].imageToProcess = nil;
             _self.previewImage = nil;
             _self.previewImageView.image = nil;

@@ -147,7 +147,8 @@ static PtFtSharedQueueManager* sharedPtFtSharedQueueManager = nil;
     __block __weak PtViewControllerFilters* _con = self.delegate;
     dispatch_queue_t q_main = dispatch_get_main_queue();
     NSMutableArray* parts = self.delegate.originalImageParts;
-    for (int i = 0; i < 9; i++) {
+    CGSize size = [PtSharedApp instance].sizeOfImageToProcess;
+    for (int i = 0; i < parts.count; i++) {
         @autoreleasepool {
             CGPoint mult = [PtUtilImage multiplierAtIndex:i];
             CGPoint add = [PtUtilImage addingAtIndex:i];
@@ -162,10 +163,11 @@ static PtFtSharedQueueManager* sharedPtFtSharedQueueManager = nil;
             }
         }
         dispatch_async(q_main, ^{
-            [_con.progressView setProgress:0.10f + _con.progressView.progress];
+            [_con.progressView setProgress:1.0 / parts.count + _con.progressView.progress];
         });
         if ([PtSharedApp instance].sizeOfImageToProcess.width > 3500.0f || [PtSharedApp instance].sizeOfImageToProcess.height > 3500.0f) {
-            [NSThread sleepForTimeInterval:0.50f];
+            LOG_SIZE([PtSharedApp instance].sizeOfImageToProcess);
+            [NSThread sleepForTimeInterval:0.25f];
         }
     }
     self.startFilter = nil;

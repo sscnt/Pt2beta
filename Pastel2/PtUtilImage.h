@@ -22,8 +22,12 @@
 
 + (CGImageRef)imageFromSampleBuffer:(CMSampleBufferRef) sampleBuffer;
 
++ (NSMutableArray*)splitImageIn25Parts:(UIImage *)image;
++ (NSData*)mergeSplitImage25:(NSMutableArray*)array WithSize:(CGSize)size;
+
 + (NSMutableArray*)splitImageIn9Parts:(UIImage *)image;
 + (NSData*)mergeSplitImage9:(NSMutableArray*)array WithSize:(CGSize)size;
+
 + (UIImage*)zoomImage:(UIImage*)image ToScale:(float)zoom;
 + (UIImage*)rotateImage:(UIImage*)img angle:(int)angle;
 + (UIImage*)fixOrientationOfImageFromCamera:(UIImage *)image;

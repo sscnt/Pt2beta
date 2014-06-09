@@ -46,11 +46,12 @@ NSString* const pathForOriginalImage = @"tmp/original_image";
 
 - (void)setImageToProcess:(UIImage *)imageToProcess
 {
-    _imageToProcess = imageToProcess;
     if (imageToProcess == nil) {
         return;
     }
-    self.sizeOfImageToProcess = _imageToProcess.size;
+    _imageToProcess = imageToProcess;
+    _sizeOfImageToProcess = _imageToProcess.size;
+    LOG_SIZE(_sizeOfImageToProcess);
 }
 
 #pragma mark ui

@@ -116,6 +116,7 @@
             }
             dispatch_async(q_main, ^{
                 [_self.cameraPreview blackOut:NO];
+                [_self loadLastPhoto];
                 _self.view.userInteractionEnabled = YES;
             });
         });

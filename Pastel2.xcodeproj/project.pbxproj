@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5802407519460A3C00E359BA /* PtFtViewTapRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5802407419460A3C00E359BA /* PtFtViewTapRecognizer.m */; };
 		583668AA1942AD0B00E55C7C /* VnEffectBlueBerry.m in Sources */ = {isa = PBXBuildFile; fileRef = 583668A91942AD0B00E55C7C /* VnEffectBlueBerry.m */; };
 		583668F31942AE9D00E55C7C /* VnEffectBluishRose.m in Sources */ = {isa = PBXBuildFile; fileRef = 583668AC1942AE9D00E55C7C /* VnEffectBluishRose.m */; };
 		583668F41942AE9D00E55C7C /* VnEffectCarnival.m in Sources */ = {isa = PBXBuildFile; fileRef = 583668AE1942AE9D00E55C7C /* VnEffectCarnival.m */; };
@@ -277,6 +278,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5802407319460A3C00E359BA /* PtFtViewTapRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtFtViewTapRecognizer.h; sourceTree = "<group>"; };
+		5802407419460A3C00E359BA /* PtFtViewTapRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PtFtViewTapRecognizer.m; sourceTree = "<group>"; };
 		583668A81942AD0B00E55C7C /* VnEffectBlueBerry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectBlueBerry.h; sourceTree = "<group>"; };
 		583668A91942AD0B00E55C7C /* VnEffectBlueBerry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectBlueBerry.m; sourceTree = "<group>"; };
 		583668AB1942AE9D00E55C7C /* VnEffectBluishRose.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectBluishRose.h; sourceTree = "<group>"; };
@@ -1245,6 +1248,8 @@
 			children = (
 				58F3E4821940C70B001AEB8D /* PtFtViewBlur.h */,
 				58F3E4831940C70C001AEB8D /* PtFtViewBlur.m */,
+				5802407319460A3C00E359BA /* PtFtViewTapRecognizer.h */,
+				5802407419460A3C00E359BA /* PtFtViewTapRecognizer.m */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -1732,6 +1737,7 @@
 				58F3E3351940C546001AEB8D /* VnFilterLevels.m in Sources */,
 				583668F51942AE9D00E55C7C /* VnEffectCavalleriaRusticana.m in Sources */,
 				58F3E4CB1940C834001AEB8D /* LmCmViewBarButton.m in Sources */,
+				5802407519460A3C00E359BA /* PtFtViewTapRecognizer.m in Sources */,
 				58F3E4471940C622001AEB8D /* UIView+extend.m in Sources */,
 				58F3E4CC1940C834001AEB8D /* LmCmViewBottomBar.m in Sources */,
 				5836690D1942AE9D00E55C7C /* VnEffectFujiSuperia800.m in Sources */,

@@ -79,6 +79,7 @@ static PtFtSharedQueueManager* sharedPtFtSharedQueueManager = nil;
         return;
     }
     if (_canceled) {
+        _processing = NO;
         return;
     }
     _processing = YES;
@@ -108,6 +109,7 @@ static PtFtSharedQueueManager* sharedPtFtSharedQueueManager = nil;
         }
         dispatch_async(q_main, ^{
             if (_self.canceled) {
+                _self.processing = NO;
                 return;
             }
             [_self didFinishProcessingQueue:queue];
@@ -281,6 +283,7 @@ static PtFtSharedQueueManager* sharedPtFtSharedQueueManager = nil;
 {
     if (_canceled) {
         LOG(@"CANCELED!!!!");
+        [_queueList removeAllObjects];
     }
     return _canceled;
 }

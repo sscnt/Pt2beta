@@ -12,7 +12,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    self.interactionController = [UIDocumentInteractionController interactionControllerWithURL:nil];
+    self.interactionController = [UIDocumentInteractionController interactionControllerWithURL:[PtSharedApp originalImageUrl]];
     self.interactionController.delegate = self;
     
     BOOL isValid;

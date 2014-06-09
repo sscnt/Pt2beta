@@ -56,6 +56,7 @@ typedef NS_ENUM(NSInteger, PtViewControllerEditorWorkflowAfterSavingPhoto){
 - (void)didSaveImage;
 - (void)shareOnTwitter;
 - (void)shareoOnFacebook;
+- (void)sendOtherApp;
 
 - (void)buttonCamerarollDidTouchUpInside:(PtEdViewBarButton*)button;
 - (void)buttonInstagramDidTouchUpInside:(PtEdViewBarButton*)button;

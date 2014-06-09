@@ -172,7 +172,8 @@
 
 - (void)buttonOtherDidTouchUpInside:(PtEdViewBarButton *)button
 {
-    
+    _workflowAfterSavingPhoto = PtViewControllerEditorWorkflowAfterSavingPhotoSendOtherApps;
+    [self sendOtherApp];
 }
 
 - (void)buttonCameraDidTouchUpInside:(PtEdViewBarButton *)button
@@ -183,6 +184,7 @@
 
 - (void)buttonFiltersDidTouchUpInside:(PtEdViewBarButton *)button
 {
+    [PtFtSharedQueueManager instance].canceled = NO;
     _currentImageDidChange = YES;
     PtViewControllerFilters* con = [[PtViewControllerFilters alloc] init];
     con.editorController = self;
@@ -215,7 +217,7 @@
             break;
         case PtViewControllerEditorWorkflowAfterSavingPhotoSendOtherApps:
         {
-            
+            [self sendOtherApp];
         }
             break;
         case PtViewControllerEditorWorkflowAfterSavingPhotoShareOnTwitter:
@@ -224,6 +226,9 @@
         }
             break;
         case PtViewControllerEditorWorkflowAfterSavingPhotoShareOnFacebook:
+        {
+            [self shareOnFacebook];
+        }
             break;
         case PtViewControllerEditorWorkflowAfterSavingPhotoShareOnInstagram:
             break;
@@ -250,7 +255,7 @@
         [vc addImage:[PtSharedApp instance].imageToProcess];
         [self presentViewController:vc animated:YES completion:nil];
     }else{
-        [self showAlertViewWithTitle:NSLocalizedString(@"Error", nil) Message:NSLocalizedString(@"Unexpected error occurred", nil)];
+        [self showAlertViewWithTitle:NSLocalizedString(@"Error", nil) Message:NSLocalizedString(@"Unexpected error occurred.", nil)];
     }
     self.view.userInteractionEnabled = YES;
 }
@@ -265,7 +270,7 @@
     if([PtSharedApp instance].imageToProcess){
         SLComposeViewController *vc = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
         if (vc == nil) {
-            [self showAlertViewWithTitle:NSLocalizedString(@"Error", nil) Message:NSLocalizedString(@"Facebook not available", nil)];
+            [self showAlertViewWithTitle:NSLocalizedString(@"Error", nil) Message:NSLocalizedString(@"Facebook not available.", nil)];
             self.view.userInteractionEnabled = YES;
             return;
         }
@@ -273,10 +278,29 @@
         [vc addImage:[PtSharedApp instance].imageToProcess];
         [self presentViewController:vc animated:YES completion:nil];
     }else{
-        [self showAlertViewWithTitle:NSLocalizedString(@"Error", nil) Message:NSLocalizedString(@"Unexpected error occurred", nil)];
+        [self showAlertViewWithTitle:NSLocalizedString(@"Error", nil) Message:NSLocalizedString(@"Unexpected error occurred.", nil)];
     }
     self.view.userInteractionEnabled = YES;
     
+}
+
+- (void)sendOtherApp
+{
+    if (_currentImageDidChange) {
+        _workflowAfterSavingPhoto = PtViewControllerEditorWorkflowAfterSavingPhotoSendOtherApps;
+        [self saveImage];
+        return;
+    }
+    ShareOtherAppViewController* controller = [[ShareOtherAppViewController alloc] init];
+    if (controller == nil) {
+        [self showAlertViewWithTitle:NSLocalizedString(@"Error", nil) Message:NSLocalizedString(@"Unexpected error occurred.", nil)];
+        self.view.userInteractionEnabled = YES;
+        return;
+    }
+    [self.view addSubview:controller.view];
+    [self addChildViewController:controller];
+    [controller didMoveToParentViewController:self];
+    self.view.userInteractionEnabled = YES;
 }
 
 #pragma mark events

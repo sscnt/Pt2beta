@@ -11,7 +11,7 @@
 @implementation PtSharedApp
 
 static PtSharedApp* sharedPtSharedApp = nil;
-NSString* const pathForOriginalImage = @"tmp/original_image";
+NSString* const pathForOriginalImage = @"tmp/original_image.jpg";
 
 + (PtSharedApp*)instance {
 	@synchronized(self) {

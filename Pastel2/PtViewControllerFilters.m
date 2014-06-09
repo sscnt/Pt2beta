@@ -59,6 +59,11 @@
     [_progressView resetProgress];
     [self.view addSubview:_progressView];
     
+    //// Tap
+    _tapRecognizerView = [[PtFtViewTapRecognizer alloc] initWithFrame:_previewImageView.frame];
+    _tapRecognizerView.delegate = self;
+    [self.view addSubview:_tapRecognizerView];
+    
     [_filtersManager viewDidLoad];
     [_slidersManager viewDidLoad];
     [_navigationManager viewDidLoad];
@@ -72,13 +77,13 @@
         @autoreleasepool {
             CGSize size = CGSizeMake(_self.previewImageView.width * [[UIScreen mainScreen] scale], _self.previewImageView.height * [[UIScreen mainScreen] scale]);
             UIImage* image = [PtUtilImage resizedImageUrl:[PtSharedApp originalImageUrl] ToSize:size];
-            _self.previewImage = image;
+            _self.originalPreviewImage = image;
         }
         dispatch_async(q_main, ^{
             [_self.progressView setProgress:0.60f];
         });
         @autoreleasepool {
-            UIImage* image = _self.previewImage;
+            UIImage* image = _self.originalPreviewImage;
             if (image) {
                 //// for preset image
                 CGSize presetImageSizeWithAspect = [PtFtConfig presetBaseImageSize];
@@ -176,6 +181,7 @@
         {
             _releasePreviewImage = YES;
             _previewImageView.image = queue.image;
+            _previewImage = queue.image;
             self.progressView.hidden = YES;
             self.blurView.isBlurred = NO;
             self.view.userInteractionEnabled = YES;
@@ -186,7 +192,7 @@
             [_filtersManager setPresetImage:queue.image ToEffect:queue.effectId];
             if (_firstPresetFinished == NO && queue.effectId != VnEffectIdNone) {
                 _firstPresetFinished = YES;
-                _previewImageView.image = _previewImage;
+                _previewImageView.image = _originalPreviewImage;
                 _progressView.hidden = YES;
                 self.view.userInteractionEnabled = YES;
             }
@@ -219,6 +225,20 @@
     self.blurView.isBlurred = NO;
     [self.editorController initPreview];
     [self.navigationController popViewControllerAnimated:NO];
+}
+
+#pragma mark tap
+
+- (void)tapRecognizerDidTouchUp
+{
+    if (_previewImage) {
+        _previewImageView.image = _previewImage;
+    }
+}
+
+- (void)tapRecognizerDidTouchDown
+{
+    _previewImageView.image = _originalPreviewImage;
 }
 
 #pragma mark filter button
@@ -261,7 +281,7 @@
     [self.progressView resetProgress];
     PtFtObjectProcessQueue* queue = [[PtFtObjectProcessQueue alloc] init];
     queue.type = PtFtProcessQueueTypePreview;
-    queue.image = self.previewImage;
+    queue.image = self.originalPreviewImage;
     [[PtFtSharedQueueManager instance] addQueue:queue];
 }
 
@@ -284,6 +304,7 @@
             _self.originalImageParts = [PtUtilImage splitImageIn25Parts:[PtSharedApp instance].imageToProcess];
             [PtSharedApp instance].imageToProcess = nil;
             _self.previewImage = nil;
+            _self.originalPreviewImage = nil;
             _self.previewImageView.image = nil;
         }
         dispatch_async(q_main, ^{

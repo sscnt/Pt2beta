@@ -34,7 +34,8 @@
 - (void)navigationCancelDidTouchUpInside:(PtFtButtonNavigation *)button
 {
     PtViewControllerFilters* con = self.delegate;
-    [con.filtersManager deallocArtisticButtonImages];
+    //[con.filtersManager deallocArtisticButtonImages];
+    [PtFtSharedQueueManager instance].canceled = YES;
     [con.navigationController popViewControllerAnimated:NO];
 }
 

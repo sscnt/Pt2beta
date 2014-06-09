@@ -273,16 +273,16 @@
                 }else{
                     bestFormat = [[camera formats] objectAtIndex:[[camera formats] count] - 1];
                 }
-                LOG(@"%@", bestFormat);
                 if (bestFormat) {
                     camera.activeFormat = bestFormat;
+                    LOG(@"%@", bestFormat);
                     //[camera setActiveVideoMinFrameDuration:bestFrameRateRange.minFrameDuration];
                     //[camera setActiveVideoMaxFrameDuration:bestFrameRateRange.maxFrameDuration];
                     if ([UIDevice isIOS6]) {
                         
                     }else{
-                        [camera setActiveVideoMinFrameDuration:CMTimeMake(1, 5)];
-                        [camera setActiveVideoMaxFrameDuration:CMTimeMake(1, 5)];
+                        //[camera setActiveVideoMinFrameDuration:CMTimeMake(1, 5)];
+                        //[camera setActiveVideoMaxFrameDuration:CMTimeMake(1, 5)];
                     }
                     [camera unlockForConfiguration];
                 }
@@ -347,6 +347,8 @@
     //    ビデオ出力デバイスの設定
     //////////////////////////////////
 	NSDictionary *rgbOutputSettings = @{(id)kCVPixelBufferPixelFormatTypeKey: @(kCMPixelFormat_32BGRA)};
+    
+    
     videoOutput = AVCaptureVideoDataOutput.new;
 	[videoOutput setVideoSettings:rgbOutputSettings];
 	[videoOutput setAlwaysDiscardsLateVideoFrames:YES];     //  NOだとコマ落ちしないが重い処理には向かない
@@ -387,8 +389,8 @@
 /////////////////////////////////////////////////////////////////////////////////
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
 {
-    @autoreleasepool {
-        if (_currentCapturedNumber < _allCaptureNumber) {
+    if (_currentCapturedNumber < _allCaptureNumber) {
+        @autoreleasepool {
             AVCaptureDevice* device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
             if (device.adjustingFocus) {
                 LOG(@"Sorry adjusting focus.");

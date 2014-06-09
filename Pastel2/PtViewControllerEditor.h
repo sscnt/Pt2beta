@@ -8,15 +8,28 @@
 
 #import <UIKit/UIKit.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import <Social/Social.h>
 #import "PtEdViewTopBar.h"
 #import "PtEdViewBottomBar.h"
 #import "PtEdViewBarButton.h"
 #import "PtEdViewImagePreview.h"
 #import "PtViewControllerFilters.h"
 #import "PtFtViewBlur.h"
+#import "ShareOtherAppViewController.h"
+#import "PtViewControllerExportToInstagram.h"
+
+typedef NS_ENUM(NSInteger, PtViewControllerEditorWorkflowAfterSavingPhoto){
+    PtViewControllerEditorWorkflowAfterSavingPhotoDoNothing = 1,
+    PtViewControllerEditorWorkflowAfterSavingPhotoShareOnInstagram,
+    PtViewControllerEditorWorkflowAfterSavingPhotoShareOnTwitter,
+    PtViewControllerEditorWorkflowAfterSavingPhotoShareOnFacebook,
+    PtViewControllerEditorWorkflowAfterSavingPhotoSendOtherApps
+};
 
 @interface PtViewControllerEditor : UIViewController
 
+@property (nonatomic, assign) BOOL currentImageDidChange;
+@property (nonatomic, assign) PtViewControllerEditorWorkflowAfterSavingPhoto workflowAfterSavingPhoto;
 @property (nonatomic, strong) PtEdViewBottomBar* bottomBar;
 @property (nonatomic, strong) PtEdViewTopBar* topBar;
 @property (nonatomic, strong) PtEdViewImagePreview* imagePreview;
@@ -38,6 +51,11 @@
 
 - (void)reloadImage;
 - (void)deallocImage;
+
+- (void)saveImage;
+- (void)didSaveImage;
+- (void)shareOnTwitter;
+- (void)shareoOnFacebook;
 
 - (void)buttonCamerarollDidTouchUpInside:(PtEdViewBarButton*)button;
 - (void)buttonInstagramDidTouchUpInside:(PtEdViewBarButton*)button;

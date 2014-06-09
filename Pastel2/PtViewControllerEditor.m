@@ -18,6 +18,8 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [PtEdConfig bgColor];
+    _workflowAfterSavingPhoto = PtViewControllerEditorWorkflowAfterSavingPhotoDoNothing;
+    _currentImageDidChange = YES;
     
     //// Bar
     _topBar = [[PtEdViewTopBar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen width], [PtEdConfig topBarHeight])];
@@ -147,12 +149,8 @@
 
 - (void)buttonCamerarollDidTouchUpInside:(PtEdViewBarButton *)button
 {
-    self.view.userInteractionEnabled = NO;
-    _progressView.hidden = NO;
-    _blurView.hidden = NO;
-    [_progressView resetProgress];
-    [_progressView setProgress:0.10f];
-    UIImageWriteToSavedPhotosAlbum([PtSharedApp instance].imageToProcess, self, @selector(imageDidSaveToCameraRoll:didFinishSavingWithError:contextInfo:), NULL);
+    _workflowAfterSavingPhoto = PtViewControllerEditorWorkflowAfterSavingPhotoDoNothing;
+    [self saveImage];
 }
 
 - (void)buttonInstagramDidTouchUpInside:(PtEdViewBarButton *)button
@@ -162,12 +160,14 @@
 
 - (void)buttonTwitterDidTouchUpInside:(PtEdViewBarButton *)button
 {
-    
+    _workflowAfterSavingPhoto = PtViewControllerEditorWorkflowAfterSavingPhotoShareOnTwitter;
+    [self shareOnTwitter];
 }
 
 - (void)buttonFacebookDidTouchUpInside:(PtEdViewBarButton *)button
 {
-    
+    _workflowAfterSavingPhoto = PtViewControllerEditorWorkflowAfterSavingPhotoShareOnFacebook;
+    [self shareOnFacebook];
 }
 
 - (void)buttonOtherDidTouchUpInside:(PtEdViewBarButton *)button
@@ -183,6 +183,7 @@
 
 - (void)buttonFiltersDidTouchUpInside:(PtEdViewBarButton *)button
 {
+    _currentImageDidChange = YES;
     PtViewControllerFilters* con = [[PtViewControllerFilters alloc] init];
     con.editorController = self;
     [self.navigationController pushViewController:con animated:NO];
@@ -193,20 +194,103 @@
     
 }
 
+#pragma mark workflow
+
+- (void)saveImage
+{
+    self.view.userInteractionEnabled = NO;
+    _progressView.hidden = NO;
+    _blurView.hidden = NO;
+    [_progressView resetProgress];
+    [_progressView setProgress:0.10f];
+    UIImageWriteToSavedPhotosAlbum([PtSharedApp instance].imageToProcess, self, @selector(imageDidSaveToCameraRoll:didFinishSavingWithError:contextInfo:), NULL);
+}
+
+- (void)didSaveImage
+{
+    _currentImageDidChange = NO;
+    switch (_workflowAfterSavingPhoto) {
+        case PtViewControllerEditorWorkflowAfterSavingPhotoDoNothing:
+            self.view.userInteractionEnabled = YES;
+            break;
+        case PtViewControllerEditorWorkflowAfterSavingPhotoSendOtherApps:
+        {
+            
+        }
+            break;
+        case PtViewControllerEditorWorkflowAfterSavingPhotoShareOnTwitter:
+        {
+            [self shareOnTwitter];
+        }
+            break;
+        case PtViewControllerEditorWorkflowAfterSavingPhotoShareOnFacebook:
+            break;
+        case PtViewControllerEditorWorkflowAfterSavingPhotoShareOnInstagram:
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)shareOnTwitter
+{
+    if (_currentImageDidChange) {
+        _workflowAfterSavingPhoto = PtViewControllerEditorWorkflowAfterSavingPhotoShareOnTwitter;
+        [self saveImage];
+        return;
+    }
+    if([PtSharedApp instance].imageToProcess){
+        SLComposeViewController* vc = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+        if (vc == nil) {
+            [self showAlertViewWithTitle:NSLocalizedString(@"Error", nil) Message:NSLocalizedString(@"Twitter not available", nil)];
+            self.view.userInteractionEnabled = YES;
+            return;
+        }
+        [vc setInitialText:@""];
+        [vc addImage:[PtSharedApp instance].imageToProcess];
+        [self presentViewController:vc animated:YES completion:nil];
+    }else{
+        [self showAlertViewWithTitle:NSLocalizedString(@"Error", nil) Message:NSLocalizedString(@"Unexpected error occurred", nil)];
+    }
+    self.view.userInteractionEnabled = YES;
+}
+
+- (void)shareOnFacebook
+{
+    if (_currentImageDidChange) {
+        _workflowAfterSavingPhoto = PtViewControllerEditorWorkflowAfterSavingPhotoShareOnFacebook;
+        [self saveImage];
+        return;
+    }
+    if([PtSharedApp instance].imageToProcess){
+        SLComposeViewController *vc = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+        if (vc == nil) {
+            [self showAlertViewWithTitle:NSLocalizedString(@"Error", nil) Message:NSLocalizedString(@"Facebook not available", nil)];
+            self.view.userInteractionEnabled = YES;
+            return;
+        }
+        [vc setInitialText:@""];
+        [vc addImage:[PtSharedApp instance].imageToProcess];
+        [self presentViewController:vc animated:YES completion:nil];
+    }else{
+        [self showAlertViewWithTitle:NSLocalizedString(@"Error", nil) Message:NSLocalizedString(@"Unexpected error occurred", nil)];
+    }
+    self.view.userInteractionEnabled = YES;
+    
+}
+
 #pragma mark events
 
 - (void)imageDidSaveToCameraRoll:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
 {
-    @autoreleasepool {
-        [_progressView setProgress:1.0f];
-        __block __weak PtViewControllerEditor* _self = self;
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-            _self.view.userInteractionEnabled = YES;
-            _self.progressView.hidden = YES;
-            _self.blurView.hidden = YES;
-        });
-        
-    }
+    
+    [_progressView setProgress:1.0f];
+    __block __weak PtViewControllerEditor* _self = self;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        _self.progressView.hidden = YES;
+        _self.blurView.hidden = YES;
+        [_self didSaveImage];
+    });
 }
 
 /*

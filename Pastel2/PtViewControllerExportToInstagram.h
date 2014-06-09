@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "ShareInstagramViewController.h"
 
-@interface PtViewControllerForInstagramCrop : UIViewController
+@interface PtViewControllerExportToInstagram : UIViewController
 
 @end

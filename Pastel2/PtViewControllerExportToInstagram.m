@@ -6,13 +6,13 @@
 //  Copyright (c) 2014年 SSC. All rights reserved.
 //
 
-#import "PtViewControllerForInstagramCrop.h"
+#import "PtViewControllerExportToInstagram.h"
 
-@interface PtViewControllerForInstagramCrop ()
+@interface PtViewControllerExportToInstagram ()
 
 @end
 
-@implementation PtViewControllerForInstagramCrop
+@implementation PtViewControllerExportToInstagram
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

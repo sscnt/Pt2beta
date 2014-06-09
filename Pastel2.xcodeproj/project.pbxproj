@@ -208,7 +208,7 @@
 		58F3E4B01940C7CC001AEB8D /* PtEdConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F3E4AF1940C7CC001AEB8D /* PtEdConfig.m */; };
 		58F3E4B81940C7F3001AEB8D /* ShareInstagramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F3E4B31940C7F3001AEB8D /* ShareInstagramViewController.m */; };
 		58F3E4B91940C7F3001AEB8D /* ShareOtherAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F3E4B51940C7F3001AEB8D /* ShareOtherAppViewController.m */; };
-		58F3E4BA1940C7F3001AEB8D /* PtViewControllerForInstagramCrop.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F3E4B71940C7F3001AEB8D /* PtViewControllerForInstagramCrop.m */; };
+		58F3E4BA1940C7F3001AEB8D /* PtViewControllerExportToInstagram.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F3E4B71940C7F3001AEB8D /* PtViewControllerExportToInstagram.m */; };
 		58F3E4BD1940C7FD001AEB8D /* PtViewControllerEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F3E4BC1940C7FD001AEB8D /* PtViewControllerEditor.m */; };
 		58F3E4C21940C81C001AEB8D /* LmCmImageAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F3E4C11940C81C001AEB8D /* LmCmImageAsset.m */; };
 		58F3E4CB1940C834001AEB8D /* LmCmViewBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F3E4C61940C834001AEB8D /* LmCmViewBarButton.m */; };
@@ -249,6 +249,7 @@
 		58F3E5381940CA74001AEB8D /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F3E5371940CA74001AEB8D /* CoreVideo.framework */; };
 		58F3E53A1940CA7D001AEB8D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F3E5391940CA7D001AEB8D /* CoreMedia.framework */; };
 		58FD70161941B9A200D1E64F /* PtUtilImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FD70151941B9A200D1E64F /* PtUtilImage.m */; };
+		58FE6ED21945ED4C00B61E72 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FE6ED11945ED4C00B61E72 /* Social.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -609,8 +610,8 @@
 		58F3E4B31940C7F3001AEB8D /* ShareInstagramViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareInstagramViewController.m; sourceTree = "<group>"; };
 		58F3E4B41940C7F3001AEB8D /* ShareOtherAppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareOtherAppViewController.h; sourceTree = "<group>"; };
 		58F3E4B51940C7F3001AEB8D /* ShareOtherAppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareOtherAppViewController.m; sourceTree = "<group>"; };
-		58F3E4B61940C7F3001AEB8D /* PtViewControllerForInstagramCrop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtViewControllerForInstagramCrop.h; sourceTree = "<group>"; };
-		58F3E4B71940C7F3001AEB8D /* PtViewControllerForInstagramCrop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PtViewControllerForInstagramCrop.m; sourceTree = "<group>"; };
+		58F3E4B61940C7F3001AEB8D /* PtViewControllerExportToInstagram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtViewControllerExportToInstagram.h; sourceTree = "<group>"; };
+		58F3E4B71940C7F3001AEB8D /* PtViewControllerExportToInstagram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PtViewControllerExportToInstagram.m; sourceTree = "<group>"; };
 		58F3E4BB1940C7FD001AEB8D /* PtViewControllerEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtViewControllerEditor.h; sourceTree = "<group>"; };
 		58F3E4BC1940C7FD001AEB8D /* PtViewControllerEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PtViewControllerEditor.m; sourceTree = "<group>"; };
 		58F3E4C01940C81C001AEB8D /* LmCmImageAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LmCmImageAsset.h; sourceTree = "<group>"; };
@@ -678,6 +679,7 @@
 		58F3E5391940CA7D001AEB8D /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		58FD70141941B9A200D1E64F /* PtUtilImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtUtilImage.h; sourceTree = "<group>"; };
 		58FD70151941B9A200D1E64F /* PtUtilImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PtUtilImage.m; sourceTree = "<group>"; };
+		58FE6ED11945ED4C00B61E72 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -685,6 +687,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58FE6ED21945ED4C00B61E72 /* Social.framework in Frameworks */,
 				58F3E53A1940CA7D001AEB8D /* CoreMedia.framework in Frameworks */,
 				58F3E5381940CA74001AEB8D /* CoreVideo.framework in Frameworks */,
 				58F3E5361940CA6C001AEB8D /* OpenGLES.framework in Frameworks */,
@@ -736,6 +739,7 @@
 		58F3E2E21940C502001AEB8D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				58FE6ED11945ED4C00B61E72 /* Social.framework */,
 				58F3E5391940CA7D001AEB8D /* CoreMedia.framework */,
 				58F3E5371940CA74001AEB8D /* CoreVideo.framework */,
 				58F3E5351940CA6C001AEB8D /* OpenGLES.framework */,
@@ -1138,6 +1142,7 @@
 			isa = PBXGroup;
 			children = (
 				58F3E4BE1940C804001AEB8D /* CameraModule */,
+				58FE6ECB1945E3FA00B61E72 /* ExportToInstagramModule */,
 				58F3E49A1940C78C001AEB8D /* EditorModule */,
 				58F3E4961940C759001AEB8D /* SettingsModule */,
 				58F3E44D1940C64A001AEB8D /* FilterModules */,
@@ -1336,8 +1341,6 @@
 				58F3E4B31940C7F3001AEB8D /* ShareInstagramViewController.m */,
 				58F3E4B41940C7F3001AEB8D /* ShareOtherAppViewController.h */,
 				58F3E4B51940C7F3001AEB8D /* ShareOtherAppViewController.m */,
-				58F3E4B61940C7F3001AEB8D /* PtViewControllerForInstagramCrop.h */,
-				58F3E4B71940C7F3001AEB8D /* PtViewControllerForInstagramCrop.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1529,6 +1532,15 @@
 				58FD70151941B9A200D1E64F /* PtUtilImage.m */,
 			);
 			name = Util;
+			sourceTree = "<group>";
+		};
+		58FE6ECB1945E3FA00B61E72 /* ExportToInstagramModule */ = {
+			isa = PBXGroup;
+			children = (
+				58F3E4B61940C7F3001AEB8D /* PtViewControllerExportToInstagram.h */,
+				58F3E4B71940C7F3001AEB8D /* PtViewControllerExportToInstagram.m */,
+			);
+			name = ExportToInstagramModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1749,7 +1761,7 @@
 				583668F31942AE9D00E55C7C /* VnEffectBluishRose.m in Sources */,
 				58F3E4901940C743001AEB8D /* PtFtViewManagerFilters.m in Sources */,
 				58F3E4731940C6D3001AEB8D /* PtFtButtonLayerBar.m in Sources */,
-				58F3E4BA1940C7F3001AEB8D /* PtViewControllerForInstagramCrop.m in Sources */,
+				58F3E4BA1940C7F3001AEB8D /* PtViewControllerExportToInstagram.m in Sources */,
 				583669121942AE9D00E55C7C /* VnEffectBrannanFaded.m in Sources */,
 				58F3E4351940C60B001AEB8D /* VnViewProgress.m in Sources */,
 				58F3E3211940C536001AEB8D /* VnImageTwoInputFilter.m in Sources */,

@@ -164,6 +164,9 @@ static PtFtSharedQueueManager* sharedPtFtSharedQueueManager = nil;
         dispatch_async(q_main, ^{
             [_con.progressView setProgress:0.10f + _con.progressView.progress];
         });
+        if ([PtSharedApp instance].sizeOfImageToProcess.width > 3500.0f || [PtSharedApp instance].sizeOfImageToProcess.height > 3500.0f) {
+            [NSThread sleepForTimeInterval:0.50f];
+        }
     }
     self.startFilter = nil;
     self.endFilter = nil;

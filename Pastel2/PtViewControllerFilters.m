@@ -19,6 +19,8 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [PtEdConfig bgColor];
+    self.view.userInteractionEnabled = NO;
+    _firstPresetFinished = NO;
     
     //// Managers
     _filtersManager = [[PtFtViewManagerFilters alloc] init];
@@ -47,7 +49,7 @@
     [self.view addSubview:_previewImageView];
     
     //// Blur
-    _blurView = [[PtFtViewBlur alloc] initWithFrame:_previewImageView.bounds];
+    _blurView = [[PtFtViewBlur alloc] initWithFrame:CGRectMake(0.0f, 0.0f, _previewImageView.width + 10.0f, _previewImageView.height + 10.0f)];
     _blurView.center = _previewImageView.center;
     [self.view addSubview:_blurView];
     
@@ -121,11 +123,11 @@
              */
         }
         dispatch_async(q_main, ^{
-            _self.previewImageView.image = _self.previewImage;
+            //_self.previewImageView.image = _self.previewImage;
             [_self initPresetQueuePool];
             [PtFtSharedQueueManager instance].delegate = self;
             [[PtFtSharedQueueManager instance] addQueue:[_self shiftQueueFromPool]];
-            [_self.progressView setHidden:YES];
+            //[_self.progressView setHidden:YES];
         });
     });
 }
@@ -183,6 +185,12 @@
         {
             [_filtersManager setPresetImage:queue.image ToEffect:queue.effectId];
             PtFtObjectProcessQueue* queue = [self shiftQueueFromPool];
+            if (_firstPresetFinished == NO) {
+                _firstPresetFinished = YES;
+                _previewImageView.image = _previewImage;
+                _progressView.hidden = YES;
+                self.view.userInteractionEnabled = YES;
+            }
             if (queue) {
                 [[PtFtSharedQueueManager instance] addQueue:queue];
             }

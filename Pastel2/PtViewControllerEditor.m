@@ -93,18 +93,41 @@
     _imagePreview = nil;
 }
 
-- (void)initPreview
+- (void)removePreview
 {
     if (_imagePreview) {
         [_imagePreview removeFromSuperview];
         _imagePreview.image = nil;
         _imagePreview = nil;
     }
-    _imagePreview = [[PtEdViewImagePreview  alloc] initWithFrame:CGRectMake(0.0f, _topBar.height, [UIScreen width], [UIScreen height] - _topBar.height - _bottomBar.height)];
-    _imagePreview.image = [PtSharedApp instance].imageToProcess;
-    [self.view addSubview:_imagePreview];
-    [self.view bringSubviewToFront:_topBar];
-    [self.view bringSubviewToFront:_bottomBar];
+    
+}
+
+- (void)initPreview
+{
+    [self removePreview];
+    __block CGSize psize;
+    __block __weak PtViewControllerEditor* _self = self;
+    dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t q_main = dispatch_get_main_queue();
+    dispatch_async(q_global, ^{
+        @autoreleasepool {
+            _imagePreview = [[PtEdViewImagePreview  alloc] initWithFrame:CGRectMake(0.0f, _topBar.height, [UIScreen width], [UIScreen height] - _topBar.height - _bottomBar.height)];
+            float maxPixelSize = [UIScreen width] * 4.0f;
+            CGSize osize = [PtSharedApp instance].sizeOfImageToProcess;
+            if (maxPixelSize > osize.width) {
+                maxPixelSize = osize.width;
+            }
+            psize = CGSizeMake(maxPixelSize, osize.height * maxPixelSize / osize.width);
+        }
+        dispatch_async(q_main, ^{            
+            _self.imagePreview.image = [PtUtilImage resizedImageUrl:[PtSharedApp originalImageUrl] ToSize:psize];
+            [_self.view addSubview:_self.imagePreview];
+            [_self.view bringSubviewToFront:_self.topBar];
+            [_self.view bringSubviewToFront:_self.bottomBar];
+        });
+    });
+    
 }
 
 #pragma mark button

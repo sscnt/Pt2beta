@@ -30,6 +30,7 @@
 @property (nonatomic, strong) PtEdViewBarButton* slidersButton;
 
 - (void)initPreview;
+- (void)removePreview;
 
 - (void)reloadImage;
 - (void)deallocImage;

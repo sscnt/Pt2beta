@@ -28,6 +28,7 @@
 @property (nonatomic, strong) VnViewProgress* progressView;
 @property (nonatomic, strong) PtFtViewBlur* blurView;
 @property (nonatomic, assign) BOOL faceDetected;
+@property (nonatomic, assign) BOOL firstPresetFinished;
 @property (nonatomic, strong) NSMutableArray* originalImageParts;
 @property (nonatomic, weak) PtViewControllerEditor* editorController;
 @property (nonatomic, assign) BOOL releasePreviewImage;

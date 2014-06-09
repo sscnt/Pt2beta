@@ -64,15 +64,7 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item.name = NSLocalizedString(NSLocalizedString(@"None", nil), nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
-    
-    //// Hazelnut Pink
-    item = [[PtFtObjectFilterItem alloc] init];
-    item.effectId = VnEffectIdHazelnutPink;
-    item.name = NSLocalizedString(@"L4", nil);
-    item.effectGroup = VnEffectGroupEffects;
-    [_artisticFilters addObject:item];
-    
-    return;
+
     //// Blur Berry
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdBlueBerry;
@@ -177,7 +169,13 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item.name = NSLocalizedString(@"K3", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
-
+    
+    //// Hazelnut Pink
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdHazelnutPink;
+    item.name = NSLocalizedString(@"L4", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
     
     //// Faerie Vintage
     item = [[PtFtObjectFilterItem alloc] init];

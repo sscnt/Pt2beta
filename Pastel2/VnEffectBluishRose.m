@@ -24,8 +24,10 @@
 - (void)makeFilterGroup
 {
     // Curve
+    VnFilterPassThrough* curveInput = [[VnFilterPassThrough alloc] init];
+    VnImageNormalBlendFilter* curveMerge = [[VnImageNormalBlendFilter alloc] init];
     VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"blrs"];
-    curveFilter1.topLayerOpacity = 0.25f;
+    curveMerge.topLayerOpacity = 0.25f;
     
     
     // Fill Layer
@@ -45,6 +47,10 @@
     [gradientColor1 addColorRed:46.0f Green:45.0f Blue:67.0f Opacity:100.0f Location:4096 Midpoint:50];
     gradientColor1.topLayerOpacity = 0.30f;
     gradientColor1.blendingMode = VnBlendingModeSoftLight;
+    gradientColor1.addingX = self.addingX;
+    gradientColor1.addingY = self.addingY;
+    gradientColor1.multiplierX = self.multiplierX;
+    gradientColor1.multiplierY = self.multiplierY;
     
     
     // Fill Layer
@@ -58,6 +64,10 @@
     [gradientColor2 addColorRed:127.0f Green:124.0f Blue:59.0f Opacity:0.0f Location:4096 Midpoint:50];
     gradientColor2.topLayerOpacity = 0.38f;
     gradientColor2.blendingMode = VnBlendingModeOverlay;
+    gradientColor2.addingX = self.addingX;
+    gradientColor2.addingY = self.addingY;
+    gradientColor2.multiplierX = self.multiplierX;
+    gradientColor2.multiplierY = self.multiplierY;
     
     
     // Color Balance
@@ -104,8 +114,11 @@
     solidColor2.topLayerOpacity = 0.15f;
     solidColor2.blendingMode = VnBlendingModeExclusion;
     
-    self.startFilter = curveFilter1;
-    [curveFilter1 addTarget:solidColor1];
+    self.startFilter = curveInput;
+    [curveInput addTarget:curveMerge];
+    [curveInput addTarget:curveFilter1];
+    [curveFilter1 addTarget:curveMerge atTextureLocation:1];
+    [curveMerge addTarget:solidColor1];
     [solidColor1 addTarget:gradientColor1];
     [gradientColor1 addTarget:gradientColor2];
     [gradientColor2 addTarget:colorBalance1];

@@ -25,8 +25,10 @@
 {
     
     // Curve
+    VnFilterPassThrough* curveInput = [[VnFilterPassThrough alloc] init];
+    VnImageNormalBlendFilter* curveMerge = [[VnImageNormalBlendFilter alloc] init];
     VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"jf1"];
-    curveFilter1.topLayerOpacity = 0.40f;
+    curveMerge.topLayerOpacity = 0.40f;
     
     
     // Fill Layer
@@ -41,6 +43,10 @@
     [gradientColor1 addColorRed:108.0f Green:46.0f Blue:22.0f Opacity:100.0f Location:4096 Midpoint:50];
     gradientColor1.topLayerOpacity = 0.50f;
     gradientColor1.blendingMode = VnBlendingModeSoftLight;
+    gradientColor1.addingX = self.addingX;
+    gradientColor1.addingY = self.addingY;
+    gradientColor1.multiplierX = self.multiplierX;
+    gradientColor1.multiplierY = self.multiplierY;
     
     
     // Selective Color
@@ -119,6 +125,10 @@
     [gradientColor2 addColorRed:255.0f Green:238.0f Blue:127.0f Opacity:0.0f Location:4096 Midpoint:50];
     gradientColor2.topLayerOpacity = 0.30f;
     gradientColor2.blendingMode = VnBlendingModeOverlay;
+    gradientColor2.addingX = self.addingX;
+    gradientColor2.addingY = self.addingY;
+    gradientColor2.multiplierX = self.multiplierX;
+    gradientColor2.multiplierY = self.multiplierY;
     
     
     // Fill Layer
@@ -133,6 +143,10 @@
     [gradientColor3 addColorRed:239.0f Green:229.0f Blue:64.0f Opacity:100.0f Location:4096 Midpoint:50];
     gradientColor3.topLayerOpacity = 0.30f;
     gradientColor3.blendingMode = VnBlendingModeSoftLight;
+    gradientColor3.addingX = self.addingX;
+    gradientColor3.addingY = self.addingY;
+    gradientColor3.multiplierX = self.multiplierX;
+    gradientColor3.multiplierY = self.multiplierY;
     
     
     // Fill Layer
@@ -141,8 +155,11 @@
     solidColor4.topLayerOpacity = 0.27f;
     solidColor4.blendingMode = VnBlendingModeExclusion;
     
-    self.startFilter = curveFilter1;
-    [curveFilter1 addTarget:gradientColor1];
+    self.startFilter = curveInput;
+    [curveInput addTarget:curveMerge];
+    [curveInput addTarget:curveFilter1];
+    [curveFilter1 addTarget:curveMerge atTextureLocation:1];
+    [curveMerge addTarget:gradientColor1];
     [gradientColor1 addTarget:selectiveColor1];
     [selectiveColor1 addTarget:mixerFilter1];
     [mixerFilter1 addTarget:solidColor1];

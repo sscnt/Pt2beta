@@ -44,12 +44,6 @@
     photoFilter1.topLayerOpacity = 0.25f;
     
     
-    // Fill Layer
-    VnFilterSolidColor* solidColor1 = [[VnFilterSolidColor alloc] init];
-    [solidColor1 setColorRed:40.0f/255.0f green:40.0f/255.0f blue:40.0f/255.0 alpha:1.0f];
-    solidColor1.blendingMode = VnBlendingModeLighten;
-    
-    
     // Curve
     VnFilterToneCurve* curveFilter3 = [[VnFilterToneCurve alloc] initWithACV:@"gi3"];
         
@@ -100,11 +94,18 @@
     [levelsFilter1 setMin:5.0f/255.0f gamma:1.05f max:255.0f/255.0f minOut:5.0/255.0f maxOut:1.0f];
     
     // Gradient Map
-    VnAdjustmentLayerGradientColorFill* gradientMap1 = [[VnAdjustmentLayerGradientColorFill alloc] init];
+    VnAdjustmentLayerGradientMap* gradientMap1 = [[VnAdjustmentLayerGradientMap alloc] init];
     [gradientMap1 addColorRed:28.0f Green:64.0f Blue:100.0f Opacity:100.0f Location:0 Midpoint:50];
     [gradientMap1 addColorRed:14.0f Green:37.0f Blue:68.0f Opacity:100.0f Location:4096 Midpoint:50];
     gradientMap1.topLayerOpacity = 0.25f;
     gradientMap1.blendingMode = VnBlendingModeExclusion;
+    
+    
+    // Fill Layer
+    VnFilterSolidColor* solidColor1 = [[VnFilterSolidColor alloc] init];
+    [solidColor1 setColorRed:40.0f/255.0f green:40.0f/255.0f blue:40.0f/255.0 alpha:1.0f];
+    solidColor1.blendingMode = VnBlendingModeLighten;
+    
     
     self.startFilter = curveFilter1;
     [curveFilter1 addTarget:hueSaturation];
@@ -116,7 +117,8 @@
     [colorBalance2 addTarget:curveFilter4];
     [curveFilter4 addTarget:levelsFilter1];
     [levelsFilter1 addTarget:gradientMap1];
-    self.endFilter = gradientMap1;
+    [gradientMap1 addTarget:solidColor1];
+    self.endFilter = solidColor1;
 }
 
 

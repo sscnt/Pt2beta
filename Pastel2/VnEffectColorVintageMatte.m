@@ -46,8 +46,10 @@
     gradientMap.topLayerOpacity = 0.60f;
     
     // Curve
+    VnFilterPassThrough* curveInput = [[VnFilterPassThrough alloc] init];
+    VnImageNormalBlendFilter* curveMerge = [[VnImageNormalBlendFilter alloc] init];
     VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"cvm"];
-    curveFilter.topLayerOpacity = 0.85f;
+    curveMerge.topLayerOpacity = 0.85f;
     
     self.startFilter = inputFilter;
     [inputFilter addTarget:normalFilter];
@@ -56,8 +58,11 @@
     [levelsFilter2 addTarget:opacity];
     [opacity addTarget:normalFilter atTextureLocation:1];
     [normalFilter addTarget:gradientMap];
-    [gradientMap addTarget:curveFilter];
-    self.endFilter = curveFilter;
+    [gradientMap addTarget:curveInput];
+    [curveInput addTarget:curveMerge];
+    [curveInput addTarget:curveFilter];
+    [curveFilter addTarget:curveMerge atTextureLocation:1];
+    self.endFilter = curveMerge;
     
 }
 

@@ -76,8 +76,10 @@
     solidColor4.blendingMode = VnBlendingModeSoftLight;
     
     // Curve
+    VnFilterPassThrough* curveInput = [[VnFilterPassThrough alloc] init];
+    VnImageNormalBlendFilter* curveMerge = [[VnImageNormalBlendFilter alloc] init];
     VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"gm1"];
-    curveFilter1.topLayerOpacity = 0.70f;
+    curveMerge.topLayerOpacity = 0.70f;
     
     
     
@@ -99,6 +101,10 @@
     [gradientColor1 addColorRed:255.0f Green:255.0f Blue:255.0f Opacity:0.0f Location:4096 Midpoint:50];
     gradientColor1.topLayerOpacity = 0.35f;
     gradientColor1.blendingMode = VnBlendingModeScreen;
+    gradientColor1.addingX = self.addingX;
+    gradientColor1.addingY = self.addingY;
+    gradientColor1.multiplierX = self.multiplierX;
+    gradientColor1.multiplierY = self.multiplierY;
     
     
     // Color Balance
@@ -178,8 +184,11 @@
     [levelsFilter2 addTarget:selectiveColor];
     [selectiveColor addTarget:solidColor3];
     [solidColor3 addTarget:solidColor4];
-    [solidColor4 addTarget:curveFilter1];
-    [curveFilter1 addTarget:solidColor5];
+    [solidColor4 addTarget:curveInput];
+    [curveInput addTarget:curveMerge];
+    [curveInput addTarget:curveFilter1];
+    [curveFilter1 addTarget:curveMerge atTextureLocation:1];
+    [curveMerge addTarget:solidColor5];
     [solidColor5 addTarget:gradientColor1];
     [gradientColor1 addTarget:colorBalance1];
     [colorBalance1 addTarget:colorBalance2];

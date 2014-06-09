@@ -32,8 +32,10 @@
     
     
     // Curve
+    VnFilterPassThrough* curveInput1 = [[VnFilterPassThrough alloc] init];
+    VnImageNormalBlendFilter* curveMerge1 = [[VnImageNormalBlendFilter alloc] init];
     VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"plbr1"];
-    curveFilter1.topLayerOpacity = 0.20f;
+    curveMerge1.topLayerOpacity = 0.20f;
     
     // Fill Layer
     VnFilterSolidColor* solidColor1 = [[VnFilterSolidColor alloc] init];
@@ -51,6 +53,10 @@
     [gradientColor1 addColorRed:127.0f Green:124.0f Blue:59.0f Opacity:0.0f Location:4096 Midpoint:50];
     gradientColor1.topLayerOpacity = 0.20f;
     gradientColor1.blendingMode = VnBlendingModeOverlay;
+    gradientColor1.addingX = self.addingX;
+    gradientColor1.addingY = self.addingY;
+    gradientColor1.multiplierX = self.multiplierX;
+    gradientColor1.multiplierY = self.multiplierY;
     
     
     // Color Balance
@@ -86,18 +92,26 @@
     
     
     // Curve
+    VnFilterPassThrough* curveInput2 = [[VnFilterPassThrough alloc] init];
+    VnImageNormalBlendFilter* curveMerge2 = [[VnImageNormalBlendFilter alloc] init];
     VnFilterToneCurve* curveFilter2 = [[VnFilterToneCurve alloc] initWithACV:@"plbr2"];
-    curveFilter2.topLayerOpacity = 0.20f;
+    curveMerge2.topLayerOpacity = 0.20f;
     
     self.startFilter = selectiveColor1;
-    [selectiveColor1 addTarget:curveFilter1];
-    [curveFilter1 addTarget:solidColor1];
+    [selectiveColor1 addTarget:curveInput1];
+    [curveInput1 addTarget:curveMerge1];
+    [curveInput1 addTarget:curveFilter1];
+    [curveFilter1 addTarget:curveMerge1 atTextureLocation:1];
+    [curveMerge1 addTarget:solidColor1];
     [solidColor1 addTarget:gradientColor1];
     [gradientColor1 addTarget:colorBalance1];
     [colorBalance1 addTarget:selectiveColor2];
     [selectiveColor2 addTarget:solidColor2];
-    [solidColor2 addTarget:curveFilter2];
-    self.endFilter = curveFilter1;
+    [solidColor2 addTarget:curveInput2];
+    [curveInput2 addTarget:curveMerge2];
+    [curveInput2 addTarget:curveFilter2];
+    [curveFilter2 addTarget:curveMerge2 atTextureLocation:1];
+    self.endFilter = curveMerge2;
 }
 
 @end

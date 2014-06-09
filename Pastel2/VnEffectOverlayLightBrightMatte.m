@@ -54,16 +54,21 @@
     solidColor.blendingMode = VnBlendingModeMultiply;
     
     // Curve
+    VnFilterPassThrough* curveInput = [[VnFilterPassThrough alloc] init];
+    VnImageNormalBlendFilter* curveMerge = [[VnImageNormalBlendFilter alloc] init];
     VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"olbm"];
-    curveFilter.topLayerOpacity = 0.20f;
+    curveMerge.topLayerOpacity = 0.20f;
     
     self.startFilter = levelsFilter1;
     [levelsFilter1 addTarget:levelsFilter2];
     [levelsFilter2 addTarget:photoFilter];
     [photoFilter addTarget:gradientMap];
     [gradientMap addTarget:solidColor];
-    [solidColor addTarget:curveFilter];
-    self.endFilter = curveFilter;
+    [solidColor addTarget:curveInput];
+    [curveInput addTarget:curveMerge];
+    [curveInput addTarget:curveFilter];
+    [curveFilter addTarget:curveMerge atTextureLocation:1];
+    self.endFilter = curveMerge;
 }
 
 @end

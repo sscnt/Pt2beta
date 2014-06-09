@@ -62,6 +62,10 @@
     [gradientColor1 addColorRed:187.0f Green:175.0f Blue:163.0f Opacity:100.0f Location:4096 Midpoint:50];
     gradientColor1.topLayerOpacity = 0.14f;
     gradientColor1.blendingMode = VnBlendingModeDifference;
+    gradientColor1.addingX = self.addingX;
+    gradientColor1.addingY = self.addingY;
+    gradientColor1.multiplierX = self.multiplierX;
+    gradientColor1.multiplierY = self.multiplierY;
     
     // Fill Layer
     
@@ -75,6 +79,10 @@
     [gradientColor2 addColorRed:0.0f Green:0.0f Blue:0.0f Opacity:100.0f Location:4096 Midpoint:50];
     gradientColor2.topLayerOpacity = 0.05f;
     gradientColor2.blendingMode = VnBlendingModeOverlay;
+    gradientColor2.addingX = self.addingX;
+    gradientColor2.addingY = self.addingY;
+    gradientColor2.multiplierX = self.multiplierX;
+    gradientColor2.multiplierY = self.multiplierY;
     
     
     // Levels

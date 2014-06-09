@@ -17,17 +17,18 @@
 - (void)initCameraManager
 {
     self.view.userInteractionEnabled = NO;
+    _blackoutView.isBlurred = YES;
     _isCameraInitializing = YES;
     if (_cameraManager) {
         [_cameraManager deallocCamera];
         _cameraManager = nil;
     }
-    
+    self.cameraPreview.layer.sublayers = nil;
     self.cameraManager = [[LmCmCamera alloc] init];
     self.cameraManager.delegate = self;
     [self.cameraManager setPreview:self.cameraPreview];
     self.isCameraInitializing = NO;
-    [self.cameraPreview blackOut:NO];
+    _blackoutView.isBlurred = NO;
     self.view.userInteractionEnabled = YES;
 }
 
@@ -64,6 +65,11 @@
     
     //// camera
     [self initCameraManager];
+    
+    //// Blackout
+    _blackoutView = [[PtFtViewBlur alloc] initWithFrame:self.view.bounds];
+    _blackoutView.isBlurred = NO;
+    [self.view addSubview:_blackoutView];
     
     //// Black rect
     _blackRectView = [[LmCmViewCropBlackRect alloc] initWithFrame:_cameraPreview.frame];
@@ -115,13 +121,13 @@
                 [_self.cameraManager enableCamera];
             }
             dispatch_async(q_main, ^{
-                [_self.cameraPreview blackOut:NO];
+                _self.blackoutView.isBlurred = NO;
                 [_self loadLastPhoto];
                 _self.view.userInteractionEnabled = YES;
             });
         });
     }else if(_state != LmCmViewControllerStatePhotoLibraryIsOpening){
-        [self.cameraPreview blackOut:NO];
+        _blackoutView.isBlurred = NO;
         self.view.userInteractionEnabled = YES;
     }
     _state = LmCmViewControllerStateDefault;
@@ -227,11 +233,11 @@
         return;
     }
     if (image == nil) {
-        [self.cameraPreview blackOut:NO];
+        _blackoutView.isBlurred = NO;
         return;
     }
     self.isPresenting = YES;
-    [self.cameraPreview blackOut:YES];
+    _blackoutView.isBlurred = YES;
     __block __weak LmCmViewController* _self = self;
     
     if ([PtSharedApp instance].useFullResolutionImage) {
@@ -243,7 +249,7 @@
         });
         [PtSharedApp instance].imageToProcess = image;
         PtViewControllerEditor* con = [[PtViewControllerEditor alloc] init];
-        [self.navigationController pushViewController:con animated:YES];
+        [self.navigationController pushViewController:con animated:NO];
         _state = LmCmViewControllerStatePresentedEditorController;
     }else{
         __block UIImage* _image = image;
@@ -266,7 +272,7 @@
             }
             dispatch_async(q_main, ^{
                 PtViewControllerEditor* con = [[PtViewControllerEditor alloc] init];
-                [_self.navigationController pushViewController:con animated:YES];
+                [_self.navigationController pushViewController:con animated:NO];
                 _self.state = LmCmViewControllerStatePresentedEditorController;
             });
             
@@ -287,7 +293,7 @@
     if (self.isCameraInitializing) {
         return;
     }
-    [self.cameraPreview blackOut:YES];
+    _blackoutView.isBlurred = YES;
     __block __weak LmCmViewController* _self = self;
     __block UIImage* image;
     dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
@@ -377,7 +383,7 @@
 
 - (void)openCameraRoll
 {
-    [_cameraPreview blackOut:YES];
+    _blackoutView.isBlurred = YES;
     _state = LmCmViewControllerStatePhotoLibraryIsOpening;
     _toolsManager.camerarollButton.selected = NO;
     UIImagePickerController *pickerController = [[UIImagePickerController alloc] init];
@@ -457,6 +463,7 @@
 
 - (void)initVolumeHandling
 {
+    return;
     [self setVolumeNotification];
     
     //MPVolumeViewをオフスクリーンに。

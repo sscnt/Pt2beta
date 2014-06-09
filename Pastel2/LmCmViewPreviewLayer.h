@@ -14,6 +14,4 @@
     UIView* opaqueView;
 }
 
-- (void)blackOut:(BOOL)enable;
-
 @end

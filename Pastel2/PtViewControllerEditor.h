@@ -13,6 +13,7 @@
 #import "PtEdViewBarButton.h"
 #import "PtEdViewImagePreview.h"
 #import "PtViewControllerFilters.h"
+#import "PtFtViewBlur.h"
 
 @interface PtViewControllerEditor : UIViewController
 
@@ -28,6 +29,9 @@
 @property (nonatomic, strong) PtEdViewBarButton* cameraButton;
 @property (nonatomic, strong) PtEdViewBarButton* filtersButton;
 @property (nonatomic, strong) PtEdViewBarButton* slidersButton;
+
+@property (nonatomic, strong) VnViewProgress* progressView;
+@property (nonatomic, strong) PtFtViewBlur* blurView;
 
 - (void)initPreview;
 - (void)removePreview;

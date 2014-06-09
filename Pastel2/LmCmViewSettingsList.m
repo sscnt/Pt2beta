@@ -38,6 +38,7 @@
         button.active = [LmCmSharedCamera instance].showZoomSlider;
         [self addSubview:button];
         
+        /*
         //// Volume Snap
         button = [[LmCmButtonSettingsItem alloc] initWithFrame:buttonFrame];
         button.item = LmCmViewSettingsListItemVolumeSnap;
@@ -46,16 +47,20 @@
         [button addTarget:self action:@selector(didSelectItem:) forControlEvents:UIControlEventTouchUpInside];
         button.active = [LmCmSharedCamera instance].volumeSnapEnabled;
         [self addSubview:button];
-        
+        */
+         
         //// Sound
         if ([UIDevice isCurrentLanguageJapanese]) {
             button = [[LmCmButtonSettingsItem alloc] initWithFrame:buttonFrame];
             button.item = LmCmViewSettingsListItemEnableSound;
-            [button setX:itemWidth];
+            [button setX:0.0f];
             [button setY:itemHeight];
             [button addTarget:self action:@selector(didSelectItem:) forControlEvents:UIControlEventTouchUpInside];
             button.active = [LmCmSharedCamera instance].soundEnabled;
             [self addSubview:button];
+        }else{
+            CGRect newFrame = CGRectMake(frame.origin.x, frame.origin.y + itemHeight, frame.size.width, frame.size.height - itemHeight);
+            self.frame = frame;
         }
     }
     return self;

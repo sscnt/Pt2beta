@@ -23,6 +23,17 @@
     _topBar = [[PtEdViewTopBar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen width], [PtEdConfig topBarHeight])];
     _bottomBar = [[PtEdViewBottomBar alloc] initWithFrame:CGRectMake(0.0f, [UIScreen height] - [PtEdConfig bottomBarHeight], [UIScreen width], [PtEdConfig bottomBarHeight])];
     
+    //// Progress
+    _progressView = [[VnViewProgress alloc] initWithFrame:self.view.bounds Radius:16.0f];
+    _progressView.hidden = YES;
+    [self.view addSubview:_progressView];
+    
+    //// Blur
+    _blurView = [[PtFtViewBlur alloc] initWithFrame:self.view.bounds];
+    _blurView.hidden = YES;
+    _blurView.isBlurred = YES;
+    [self.view addSubview:_blurView];
+    
     [self.view addSubview:_topBar];
     [self.view addSubview:_bottomBar];
     
@@ -123,6 +134,8 @@
         dispatch_async(q_main, ^{            
             _self.imagePreview.image = [PtUtilImage resizedImageUrl:[PtSharedApp originalImageUrl] ToSize:psize];
             [_self.view addSubview:_self.imagePreview];
+            [_self.view bringSubviewToFront:_self.blurView];
+            [_self.view bringSubviewToFront:_self.progressView];
             [_self.view bringSubviewToFront:_self.topBar];
             [_self.view bringSubviewToFront:_self.bottomBar];
         });
@@ -134,6 +147,11 @@
 
 - (void)buttonCamerarollDidTouchUpInside:(PtEdViewBarButton *)button
 {
+    self.view.userInteractionEnabled = NO;
+    _progressView.hidden = NO;
+    _blurView.hidden = NO;
+    [_progressView resetProgress];
+    [_progressView setProgress:0.10f];
     UIImageWriteToSavedPhotosAlbum([PtSharedApp instance].imageToProcess, self, @selector(imageDidSaveToCameraRoll:didFinishSavingWithError:contextInfo:), NULL);
 }
 
@@ -179,7 +197,16 @@
 
 - (void)imageDidSaveToCameraRoll:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
 {
-    
+    @autoreleasepool {
+        [_progressView setProgress:1.0f];
+        __block __weak PtViewControllerEditor* _self = self;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            _self.view.userInteractionEnabled = YES;
+            _self.progressView.hidden = YES;
+            _self.blurView.hidden = YES;
+        });
+        
+    }
 }
 
 /*

@@ -184,13 +184,13 @@
         case PtFtProcessQueueTypePreset:
         {
             [_filtersManager setPresetImage:queue.image ToEffect:queue.effectId];
-            PtFtObjectProcessQueue* queue = [self shiftQueueFromPool];
-            if (_firstPresetFinished == NO) {
+            if (_firstPresetFinished == NO && queue.effectId != VnEffectIdNone) {
                 _firstPresetFinished = YES;
                 _previewImageView.image = _previewImage;
                 _progressView.hidden = YES;
                 self.view.userInteractionEnabled = YES;
             }
+            PtFtObjectProcessQueue* queue = [self shiftQueueFromPool];
             if (queue) {
                 [[PtFtSharedQueueManager instance] addQueue:queue];
             }

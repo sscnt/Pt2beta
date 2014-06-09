@@ -46,6 +46,7 @@ typedef NS_ENUM(NSInteger, LmCmViewControllerState){
 @property (nonatomic, strong) LmCmViewTopBar* topBar;
 @property (nonatomic, strong) LmCmViewBottomBar* bottomBar;
 @property (nonatomic, strong) LmCmViewCropBlackRect* blackRectView;
+@property (nonatomic, strong) PtFtViewBlur* blackoutView;
 
 @property (nonatomic, strong) LmCmViewManagerZoom* zoomViewManager;
 @property (nonatomic, strong) LmCmViewManagerPreview* previewManager;

@@ -39,6 +39,11 @@
     [mixerFilter2 setBlueChannelRed:-10 Green:26 Blue:102 Constant:0];
     
     
+    self.startFilter = curveFilter1;
+    [curveFilter1 addTarget:mixerFilter1];
+    [mixerFilter1 addTarget:mixerFilter2];
+    self.endFilter = mixerFilter2;
+    return;
     
     // Curve
     VnFilterPassThrough* curveInput = [[VnFilterPassThrough alloc] init];

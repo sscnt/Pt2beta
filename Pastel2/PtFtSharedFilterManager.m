@@ -131,21 +131,35 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     //// Weekend
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdWeekend;
-    item.name = NSLocalizedString(@"VA1", nil);
+    item.name = NSLocalizedString(@"V1", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
     //// Hazelnut
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdHazelnut;
-    item.name = NSLocalizedString(@"L1", nil);
+    item.name = NSLocalizedString(@"V2", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
+    //// Hazelnut Pink
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdHazelnutPink;
+    item.name = NSLocalizedString(@"V3", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
     //// Beach Vintage
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdBeachVintage;
-    item.name = NSLocalizedString(@"K2", nil);
+    item.name = NSLocalizedString(@"V4", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
+    //// Dreamy Creamy
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdDreamyCreamy;
+    item.name = NSLocalizedString(@"V5", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
@@ -164,19 +178,6 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     [_artisticFilters addObject:item];
     
     
-    //// Dreamy Creamy
-    item = [[PtFtObjectFilterItem alloc] init];
-    item.effectId = VnEffectIdDreamyCreamy;
-    item.name = NSLocalizedString(@"K3", nil);
-    item.effectGroup = VnEffectGroupEffects;
-    [_artisticFilters addObject:item];
-    
-    //// Hazelnut Pink
-    item = [[PtFtObjectFilterItem alloc] init];
-    item.effectId = VnEffectIdHazelnutPink;
-    item.name = NSLocalizedString(@"L4", nil);
-    item.effectGroup = VnEffectGroupEffects;
-    [_artisticFilters addObject:item];
     
     //// Faerie Vintage
     item = [[PtFtObjectFilterItem alloc] init];

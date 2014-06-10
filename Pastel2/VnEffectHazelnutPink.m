@@ -73,14 +73,11 @@
     [colorBalance1 setHighlights:highlights1];
     colorBalance1.preserveLuminosity = YES;
     
-    
     // Fill Layer
     VnFilterSolidColor* solidColor2 = [[VnFilterSolidColor alloc] init];
     [solidColor2 setColorRed:0.0f/255.0f green:50.0f/255.0f blue:175.0f/255.0 alpha:1.0f];
     solidColor2.topLayerOpacity = 0.05f;
     solidColor2.blendingMode = VnBlendingModeColor;
-    
-    
     
     // Fill Layer
     VnFilterSolidColor* solidColor3 = [[VnFilterSolidColor alloc] init];

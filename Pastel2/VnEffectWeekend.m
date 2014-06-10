@@ -41,7 +41,7 @@
     VnFilterSolidColor* solidColor1 = [[VnFilterSolidColor alloc] init];
     [solidColor1 setColorRed:15.0f/255.0f green:35.0f/255.0f blue:65.0f/255.0 alpha:1.0f];
     solidColor1.blendingMode = VnBlendingModeExclusion;
-    
+
     
     // Levels
     VnFilterLevels* levelsFilter2 = [[VnFilterLevels alloc] init];
@@ -51,16 +51,16 @@
     
     // Levels
     VnFilterLevels* levelsFilter3 = [[VnFilterLevels alloc] init];
-    [levelsFilter3 setMin:20.0f/255.0f gamma:0.90f max:220.0f/255.0f minOut:0.0f maxOut:255.0f/255.0f];
-    
+    [levelsFilter3 setMin:10.0f/255.0f gamma:0.90f max:220.0f/255.0f minOut:0.0f maxOut:255.0f/255.0f];
     
     // Photo Filter
     VnAdjustmentLayerPhotoFilter* photoFilter1 = [[VnAdjustmentLayerPhotoFilter alloc] init];
     photoFilter1.color = (GPUVector3){s255(0.0f), s255(195.0f), s255(250.0f)};
-    photoFilter1.density = 0.25f;
+    photoFilter1.density = 0.125f;
     photoFilter1.preserveLuminosity = YES;
     photoFilter1.topLayerOpacity = 0.50f;
     photoFilter1.blendingMode = VnBlendingModeSoftLight;
+    
     
     /*
     // Color Balance
@@ -85,6 +85,11 @@
     colorBalance1.blendingMode = VnBlendingModeSoftLight;
      */
     
+    // Brightness
+    VnFilterBrightness* brightnessFilter = [[VnFilterBrightness alloc] init];
+    brightnessFilter.brightness = 0.15f;
+    
+    
     // Fill Layer
     VnFilterSolidColor* solidColor2 = [[VnFilterSolidColor alloc] init];
     [solidColor2 setColorRed:10.0f/255.0f green:5.0f/255.0f blue:50.0f/255.0 alpha:1.0f];
@@ -101,12 +106,11 @@
     [gradientColor1 addColorRed:0.0f Green:0.0f Blue:0.0f Opacity:100.0f Location:4096 Midpoint:50];
     gradientColor1.blendingMode = VnBlendingModeSoftLight;
     gradientColor1.topLayerOpacity = 0.30f;
-    
-    
+
     // Fill Layer
     VnFilterSolidColor* solidColor3 = [[VnFilterSolidColor alloc] init];
     [solidColor3 setColorRed:130.0f/255.0f green:130.0f/255.0f blue:130.0f/255.0 alpha:1.0f];
-    solidColor3.topLayerOpacity = 0.15f;
+    solidColor3.topLayerOpacity = 0.10f;
     solidColor3.blendingMode = VnBlendingModeColorBurn;
     
     
@@ -122,7 +126,8 @@
     [solidColor1 addTarget:levelsFilter2];
     [levelsFilter2 addTarget:levelsFilter3];
     [levelsFilter3 addTarget:photoFilter1];
-    [photoFilter1 addTarget:solidColor2];
+    [photoFilter1 addTarget:brightnessFilter];
+    [brightnessFilter addTarget:solidColor2];
     [solidColor2 addTarget:gradientColor1];
     [gradientColor1 addTarget:solidColor3];
     [solidColor3 addTarget:curveInput];

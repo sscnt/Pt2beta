@@ -14,8 +14,7 @@
 {
     self = [super init];
     if(self){
-        self.defaultOpacity = 0.70f;
-        self.faceOpacity = 0.50f;
+        self.defaultOpacity = 1.0f;
         self.effectId = VnEffectIdBeachVintage;
     }
     return self;
@@ -23,10 +22,16 @@
 
 - (void)makeFilterGroup
 {
+    VnFilterPassThrough* inputFilter = [[VnFilterPassThrough alloc] init];
+    
+    VnImageNormalBlendFilter* mergeFilter1 = [[VnImageNormalBlendFilter alloc] init];
+    mergeFilter1.topLayerOpacity = 0.40f;
+    mergeFilter1.blendingMode = VnBlendingModeOverlay;
+    
     // Duplicate
-    VnFilterDuplicate* normalFilter1 = [[VnFilterDuplicate alloc] init];
-    normalFilter1.blendingMode = VnBlendingModeOverlay;
-    normalFilter1.topLayerOpacity = 0.40f;
+    VnFilterDuplicate* duplicateFilter1 = [[VnFilterDuplicate alloc] init];
+    duplicateFilter1.blendingMode = VnBlendingModeOverlay;
+    duplicateFilter1.topLayerOpacity = 0.40f;
     
     // Fill Layer
     VnFilterSolidColor* solidColor1 = [[VnFilterSolidColor alloc] init];
@@ -41,7 +46,6 @@
     solidColor2.topLayerOpacity = 0.69f;
     solidColor2.blendingMode = VnBlendingModeSoftLight;
     
-    
     // Fill Layer
     VnFilterSolidColor* solidColor3 = [[VnFilterSolidColor alloc] init];
     [solidColor3 setColorRed:6.0f/255.0f green:0.0f/255.0f blue:255.0f/255.0 alpha:1.0f];
@@ -54,21 +58,17 @@
     [solidColor4 setColorRed:255.0f/255.0f green:121.0f/255.0f blue:151.0f/255.0 alpha:1.0f];
     solidColor4.blendingMode = VnBlendingModeLinearDodge;
     solidColor4.topLayerOpacity = 0.15f;
+
     
-    
-    // Duplicate
-    VnFilterDuplicate* normalFilter2 = [[VnFilterDuplicate alloc] init];
-    normalFilter2.blendingMode = VnBlendingModeOverlay;
-    normalFilter2.topLayerOpacity = 0.40f;
-    
-    
-    self.startFilter = normalFilter1;
-    [normalFilter1 addTarget:solidColor1];
+    self.startFilter = inputFilter;
+    [inputFilter addTarget:duplicateFilter1];
+    [inputFilter addTarget:mergeFilter1 atTextureLocation:1];
+    [duplicateFilter1 addTarget:solidColor1];
     [solidColor1 addTarget:solidColor2];
     [solidColor2 addTarget:solidColor3];
     [solidColor3 addTarget:solidColor4];
-    [solidColor4 addTarget:normalFilter2];
-    self.endFilter = normalFilter2;
+    [solidColor4 addTarget:mergeFilter1 atTextureLocation:0];
+    self.endFilter = mergeFilter1;
 }
 
 @end

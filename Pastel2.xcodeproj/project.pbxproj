@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		5802407519460A3C00E359BA /* PtFtViewTapRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5802407419460A3C00E359BA /* PtFtViewTapRecognizer.m */; };
+		580E4F04194756D90014B7C8 /* VnEffectVividVintage.m in Sources */ = {isa = PBXBuildFile; fileRef = 580E4F03194756D90014B7C8 /* VnEffectVividVintage.m */; };
+		580E4F0C194757E50014B7C8 /* vvv2.acv in Resources */ = {isa = PBXBuildFile; fileRef = 580E4F09194757E50014B7C8 /* vvv2.acv */; };
+		580E4F0D194757E50014B7C8 /* vvv3.acv in Resources */ = {isa = PBXBuildFile; fileRef = 580E4F0A194757E50014B7C8 /* vvv3.acv */; };
+		580E4F0F19475F3D0014B7C8 /* vvv1.acv in Resources */ = {isa = PBXBuildFile; fileRef = 580E4F0E19475F3D0014B7C8 /* vvv1.acv */; };
+		580E4F11194760110014B7C8 /* dv1.acv in Resources */ = {isa = PBXBuildFile; fileRef = 580E4F10194760110014B7C8 /* dv1.acv */; };
 		583668AA1942AD0B00E55C7C /* VnEffectBlueBerry.m in Sources */ = {isa = PBXBuildFile; fileRef = 583668A91942AD0B00E55C7C /* VnEffectBlueBerry.m */; };
 		583668F31942AE9D00E55C7C /* VnEffectBluishRose.m in Sources */ = {isa = PBXBuildFile; fileRef = 583668AC1942AE9D00E55C7C /* VnEffectBluishRose.m */; };
 		583668F41942AE9D00E55C7C /* VnEffectCarnival.m in Sources */ = {isa = PBXBuildFile; fileRef = 583668AE1942AE9D00E55C7C /* VnEffectCarnival.m */; };
@@ -124,7 +129,6 @@
 		58F3E3F61940C5F1001AEB8D /* dc2.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58F3E3BC1940C5F1001AEB8D /* dc2.acv */; };
 		58F3E3F71940C5F1001AEB8D /* dc1.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58F3E3BD1940C5F1001AEB8D /* dc1.acv */; };
 		58F3E3F81940C5F1001AEB8D /* dutfd.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58F3E3BE1940C5F1001AEB8D /* dutfd.acv */; };
-		58F3E3F91940C5F1001AEB8D /* dv1.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58F3E3BF1940C5F1001AEB8D /* dv1.acv */; };
 		58F3E3FA1940C5F1001AEB8D /* fv1.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58F3E3C01940C5F1001AEB8D /* fv1.acv */; };
 		58F3E3FB1940C5F1001AEB8D /* fv2.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58F3E3C11940C5F1001AEB8D /* fv2.acv */; };
 		58F3E3FC1940C5F1001AEB8D /* frpp.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58F3E3C21940C5F1001AEB8D /* frpp.acv */; };
@@ -280,6 +284,12 @@
 /* Begin PBXFileReference section */
 		5802407319460A3C00E359BA /* PtFtViewTapRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtFtViewTapRecognizer.h; sourceTree = "<group>"; };
 		5802407419460A3C00E359BA /* PtFtViewTapRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PtFtViewTapRecognizer.m; sourceTree = "<group>"; };
+		580E4F02194756D90014B7C8 /* VnEffectVividVintage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectVividVintage.h; sourceTree = "<group>"; };
+		580E4F03194756D90014B7C8 /* VnEffectVividVintage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectVividVintage.m; sourceTree = "<group>"; };
+		580E4F09194757E50014B7C8 /* vvv2.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = vvv2.acv; sourceTree = "<group>"; };
+		580E4F0A194757E50014B7C8 /* vvv3.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = vvv3.acv; sourceTree = "<group>"; };
+		580E4F0E19475F3D0014B7C8 /* vvv1.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = vvv1.acv; sourceTree = "<group>"; };
+		580E4F10194760110014B7C8 /* dv1.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = dv1.acv; sourceTree = "<group>"; };
 		583668A81942AD0B00E55C7C /* VnEffectBlueBerry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectBlueBerry.h; sourceTree = "<group>"; };
 		583668A91942AD0B00E55C7C /* VnEffectBlueBerry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectBlueBerry.m; sourceTree = "<group>"; };
 		583668AB1942AE9D00E55C7C /* VnEffectBluishRose.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectBluishRose.h; sourceTree = "<group>"; };
@@ -486,7 +496,6 @@
 		58F3E3BC1940C5F1001AEB8D /* dc2.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = dc2.acv; sourceTree = "<group>"; };
 		58F3E3BD1940C5F1001AEB8D /* dc1.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = dc1.acv; sourceTree = "<group>"; };
 		58F3E3BE1940C5F1001AEB8D /* dutfd.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = dutfd.acv; sourceTree = "<group>"; };
-		58F3E3BF1940C5F1001AEB8D /* dv1.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = dv1.acv; sourceTree = "<group>"; };
 		58F3E3C01940C5F1001AEB8D /* fv1.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = fv1.acv; sourceTree = "<group>"; };
 		58F3E3C11940C5F1001AEB8D /* fv2.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = fv2.acv; sourceTree = "<group>"; };
 		58F3E3C21940C5F1001AEB8D /* frpp.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = frpp.acv; sourceTree = "<group>"; };
@@ -929,6 +938,8 @@
 				583668CC1942AE9D00E55C7C /* VnEffectPurpleBerry.m */,
 				583668CD1942AE9D00E55C7C /* VnEffectVelvetColor.h */,
 				583668CE1942AE9D00E55C7C /* VnEffectVelvetColor.m */,
+				580E4F02194756D90014B7C8 /* VnEffectVividVintage.h */,
+				580E4F03194756D90014B7C8 /* VnEffectVividVintage.m */,
 				583668CF1942AE9D00E55C7C /* VnEffectWeekend.h */,
 				583668D01942AE9D00E55C7C /* VnEffectWeekend.m */,
 				583668D11942AE9D00E55C7C /* VnEffectSweetFlower.h */,
@@ -1040,6 +1051,9 @@
 		58F3E3AF1940C5E1001AEB8D /* Curves */ = {
 			isa = PBXGroup;
 			children = (
+				580E4F0E19475F3D0014B7C8 /* vvv1.acv */,
+				580E4F09194757E50014B7C8 /* vvv2.acv */,
+				580E4F0A194757E50014B7C8 /* vvv3.acv */,
 				58F3E3B01940C5F1001AEB8D /* wldfd.acv */,
 				58F3E3B11940C5F1001AEB8D /* amrfd.acv */,
 				58F3E3B21940C5F1001AEB8D /* blbry.acv */,
@@ -1055,7 +1069,7 @@
 				58F3E3BC1940C5F1001AEB8D /* dc2.acv */,
 				58F3E3BD1940C5F1001AEB8D /* dc1.acv */,
 				58F3E3BE1940C5F1001AEB8D /* dutfd.acv */,
-				58F3E3BF1940C5F1001AEB8D /* dv1.acv */,
+				580E4F10194760110014B7C8 /* dv1.acv */,
 				58F3E3C01940C5F1001AEB8D /* fv1.acv */,
 				58F3E3C11940C5F1001AEB8D /* fv2.acv */,
 				58F3E3C21940C5F1001AEB8D /* frpp.acv */,
@@ -1680,6 +1694,7 @@
 				58F3E3F11940C5F1001AEB8D /* csmsk.acv in Resources */,
 				58F3E4171940C5F1001AEB8D /* nsvlfd.acv in Resources */,
 				58F3E4001940C5F1001AEB8D /* frsnfd.acv in Resources */,
+				580E4F11194760110014B7C8 /* dv1.acv in Resources */,
 				58F3E4051940C5F1001AEB8D /* gi1.acv in Resources */,
 				58F3E40B1940C5F1001AEB8D /* grap2.acv in Resources */,
 				58F3E3FE1940C5F1001AEB8D /* fs800.acv in Resources */,
@@ -1698,18 +1713,20 @@
 				58AAE037194332AE003E7B09 /* hzl2.acv in Resources */,
 				58F3E4231940C5F1001AEB8D /* dnt.acv in Resources */,
 				58F3E4121940C5F1001AEB8D /* jf1.acv in Resources */,
+				580E4F0D194757E50014B7C8 /* vvv3.acv in Resources */,
 				58F3E4021940C5F1001AEB8D /* gi4.acv in Resources */,
 				58F3E3EF1940C5F1001AEB8D /* brzfd.acv in Resources */,
 				58F3E41A1940C5F1001AEB8D /* pbt.acv in Resources */,
 				58F3E4131940C5F1001AEB8D /* jf2.acv in Resources */,
+				580E4F0C194757E50014B7C8 /* vvv2.acv in Resources */,
 				58F3E4071940C5F1001AEB8D /* gm2.acv in Resources */,
 				58F3E4221940C5F1001AEB8D /* xp2fd.acv in Resources */,
 				58F3E40A1940C5F1001AEB8D /* grap1.acv in Resources */,
+				580E4F0F19475F3D0014B7C8 /* vvv1.acv in Resources */,
 				58F3E2EE1940C502001AEB8D /* InfoPlist.strings in Resources */,
 				58F3E51C1940C902001AEB8D /* ClearSans-Bold.ttf in Resources */,
 				58F3E41B1940C5F1001AEB8D /* plbr1.acv in Resources */,
 				58F3E3EB1940C5F1001AEB8D /* amrfd.acv in Resources */,
-				58F3E3F91940C5F1001AEB8D /* dv1.acv in Resources */,
 				58F3E51B1940C902001AEB8D /* Aller_Bd.ttf in Resources */,
 				58F3E41C1940C5F1001AEB8D /* plbr2.acv in Resources */,
 				58F3E3F31940C5F1001AEB8D /* cvm.acv in Resources */,
@@ -1749,6 +1766,7 @@
 				58F3E3A11940C5DA001AEB8D /* VnEffectColorLittleBlueSecret.m in Sources */,
 				58F3E4661940C6BD001AEB8D /* PtFtViewLayerBar.m in Sources */,
 				58F3E50D1940C8C1001AEB8D /* LmCmViewController.m in Sources */,
+				580E4F04194756D90014B7C8 /* VnEffectVividVintage.m in Sources */,
 				58F3E4311940C60B001AEB8D /* SVProgressHUD.m in Sources */,
 				583669151942AE9D00E55C7C /* VnEffectNashvilleFaded.m in Sources */,
 				583669031942AE9D00E55C7C /* VnEffectPurpleBerry.m in Sources */,

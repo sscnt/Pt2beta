@@ -61,6 +61,7 @@
 #import "VnEffectPinkBubbleTea.h"
 #import "VnEffectPurpleBerry.h"
 #import "VnEffectVelvetColor.h"
+#import "VnEffectVividVintage.h"
 #import "VnEffectWeekend.h"
 #import "VnEffectSweetFlower.h"
 #import "VnEffectFresnoFaded.h"

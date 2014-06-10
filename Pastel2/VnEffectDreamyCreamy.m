@@ -38,13 +38,6 @@
     [mixerFilter2 setGreenChannelRed:0 Green:100 Blue:0 Constant:0];
     [mixerFilter2 setBlueChannelRed:-10 Green:26 Blue:102 Constant:0];
     
-    
-    self.startFilter = curveFilter1;
-    [curveFilter1 addTarget:mixerFilter1];
-    [mixerFilter1 addTarget:mixerFilter2];
-    self.endFilter = mixerFilter2;
-    return;
-    
     // Curve
     VnFilterPassThrough* curveInput = [[VnFilterPassThrough alloc] init];
     VnImageNormalBlendFilter* curveMerge = [[VnImageNormalBlendFilter alloc] init];
@@ -54,28 +47,8 @@
     // Fill Layer
     VnFilterSolidColor* solidColor1 = [[VnFilterSolidColor alloc] init];
     [solidColor1 setColorRed:243.0f/255.0f green:211.0f/255.0f blue:57.0f/255.0 alpha:1.0f];
-    solidColor1.topLayerOpacity = 0.05f;
+    solidColor1.topLayerOpacity = 0.10f;
     solidColor1.blendingMode = VnBlendingModeColor;
-    
-    
-    // Color Balance
-    VnAdjustmentLayerColorBalance* colorBalance1 = [[VnAdjustmentLayerColorBalance alloc] init];
-    GPUVector3 shadows1;
-    shadows1.one = 0.0f/255.0f;
-    shadows1.two = 2.0f/255.0f;
-    shadows1.three = 5.0f/255.0f;
-    [colorBalance1 setShadows:shadows1];
-    GPUVector3 midtones1;
-    midtones1.one = 0.0f/255.0f;
-    midtones1.two = -1.0f/255.0f;
-    midtones1.three = 3.0f/255.0f;
-    [colorBalance1 setMidtones:midtones1];
-    GPUVector3 highlights1;
-    highlights1.one = 11.0f/255.0f;
-    highlights1.two = 0.0/255.0f;
-    highlights1.three = 10.0f/255.0f;
-    [colorBalance1 setHighlights:highlights1];
-    colorBalance1.preserveLuminosity = YES;
     
     
     // Selective Color
@@ -84,31 +57,29 @@
     [selectiveColor1 setYellowsCyan:-3 Magenta:4 Yellow:-11 Black:0];
     
     
-    
     // Selective Color
     VnAdjustmentLayerSelectiveColor* selectiveColor2 = [[VnAdjustmentLayerSelectiveColor alloc] init];
     [selectiveColor2 setRedsCyan:50 Magenta:8 Yellow:9 Black:0];
     [selectiveColor2 setYellowsCyan:13 Magenta:-8 Yellow:-6 Black:0];
     
-    
     // Color Balance
-    VnAdjustmentLayerColorBalance* colorBalance2 = [[VnAdjustmentLayerColorBalance alloc] init];
-    GPUVector3 shadows2;
-    shadows2.one = -7.0f/255.0f;
-    shadows2.two = -7.0f/255.0f;
-    shadows2.three = 9.0f/255.0f;
-    [colorBalance2 setShadows:shadows2];
-    GPUVector3 midtones2;
-    midtones2.one = 4.0f/255.0f;
-    midtones2.two = 2.0f/255.0f;
-    midtones2.three = 10.0f/255.0f;
-    [colorBalance2 setMidtones:midtones2];
-    GPUVector3 highlights2;
-    highlights2.one = -1.0f/255.0f;
-    highlights2.two = 3.0/255.0f;
-    highlights2.three = -13.0f/255.0f;
-    [colorBalance2 setHighlights:highlights2];
-    colorBalance2.preserveLuminosity = YES;
+    VnAdjustmentLayerColorBalance* colorBalance1 = [[VnAdjustmentLayerColorBalance alloc] init];
+    GPUVector3 shadows1;
+    shadows1.one = -7.0f/255.0f;
+    shadows1.two = -7.0f/255.0f;
+    shadows1.three = 9.0f/255.0f;
+    [colorBalance1 setShadows:shadows1];
+    GPUVector3 midtones1;
+    midtones1.one = 4.0f/255.0f;
+    midtones1.two = 2.0f/255.0f;
+    midtones1.three = 10.0f/255.0f;
+    [colorBalance1 setMidtones:midtones1];
+    GPUVector3 highlights1;
+    highlights1.one = -1.0f/255.0f;
+    highlights1.two = 3.0/255.0f;
+    highlights1.three = -13.0f/255.0f;
+    [colorBalance1 setHighlights:highlights1];
+    colorBalance1.preserveLuminosity = YES;
     
     
     // Curve
@@ -135,11 +106,24 @@
     colorBalance3.preserveLuminosity = YES;
     
     
-    // duplicate
-    VnFilterDuplicate* duplicateFilter = [[VnFilterDuplicate alloc] init];
-    duplicateFilter.topLayerOpacity = 0.50f;
-    duplicateFilter.blendingMode = VnBlendingModeSoftLight;
+    // Channel Mixer
+    VnAdjustmentLayerChannelMixerFilter* mixerFilter3 = [[VnAdjustmentLayerChannelMixerFilter alloc] init];
+    [mixerFilter3 setRedChannelRed:106 Green:-18 Blue:12 Constant:0];
+    [mixerFilter3 setGreenChannelRed:0 Green:100 Blue:0 Constant:0];
+    [mixerFilter3 setBlueChannelRed:-22 Green:18 Blue:98 Constant:0];
     
+    
+    // Fill Layer
+    VnAdjustmentLayerGradientColorFill* gradientColor2 = [[VnAdjustmentLayerGradientColorFill alloc] initWithEffectObj:self];
+    [gradientColor2 setStyle:GradientStyleRadial];
+    [gradientColor2 setAngleDegree:0.0f];
+    [gradientColor2 setScalePercent:150];
+    [gradientColor2 setOffsetX:0.0f Y:0.0f];
+    [gradientColor2 addColorRed:12.0f Green:12.0f Blue:71.0f Opacity:0.0f Location:0 Midpoint:50];
+    [gradientColor2 addColorRed:12.0f Green:12.0f Blue:71.0f Opacity:100.0f Location:4096 Midpoint:50];
+    gradientColor2.topLayerOpacity = 0.60f;
+    gradientColor2.blendingMode = VnBlendingModeSoftLight;
+
     self.startFilter = curveFilter1;
     [curveFilter1 addTarget:mixerFilter1];
     [mixerFilter1 addTarget:mixerFilter2];
@@ -148,14 +132,14 @@
     [curveInput addTarget:curveFilter2];
     [curveFilter2 addTarget:curveMerge atTextureLocation:1];
     [curveMerge addTarget:solidColor1];
-    [solidColor1 addTarget:colorBalance1];
-    [colorBalance1 addTarget:selectiveColor1];
+    [solidColor1 addTarget:selectiveColor1];
     [selectiveColor1 addTarget:selectiveColor2];
-    [selectiveColor2 addTarget:colorBalance2];
-    [colorBalance2 addTarget:curveFilter3];
+    [selectiveColor2 addTarget:colorBalance1];
+    [colorBalance1 addTarget:curveFilter3];
     [curveFilter3 addTarget:colorBalance3];
-    [colorBalance3 addTarget:duplicateFilter];
-    self.endFilter = duplicateFilter;
+    [colorBalance3 addTarget:mixerFilter3];
+    [mixerFilter3 addTarget:gradientColor2];
+    self.endFilter = gradientColor2;
 }
 
 @end

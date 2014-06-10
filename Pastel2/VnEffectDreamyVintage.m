@@ -23,6 +23,7 @@
 
 - (void)makeFilterGroup
 {
+    
     // Gradient Map
     VnAdjustmentLayerGradientMap* gradientMap = [[VnAdjustmentLayerGradientMap alloc] init];
     [gradientMap addColorRed:111.0f Green:21.0f Blue:108.0f Opacity:100.0f Location:0 Midpoint:50];
@@ -31,15 +32,22 @@
     
     // Saturation
     VnAdjustmentLayerHueSaturation* saturationFilter = [[VnAdjustmentLayerHueSaturation alloc] init];
-    saturationFilter.saturation = 0.64f;
+    saturationFilter.saturation = -10.0f;
     
     // Curve
     VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"dv1"];
     
+    // Levels
+    VnFilterLevels* levelsFilter1 = [[VnFilterLevels alloc] init];
+    [levelsFilter1 setMin:s255(0.0f) gamma:0.90f max:s255(255.0f) minOut:s255(0.0f) maxOut:s255(255.0f)];
+    levelsFilter1.topLayerOpacity = 1.0f;
+    levelsFilter1.blendingMode = VnBlendingModeSoftLight;
+    
     self.startFilter = gradientMap;
     [gradientMap addTarget:saturationFilter];
     [saturationFilter addTarget:curveFilter];
-    self.endFilter = curveFilter;
+    [curveFilter addTarget:levelsFilter1];
+    self.endFilter = levelsFilter1;
 }
 
 @end

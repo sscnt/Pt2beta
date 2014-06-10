@@ -163,20 +163,26 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
+    //// Dreamy Vintage
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdDreamyVintage;
+    item.name = NSLocalizedString(@"V6", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
+    //// Vivid Vintage
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdVividVintage;
+    item.name = NSLocalizedString(@"V7", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
     //// Velvet Color
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdVelvetColor;
     item.name = NSLocalizedString(@"H3", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
-    
-    //// Dreamy Vintage
-    item = [[PtFtObjectFilterItem alloc] init];
-    item.effectId = VnEffectIdDreamyVintage;
-    item.name = NSLocalizedString(@"L2", nil);
-    item.effectGroup = VnEffectGroupEffects;
-    [_artisticFilters addObject:item];
-    
     
     
     //// Faerie Vintage
@@ -726,6 +732,8 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
             return [VnEffectSweetFlower new];
         case VnEffectIdVelvetColor:
             return [VnEffectVelvetColor new];
+        case VnEffectIdVividVintage:
+            return [VnEffectVividVintage new];
         case VnEffectIdWaldenFaded:
             return [VnEffectWaldenFaded new];
         case VnEffectIdBrannanFaded:

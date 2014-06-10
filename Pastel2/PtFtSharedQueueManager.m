@@ -128,13 +128,22 @@ static PtFtSharedQueueManager* sharedPtFtSharedQueueManager = nil;
 
 - (void)processQueueTypePreview:(PtFtObjectProcessQueue *)queue
 {
-    [self setStartAndEndFiltersWithQueue:queue Multipliers:CGPointMake(1.0f, 1.0f) Adding:CGPointMake(0.0f, 0.0f)];
+    CGSize imageSize = queue.image.size;
+    float tx = 1.0f;
+    float ty = 1.0f;
+    if (imageSize.width > imageSize.height) {
+        tx = imageSize.width / imageSize.height;
+    }
+    if (imageSize.height > imageSize.width) {
+        ty = imageSize.height / imageSize.width;
+    }
+    [self setStartAndEndFiltersWithQueue:queue Multipliers:CGPointMake(1.0f, 1.0f) Adding:CGPointMake(0.0f, 0.0f) ImageSize:imageSize Transform:CGPointMake(tx, ty)];
     dispatch_queue_t q_main = dispatch_get_main_queue();
     __block __weak PtViewControllerFilters* _con = self.delegate;
     dispatch_async(q_main, ^{
         [_con.progressView setProgress:0.60f];
     });
-    if (self.startFilter&&self.endFilter) {
+    if (self.startFilter && self.endFilter) {
         queue.image = [VnEffect processImage:queue.image WithStartFilter:self.startFilter EndFilter:self.endFilter];
     }
     self.startFilter = nil;
@@ -146,19 +155,27 @@ static PtFtSharedQueueManager* sharedPtFtSharedQueueManager = nil;
 
 - (void)processQueueTypeOriginal:(PtFtObjectProcessQueue *)queue
 {
+    CGSize imageSize = [PtSharedApp instance].sizeOfImageToProcess;
+    float tx = 1.0f;
+    float ty = 1.0f;
+    if (imageSize.width > imageSize.height) {
+        tx = imageSize.width / imageSize.height;
+    }
+    if (imageSize.height > imageSize.width) {
+        ty = imageSize.height / imageSize.width;
+    }
     __block __weak PtViewControllerFilters* _con = self.delegate;
     dispatch_queue_t q_main = dispatch_get_main_queue();
     NSMutableArray* parts = self.delegate.originalImageParts;
-    CGSize size = [PtSharedApp instance].sizeOfImageToProcess;
     for (int i = 0; i < parts.count; i++) {
         @autoreleasepool {
+            UIImage* image = [parts objectAtIndex:i];
             CGPoint mult = [PtUtilImage multiplierAtIndex:i];
             CGPoint add = [PtUtilImage addingAtIndex:i];
-            [self setStartAndEndFiltersWithQueue:queue Multipliers:mult Adding:add];
+            [self setStartAndEndFiltersWithQueue:queue Multipliers:mult Adding:add ImageSize:imageSize Transform:CGPointMake(tx, ty)];
             if (self.startFilter == nil) {
                 continue;
             }
-            UIImage* image = [parts objectAtIndex:i];
             if (image) {
                 image = [VnEffect processImage:image WithStartFilter:self.startFilter EndFilter:self.endFilter];
                 [parts replaceObjectAtIndex:i withObject:image];
@@ -175,7 +192,7 @@ static PtFtSharedQueueManager* sharedPtFtSharedQueueManager = nil;
     self.endFilter = nil;
 }
 
-- (void)setStartAndEndFiltersWithQueue:(PtFtObjectProcessQueue *)queue Multipliers:(CGPoint)mult Adding:(CGPoint)add
+- (void)setStartAndEndFiltersWithQueue:(PtFtObjectProcessQueue *)queue Multipliers:(CGPoint)mult Adding:(CGPoint)add ImageSize:(CGSize)imageSize Transform:(CGPoint)transform
 {
     VnImageFilter* startFilter;
     VnImageFilter* endFilter;
@@ -190,8 +207,10 @@ static PtFtSharedQueueManager* sharedPtFtSharedQueueManager = nil;
             effect.multiplierY = mult.y;
             effect.addingX = add.x;
             effect.addingY = add.y;
+            effect.imageSize = imageSize;
+            effect.transformX = transform.x;
+            effect.transformY = transform.y;
             [effect makeFilterGroup];
-            effect.imageSize = queue.image.size;
             VnFilterPassThrough* inputFilter = [[VnFilterPassThrough alloc] init];
             VnImageNormalBlendFilter* blendFilter = [[VnImageNormalBlendFilter alloc] init];
             [inputFilter addTarget:blendFilter];
@@ -212,8 +231,10 @@ static PtFtSharedQueueManager* sharedPtFtSharedQueueManager = nil;
             effect.multiplierY = mult.y;
             effect.addingX = add.x;
             effect.addingY = add.y;
+            effect.imageSize = imageSize;
+            effect.transformX = transform.x;
+            effect.transformY = transform.y;
             [effect makeFilterGroup];
-            effect.imageSize = queue.image.size;
             if (startFilter) {
                 VnImageNormalBlendFilter* blendFilter = [[VnImageNormalBlendFilter alloc] init];
                 [endFilter addTarget:blendFilter];
@@ -242,8 +263,10 @@ static PtFtSharedQueueManager* sharedPtFtSharedQueueManager = nil;
             effect.multiplierY = mult.y;
             effect.addingX = add.x;
             effect.addingY = add.y;
+            effect.imageSize = imageSize;
+            effect.transformX = transform.x;
+            effect.transformY = transform.y;
             [effect makeFilterGroup];
-            effect.imageSize = queue.image.size;
             if (startFilter) {
                 VnImageNormalBlendFilter* blendFilter = [[VnImageNormalBlendFilter alloc] init];
                 [endFilter addTarget:blendFilter];

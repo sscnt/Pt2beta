@@ -22,8 +22,7 @@
 - (void)makeFilterGroup
 {
     // Fill Layer
-    VnAdjustmentLayerGradientColorFill* gradientColor = [[VnAdjustmentLayerGradientColorFill alloc] init];
-    [gradientColor forceProcessingAtSize:self.imageSize];
+    VnAdjustmentLayerGradientColorFill* gradientColor = [[VnAdjustmentLayerGradientColorFill alloc] initWithEffectObj:self];
     [gradientColor setStyle:GradientStyleLinear];
     [gradientColor setAngleDegree:-131];
     [gradientColor setScalePercent:80];
@@ -34,10 +33,6 @@
     [gradientColor addColorRed:255.0f Green:185.0f Blue:141.0f Opacity:22.0f Location:4096 Midpoint:50];
     gradientColor.topLayerOpacity = 0.50f;
     gradientColor.blendingMode = VnBlendingModeScreen;
-    gradientColor.addingX = self.addingX;
-    gradientColor.addingY = self.addingY;
-    gradientColor.multiplierX = self.multiplierX;
-    gradientColor.multiplierY = self.multiplierY;
     
     self.startFilter = self.endFilter = gradientColor;
 

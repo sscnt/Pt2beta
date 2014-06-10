@@ -31,29 +31,26 @@
     // Photo Filter
     VnAdjustmentLayerPhotoFilter* photoFilter1 = [[VnAdjustmentLayerPhotoFilter alloc] init];
     photoFilter1.color = (GPUVector3){s255(236.0f), s255(138.0f), 0.0f};
-    photoFilter1.density = 0.50f;
+    photoFilter1.density = 0.25f;
     photoFilter1.preserveLuminosity = YES;
     photoFilter1.topLayerOpacity = 0.20f;
-    
     
     
     // Fill Layer
     VnFilterSolidColor* solidColor1 = [[VnFilterSolidColor alloc] init];
     [solidColor1 setColorRed:73.0f/255.0f green:9.0f/255.0f blue:133.0f/255.0 alpha:1.0f];
-    solidColor1.topLayerOpacity = 0.40f;
+    solidColor1.topLayerOpacity = 0.30f;
     solidColor1.blendingMode = VnBlendingModeLighten;
     
     
     // Fill Layer
     VnFilterSolidColor* solidColor2 = [[VnFilterSolidColor alloc] init];
     [solidColor2 setColorRed:161.0f/255.0f green:135.0f/255.0f blue:105.0f/255.0 alpha:1.0f];
-    solidColor2.topLayerOpacity = 0.15f;
+    solidColor2.topLayerOpacity = 0.25f;
     solidColor2.blendingMode = VnBlendingModeLighten;
     
-    
     // Fill Layer
-    VnAdjustmentLayerGradientColorFill* gradientColor1 = [[VnAdjustmentLayerGradientColorFill alloc] init];
-    [gradientColor1 forceProcessingAtSize:self.imageSize];
+    VnAdjustmentLayerGradientColorFill* gradientColor1 = [[VnAdjustmentLayerGradientColorFill alloc] initWithEffectObj:self];
     [gradientColor1 setStyle:GradientStyleRadial];
     [gradientColor1 setAngleDegree:0.0f];
     [gradientColor1 setScalePercent:124];
@@ -62,15 +59,10 @@
     [gradientColor1 addColorRed:187.0f Green:175.0f Blue:163.0f Opacity:100.0f Location:4096 Midpoint:50];
     gradientColor1.topLayerOpacity = 0.14f;
     gradientColor1.blendingMode = VnBlendingModeDifference;
-    gradientColor1.addingX = self.addingX;
-    gradientColor1.addingY = self.addingY;
-    gradientColor1.multiplierX = self.multiplierX;
-    gradientColor1.multiplierY = self.multiplierY;
+    
     
     // Fill Layer
-    
-    VnAdjustmentLayerGradientColorFill* gradientColor2 = [[VnAdjustmentLayerGradientColorFill alloc] init];
-    [gradientColor2 forceProcessingAtSize:self.imageSize];
+    VnAdjustmentLayerGradientColorFill* gradientColor2 = [[VnAdjustmentLayerGradientColorFill alloc] initWithEffectObj:self];
     [gradientColor2 setStyle:GradientStyleRadial];
     [gradientColor2 setAngleDegree:0.0f];
     [gradientColor2 setScalePercent:119];
@@ -79,11 +71,6 @@
     [gradientColor2 addColorRed:0.0f Green:0.0f Blue:0.0f Opacity:100.0f Location:4096 Midpoint:50];
     gradientColor2.topLayerOpacity = 0.05f;
     gradientColor2.blendingMode = VnBlendingModeOverlay;
-    gradientColor2.addingX = self.addingX;
-    gradientColor2.addingY = self.addingY;
-    gradientColor2.multiplierX = self.multiplierX;
-    gradientColor2.multiplierY = self.multiplierY;
-    
     
     // Levels
     VnFilterLevels* levelsFilter2 = [[VnFilterLevels alloc] init];
@@ -91,11 +78,12 @@
     levelsFilter2.topLayerOpacity = 0.40f;
     levelsFilter2.blendingMode = VnBlendingModeScreen;
     
-    
+    /*
     // Levels
     VnFilterLevels* levelsFilter3 = [[VnFilterLevels alloc] init];
     [levelsFilter3 setMin:s255(40.0f) gamma:1.05f max:s255(247.0f) minOut:s255(0.0f) maxOut:s255(255.0f)];
     levelsFilter3.topLayerOpacity = 0.80f;
+    */
     
     self.startFilter = levelsFilter1;
     [levelsFilter1 addTarget:photoFilter1];
@@ -104,8 +92,7 @@
     [solidColor2 addTarget:gradientColor1];
     [gradientColor1 addTarget:gradientColor2];
     [gradientColor2 addTarget:levelsFilter2];
-    [levelsFilter2 addTarget:levelsFilter3];
-    self.endFilter = levelsFilter3;
+    self.endFilter = levelsFilter2;
 }
 
 @end

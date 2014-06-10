@@ -68,63 +68,70 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     //// Blur Berry
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdBlueBerry;
-    item.name = NSLocalizedString(@"G1", nil);
+    item.name = NSLocalizedString(@"CP1", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
     //// Donut
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdDonut;
-    item.name = NSLocalizedString(@"G2", nil);
+    item.name = NSLocalizedString(@"CP2", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
     //// Sweet Flower
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdSweetFlower;
-    item.name = NSLocalizedString(@"G3", nil);
+    item.name = NSLocalizedString(@"CP3", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
     //// Bluish Rose
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdBluishRose;
-    item.name = NSLocalizedString(@"G4", nil);
+    item.name = NSLocalizedString(@"CP4", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
     //// Fruit Pop
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdFruitPop;
-    item.name = NSLocalizedString(@"G5", nil);
-    item.effectGroup = VnEffectGroupEffects;
-    [_artisticFilters addObject:item];
-    
-    //// Bellerina
-    item = [[PtFtObjectFilterItem alloc] init];
-    item.effectId = VnEffectIdBellerina;
-    item.name = NSLocalizedString(@"H1", nil);
-    item.effectGroup = VnEffectGroupEffects;
-    [_artisticFilters addObject:item];
-    
-    //// Carnival
-    item = [[PtFtObjectFilterItem alloc] init];
-    item.effectId = VnEffectIdCarnival;
-    item.name = NSLocalizedString(@"H2", nil);
+    item.name = NSLocalizedString(@"CP5", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
     //// Purple Berry
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdPurpleBerry;
-    item.name = NSLocalizedString(@"G6", nil);
+    item.name = NSLocalizedString(@"CP6", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
     //// Green Apple
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdGreenApple;
-    item.name = NSLocalizedString(@"K1", nil);
+    item.name = NSLocalizedString(@"CP7", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
+    //// Bellerina
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdBellerina;
+    item.name = NSLocalizedString(@"FM1", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
+    //// Carnival
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdCarnival;
+    item.name = NSLocalizedString(@"FM2", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
+    //// Weekend
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdWeekend;
+    item.name = NSLocalizedString(@"VA1", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
@@ -156,12 +163,6 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
-    //// Weekend
-    item = [[PtFtObjectFilterItem alloc] init];
-    item.effectId = VnEffectIdWeekend;
-    item.name = NSLocalizedString(@"L3", nil);
-    item.effectGroup = VnEffectGroupEffects;
-    [_artisticFilters addObject:item];
     
     //// Dreamy Creamy
     item = [[PtFtObjectFilterItem alloc] init];
@@ -768,6 +769,7 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
 {
     VnEffect* effect = [self effectByEffectId:effectId];
     if (effect) {
+        effect.imageSize = image.size;
         [effect makeFilterGroup];
         if (opacity == 1.0f) {
             return [VnEffect processImage:image WithStartFilter:effect.startFilter EndFilter:effect.endFilter];

@@ -25,7 +25,7 @@
     // Fill Layer
     VnFilterSolidColor* solidColor1 = [[VnFilterSolidColor alloc] init];
     [solidColor1 setColorRed:109.0f/255.0f green:131.0f/255.0f blue:249.0f/255.0 alpha:1.0f];
-    solidColor1.topLayerOpacity = 0.85f;
+    solidColor1.topLayerOpacity = 0.65f;
     solidColor1.blendingMode = VnBlendingModeSoftLight;
     
     
@@ -45,7 +45,7 @@
     shadows1.three = s255(0.0f);
     [colorBalance1 setShadows:shadows1];
     GPUVector3 midtones1;
-    midtones1.one = s255(7.0f);
+    midtones1.one = s255(5.0f);
     midtones1.two = s255(-27.0f);
     midtones1.three = s255(-24.0f);
     [colorBalance1 setMidtones:midtones1];
@@ -55,8 +55,7 @@
     highlights1.three = s255(-11.0f);
     [colorBalance1 setHighlights:highlights1];
     colorBalance1.preserveLuminosity = YES;
-    
-    
+
     // Fill Layer
     VnFilterSolidColor* solidColor3 = [[VnFilterSolidColor alloc] init];
     [solidColor3 setColorRed:143.0f/255.0f green:139.0f/255.0f blue:69.0f/255.0 alpha:1.0f];
@@ -79,7 +78,8 @@
     [solidColor2 addTarget:colorBalance1];
     [colorBalance1 addTarget:solidColor3];
     [solidColor3 addTarget:solidColor4];
-    self.endFilter = solidColor4;
+    [solidColor4 addTarget:curveFilter];
+    self.endFilter = curveFilter;
     
 }
 

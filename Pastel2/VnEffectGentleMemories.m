@@ -91,8 +91,7 @@
     
     
     // Fill Layer
-    VnAdjustmentLayerGradientColorFill* gradientColor1 = [[VnAdjustmentLayerGradientColorFill alloc] init];
-    [gradientColor1 forceProcessingAtSize:self.imageSize];
+    VnAdjustmentLayerGradientColorFill* gradientColor1 = [[VnAdjustmentLayerGradientColorFill alloc] initWithEffectObj:self];
     [gradientColor1 setStyle:GradientStyleLinear];
     [gradientColor1 setAngleDegree:-63.0f];
     [gradientColor1 setScalePercent:150];
@@ -100,12 +99,7 @@
     [gradientColor1 addColorRed:255.0f Green:255.0f Blue:255.0f Opacity:100.0f Location:0 Midpoint:50];
     [gradientColor1 addColorRed:255.0f Green:255.0f Blue:255.0f Opacity:0.0f Location:4096 Midpoint:50];
     gradientColor1.topLayerOpacity = 0.35f;
-    gradientColor1.blendingMode = VnBlendingModeScreen;
-    gradientColor1.addingX = self.addingX;
-    gradientColor1.addingY = self.addingY;
-    gradientColor1.multiplierX = self.multiplierX;
-    gradientColor1.multiplierY = self.multiplierY;
-    
+    gradientColor1.blendingMode = VnBlendingModeScreen;    
     
     // Color Balance
     VnAdjustmentLayerColorBalance* colorBalance1 = [[VnAdjustmentLayerColorBalance alloc] init];

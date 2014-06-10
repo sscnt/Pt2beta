@@ -28,6 +28,8 @@ NSString *const kGPUImageGradientColorGeneratorFragmentShaderString = SHADER_STR
  uniform mediump float multiplierY;
  uniform mediump float addingX;
  uniform mediump float addingY;
+ uniform mediump float transformX;
+ uniform mediump float transformY;
  uniform int style;
  
  float round(float a){
@@ -121,7 +123,7 @@ NSString *const kGPUImageGradientColorGeneratorFragmentShaderString = SHADER_STR
  }
 
  vec4 radial(mediump float x, mediump float y){
-     mediump float d = sqrt((x - 0.5) * (x - 0.5) + (y - 0.5) * (y - 0.5)) * 2.0;
+     mediump float d = sqrt((x - 0.5) * transformX * (x - 0.5) * transformX + (y - 0.5) * transformY  * (y - 0.5) * transformY) * 2.0;
      d /= scale;
      return colorAtDistance(d);
  }
@@ -191,9 +193,9 @@ NSString *const kGPUImageGradientColorGeneratorFragmentShaderString = SHADER_STR
  }
  );
 
-
-- (id)init;
+- (id)initWithEffectObj:(VnEffect *)effect
 {
+    
     if (!(self = [super initWithFragmentShaderFromString:kGPUImageGradientColorGeneratorFragmentShaderString]))
     {
         return nil;
@@ -212,10 +214,24 @@ NSString *const kGPUImageGradientColorGeneratorFragmentShaderString = SHADER_STR
     self.style = GradientStyleLinear;
     index = 0;
     
+    [self forceProcessingAtSize:effect.imageSize];
+    self.addingX = effect.addingX;
+    self.addingY = effect.addingY;
+    self.multiplierX = effect.multiplierX;
+    self.multiplierY = effect.multiplierY;
+    self.transformY = effect.transformY;
+    self.transformX = effect.transformX;
+    
     [self setFloat:0.0f forUniform:offsetXUniform program:filterProgram];
     [self setFloat:0.0f forUniform:offsetYUniform program:filterProgram];
     
     return self;
+}
+
+- (id)init;
+{
+    LOG(@"BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN!!!!!!!!!!!!!!!!!!!!!!!");
+    return nil;
 }
 
 - (void)addColorRed:(float)red Green:(float)green Blue:(float)blue Opacity:(float)opacity Location:(int)location Midpoint:(int)midpoint
@@ -280,10 +296,9 @@ NSString *const kGPUImageGradientColorGeneratorFragmentShaderString = SHADER_STR
 
 - (void)forceProcessingAtSize:(CGSize)frameSize;
 {
-    [super forceProcessingAtSize:frameSize];
+    //[super forceProcessingAtSize:frameSize];
     imageWidth = frameSize.width;
     imageHeight = frameSize.height;
-    
     if (!CGSizeEqualToSize(inputTextureSize, CGSizeZero))
     {
         [self newFrameReadyAtTime:kCMTimeIndefinite atIndex:0];
@@ -319,6 +334,16 @@ NSString *const kGPUImageGradientColorGeneratorFragmentShaderString = SHADER_STR
 - (void)setMultiplierY:(float)multiplierY
 {
     [self setFloat:multiplierY forUniformName:@"multiplierY"];
+}
+
+- (void)setTransformX:(float)transformX
+{
+    [self setFloat:transformX forUniformName:@"transformX"];
+}
+
+- (void)setTransformY:(float)transformY
+{
+    [self setFloat:transformY forUniformName:@"transformY"];
 }
 
 @end

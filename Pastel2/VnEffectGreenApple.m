@@ -68,6 +68,7 @@
     [selectiveColor2 setRedsCyan:15 Magenta:14 Yellow:8 Black:0];
     [selectiveColor2 setMagentasCyan:-15 Magenta:20 Yellow:-11 Black:0];
     
+    
     // Levels
     VnFilterLevels* levelsFilter1 = [[VnFilterLevels alloc] init];
     [levelsFilter1 setRedMin:s255(16.0f) gamma:0.62f max:s255(255.0f) minOut:s255(0.0f) maxOut:s255(255.0f)];
@@ -100,7 +101,8 @@
     [curveInput2 addTarget:curveFilter2];
     [curveFilter2 addTarget:curveMerge2 atTextureLocation:1];
     [curveMerge2 addTarget:selectiveColor2];
-    [selectiveColor2 addTarget:curveInput3];
+    [selectiveColor2 addTarget:levelsFilter1];
+    [levelsFilter1 addTarget:curveInput3];
     [curveInput3 addTarget:curveMerge3];
     [curveInput3 addTarget:curveFilter3];
     [curveFilter3 addTarget:curveMerge3 atTextureLocation:1];

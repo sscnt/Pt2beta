@@ -21,13 +21,11 @@
 
 - (void)makeFilterGroup
 {
-    
     // Levels
     VnFilterLevels* levelsFilter1 = [[VnFilterLevels alloc] init];
     [levelsFilter1 setMin:s255(0.0f) gamma:0.92f max:s255(255.0f) minOut:s255(0.0f) maxOut:s255(255.0f)];
     levelsFilter1.topLayerOpacity = 0.20f;
     levelsFilter1.blendingMode = VnBlendingModeScreen;
-    
     
     // Levels
     VnFilterLevels* levelsFilter2 = [[VnFilterLevels alloc] init];
@@ -35,15 +33,12 @@
     levelsFilter2.topLayerOpacity = 0.75;
     levelsFilter2.blendingMode = VnBlendingModeSoftLight;
     
-    
     // Photo Filter
     VnAdjustmentLayerPhotoFilter* photoFilter1 = [[VnAdjustmentLayerPhotoFilter alloc] init];
     photoFilter1.color = (GPUVector3){s255(236.0f), s255(138.0f), 0.0f};
-    photoFilter1.density = 0.50f;
+    photoFilter1.density = 0.25f;
     photoFilter1.preserveLuminosity = YES;
-    photoFilter1.topLayerOpacity = 0.12f;
-    
-    
+    photoFilter1.topLayerOpacity = 0.25f;
     
     // Fill Layer
     VnFilterSolidColor* solidColor1 = [[VnFilterSolidColor alloc] init];
@@ -51,9 +46,8 @@
     solidColor1.topLayerOpacity = 0.04f;
     solidColor1.blendingMode = VnBlendingModeExclusion;
     
-    VnImageNormalBlendFilter* normalFilter = [[VnImageNormalBlendFilter alloc] init];
-    normalFilter.topLayerOpacity = 0.50f;
-    
+    VnImageNormalBlendFilter* levelsMerge = [[VnImageNormalBlendFilter alloc] init];
+    levelsMerge.topLayerOpacity = 0.50f;
     
     // Levels
     VnFilterLevels* levelsFilter3 = [[VnFilterLevels alloc] init];
@@ -64,16 +58,15 @@
     VnFilterLevels* levelsFilter4 = [[VnFilterLevels alloc] init];
     [levelsFilter4 setMin:s255(0.0f) gamma:1.40f max:s255(254.0f) minOut:s255(3.0f) maxOut:s255(255.0f)];
     
-    
     self.startFilter = levelsFilter1;
     [levelsFilter1 addTarget:levelsFilter2];
     [levelsFilter2 addTarget:photoFilter1];
     [photoFilter1 addTarget:solidColor1];
-    [solidColor1 addTarget:normalFilter];
+    [solidColor1 addTarget:levelsMerge];
     [solidColor1 addTarget:levelsFilter3];
     [levelsFilter3 addTarget:levelsFilter4];
-    [levelsFilter4 addTarget:normalFilter atTextureLocation:1];
-    self.endFilter = normalFilter;
+    [levelsFilter4 addTarget:levelsMerge atTextureLocation:1];
+    self.endFilter = levelsMerge;
     
 }
 

@@ -42,8 +42,7 @@
     solidColor1.blendingMode = VnBlendingModeExclusion;
     
     // Gradient
-    VnAdjustmentLayerGradientColorFill* gradientColor1 = [[VnAdjustmentLayerGradientColorFill alloc] init];
-    [gradientColor1 forceProcessingAtSize:self.imageSize];
+    VnAdjustmentLayerGradientColorFill* gradientColor1 = [[VnAdjustmentLayerGradientColorFill alloc] initWithEffectObj:self];
     [gradientColor1 setStyle:GradientStyleRadial];
     [gradientColor1 setAngleDegree:0];
     [gradientColor1 setScalePercent:150];
@@ -52,10 +51,6 @@
     [gradientColor1 addColorRed:128.0f Green:123.0f Blue:59.0f Opacity:0.0f Location:4096 Midpoint:50];
     gradientColor1.topLayerOpacity = 0.38f;
     gradientColor1.blendingMode = VnBlendingModeOverlay;
-    gradientColor1.addingX = self.addingX;
-    gradientColor1.addingY = self.addingY;
-    gradientColor1.multiplierX = self.multiplierX;
-    gradientColor1.multiplierY = self.multiplierY;
     
     
     

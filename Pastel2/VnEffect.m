@@ -7,6 +7,7 @@
 //
 
 #import "VnEffect.h"
+#import "VnEffect.h"
 
 @implementation VnEffect
 

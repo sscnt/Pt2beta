@@ -42,25 +42,18 @@
     curveMerge.topLayerOpacity = 0.80f;
     
     // Fill Layer
-    VnAdjustmentLayerGradientColorFill* gradientColor1 = [[VnAdjustmentLayerGradientColorFill alloc] init];
-    [gradientColor1 forceProcessingAtSize:self.imageSize];
+    VnAdjustmentLayerGradientColorFill* gradientColor1 = [[VnAdjustmentLayerGradientColorFill alloc] initWithEffectObj:self];
     [gradientColor1 setStyle:GradientStyleRadial];
     [gradientColor1 setAngleDegree:0.0f];
-    [gradientColor1 setScalePercent:150];
+    [gradientColor1 setScalePercent:200];
     [gradientColor1 setOffsetX:0.0f Y:0.0f];
     [gradientColor1 addColorRed:229.0f Green:193.0f Blue:75.0f Opacity:0.0f Location:0 Midpoint:50];
     [gradientColor1 addColorRed:114.0f Green:122.0f Blue:235.0f Opacity:100.0f Location:4096 Midpoint:50];
-    gradientColor1.topLayerOpacity = 0.50f;
+    gradientColor1.topLayerOpacity = 0.50;
     gradientColor1.blendingMode = VnBlendingModeSoftLight;
-    gradientColor1.addingX = self.addingX;
-    gradientColor1.addingY = self.addingY;
-    gradientColor1.multiplierX = self.multiplierX;
-    gradientColor1.multiplierY = self.multiplierY;
-    
     
     
     // Color Balance
-    
     VnAdjustmentLayerColorBalance* colorBalance1 = [[VnAdjustmentLayerColorBalance alloc] init];
     GPUVector3 shadows1;
     shadows1.one = s255(0.0f);
@@ -85,6 +78,8 @@
     [solidColor3 setColorRed:0.0f/255.0f green:0.0f/255.0f blue:40.0f/255.0 alpha:1.0f];
     solidColor3.topLayerOpacity = 0.30f;
     solidColor3.blendingMode = VnBlendingModeExclusion;
+  
+    
     
     // Color Balance
     VnAdjustmentLayerColorBalance* colorBalance2 = [[VnAdjustmentLayerColorBalance alloc] init];
@@ -99,8 +94,8 @@
     midtones2.three = s255(3.0f);
     [colorBalance2 setMidtones:midtones2];
     GPUVector3 highlights2;
-    highlights2.one = s255(7.0f);
-    highlights2.two = s255(-9.0f);
+    highlights2.one = s255(11.0f);
+    highlights2.two = s255(-12.0f);
     highlights2.three = s255(8.0f);
     [colorBalance2 setHighlights:highlights2];
     colorBalance2.preserveLuminosity = YES;

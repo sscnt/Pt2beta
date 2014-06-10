@@ -37,6 +37,8 @@
 @property (nonatomic, assign) float multiplierY;
 @property (nonatomic, assign) float addingX;
 @property (nonatomic, assign) float addingY;
+@property (nonatomic, assign) float transformX;
+@property (nonatomic, assign) float transformY;
 
 + (UIImage*)processImage:(UIImage*)image WithStartFilter:(VnImageFilter*)startFilter EndFilter:(VnImageFilter*)endFilter;
 

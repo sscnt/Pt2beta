@@ -8,6 +8,9 @@
 
 #import "VnImageFilter.h"
 
+
+@class VnEffect;
+
 typedef NS_ENUM(NSInteger, GradientStyle){
     GradientStyleLinear = 1,
     GradientStyleRadial,
@@ -50,6 +53,8 @@ extern NSString *const kGPUImageGradientColorGeneratorFragmentShaderString;
 @property (nonatomic, assign) float multiplierY;
 @property (nonatomic, assign) float addingX;
 @property (nonatomic, assign) float addingY;
+@property (nonatomic, assign) float transformX;
+@property (nonatomic, assign) float transformY;
 
 /*
  * red      0.0 - 255.0
@@ -77,5 +82,7 @@ extern NSString *const kGPUImageGradientColorGeneratorFragmentShaderString;
 
 
 - (void)setup;
+
+- (id)initWithEffectObj:(VnEffect*)effect;
 
 @end

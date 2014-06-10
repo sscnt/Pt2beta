@@ -25,8 +25,7 @@
 {
     
     // Gradient Map
-    VnAdjustmentLayerGradientColorFill* gradientColor = [[VnAdjustmentLayerGradientColorFill alloc] init];
-    [gradientColor forceProcessingAtSize:self.imageSize];
+    VnAdjustmentLayerGradientColorFill* gradientColor = [[VnAdjustmentLayerGradientColorFill alloc] initWithEffectObj:self];
     [gradientColor setStyle:GradientStyleLinear];
     [gradientColor setAngleDegree:170.0f];
     [gradientColor setScalePercent:101];
@@ -35,10 +34,6 @@
     [gradientColor addColorRed:249.0f Green:102.0f Blue:102.0f Opacity:100.0f Location:2159 Midpoint:50];
     [gradientColor addColorRed:253.0f Green:223.0f Blue:207.0f Opacity:0.0f Location:4096 Midpoint:50];
     gradientColor.blendingMode = VnBlendingModeScreen;
-    gradientColor.addingX = self.addingX;
-    gradientColor.addingY = self.addingY;
-    gradientColor.multiplierX = self.multiplierX;
-    gradientColor.multiplierY = self.multiplierY;
     
     self.startFilter = gradientColor;
     self.endFilter = gradientColor;

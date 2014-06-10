@@ -23,8 +23,12 @@
 
 - (void)makeFilterGroup
 {
+    VnFilterDuplicate* duplicateFilter = [[VnFilterDuplicate alloc] init];
+    duplicateFilter.topLayerOpacity = 0.30f;
+    duplicateFilter.blendingMode = VnBlendingModeSoftLight;
+    
     // Curve
-    VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"cr1"];
+    VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"cvrs"];
     
     
     // Fill Layer

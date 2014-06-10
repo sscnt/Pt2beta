@@ -13,6 +13,7 @@
 		580E4F0D194757E50014B7C8 /* vvv3.acv in Resources */ = {isa = PBXBuildFile; fileRef = 580E4F0A194757E50014B7C8 /* vvv3.acv */; };
 		580E4F0F19475F3D0014B7C8 /* vvv1.acv in Resources */ = {isa = PBXBuildFile; fileRef = 580E4F0E19475F3D0014B7C8 /* vvv1.acv */; };
 		580E4F11194760110014B7C8 /* dv1.acv in Resources */ = {isa = PBXBuildFile; fileRef = 580E4F10194760110014B7C8 /* dv1.acv */; };
+		580E4F1319476B7B0014B7C8 /* cvrs.acv in Resources */ = {isa = PBXBuildFile; fileRef = 580E4F1219476B7B0014B7C8 /* cvrs.acv */; };
 		583668AA1942AD0B00E55C7C /* VnEffectBlueBerry.m in Sources */ = {isa = PBXBuildFile; fileRef = 583668A91942AD0B00E55C7C /* VnEffectBlueBerry.m */; };
 		583668F31942AE9D00E55C7C /* VnEffectBluishRose.m in Sources */ = {isa = PBXBuildFile; fileRef = 583668AC1942AE9D00E55C7C /* VnEffectBluishRose.m */; };
 		583668F41942AE9D00E55C7C /* VnEffectCarnival.m in Sources */ = {isa = PBXBuildFile; fileRef = 583668AE1942AE9D00E55C7C /* VnEffectCarnival.m */; };
@@ -290,6 +291,7 @@
 		580E4F0A194757E50014B7C8 /* vvv3.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = vvv3.acv; sourceTree = "<group>"; };
 		580E4F0E19475F3D0014B7C8 /* vvv1.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = vvv1.acv; sourceTree = "<group>"; };
 		580E4F10194760110014B7C8 /* dv1.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = dv1.acv; sourceTree = "<group>"; };
+		580E4F1219476B7B0014B7C8 /* cvrs.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = cvrs.acv; sourceTree = "<group>"; };
 		583668A81942AD0B00E55C7C /* VnEffectBlueBerry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectBlueBerry.h; sourceTree = "<group>"; };
 		583668A91942AD0B00E55C7C /* VnEffectBlueBerry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectBlueBerry.m; sourceTree = "<group>"; };
 		583668AB1942AE9D00E55C7C /* VnEffectBluishRose.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectBluishRose.h; sourceTree = "<group>"; };
@@ -1065,6 +1067,7 @@
 				58F3E3B81940C5F1001AEB8D /* clbs.acv */,
 				58F3E3B91940C5F1001AEB8D /* cvm.acv */,
 				58F3E3BA1940C5F1001AEB8D /* cr1.acv */,
+				580E4F1219476B7B0014B7C8 /* cvrs.acv */,
 				58F3E3BB1940C5F1001AEB8D /* dc3.acv */,
 				58F3E3BC1940C5F1001AEB8D /* dc2.acv */,
 				58F3E3BD1940C5F1001AEB8D /* dc1.acv */,
@@ -1703,6 +1706,7 @@
 				58F3E3F61940C5F1001AEB8D /* dc2.acv in Resources */,
 				58F3E3FA1940C5F1001AEB8D /* fv1.acv in Resources */,
 				58F3E4011940C5F1001AEB8D /* fxifd.acv in Resources */,
+				580E4F1319476B7B0014B7C8 /* cvrs.acv in Resources */,
 				58F3E3F51940C5F1001AEB8D /* dc3.acv in Resources */,
 				58F3E3FF1940C5F1001AEB8D /* fs1600.acv in Resources */,
 				58F3E4201940C5F1001AEB8D /* swfl2.acv in Resources */,

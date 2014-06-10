@@ -177,6 +177,20 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
+    //// Faerie Vintage
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdFaerieVintage;
+    item.name = NSLocalizedString(@"V8", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+
+    //// Rusticana
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdCavalleriaRusticana;
+    item.name = NSLocalizedString(@"V9", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
     //// Velvet Color
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdVelvetColor;
@@ -184,14 +198,7 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
-    
-    //// Faerie Vintage
-    item = [[PtFtObjectFilterItem alloc] init];
-    item.effectId = VnEffectIdFaerieVintage;
-    item.name = NSLocalizedString(@"L5", nil);
-    item.effectGroup = VnEffectGroupEffects;
-    [_artisticFilters addObject:item];
-    
+        
     //// Gentle Memories
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdGentleMemories;
@@ -213,17 +220,10 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
-    //// Joyful
+    //// Pink Bubble Tea
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdPinkBubbleTea;
     item.name = NSLocalizedString(@"G8", nil);
-    item.effectGroup = VnEffectGroupEffects;
-    [_artisticFilters addObject:item];
-    
-    //// Rusticana
-    item = [[PtFtObjectFilterItem alloc] init];
-    item.effectId = VnEffectIdCavalleriaRusticana;
-    item.name = NSLocalizedString(@"L7", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     

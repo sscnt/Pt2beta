@@ -171,6 +171,13 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
+    //// Vintage Film
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdGlitterShine;
+    item.name = NSLocalizedString(@"FX1", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
     //// Pink Bubble Tea
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdPinkBubbleTea;
@@ -754,6 +761,8 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
             return [VnEffectHappy new];
         case VnEffectIdVintageFilm:
             return [VnEffectVintageFilm new];
+        case VnEffectIdGlitterShine:
+            return [VnEffectGlitterShine new];
         case VnEffectIdWaldenFaded:
             return [VnEffectWaldenFaded new];
         case VnEffectIdBrannanFaded:

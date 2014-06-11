@@ -68,6 +68,7 @@
 #import "VnEffectSweetFlower.h"
 #import "VnEffectFresnoFaded.h"
 #import "VnEffectWaldenFaded.h"
+#import "VnEffectGlitterShine.h"
 #import "VnEffectAmaroFaded.h"
 #import "VnEffectLanikaiFaded.h"
 #import "VnEffectFrontpageFaded.h"

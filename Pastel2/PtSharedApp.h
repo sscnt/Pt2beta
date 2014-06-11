@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "LUKeychainAccess.h"
 
 typedef NS_ENUM(NSInteger, PtSharedAppThemeColor){
     PtSharedAppThemeColorDefault = 1,
@@ -16,8 +17,8 @@ typedef NS_ENUM(NSInteger, PtSharedAppThemeColor){
 
 @interface PtSharedApp : NSObject
 
-@property (nonatomic, assign) BOOL didUnlockExtraEffects;
-@property (nonatomic, assign) BOOL didBuyEffectsPack1;
+@property (nonatomic, assign) BOOL didUnlockBonusFilterPack;
+@property (nonatomic, assign) BOOL didBuyFiltersPack1;
 @property (nonatomic, assign) BOOL startInCameraMode;
 @property (nonatomic, assign) BOOL shootAndShare;
 @property (nonatomic, assign) BOOL useDefaultCameraApp;

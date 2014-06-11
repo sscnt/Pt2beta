@@ -14,8 +14,7 @@
 {
     self = [super init];
     if(self){
-        self.defaultOpacity = 1.0f;
-        self.faceOpacity = 0.80f;
+        self.defaultOpacity = 0.80f;
         self.effectId = VnEffectIdJoyful;
     }
     return self;
@@ -97,9 +96,9 @@
     
     // Channel Mixer
     VnAdjustmentLayerChannelMixerFilter* mixerFilter2 = [[VnAdjustmentLayerChannelMixerFilter alloc] init];
-    [mixerFilter2 setRedChannelRed:114 Green:12 Blue:-28 Constant:0];
+    [mixerFilter2 setRedChannelRed:119 Green:12 Blue:-28 Constant:0];
     [mixerFilter2 setGreenChannelRed:4 Green:92 Blue:2 Constant:0];
-    [mixerFilter2 setBlueChannelRed:-2 Green:-8 Blue:104 Constant:0];
+    [mixerFilter2 setBlueChannelRed:-2 Green:-8 Blue:100 Constant:0];
     
     
     // Fill Layer

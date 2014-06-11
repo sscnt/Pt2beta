@@ -95,7 +95,7 @@
     
     // Gradient Map
     VnAdjustmentLayerGradientMap* gradientMap1 = [[VnAdjustmentLayerGradientMap alloc] init];
-    [gradientMap1 addColorRed:28.0f Green:64.0f Blue:100.0f Opacity:100.0f Location:0 Midpoint:50];
+    [gradientMap1 addColorRed:107.0f Green:107.0f Blue:107.0f Opacity:100.0f Location:0 Midpoint:50];
     [gradientMap1 addColorRed:14.0f Green:37.0f Blue:68.0f Opacity:100.0f Location:4096 Midpoint:50];
     gradientMap1.topLayerOpacity = 0.25f;
     gradientMap1.blendingMode = VnBlendingModeExclusion;

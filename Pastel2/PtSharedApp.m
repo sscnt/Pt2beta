@@ -11,7 +11,11 @@
 @implementation PtSharedApp
 
 static PtSharedApp* sharedPtSharedApp = nil;
+
 NSString* const pathForOriginalImage = @"tmp/original_image.jpg";
+
+NSString* const keyChainKeyBonusFilterPack = @"jp.shelbyapps.pastel2.keychain.pack.bonus.1";
+NSString* const keyChainKeyPremiumFilterPack1 = @"jp.shelbyapps.pastel2.keychain.pack.premium.1";
 
 + (PtSharedApp*)instance {
 	@synchronized(self) {
@@ -70,45 +74,38 @@ NSString* const pathForOriginalImage = @"tmp/original_image.jpg";
 
 #pragma mark settings
 
-//// エフェクトのアンロック
-- (BOOL)didUnlockExtraEffects
+//// ボーナスフィルターパック
+- (BOOL)didUnlockBonusFilterPack
 {
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    BOOL f = [ud boolForKey:@"unlocked"];
+    LUKeychainAccess* kc = [LUKeychainAccess standardKeychainAccess];
+    BOOL f = [kc boolForKey:keyChainKeyBonusFilterPack];
     if (f == YES) {
         return YES;
     }
     return NO;
 }
 
-- (void)setDidUnlockExtraEffects:(BOOL)didUnlockExtraEffects
+- (void)setDidUnlockBonusFilterPack:(BOOL)didUnlockExtraEffects
 {
-    if (didUnlockExtraEffects) {
-        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-        [ud setBool:YES forKey:@"unlocked"];
-        [ud synchronize];
-    }
+    LUKeychainAccess* kc = [LUKeychainAccess standardKeychainAccess];
+    [kc setBool:YES forKey:keyChainKeyBonusFilterPack];
 }
 
-
-//// エフェクトの購入
-- (BOOL)didBuyEffectsPack1
+//// プレミアムフィルターパック1
+- (BOOL)didBuyFiltersPack1
 {
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    BOOL f = [ud boolForKey:@"buy_pack_1"];
+    LUKeychainAccess* kc = [LUKeychainAccess standardKeychainAccess];
+    BOOL f = [kc boolForKey:keyChainKeyPremiumFilterPack1];
     if (f == YES) {
         return YES;
     }
     return NO;
 }
 
-- (void)setDidBuyEffectsPack1:(BOOL)didBuyEffectsPack1
+- (void)setDidBuyFiltersPack1:(BOOL)didBuyFiltersPack1
 {
-    if (didBuyEffectsPack1) {
-        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-        [ud setBool:YES forKey:@"buy_pack_1"];
-        [ud synchronize];
-    }
+    LUKeychainAccess* kc = [LUKeychainAccess standardKeychainAccess];
+    [kc setBool:YES forKey:keyChainKeyPremiumFilterPack1];
 }
 
 //// 起動時にカメラモード

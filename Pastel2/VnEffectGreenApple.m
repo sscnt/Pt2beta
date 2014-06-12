@@ -25,10 +25,8 @@
 {
     
     // Curve
-    VnFilterPassThrough* curveInput1 = [[VnFilterPassThrough alloc] init];
-    VnImageNormalBlendFilter* curveMerge1 = [[VnImageNormalBlendFilter alloc] init];
     VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"grap1"];
-    curveMerge1.topLayerOpacity = 0.85f;
+    curveFilter1.topLayerOpacity = 0.85f;
     
     // Selective Color
     VnAdjustmentLayerSelectiveColor* selectiveColor1 = [[VnAdjustmentLayerSelectiveColor alloc] init];
@@ -58,10 +56,8 @@
     
     
     // Curve
-    VnFilterPassThrough* curveInput2 = [[VnFilterPassThrough alloc] init];
-    VnImageNormalBlendFilter* curveMerge2 = [[VnImageNormalBlendFilter alloc] init];
     VnFilterToneCurve* curveFilter2 = [[VnFilterToneCurve alloc] initWithACV:@"grap2"];
-    curveMerge2.topLayerOpacity = 0.85f;
+    curveFilter2.topLayerOpacity = 0.85f;
     
     // Selective Color
     VnAdjustmentLayerSelectiveColor* selectiveColor2 = [[VnAdjustmentLayerSelectiveColor alloc] init];
@@ -77,40 +73,24 @@
     
     
     // Curve
-    VnFilterPassThrough* curveInput3 = [[VnFilterPassThrough alloc] init];
-    VnImageNormalBlendFilter* curveMerge3 = [[VnImageNormalBlendFilter alloc] init];
     VnFilterToneCurve* curveFilter3 = [[VnFilterToneCurve alloc] initWithACV:@"grap3"];
-    curveMerge3.topLayerOpacity = 0.90f;
+    curveFilter3.topLayerOpacity = 0.90f;
     
     // Curve
-    VnFilterPassThrough* curveInput4 = [[VnFilterPassThrough alloc] init];
-    VnImageNormalBlendFilter* curveMerge4 = [[VnImageNormalBlendFilter alloc] init];
     VnFilterToneCurve* curveFilter4 = [[VnFilterToneCurve alloc] initWithACV:@"grap4"];
-    curveMerge4.topLayerOpacity = 0.65f;
+    curveFilter4.topLayerOpacity = 0.65f;
     
-    self.startFilter = curveInput1;
-    [curveInput1 addTarget:curveMerge1];
-    [curveInput1 addTarget:curveFilter1];
-    [curveFilter1 addTarget:curveMerge1 atTextureLocation:1];
-    [curveMerge1 addTarget:selectiveColor1];
+    self.startFilter = curveFilter1;
+    [curveFilter1 addTarget:selectiveColor1];
     [selectiveColor1 addTarget:mixerFilter1];
     [mixerFilter1 addTarget:solidColor1];
     [solidColor1 addTarget:solidColor2];
-    [solidColor2 addTarget:curveInput2];
-    [curveInput2 addTarget:curveMerge2];
-    [curveInput2 addTarget:curveFilter2];
-    [curveFilter2 addTarget:curveMerge2 atTextureLocation:1];
-    [curveMerge2 addTarget:selectiveColor2];
+    [solidColor2 addTarget:curveFilter2];
+    [curveFilter2 addTarget:selectiveColor2];
     [selectiveColor2 addTarget:levelsFilter1];
-    [levelsFilter1 addTarget:curveInput3];
-    [curveInput3 addTarget:curveMerge3];
-    [curveInput3 addTarget:curveFilter3];
-    [curveFilter3 addTarget:curveMerge3 atTextureLocation:1];
-    [curveMerge3 addTarget:curveInput4];
-    [curveInput4 addTarget:curveMerge4];
-    [curveInput4 addTarget:curveFilter4];
-    [curveFilter4 addTarget:curveMerge4 atTextureLocation:1];
-    self.endFilter = curveMerge4;
+    [levelsFilter1 addTarget:curveFilter3];
+    [curveFilter3 addTarget:curveFilter4];
+    self.endFilter = curveFilter4;
 }
 
 @end

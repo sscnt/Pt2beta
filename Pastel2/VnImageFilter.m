@@ -488,19 +488,19 @@ NSString* const kVnImageFilterFragmentShaderString = SHADER_STRING
 
 - (void)setTopLayerOpacity:(float)topLayerOpacity
 {
-    topLayerOpacityUniform = [filterProgram uniformIndex:@"topLayerOpacity"];
+    //topLayerOpacityUniform = [filterProgram uniformIndex:@"topLayerOpacity"];
     _topLayerOpacity = topLayerOpacity;
-    [self setFloat:topLayerOpacity forUniform:topLayerOpacityUniform program:filterProgram];
-    //[self setFloat:topLayerOpacity forUniformName:@"topLayerOpacity"];
+    //[self setFloat:topLayerOpacity forUniform:topLayerOpacityUniform program:filterProgram];
+    [self setFloat:topLayerOpacity forUniformName:@"topLayerOpacity"];
 }
 
 - (void)setBlendingMode:(VnBlendingMode)blendingMode
 {
-    blendingModeUniform = [filterProgram uniformIndex:@"blendingMode"];
+    //blendingModeUniform = [filterProgram uniformIndex:@"blendingMode"];
     _blendingMode = blendingMode;
-    [self setInteger:blendingMode forUniform:blendingModeUniform program:filterProgram];
+    //[self setInteger:blendingMode forUniform:blendingModeUniform program:filterProgram];
     //LOG(@"uniform: %d", blendingModeUniform);
-    //[self setInteger:blendingMode forUniformName:@"blendingMode"];
+    [self setInteger:blendingMode forUniformName:@"blendingMode"];
 }
 
 

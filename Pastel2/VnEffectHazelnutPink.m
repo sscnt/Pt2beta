@@ -25,14 +25,10 @@
 {
     [super makeFilterGroup];
     
-    //// Input
-    VnFilterPassThrough* curveInput = [[VnFilterPassThrough alloc] init];
-    VnImageNormalBlendFilter* curveMerge = [[VnImageNormalBlendFilter alloc] init];
     
     // Curve
     VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"hzlp1"];
-    curveMerge.topLayerOpacity = 0.50f;
-    
+    curveFilter1.topLayerOpacity = 0.50f;
     
     
     // Fill Layer
@@ -96,11 +92,8 @@
     solidColor4.topLayerOpacity = 0.15f;
     solidColor4.blendingMode = VnBlendingModeHue;
     
-    [self.endFilter addTarget:curveInput];
-    [curveInput addTarget:curveMerge];
-    [curveInput addTarget:curveFilter1];
-    [curveFilter1 addTarget:curveMerge atTextureLocation:1];
-    [curveMerge addTarget:solidColor1];
+    [self.endFilter addTarget:curveFilter1];
+    [curveFilter1 addTarget:solidColor1];
     [solidColor1 addTarget:gradientColor1];
     [gradientColor1 addTarget:colorBalance1];
     [colorBalance1 addTarget:solidColor2];

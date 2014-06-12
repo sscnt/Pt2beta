@@ -263,6 +263,9 @@
 		58F3E5361940CA6C001AEB8D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F3E5351940CA6C001AEB8D /* OpenGLES.framework */; };
 		58F3E5381940CA74001AEB8D /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F3E5371940CA74001AEB8D /* CoreVideo.framework */; };
 		58F3E53A1940CA7D001AEB8D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F3E5391940CA7D001AEB8D /* CoreMedia.framework */; };
+		58F6FD2119498B8200823407 /* gtshn4.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58F6FD2019498B8200823407 /* gtshn4.acv */; };
+		58F6FD2419498D1900823407 /* VnEffectVintageSummer.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F6FD2319498D1900823407 /* VnEffectVintageSummer.m */; };
+		58F6FD261949905700823407 /* vnsm.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58F6FD251949905700823407 /* vnsm.acv */; };
 		58FD70161941B9A200D1E64F /* PtUtilImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FD70151941B9A200D1E64F /* PtUtilImage.m */; };
 		58FE6ED21945ED4C00B61E72 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FE6ED11945ED4C00B61E72 /* Social.framework */; };
 /* End PBXBuildFile section */
@@ -713,6 +716,10 @@
 		58F3E5351940CA6C001AEB8D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		58F3E5371940CA74001AEB8D /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		58F3E5391940CA7D001AEB8D /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		58F6FD2019498B8200823407 /* gtshn4.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = gtshn4.acv; sourceTree = "<group>"; };
+		58F6FD2219498D1900823407 /* VnEffectVintageSummer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectVintageSummer.h; sourceTree = "<group>"; };
+		58F6FD2319498D1900823407 /* VnEffectVintageSummer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectVintageSummer.m; sourceTree = "<group>"; };
+		58F6FD251949905700823407 /* vnsm.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = vnsm.acv; sourceTree = "<group>"; };
 		58FD70141941B9A200D1E64F /* PtUtilImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtUtilImage.h; sourceTree = "<group>"; };
 		58FD70151941B9A200D1E64F /* PtUtilImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PtUtilImage.m; sourceTree = "<group>"; };
 		58FE6ED11945ED4C00B61E72 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -966,6 +973,8 @@
 				583668CC1942AE9D00E55C7C /* VnEffectPurpleBerry.m */,
 				583668CD1942AE9D00E55C7C /* VnEffectVelvetColor.h */,
 				583668CE1942AE9D00E55C7C /* VnEffectVelvetColor.m */,
+				58F6FD2219498D1900823407 /* VnEffectVintageSummer.h */,
+				58F6FD2319498D1900823407 /* VnEffectVintageSummer.m */,
 				580E4F02194756D90014B7C8 /* VnEffectVividVintage.h */,
 				580E4F03194756D90014B7C8 /* VnEffectVividVintage.m */,
 				580E727D19485DD200615D31 /* VnEffectVintageFilm.h */,
@@ -1124,6 +1133,7 @@
 				5801CF4119488218007558E5 /* gtshn1.acv */,
 				5801CF4819488606007558E5 /* gtshn2.acv */,
 				5801CF4219488218007558E5 /* gtshn3.acv */,
+				58F6FD2019498B8200823407 /* gtshn4.acv */,
 				58F3E3D41940C5F1001AEB8D /* Hzl1.acv */,
 				58AAE036194332AE003E7B09 /* hzl2.acv */,
 				58F3E3D61940C5F1001AEB8D /* hzlp2.acv */,
@@ -1145,6 +1155,7 @@
 				58F3E3E51940C5F1001AEB8D /* swfl.acv */,
 				58F3E3E61940C5F1001AEB8D /* swfl2.acv */,
 				5809A30319485F0300D48B19 /* vf1.acv */,
+				58F6FD251949905700823407 /* vnsm.acv */,
 				58F3E3E71940C5F1001AEB8D /* wnd.acv */,
 				58F3E3E81940C5F1001AEB8D /* xp2fd.acv */,
 				58F3E3E91940C5F1001AEB8D /* dnt.acv */,
@@ -1701,6 +1712,7 @@
 			files = (
 				58F3E4031940C5F1001AEB8D /* gi3.acv in Resources */,
 				58F3E3F41940C5F1001AEB8D /* cr1.acv in Resources */,
+				58F6FD2119498B8200823407 /* gtshn4.acv in Resources */,
 				58F3E4081940C5F1001AEB8D /* gm3.acv in Resources */,
 				58F3E41E1940C5F1001AEB8D /* qzfd.acv in Resources */,
 				58F3E4161940C5F1001AEB8D /* lnkfd.acv in Resources */,
@@ -1728,6 +1740,7 @@
 				58F3E4091940C5F1001AEB8D /* gm4.acv in Resources */,
 				58F3E4141940C5F1001AEB8D /* kdptr800.acv in Resources */,
 				58F3E4111940C5F1001AEB8D /* hzlp1.acv in Resources */,
+				58F6FD261949905700823407 /* vnsm.acv in Resources */,
 				58F3E4301940C60B001AEB8D /* SVProgressHUD.bundle in Resources */,
 				58F3E4181940C5F1001AEB8D /* olbm.acv in Resources */,
 				58F3E3F11940C5F1001AEB8D /* csmsk.acv in Resources */,
@@ -1818,6 +1831,7 @@
 				58F3E34B1940C56A001AEB8D /* VnAdjustmentLayerHueSaturation.m in Sources */,
 				58F3E47F1940C6F9001AEB8D /* PtFtViewSliderThumb.m in Sources */,
 				58F3E4AB1940C7BB001AEB8D /* PtEdViewImagePreview.m in Sources */,
+				58F6FD2419498D1900823407 /* VnEffectVintageSummer.m in Sources */,
 				583669071942AE9D00E55C7C /* VnEffectWaldenFaded.m in Sources */,
 				58F3E4AC1940C7BB001AEB8D /* PtEdViewImagePreviewScrollView.m in Sources */,
 				58F3E34C1940C56A001AEB8D /* VnAdjustmentLayerChannelMixerFilter.m in Sources */,

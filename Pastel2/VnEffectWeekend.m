@@ -115,10 +115,8 @@
     
     
     // Curve
-    VnFilterPassThrough* curveInput = [[VnFilterPassThrough alloc] init];
-    VnImageNormalBlendFilter* curveMerge = [[VnImageNormalBlendFilter alloc] init];
     VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"wnd"];
-    curveMerge.topLayerOpacity = 0.35f;
+    curveFilter.topLayerOpacity = 0.35f;
     
     self.startFilter = hueSaturation1;
     [hueSaturation1 addTarget:levelsFilter1];
@@ -130,11 +128,8 @@
     [brightnessFilter addTarget:solidColor2];
     [solidColor2 addTarget:gradientColor1];
     [gradientColor1 addTarget:solidColor3];
-    [solidColor3 addTarget:curveInput];
-    [curveInput addTarget:curveMerge];
-    [curveInput addTarget:curveFilter];
-    [curveFilter addTarget:curveMerge atTextureLocation:1];
-    self.endFilter = curveMerge;
+    [solidColor3 addTarget:curveFilter];
+    self.endFilter = curveFilter;
 }
 
 @end

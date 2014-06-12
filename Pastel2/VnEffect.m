@@ -27,12 +27,12 @@
 
 + (UIImage*)processImage:(UIImage *)image WithStartFilter:(VnImageFilter *)startFilter EndFilter:(VnImageFilter *)endFilter
 {
-    @autoreleasepool {
-        GPUImagePicture* pic = [[GPUImagePicture alloc] initWithImage:image];
-        [pic addTarget:startFilter];
-        [pic processImage];
-        image = [endFilter imageFromCurrentlyProcessedOutputWithOrientation:UIImageOrientationUp];
-    }
+    GPUImagePicture* pic = [[GPUImagePicture alloc] initWithImage:image];
+    [pic addTarget:startFilter];
+    [pic processImage];
+    image = [endFilter imageFromCurrentlyProcessedOutputWithOrientation:UIImageOrientationUp];
+    [endFilter deleteOutputTexture];
+    [pic deleteOutputTexture];    
     return image;
 }
 /*

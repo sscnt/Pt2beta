@@ -23,10 +23,8 @@
 {
     
     // Curve
-    VnFilterPassThrough* curveInput1 = [[VnFilterPassThrough alloc] init];
-    VnImageNormalBlendFilter* curveMerge1 = [[VnImageNormalBlendFilter alloc] init];
     VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"vvv1"];
-    curveMerge1.topLayerOpacity = 0.50f;
+    curveFilter1.topLayerOpacity = 0.50f;
     
     // Gradient Map
     VnAdjustmentLayerGradientMap* gradientMap1 = [[VnAdjustmentLayerGradientMap alloc] init];
@@ -36,32 +34,19 @@
     gradientMap1.blendingMode = VnBlendingModeExclusion;
     
     // Curve
-    VnFilterPassThrough* curveInput2 = [[VnFilterPassThrough alloc] init];
-    VnImageNormalBlendFilter* curveMerge2 = [[VnImageNormalBlendFilter alloc] init];
     VnFilterToneCurve* curveFilter2 = [[VnFilterToneCurve alloc] initWithACV:@"vvv2"];
-    curveMerge2.topLayerOpacity = 0.75f;
+    curveFilter2.topLayerOpacity = 0.75f;
     
     // Curve
-    VnFilterPassThrough* curveInput3 = [[VnFilterPassThrough alloc] init];
-    VnImageNormalBlendFilter* curveMerge3 = [[VnImageNormalBlendFilter alloc] init];
     VnFilterToneCurve* curveFilter3 = [[VnFilterToneCurve alloc] initWithACV:@"vvv3"];
-    curveMerge3.topLayerOpacity = 0.50f;
-    curveMerge3.blendingMode = VnBlendingModeSoftLight;
+    curveFilter3.topLayerOpacity = 0.50f;
+    curveFilter3.blendingMode = VnBlendingModeSoftLight;
     
-    self.startFilter = curveInput1;
-    [curveInput1 addTarget:curveMerge1];
-    [curveInput1 addTarget:curveFilter1];
-    [curveFilter1 addTarget:curveMerge1 atTextureLocation:1];
-    [curveMerge1 addTarget:gradientMap1];
-    [gradientMap1 addTarget:curveInput2];
-    [curveInput2 addTarget:curveMerge2];
-    [curveInput2 addTarget:curveFilter2];
-    [curveFilter2 addTarget:curveMerge2 atTextureLocation:1];
-    [curveMerge2 addTarget:curveInput3];
-    [curveInput3 addTarget:curveMerge3];
-    [curveInput3 addTarget:curveFilter3];
-    [curveFilter3 addTarget:curveMerge3 atTextureLocation:1];
-    self.endFilter = curveMerge3;
+    self.startFilter = curveFilter1;
+    [curveFilter1 addTarget:gradientMap1];
+    [gradientMap1 addTarget:curveFilter2];
+    [curveFilter2 addTarget:curveFilter3];
+    self.endFilter = curveFilter3;
     
     
     

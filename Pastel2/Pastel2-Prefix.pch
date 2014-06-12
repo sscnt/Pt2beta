@@ -100,6 +100,7 @@ typedef NS_ENUM(NSInteger, VnEffectId){
     VnEffectIdPinkBubbleTea,
     VnEffectIdFruitPop,
     VnEffectIdCarnival,
+    VnEffectIdVvintageSummer,
     VnEffectIdFrontpageFaded,
     VnEffectIdKodakPortra800,
     VnEffectIdPx680,

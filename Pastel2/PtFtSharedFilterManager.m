@@ -80,6 +80,41 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
+    //// Girder
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdGirder;
+    item.name = NSLocalizedString(@"VX1", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
+    //// Joyful
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdJoyful;
+    item.name = NSLocalizedString(@"VX2", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
+    //// Happy
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdHappy;
+    item.name = NSLocalizedString(@"VX3", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
+    //// Vintage Summer
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdVvintageSummer;
+    item.name = NSLocalizedString(@"VX4", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
+    //// Vintage Film
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdGlitterShine;
+    item.name = NSLocalizedString(@"FX1", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+
     //// Weekend
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdWeekend;
@@ -108,9 +143,9 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
-    //// Dreamy Creamy
+    //// Vintage Film
     item = [[PtFtObjectFilterItem alloc] init];
-    item.effectId = VnEffectIdDreamyCreamy;
+    item.effectId = VnEffectIdVintageFilm;
     item.name = NSLocalizedString(@"V5", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
@@ -142,42 +177,7 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item.name = NSLocalizedString(@"V9", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
-    
-    //// Girder
-    item = [[PtFtObjectFilterItem alloc] init];
-    item.effectId = VnEffectIdGirder;
-    item.name = NSLocalizedString(@"VX1", nil);
-    item.effectGroup = VnEffectGroupEffects;
-    [_artisticFilters addObject:item];
-    
-    //// Joyful
-    item = [[PtFtObjectFilterItem alloc] init];
-    item.effectId = VnEffectIdJoyful;
-    item.name = NSLocalizedString(@"VX2", nil);
-    item.effectGroup = VnEffectGroupEffects;
-    [_artisticFilters addObject:item];
-    
-    //// Happy
-    item = [[PtFtObjectFilterItem alloc] init];
-    item.effectId = VnEffectIdHappy;
-    item.name = NSLocalizedString(@"VX3", nil);
-    item.effectGroup = VnEffectGroupEffects;
-    [_artisticFilters addObject:item];
-    
-    //// Vintage Film
-    item = [[PtFtObjectFilterItem alloc] init];
-    item.effectId = VnEffectIdVintageFilm;
-    item.name = NSLocalizedString(@"VX4", nil);
-    item.effectGroup = VnEffectGroupEffects;
-    [_artisticFilters addObject:item];
-    
-    //// Vintage Film
-    item = [[PtFtObjectFilterItem alloc] init];
-    item.effectId = VnEffectIdGlitterShine;
-    item.name = NSLocalizedString(@"FX1", nil);
-    item.effectGroup = VnEffectGroupEffects;
-    [_artisticFilters addObject:item];
-    
+        
     //// Pink Bubble Tea
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdPinkBubbleTea;
@@ -761,6 +761,8 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
             return [VnEffectHappy new];
         case VnEffectIdVintageFilm:
             return [VnEffectVintageFilm new];
+        case VnEffectIdVvintageSummer:
+            return [VnEffectVintageSummer new];
         case VnEffectIdGlitterShine:
             return [VnEffectGlitterShine new];
         case VnEffectIdWaldenFaded:
@@ -818,6 +820,7 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
         [inputFilter addTarget:outputFilter];
         [effect.endFilter addTarget:outputFilter atTextureLocation:1];
         
+        //// Added
         return [VnEffect processImage:image WithStartFilter:inputFilter EndFilter:outputFilter];
     }
     return nil;

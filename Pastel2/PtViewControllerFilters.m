@@ -49,7 +49,7 @@
     [self.view addSubview:_previewImageView];
     
     //// Blur
-    _blurView = [[PtFtViewBlur alloc] initWithFrame:CGRectMake(0.0f, 0.0f, _previewImageView.width + 10.0f, _previewImageView.height + 10.0f)];
+    _blurView = [[PtFtViewBlur alloc] initWithFrame:self.view.bounds];
     _blurView.center = _previewImageView.center;
     [self.view addSubview:_blurView];
     

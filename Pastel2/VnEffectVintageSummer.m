@@ -29,13 +29,24 @@
     [gradientColor1 setOffsetX:0.0f Y:0.0f];
     [gradientColor1 addColorRed:255.0f Green:255.0f Blue:255.0f Opacity:0.0f Location:0 Midpoint:50];
     [gradientColor1 addColorRed:0.0f Green:0.0f Blue:0.0f Opacity:100.0f Location:4096 Midpoint:50];
-    gradientColor1.topLayerOpacity = 0.30f;
+    gradientColor1.topLayerOpacity = 0.40f;
     gradientColor1.blendingMode = VnBlendingModeOverlay;
+    
+    // Fill Layer
+    VnAdjustmentLayerGradientColorFill* gradientColor2 = [[VnAdjustmentLayerGradientColorFill alloc] initWithEffectObj:self];
+    [gradientColor2 setStyle:GradientStyleRadial];
+    [gradientColor2 setAngleDegree:90];
+    [gradientColor2 setScalePercent:150];
+    [gradientColor2 setOffsetX:0.0f Y:0.0f];
+    [gradientColor2 addColorRed:255.0f Green:255.0f Blue:255.0f Opacity:100.0f Location:0 Midpoint:50];
+    [gradientColor2 addColorRed:255.0f Green:255.0f Blue:255.0f Opacity:0.0f Location:4096 Midpoint:50];
+    gradientColor2.topLayerOpacity = 0.40f;
+    gradientColor2.blendingMode = VnBlendingModeOverlay;
     
     // Hue / Saturation
     VnAdjustmentLayerHueSaturation* hueSaturation = [[VnAdjustmentLayerHueSaturation alloc] init];
     hueSaturation.hue = 0.0f;
-    hueSaturation.saturation = 5.0f;
+    hueSaturation.saturation = 10.0f;
     hueSaturation.lightness = 0.0f;
     hueSaturation.colorize = NO;
     hueSaturation.topLayerOpacity = 0.50f;
@@ -70,11 +81,12 @@
     [levelsFilter1 setRedMin:s255(0.0f) gamma:1.0f max:s255(241.0f) minOut:s255(0.0f) maxOut:s255(254.0f)];
     [levelsFilter1 setGreenMin:s255(0.0f) gamma:1.0f max:s255(242.0f) minOut:s255(0.0f) maxOut:s255(235.0f)];
     [levelsFilter1 setBlueMin:s255(0.0f) gamma:1.0f max:s255(253.0f) minOut:s255(0.0f) maxOut:s255(200.0f)];
-    levelsFilter1.topLayerOpacity = 0.30f;
+    levelsFilter1.topLayerOpacity = 0.0f;
     levelsFilter1.blendingMode = VnBlendingModeNormal;
     
     self.startFilter = gradientColor1;
-    [gradientColor1 addTarget:hueSaturation];
+    [gradientColor1 addTarget:gradientColor2];
+    [gradientColor2 addTarget:hueSaturation];
     [hueSaturation addTarget:hueSaturation2];
     [hueSaturation2 addTarget:curveFilter];
     [curveFilter addTarget:hueSaturation3];

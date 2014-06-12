@@ -85,6 +85,8 @@
 #import "VnEffectNashvilleFaded.h"
 #import "VnEffectXPro2Faded.h"
 #import "VnEffectVintageSummer.h"
+#import "VnEffectVintageWine.h"
+#import "VnEffectVintageHaze.h"
 
 @interface PtFtSharedFilterManager : NSObject
 

@@ -108,10 +108,17 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
+    //// Soft Cream
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdSoftCream;
+    item.name = NSLocalizedString(@"VX5", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
     //// Vintage Haze
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdVintageHaze;
-    item.name = NSLocalizedString(@"VX5", nil);
+    item.name = NSLocalizedString(@"VX6", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
@@ -768,6 +775,8 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
             return [VnEffectHappy new];
         case VnEffectIdVintageHaze:
             return [VnEffectVintageHaze new];
+        case VnEffectIdSoftCream:
+            return [VnEffectSoftCream new];
         case VnEffectIdVintageWine:
             return [VnEffectVintageWine new];
         case VnEffectIdVintageFilm:

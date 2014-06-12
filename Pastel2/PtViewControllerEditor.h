@@ -17,6 +17,7 @@
 #import "PtFtViewBlur.h"
 #import "ShareOtherAppViewController.h"
 #import "PtViewControllerExportToInstagram.h"
+#import "VnViewProgress.h"
 
 typedef NS_ENUM(NSInteger, PtViewControllerEditorWorkflowAfterSavingPhoto){
     PtViewControllerEditorWorkflowAfterSavingPhotoDoNothing = 1,

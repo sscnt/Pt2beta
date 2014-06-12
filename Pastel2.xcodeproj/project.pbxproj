@@ -26,6 +26,8 @@
 		58183C011949D20B00A13F9F /* VnEffectVintageWine.m in Sources */ = {isa = PBXBuildFile; fileRef = 58183C001949D20B00A13F9F /* VnEffectVintageWine.m */; };
 		58183C061949D69300A13F9F /* vnwn.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58183C051949D69300A13F9F /* vnwn.acv */; };
 		58183C091949DC9C00A13F9F /* VnEffectVintageHaze.m in Sources */ = {isa = PBXBuildFile; fileRef = 58183C081949DC9C00A13F9F /* VnEffectVintageHaze.m */; };
+		58183C0C1949F52700A13F9F /* VnEffectSoftCream.m in Sources */ = {isa = PBXBuildFile; fileRef = 58183C0B1949F52700A13F9F /* VnEffectSoftCream.m */; };
+		58183C0E1949FA0100A13F9F /* sfcrm.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58183C0D1949FA0100A13F9F /* sfcrm.acv */; };
 		583668AA1942AD0B00E55C7C /* VnEffectBlueBerry.m in Sources */ = {isa = PBXBuildFile; fileRef = 583668A91942AD0B00E55C7C /* VnEffectBlueBerry.m */; };
 		583668F31942AE9D00E55C7C /* VnEffectBluishRose.m in Sources */ = {isa = PBXBuildFile; fileRef = 583668AC1942AE9D00E55C7C /* VnEffectBluishRose.m */; };
 		583668F41942AE9D00E55C7C /* VnEffectCarnival.m in Sources */ = {isa = PBXBuildFile; fileRef = 583668AE1942AE9D00E55C7C /* VnEffectCarnival.m */; };
@@ -325,6 +327,9 @@
 		58183C051949D69300A13F9F /* vnwn.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = vnwn.acv; sourceTree = "<group>"; };
 		58183C071949DC9C00A13F9F /* VnEffectVintageHaze.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectVintageHaze.h; sourceTree = "<group>"; };
 		58183C081949DC9C00A13F9F /* VnEffectVintageHaze.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectVintageHaze.m; sourceTree = "<group>"; };
+		58183C0A1949F52700A13F9F /* VnEffectSoftCream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectSoftCream.h; sourceTree = "<group>"; };
+		58183C0B1949F52700A13F9F /* VnEffectSoftCream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectSoftCream.m; sourceTree = "<group>"; };
+		58183C0D1949FA0100A13F9F /* sfcrm.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = sfcrm.acv; sourceTree = "<group>"; };
 		583668A81942AD0B00E55C7C /* VnEffectBlueBerry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectBlueBerry.h; sourceTree = "<group>"; };
 		583668A91942AD0B00E55C7C /* VnEffectBlueBerry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectBlueBerry.m; sourceTree = "<group>"; };
 		583668AB1942AE9D00E55C7C /* VnEffectBluishRose.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectBluishRose.h; sourceTree = "<group>"; };
@@ -979,6 +984,8 @@
 				583668CA1942AE9D00E55C7C /* VnEffectPinkBubbleTea.m */,
 				583668CB1942AE9D00E55C7C /* VnEffectPurpleBerry.h */,
 				583668CC1942AE9D00E55C7C /* VnEffectPurpleBerry.m */,
+				58183C0A1949F52700A13F9F /* VnEffectSoftCream.h */,
+				58183C0B1949F52700A13F9F /* VnEffectSoftCream.m */,
 				583668CD1942AE9D00E55C7C /* VnEffectVelvetColor.h */,
 				583668CE1942AE9D00E55C7C /* VnEffectVelvetColor.m */,
 				58F6FD2219498D1900823407 /* VnEffectVintageSummer.h */,
@@ -1166,6 +1173,7 @@
 				58F3E3E41940C5F1001AEB8D /* qzfd.acv */,
 				58F3E3E51940C5F1001AEB8D /* swfl.acv */,
 				58F3E3E61940C5F1001AEB8D /* swfl2.acv */,
+				58183C0D1949FA0100A13F9F /* sfcrm.acv */,
 				5809A30319485F0300D48B19 /* vf1.acv */,
 				58F6FD251949905700823407 /* vnsm.acv */,
 				58183C051949D69300A13F9F /* vnwn.acv */,
@@ -1799,6 +1807,7 @@
 				58F3E41B1940C5F1001AEB8D /* plbr1.acv in Resources */,
 				58F3E3EB1940C5F1001AEB8D /* amrfd.acv in Resources */,
 				58F3E51B1940C902001AEB8D /* Aller_Bd.ttf in Resources */,
+				58183C0E1949FA0100A13F9F /* sfcrm.acv in Resources */,
 				58F3E41C1940C5F1001AEB8D /* plbr2.acv in Resources */,
 				58F3E3F31940C5F1001AEB8D /* cvm.acv in Resources */,
 			);
@@ -1878,6 +1887,7 @@
 				58F3E3361940C546001AEB8D /* VnFilterTemperature.m in Sources */,
 				5836690E1942AE9D00E55C7C /* VnEffectFujiSuperia1600.m in Sources */,
 				58F3E3AC1940C5DA001AEB8D /* VnEffectColorVintageMatte.m in Sources */,
+				58183C0C1949F52700A13F9F /* VnEffectSoftCream.m in Sources */,
 				58F3E3AE1940C5DA001AEB8D /* VnEffectColorWildHoney.m in Sources */,
 				58F3E3A91940C5DA001AEB8D /* VnEffectColorSummerSkin.m in Sources */,
 				58F3E3AD1940C5DA001AEB8D /* VnEffectColorWarmHaze.m in Sources */,

@@ -19,7 +19,6 @@
     [super viewDidLoad];
     self.view.backgroundColor = [PtEdConfig bgColor];
     _workflowAfterSavingPhoto = PtViewControllerEditorWorkflowAfterSavingPhotoDoNothing;
-    _currentImageDidChange = YES;
     
     //// Bar
     _topBar = [[PtEdViewTopBar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen width], [PtEdConfig topBarHeight])];
@@ -27,7 +26,8 @@
     
     //// Progress
     _progressView = [[VnViewProgress alloc] initWithFrame:self.view.bounds Radius:16.0f];
-    _progressView.hidden = YES;
+    _progressView.hidden = NO;
+    [_progressView resetProgress];
     [self.view addSubview:_progressView];
     
     //// Blur
@@ -75,6 +75,17 @@
     
     //// Preview
     [self initPreview];
+    self.currentImageDidChange = NO;
+}
+
+- (void)setCurrentImageDidChange:(BOOL)currentImageDidChange
+{
+    _currentImageDidChange = currentImageDidChange;
+    if (_currentImageDidChange) {
+        _camerarollButton.hidden = NO;
+    }else{
+        _camerarollButton.hidden = YES;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -119,6 +130,7 @@
 - (void)initPreview
 {
     [self removePreview];
+    [_progressView setProgress:0.60f];
     __block CGSize psize;
     __block __weak PtViewControllerEditor* _self = self;
     dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
@@ -140,6 +152,8 @@
             [_self.view bringSubviewToFront:_self.progressView];
             [_self.view bringSubviewToFront:_self.topBar];
             [_self.view bringSubviewToFront:_self.bottomBar];
+            [_self.progressView setHidden:YES];
+            [_self.progressView resetProgress];
         });
     });
     
@@ -185,7 +199,7 @@
 - (void)buttonFiltersDidTouchUpInside:(PtEdViewBarButton *)button
 {
     [PtFtSharedQueueManager instance].canceled = NO;
-    _currentImageDidChange = YES;
+    self.currentImageDidChange = YES;
     PtViewControllerFilters* con = [[PtViewControllerFilters alloc] init];
     con.editorController = self;
     [self.navigationController pushViewController:con animated:NO];
@@ -210,7 +224,7 @@
 
 - (void)didSaveImage
 {
-    _currentImageDidChange = NO;
+    self.currentImageDidChange = NO;
     switch (_workflowAfterSavingPhoto) {
         case PtViewControllerEditorWorkflowAfterSavingPhotoDoNothing:
             self.view.userInteractionEnabled = YES;

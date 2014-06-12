@@ -123,7 +123,10 @@ static PtFtSharedQueueManager* sharedPtFtSharedQueueManager = nil;
     if (queue.effectId == VnEffectIdNone) {
         return;
     }
-    queue.image = [PtFtSharedFilterManager applyEffect:queue.effectId ToImage:queue.image WithOpacity:queue.opacity];
+    VnEffect* effect = [PtFtSharedFilterManager effectByEffectId:queue.effectId];
+    if (effect) {
+        queue.image = [PtFtSharedFilterManager applyEffect:queue.effectId ToImage:queue.image WithOpacity:effect.defaultOpacity];
+    }
 }
 
 - (void)processQueueTypePreview:(PtFtObjectProcessQueue *)queue

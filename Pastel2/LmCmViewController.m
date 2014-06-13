@@ -389,7 +389,7 @@
     UIImagePickerController *pickerController = [[UIImagePickerController alloc] init];
     pickerController.delegate = self;
     [pickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
-    [self presentViewController:pickerController animated:YES completion:nil];
+    [self presentViewController:pickerController animated:NO completion:nil];
 }
 
 - (void)didReceiveMemoryWarning

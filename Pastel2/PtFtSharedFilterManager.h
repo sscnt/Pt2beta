@@ -88,6 +88,9 @@
 #import "VnEffectVintageWine.h"
 #import "VnEffectVintageHaze.h"
 #import "VnEffectSoftCream.h"
+#import "VnEffectRoseyMatte.h"
+#import "VnEffectGlamourBw.h"
+#import "VnEffectBlackWhite20.h"
 
 @interface PtFtSharedFilterManager : NSObject
 

@@ -206,6 +206,13 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
+    //// Rosey Matte
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdRoseyMatte;
+    item.name = NSLocalizedString(@"P3", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
     //// Walden Faded
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdWaldenFaded;
@@ -315,6 +322,20 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdXPro2Faded;
     item.name = NSLocalizedString(@"FV7", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
+    //// XPro 2 Faded
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdGlamourBw;
+    item.name = NSLocalizedString(@"BW1", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
+    //// Black White 20
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdBlackWhite20;
+    item.name = NSLocalizedString(@"BW2", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
@@ -548,7 +569,7 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item.effectGroup = VnEffectGroupOverlays;
     item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(241.0f) blue:s255(227.0f) alpha:1.0f];
     item.selectionColor = item.previewColor;
-    [_artisticFilters addObject:item];
+    [_overlayFilters addObject:item];
     
     //// Bright Matte
     item = [[PtFtObjectFilterItem alloc] init];
@@ -773,8 +794,12 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
             return [VnEffectVividVintage new];
         case VnEffectIdHappy:
             return [VnEffectHappy new];
+        case VnEffectIdRoseyMatte:
+            return [VnEffectRoseyMatte new];
         case VnEffectIdVintageHaze:
             return [VnEffectVintageHaze new];
+        case VnEffectIdBlackWhite20:
+            return [VnEffectBlackWhite20 new];
         case VnEffectIdSoftCream:
             return [VnEffectSoftCream new];
         case VnEffectIdVintageWine:
@@ -787,6 +812,8 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
             return [VnEffectGlitterShine new];
         case VnEffectIdWaldenFaded:
             return [VnEffectWaldenFaded new];
+        case VnEffectIdGlamourBw:
+            return [VnEffectGlamourBw new];
         case VnEffectIdBrannanFaded:
             return [VnEffectBrannanFaded new];
         case VnEffectIdDreamyCreamy:
@@ -837,6 +864,7 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
         VnFilterPassThrough* inputFilter = [[VnFilterPassThrough alloc] init];
         [inputFilter addTarget:effect.startFilter];
         VnImageNormalBlendFilter* outputFilter = [[VnImageNormalBlendFilter alloc] init];
+        outputFilter.topLayerOpacity = opacity;
         [inputFilter addTarget:outputFilter];
         [effect.endFilter addTarget:outputFilter atTextureLocation:1];
         

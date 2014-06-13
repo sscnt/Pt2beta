@@ -49,7 +49,7 @@
     [selectiveColor2 setBlacksCyan:3 Magenta:16 Yellow:0 Black:43];
     
     // Curve
-    VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"gtshn4"];
+    VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"gtshn1"];
     curveFilter1.topLayerOpacity = 0.80f;
     
     // Contrast

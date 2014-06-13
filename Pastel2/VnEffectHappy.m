@@ -14,7 +14,7 @@
 {
     self = [super init];
     if(self){
-        self.defaultOpacity = 1.0f;
+        self.defaultOpacity = 0.70f;
         self.effectId = VnEffectIdHappy;
     }
     return self;

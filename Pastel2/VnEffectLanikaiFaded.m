@@ -24,7 +24,7 @@
 - (void)makeFilterGroup
 {
     // Curve
-    VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"lnkfd"];
+    VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"bk001"];
     
     self.startFilter = self.endFilter = curveFilter;
 }

@@ -22,7 +22,7 @@
 - (void)makeFilterGroup
 {
     // Curve
-    VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"butter"];
+    VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"ab001"];
     
     // Hue / Saturation
     VnAdjustmentLayerHueSaturation* hueSaturation2 = [[VnAdjustmentLayerHueSaturation alloc] init];

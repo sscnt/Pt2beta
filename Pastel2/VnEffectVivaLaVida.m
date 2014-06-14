@@ -64,7 +64,7 @@
     [levelsFilter4 setBlueMin:s255(0.0f) gamma:1.0f max:1.0f minOut:s255(8.0f) maxOut:s255(244.0f)];
     
     // Curve
-    VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"vivlvd"];
+    VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"ac001"];
     
     // Contrast
     VnFilterLevels* levelsFilter5 = [[VnFilterLevels alloc] init];

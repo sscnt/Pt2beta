@@ -46,7 +46,7 @@
     gradientMap.topLayerOpacity = 0.60f;
     
     // Curve
-    VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"cvm"];
+    VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"an001"];
     curveFilter.topLayerOpacity = 0.85f;
     
     self.startFilter = inputFilter;

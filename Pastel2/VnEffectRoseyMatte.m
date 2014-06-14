@@ -69,17 +69,17 @@
     solidColor1.topLayerOpacity = 0.10f;
     
     // Curve
-    VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"rsymt"];
+    VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"br001"];
     
     // Levels
     VnFilterLevels* levelsFilter3 = [[VnFilterLevels alloc] init];
     [levelsFilter3 setMin:s255(23.0f) gamma:0.79f max:s255(255.0f) minOut:s255(0.0f) maxOut:s255(255.0f)];
     
     // Curve
-    VnFilterToneCurve* curveFilter2 = [[VnFilterToneCurve alloc] initWithACV:@"rsymt2"];
+    VnFilterToneCurve* curveFilter2 = [[VnFilterToneCurve alloc] initWithACV:@"br002"];
     
     // Curve
-    VnFilterToneCurve* curveFilter3 = [[VnFilterToneCurve alloc] initWithACV:@"rsymt3"];
+    VnFilterToneCurve* curveFilter3 = [[VnFilterToneCurve alloc] initWithACV:@"br003"];
     curveFilter3.topLayerOpacity = 0.71f;
 
     self.startFilter = brightnessFilter;

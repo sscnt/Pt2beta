@@ -35,7 +35,7 @@
     saturationFilter.saturation = -10.0f;
     
     // Curve
-    VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"dv1"];
+    VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"ar001"];
     
     // Levels
     VnFilterLevels* levelsFilter1 = [[VnFilterLevels alloc] init];

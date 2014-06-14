@@ -24,7 +24,7 @@
 - (void)makeFilterGroup
 {
     // Curve
-    VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"gi1"];
+    VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"az001"];
     
     
     // Hue / Saturation
@@ -35,7 +35,7 @@
     hueSaturation.colorize =  NO;
     
     // Curve
-    VnFilterToneCurve* curveFilter2 = [[VnFilterToneCurve alloc] initWithACV:@"gi2"];
+    VnFilterToneCurve* curveFilter2 = [[VnFilterToneCurve alloc] initWithACV:@"az002"];
     
     // Photo Filter
     VnAdjustmentLayerPhotoFilter* photoFilter1 = [[VnAdjustmentLayerPhotoFilter alloc] init];
@@ -45,7 +45,7 @@
     
     
     // Curve
-    VnFilterToneCurve* curveFilter3 = [[VnFilterToneCurve alloc] initWithACV:@"gi3"];
+    VnFilterToneCurve* curveFilter3 = [[VnFilterToneCurve alloc] initWithACV:@"az003"];
         
     // Color Balance
     VnAdjustmentLayerColorBalance* colorBalance1 = [[VnAdjustmentLayerColorBalance alloc] init];
@@ -87,7 +87,7 @@
     colorBalance2.preserveLuminosity = YES;
     
     // Curve
-    VnFilterToneCurve* curveFilter4 = [[VnFilterToneCurve alloc] initWithACV:@"gi4"];
+    VnFilterToneCurve* curveFilter4 = [[VnFilterToneCurve alloc] initWithACV:@"az004"];
     
     // Levels
     VnFilterLevels* levelsFilter1 = [[VnFilterLevels alloc] init];

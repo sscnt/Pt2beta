@@ -24,7 +24,7 @@
 {
 
     // Curve
-    VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"Hzl1"];
+    VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"be001"];
     curveFilter1.topLayerOpacity = 0.50f;
     
     // Fill Layer
@@ -91,7 +91,7 @@
     
     
     // Curve
-    VnFilterToneCurve* curveFilter2 = [[VnFilterToneCurve alloc] initWithACV:@"hzl2"];
+    VnFilterToneCurve* curveFilter2 = [[VnFilterToneCurve alloc] initWithACV:@"be002"];
 
     // Fill Layer
     VnFilterSolidColor* solidColor4 = [[VnFilterSolidColor alloc] init];

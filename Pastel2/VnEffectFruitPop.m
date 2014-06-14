@@ -71,7 +71,7 @@
     
     
     // Curve
-    VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"frpp"];
+    VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"at001"];
     
     self.startFilter = solidColor1;
     [solidColor1 addTarget:solidColor2];

@@ -49,7 +49,7 @@
     [selectiveColor2 setBlacksCyan:3 Magenta:16 Yellow:0 Black:43];
     
     // Curve
-    VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"gtshn1"];
+    VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"bd001"];
     curveFilter1.topLayerOpacity = 0.80f;
     
     // Contrast
@@ -59,10 +59,10 @@
     levelsFilter1.blendingMode = VnBlendingModeLuminotisy;
     
     // Curve
-    VnFilterToneCurve* curveFilter2 = [[VnFilterToneCurve alloc] initWithACV:@"gtshn2"];
+    VnFilterToneCurve* curveFilter2 = [[VnFilterToneCurve alloc] initWithACV:@"bd002"];
     
     // Curve
-    VnFilterToneCurve* curveFilter3 = [[VnFilterToneCurve alloc] initWithACV:@"gtshn3"];
+    VnFilterToneCurve* curveFilter3 = [[VnFilterToneCurve alloc] initWithACV:@"bd003"];
 
     self.startFilter = brightnessFilter;
     [brightnessFilter addTarget:hueSaturation];

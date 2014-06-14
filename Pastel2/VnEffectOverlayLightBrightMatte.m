@@ -54,7 +54,7 @@
     solidColor.blendingMode = VnBlendingModeMultiply;
     
     // Curve
-    VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"olbm"];
+    VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"bm001"];
     curveFilter.topLayerOpacity = 0.20f;
     
     self.startFilter = levelsFilter1;

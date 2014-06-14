@@ -56,7 +56,7 @@
     gradientMap2.blendingMode = VnBlendingModeSoftLight;
     
     // Curve
-    VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"bw20"];
+    VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"aj001"];
     
     // Hue / Saturation
     VnAdjustmentLayerHueSaturation* hueSaturation = [[VnAdjustmentLayerHueSaturation alloc] init];

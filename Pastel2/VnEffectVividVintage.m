@@ -23,7 +23,7 @@
 {
     
     // Curve
-    VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"vvv1"];
+    VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"ad001"];
     curveFilter1.topLayerOpacity = 0.50f;
     
     // Gradient Map
@@ -34,11 +34,11 @@
     gradientMap1.blendingMode = VnBlendingModeExclusion;
     
     // Curve
-    VnFilterToneCurve* curveFilter2 = [[VnFilterToneCurve alloc] initWithACV:@"vvv2"];
+    VnFilterToneCurve* curveFilter2 = [[VnFilterToneCurve alloc] initWithACV:@"ad002"];
     curveFilter2.topLayerOpacity = 0.75f;
     
     // Curve
-    VnFilterToneCurve* curveFilter3 = [[VnFilterToneCurve alloc] initWithACV:@"vvv3"];
+    VnFilterToneCurve* curveFilter3 = [[VnFilterToneCurve alloc] initWithACV:@"ad003"];
     curveFilter3.topLayerOpacity = 0.50f;
     curveFilter3.blendingMode = VnBlendingModeSoftLight;
     

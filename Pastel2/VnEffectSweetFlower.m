@@ -31,7 +31,7 @@
     [selectiveColor1 setNeutralsCyan:-20 Magenta:4 Yellow:7 Black:1];
     
     // Curve
-    VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"swfl"];
+    VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"bt001"];
     
     // Selective Color
     VnAdjustmentLayerSelectiveColor* selectiveColor2 = [[VnAdjustmentLayerSelectiveColor alloc] init];
@@ -72,7 +72,7 @@
     colorBalance1.topLayerOpacity = 0.90f;
     
     // Curve
-    VnFilterToneCurve* curveFilter2 = [[VnFilterToneCurve alloc] initWithACV:@"swfl2"];
+    VnFilterToneCurve* curveFilter2 = [[VnFilterToneCurve alloc] initWithACV:@"bt002"];
     
     self.startFilter = selectiveColor1;
     [selectiveColor1 addTarget:curveFilter1];

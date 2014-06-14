@@ -80,6 +80,34 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
+    //// Carnival
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdFawn;
+    item.name = NSLocalizedString(@"M3", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
+    //// Carnival
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdDusk;
+    item.name = NSLocalizedString(@"M4", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
+    //// Carnival
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdSunshower;
+    item.name = NSLocalizedString(@"M5", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
+    //// Carnival
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdAngel;
+    item.name = NSLocalizedString(@"M6", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
     //// Girder
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdGirder;
@@ -826,6 +854,8 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
             return [VnEffectVivaLaVida new];
         case VnEffectIdBWTone1:
             return [VnEffectBWTone1 new];
+        case VnEffectIdSunshower:
+            return [VnEffectSunshower new];
         case VnEffectIdButterCreamVintage:
             return [VnEffectButterCreamVintage new];
         case VnEffectIdRetroVintage:
@@ -882,6 +912,12 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
             return [VnEffectFujiSuperia1600 new];
         case VnEffectIdCavalleriaRusticana:
             return [VnEffectCavalleriaRusticana new];
+        case VnEffectIdFawn:
+            return [VnEffectFawn new];
+        case VnEffectIdDusk:
+            return [VnEffectDusk new];
+        case VnEffectIdAngel:
+            return [VnEffectAngel new];
         default:
             break;
     }

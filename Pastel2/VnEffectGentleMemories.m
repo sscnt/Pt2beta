@@ -76,7 +76,7 @@
     solidColor4.blendingMode = VnBlendingModeSoftLight;
     
     // Curve
-    VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"gm1"];
+    VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"bb001"];
     curveFilter1.topLayerOpacity = 0.70f;
     
     // Fill Layer
@@ -139,7 +139,7 @@
     colorBalance2.topLayerOpacity = 0.10f;
     
     // Curve
-    VnFilterToneCurve* curveFilter2 = [[VnFilterToneCurve alloc] initWithACV:@"gm2"];
+    VnFilterToneCurve* curveFilter2 = [[VnFilterToneCurve alloc] initWithACV:@"bb002"];
     
     // Color Balance
     VnAdjustmentLayerColorBalance* colorBalance3 = [[VnAdjustmentLayerColorBalance alloc] init];
@@ -161,10 +161,10 @@
     colorBalance3.preserveLuminosity = YES;
     
     // Curve
-    VnFilterToneCurve* curveFilter3 = [[VnFilterToneCurve alloc] initWithACV:@"gm3"];
+    VnFilterToneCurve* curveFilter3 = [[VnFilterToneCurve alloc] initWithACV:@"bb003"];
     
     // Curve
-    VnFilterToneCurve* curveFilter4 = [[VnFilterToneCurve alloc] initWithACV:@"gm4"];
+    VnFilterToneCurve* curveFilter4 = [[VnFilterToneCurve alloc] initWithACV:@"bb004"];
     
     
     self.startFilter = solidColor1;

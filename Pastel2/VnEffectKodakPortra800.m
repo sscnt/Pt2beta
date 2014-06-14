@@ -23,7 +23,7 @@
 {
     
     // Curve    
-    VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"kdptr800"];
+    VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"bi001"];
     
     self.startFilter = self.endFilter = curveFilter;
 }

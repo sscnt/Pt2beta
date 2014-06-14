@@ -35,7 +35,7 @@
     solidColor2.blendingMode = VnBlendingModeSoftLight;
     
     // Curve
-    VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"fv1"];
+    VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"as001"];
     curveFilter1.topLayerOpacity = 0.40f;
     
     // Selective Color
@@ -73,7 +73,7 @@
     colorBalance1.preserveLuminosity = YES;
     
     // Curve
-    VnFilterToneCurve* curveFilter2 = [[VnFilterToneCurve alloc] initWithACV:@"fv2"];
+    VnFilterToneCurve* curveFilter2 = [[VnFilterToneCurve alloc] initWithACV:@"as002"];
     
     // Channel Mixer
     VnAdjustmentLayerChannelMixerFilter* mixerFilter2 = [[VnAdjustmentLayerChannelMixerFilter alloc] init];

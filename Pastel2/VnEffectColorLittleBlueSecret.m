@@ -22,7 +22,7 @@
 - (void)makeFilterGroup
 {
     //// Curve
-    VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"clbs"];
+    VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"am001"];
     curveFilter1.topLayerOpacity = 0.60f;
     
     //// Solid Color

@@ -96,6 +96,10 @@
 #import "VnEffectRetroVintage.h"
 #import "VnEffectVivaLaVida.h"
 #import "VnEffectButterCreamVintage.h"
+#import "VnEffectFawn.h"
+#import "VnEffectDusk.h"
+#import "VnEffectSunshower.h"
+#import "VnEffectAngel.h"
 
 @interface PtFtSharedFilterManager : NSObject
 

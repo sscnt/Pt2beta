@@ -34,7 +34,7 @@
     [gradientMap1 addColorRed:255.0f Green:255.0f Blue:255.0f Opacity:100.0f Location:4096 Midpoint:50];
     
     // Curve
-    VnFilterToneCurve* curveFilter2 = [[VnFilterToneCurve alloc] initWithACV:@"glmbw"];
+    VnFilterToneCurve* curveFilter2 = [[VnFilterToneCurve alloc] initWithACV:@"ba001"];
     
     self.startFilter = mixerFilter1;
     [mixerFilter1 addTarget:gradientMap1];

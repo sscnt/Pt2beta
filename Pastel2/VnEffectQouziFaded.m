@@ -25,7 +25,7 @@
 {
     
     // Curve
-    VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"qzfd"];
+    VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"bs001"];
     
     self.startFilter = self.endFilter = curveFilter;
 }

@@ -41,7 +41,7 @@
     solidColor3.blendingMode = VnBlendingModeExclusion;
     
     // Curve
-    VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"hp1"];
+    VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"cb001"];
     
     // Fill Layer
     VnFilterSolidColor* solidColor4 = [[VnFilterSolidColor alloc] init];

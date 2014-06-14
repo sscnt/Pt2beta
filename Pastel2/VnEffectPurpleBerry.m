@@ -32,7 +32,7 @@
     
     
     // Curve
-    VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"plbr1"];
+    VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"bp001"];
     curveFilter1.topLayerOpacity = 0.20f;
     
     // Fill Layer
@@ -85,7 +85,7 @@
     
     
     // Curve
-    VnFilterToneCurve* curveFilter2 = [[VnFilterToneCurve alloc] initWithACV:@"plbr2"];
+    VnFilterToneCurve* curveFilter2 = [[VnFilterToneCurve alloc] initWithACV:@"bp002"];
     
     self.startFilter = selectiveColor1;
     [selectiveColor1 addTarget:curveFilter1];

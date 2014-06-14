@@ -30,7 +30,7 @@
     hueSaturation.blendingMode = VnBlendingModeSoftLight;
     
     // Curve
-    VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"fs1600"];
+    VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"aw001"];
     
     self.startFilter = hueSaturation;
     [hueSaturation addTarget:curveFilter];

@@ -179,7 +179,7 @@ NSString *const kVnFilterToneCurveFragmentShaderString = SHADER_STRING
 - (id)initWithACV:(NSString*)curveFilename
 {
     return [self initWithACVURL:[[NSBundle mainBundle] URLForResource:curveFilename
-                                                        withExtension:@"acv"]];
+                                                        withExtension:@"pst"]];
 }
 
 - (id)initWithACVURL:(NSURL*)curveFileURL

@@ -36,7 +36,7 @@
     solidColor2.blendingMode = VnBlendingModeOverlay;
     
     // Curve
-    VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"blbry"];
+    VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"ag001"];
     curveFilter1.topLayerOpacity = 0.80f;
     
     // Fill Layer

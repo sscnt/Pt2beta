@@ -60,7 +60,7 @@
     [levelsFilter3 setMin:s255(0.0f) gamma:1.0f max:s255(255.0f) minOut:s255(9.0f) maxOut:s255(255.0f)];
     
     // Curve
-    VnFilterToneCurve* curveFilter2 = [[VnFilterToneCurve alloc] initWithACV:@"sfcrm"];
+    VnFilterToneCurve* curveFilter2 = [[VnFilterToneCurve alloc] initWithACV:@"bu001"];
     
     // Black White
     VnAdjustmentLayerChannelMixerFilter* mixerFilter = [[VnAdjustmentLayerChannelMixerFilter alloc] init];

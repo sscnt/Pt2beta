@@ -28,7 +28,7 @@
     mixerFilter.topLayerOpacity = 0.20f;
     
     // Curve
-    VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"lngrfd"];
+    VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"bj001"];
     
     self.startFilter = mixerFilter;
     [mixerFilter addTarget:curveFilter];

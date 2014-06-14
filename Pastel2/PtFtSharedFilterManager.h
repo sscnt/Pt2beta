@@ -91,6 +91,11 @@
 #import "VnEffectRoseyMatte.h"
 #import "VnEffectGlamourBw.h"
 #import "VnEffectBlackWhite20.h"
+#import "VnEffectBWTone1.h"
+#import "VnEffectBWTone2.h"
+#import "VnEffectRetroVintage.h"
+#import "VnEffectVivaLaVida.h"
+#import "VnEffectButterCreamVintage.h"
 
 @interface PtFtSharedFilterManager : NSObject
 

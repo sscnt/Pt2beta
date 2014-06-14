@@ -122,6 +122,27 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
+    //// Vintage Haze
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdRetroVintage;
+    item.name = NSLocalizedString(@"VX7", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
+    //// Vintage Haze
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdVivaLaVida;
+    item.name = NSLocalizedString(@"VX8", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
+    //// Vintage Haze
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdButterCreamVintage;
+    item.name = NSLocalizedString(@"VX9", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
     //// Vintage Film
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdGlitterShine;
@@ -332,10 +353,17 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
+    //// Black White Tpne 1
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdBWTone1;
+    item.name = NSLocalizedString(@"BW2", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
     //// Black White 20
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdBlackWhite20;
-    item.name = NSLocalizedString(@"BW2", nil);
+    item.name = NSLocalizedString(@"BW3", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
@@ -794,8 +822,18 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
             return [VnEffectVividVintage new];
         case VnEffectIdHappy:
             return [VnEffectHappy new];
+        case VnEffectIdVivaLaVida:
+            return [VnEffectVivaLaVida new];
+        case VnEffectIdBWTone1:
+            return [VnEffectBWTone1 new];
+        case VnEffectIdButterCreamVintage:
+            return [VnEffectButterCreamVintage new];
+        case VnEffectIdRetroVintage:
+            return [VnEffectRetroVintage new];
         case VnEffectIdRoseyMatte:
             return [VnEffectRoseyMatte new];
+        case VnEffectIdBWTone2:
+            return [VnEffectBWTone2 new];
         case VnEffectIdVintageHaze:
             return [VnEffectVintageHaze new];
         case VnEffectIdBlackWhite20:

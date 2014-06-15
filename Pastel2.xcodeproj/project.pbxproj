@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		58007CCE194D607B00AFAD38 /* VnEffectVSCOFresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 58007CCD194D607B00AFAD38 /* VnEffectVSCOFresh.m */; };
+		58007CD3194D60E800AFAD38 /* cc001.pst in Resources */ = {isa = PBXBuildFile; fileRef = 58007CD2194D60E800AFAD38 /* cc001.pst */; };
+		58007CD6194D654300AFAD38 /* VnFilterExposure.m in Sources */ = {isa = PBXBuildFile; fileRef = 58007CD5194D654300AFAD38 /* VnFilterExposure.m */; };
 		5801CF4319488218007558E5 /* bd001.pst in Resources */ = {isa = PBXBuildFile; fileRef = 5801CF4119488218007558E5 /* bd001.pst */; };
 		5801CF4419488218007558E5 /* bd003.pst in Resources */ = {isa = PBXBuildFile; fileRef = 5801CF4219488218007558E5 /* bd003.pst */; };
 		5801CF4919488606007558E5 /* bd002.pst in Resources */ = {isa = PBXBuildFile; fileRef = 5801CF4819488606007558E5 /* bd002.pst */; };
@@ -318,6 +321,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		58007CCC194D607B00AFAD38 /* VnEffectVSCOFresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectVSCOFresh.h; sourceTree = "<group>"; };
+		58007CCD194D607B00AFAD38 /* VnEffectVSCOFresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectVSCOFresh.m; sourceTree = "<group>"; };
+		58007CD2194D60E800AFAD38 /* cc001.pst */ = {isa = PBXFileReference; lastKnownFileType = file; path = cc001.pst; sourceTree = "<group>"; };
+		58007CD4194D654300AFAD38 /* VnFilterExposure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnFilterExposure.h; sourceTree = "<group>"; };
+		58007CD5194D654300AFAD38 /* VnFilterExposure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnFilterExposure.m; sourceTree = "<group>"; };
 		5801CF4119488218007558E5 /* bd001.pst */ = {isa = PBXFileReference; lastKnownFileType = file; path = bd001.pst; sourceTree = "<group>"; };
 		5801CF4219488218007558E5 /* bd003.pst */ = {isa = PBXFileReference; lastKnownFileType = file; path = bd003.pst; sourceTree = "<group>"; };
 		5801CF4819488606007558E5 /* bd002.pst */ = {isa = PBXFileReference; lastKnownFileType = file; path = bd002.pst; sourceTree = "<group>"; };
@@ -947,6 +955,8 @@
 				58F3E3321940C546001AEB8D /* VnImageNormalBlendFilter.m */,
 				5836691719431CDA00E55C7C /* VnFilterPassThrough.h */,
 				5836691819431CDA00E55C7C /* VnFilterPassThrough.m */,
+				58007CD4194D654300AFAD38 /* VnFilterExposure.h */,
+				58007CD5194D654300AFAD38 /* VnFilterExposure.m */,
 			);
 			name = VnFilters;
 			sourceTree = "<group>";
@@ -1106,6 +1116,8 @@
 				583668F01942AE9D00E55C7C /* VnEffectNashvilleFaded.m */,
 				583668F11942AE9D00E55C7C /* VnEffectXPro2Faded.h */,
 				583668F21942AE9D00E55C7C /* VnEffectXPro2Faded.m */,
+				58007CCC194D607B00AFAD38 /* VnEffectVSCOFresh.h */,
+				58007CCD194D607B00AFAD38 /* VnEffectVSCOFresh.m */,
 			);
 			name = Effects;
 			sourceTree = "<group>";
@@ -1258,6 +1270,7 @@
 				58F3E3E91940C5F1001AEB8D /* bz001.pst */,
 				580722EA194CB6510044395A /* ca001.pst */,
 				580722EC194CB6EE0044395A /* cb001.pst */,
+				58007CD2194D60E800AFAD38 /* cc001.pst */,
 			);
 			name = Curves;
 			sourceTree = "<group>";
@@ -1809,6 +1822,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58007CD3194D60E800AFAD38 /* cc001.pst in Resources */,
 				58F3E4031940C5F1001AEB8D /* az003.pst in Resources */,
 				58F3E4081940C5F1001AEB8D /* bb003.pst in Resources */,
 				58F3E41E1940C5F1001AEB8D /* bs001.pst in Resources */,
@@ -1919,6 +1933,7 @@
 				58FD79A9194C1AD500DA2B11 /* VnEffectButterCreamVintage.m in Sources */,
 				583668F51942AE9D00E55C7C /* VnEffectCavalleriaRusticana.m in Sources */,
 				58F3E4CB1940C834001AEB8D /* LmCmViewBarButton.m in Sources */,
+				58007CCE194D607B00AFAD38 /* VnEffectVSCOFresh.m in Sources */,
 				5802407519460A3C00E359BA /* PtFtViewTapRecognizer.m in Sources */,
 				58F3E4471940C622001AEB8D /* UIView+extend.m in Sources */,
 				58F3E4CC1940C834001AEB8D /* LmCmViewBottomBar.m in Sources */,
@@ -1966,6 +1981,7 @@
 				58F3E3A31940C5DA001AEB8D /* VnEffectColorPinkMilk.m in Sources */,
 				58FC422E194B3654005D63EA /* VnEffectBlackWhite20.m in Sources */,
 				58F3E4A41940C7AF001AEB8D /* PtEdViewBottomBar.m in Sources */,
+				58007CD6194D654300AFAD38 /* VnFilterExposure.m in Sources */,
 				58F3E4841940C70C001AEB8D /* PtFtViewBlur.m in Sources */,
 				58F3E4F91940C892001AEB8D /* LmCmViewZoomSlider.m in Sources */,
 				58F3E3341940C546001AEB8D /* VnFilterBrightness.m in Sources */,

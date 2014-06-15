@@ -100,6 +100,7 @@
 #import "VnEffectDusk.h"
 #import "VnEffectSunshower.h"
 #import "VnEffectAngel.h"
+#import "VnEffectVSCOFresh.h"
 
 @interface PtFtSharedFilterManager : NSObject
 

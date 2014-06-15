@@ -171,10 +171,17 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
-    //// Vintage Film
+    //// Glitter Shine
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdGlitterShine;
-    item.name = NSLocalizedString(@"FX1", nil);
+    item.name = NSLocalizedString(@"CX1", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
+    //// VSCO Fresh
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdVSCOFresh;
+    item.name = NSLocalizedString(@"CS1", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
 
@@ -918,6 +925,8 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
             return [VnEffectDusk new];
         case VnEffectIdAngel:
             return [VnEffectAngel new];
+        case VnEffectIdVSCOFresh:
+            return [VnEffectVSCOFresh new];
         default:
             break;
     }

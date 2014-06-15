@@ -23,6 +23,7 @@
 #import "VnFilterToneCurve.h"
 #import "VnFilterSolidColor.h"
 #import "VnFilterDuplicate.h"
+#import "VnFilterExposure.h"
 
 @interface VnEffect : NSObject
 

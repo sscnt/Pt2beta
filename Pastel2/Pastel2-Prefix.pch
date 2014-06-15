@@ -120,6 +120,7 @@ typedef NS_ENUM(NSInteger, VnEffectId){
     VnEffectIdFawn,
     VnEffectIdSunshower,
     VnEffectIdAngel,
+    VnEffectIdVSCOFresh,
     VnEffectIdDusk,
     VnEffectIdRetroVintage,
     VnEffectIdVivaLaVida,

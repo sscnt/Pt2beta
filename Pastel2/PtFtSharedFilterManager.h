@@ -101,6 +101,11 @@
 #import "VnEffectSunshower.h"
 #import "VnEffectAngel.h"
 #import "VnEffectVSCOFresh.h"
+#import "VnEffectVSCOBreakfast.h"
+#import "VnEffectVSCOMemory.h"
+#import "VnEffectVSCOSummer.h"
+#import "VnEffectVSCOBrown.h"
+#import "VnEffectVSCODarkfilm.h"
 
 @interface PtFtSharedFilterManager : NSObject
 

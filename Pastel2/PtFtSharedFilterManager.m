@@ -184,6 +184,41 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item.name = NSLocalizedString(@"CS1", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
+    
+    //// VSCO Fresh
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdVSCOBreakfast;
+    item.name = NSLocalizedString(@"CS2", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
+    //// VSCO Memory
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdVSCOMemory;
+    item.name = NSLocalizedString(@"CS3", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
+    //// VSCO Summer
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdVSCOSummer;
+    item.name = NSLocalizedString(@"CS4", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
+    //// VSCO Brown
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdVSCOBrown;
+    item.name = NSLocalizedString(@"CS5", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
+    //// VSCO Brown
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdVSCODarkfilm;
+    item.name = NSLocalizedString(@"CS6", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
 
     //// Weekend
     item = [[PtFtObjectFilterItem alloc] init];
@@ -927,6 +962,16 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
             return [VnEffectAngel new];
         case VnEffectIdVSCOFresh:
             return [VnEffectVSCOFresh new];
+        case VnEffectIdVSCOBreakfast:
+            return [VnEffectVSCOBreakfast new];
+        case VnEffectIdVSCOMemory:
+            return [VnEffectVSCOMemory new];
+        case VnEffectIdVSCOSummer:
+            return [VnEffectVSCOSummer new];
+        case VnEffectIdVSCOBrown:
+            return [VnEffectVSCOBrown new];
+        case VnEffectIdVSCODarkfilm:
+            return [VnEffectVSCODarkfilm new];
         default:
             break;
     }

@@ -126,6 +126,7 @@ typedef NS_ENUM(NSInteger, VnEffectId){
     VnEffectIdVSCOSummer,
     VnEffectIdVSCOBrown,
     VnEffectIdVSCODarkfilm,
+    VnEffectIdRaven,
     VnEffectIdDusk,
     VnEffectIdRetroVintage,
     VnEffectIdVivaLaVida,

@@ -106,6 +106,7 @@
 #import "VnEffectVSCOSummer.h"
 #import "VnEffectVSCOBrown.h"
 #import "VnEffectVSCODarkfilm.h"
+#import "VnEffectRaven.h"
 
 @interface PtFtSharedFilterManager : NSObject
 

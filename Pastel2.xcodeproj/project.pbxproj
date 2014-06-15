@@ -51,6 +51,9 @@
 		5819A11F194DC5A8002C6F3E /* VnEffectVSCODarkfilm.m in Sources */ = {isa = PBXBuildFile; fileRef = 5819A11E194DC5A8002C6F3E /* VnEffectVSCODarkfilm.m */; };
 		5819A121194DD001002C6F3E /* ch001.pst in Resources */ = {isa = PBXBuildFile; fileRef = 5819A120194DD001002C6F3E /* ch001.pst */; };
 		5819A123194DD071002C6F3E /* ch002.pst in Resources */ = {isa = PBXBuildFile; fileRef = 5819A122194DD071002C6F3E /* ch002.pst */; };
+		5819A126194DDD38002C6F3E /* VnEffectRaven.m in Sources */ = {isa = PBXBuildFile; fileRef = 5819A125194DDD38002C6F3E /* VnEffectRaven.m */; };
+		5819A12C194DF651002C6F3E /* ci001.pst in Resources */ = {isa = PBXBuildFile; fileRef = 5819A12B194DF651002C6F3E /* ci001.pst */; };
+		5819A12E194E1615002C6F3E /* ba002.pst in Resources */ = {isa = PBXBuildFile; fileRef = 5819A12D194E1615002C6F3E /* ba002.pst */; };
 		583668AA1942AD0B00E55C7C /* VnEffectBlueBerry.m in Sources */ = {isa = PBXBuildFile; fileRef = 583668A91942AD0B00E55C7C /* VnEffectBlueBerry.m */; };
 		583668F31942AE9D00E55C7C /* VnEffectBluishRose.m in Sources */ = {isa = PBXBuildFile; fileRef = 583668AC1942AE9D00E55C7C /* VnEffectBluishRose.m */; };
 		583668F41942AE9D00E55C7C /* VnEffectCarnival.m in Sources */ = {isa = PBXBuildFile; fileRef = 583668AE1942AE9D00E55C7C /* VnEffectCarnival.m */; };
@@ -399,6 +402,10 @@
 		5819A11E194DC5A8002C6F3E /* VnEffectVSCODarkfilm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectVSCODarkfilm.m; sourceTree = "<group>"; };
 		5819A120194DD001002C6F3E /* ch001.pst */ = {isa = PBXFileReference; lastKnownFileType = file; path = ch001.pst; sourceTree = "<group>"; };
 		5819A122194DD071002C6F3E /* ch002.pst */ = {isa = PBXFileReference; lastKnownFileType = file; path = ch002.pst; sourceTree = "<group>"; };
+		5819A124194DDD38002C6F3E /* VnEffectRaven.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectRaven.h; sourceTree = "<group>"; };
+		5819A125194DDD38002C6F3E /* VnEffectRaven.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectRaven.m; sourceTree = "<group>"; };
+		5819A12B194DF651002C6F3E /* ci001.pst */ = {isa = PBXFileReference; lastKnownFileType = file; path = ci001.pst; sourceTree = "<group>"; };
+		5819A12D194E1615002C6F3E /* ba002.pst */ = {isa = PBXFileReference; lastKnownFileType = file; path = ba002.pst; sourceTree = "<group>"; };
 		583668A81942AD0B00E55C7C /* VnEffectBlueBerry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectBlueBerry.h; sourceTree = "<group>"; };
 		583668A91942AD0B00E55C7C /* VnEffectBlueBerry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectBlueBerry.m; sourceTree = "<group>"; };
 		583668AB1942AE9D00E55C7C /* VnEffectBluishRose.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectBluishRose.h; sourceTree = "<group>"; };
@@ -1161,6 +1168,8 @@
 				5819A117194DBD1A002C6F3E /* VnEffectVSCOBrown.m */,
 				5819A11D194DC5A8002C6F3E /* VnEffectVSCODarkfilm.h */,
 				5819A11E194DC5A8002C6F3E /* VnEffectVSCODarkfilm.m */,
+				5819A124194DDD38002C6F3E /* VnEffectRaven.h */,
+				5819A125194DDD38002C6F3E /* VnEffectRaven.m */,
 			);
 			name = Effects;
 			sourceTree = "<group>";
@@ -1271,6 +1280,7 @@
 				58F3E3CA1940C5F1001AEB8D /* az002.pst */,
 				58F3E3CB1940C5F1001AEB8D /* az001.pst */,
 				58FC422A194B324C005D63EA /* ba001.pst */,
+				5819A12D194E1615002C6F3E /* ba002.pst */,
 				58F3E3CC1940C5F1001AEB8D /* bb001.pst */,
 				58F3E3CD1940C5F1001AEB8D /* bb002.pst */,
 				58F3E3CE1940C5F1001AEB8D /* bb003.pst */,
@@ -1323,6 +1333,7 @@
 				5819A11A194DBF2D002C6F3E /* cg002.pst */,
 				5819A120194DD001002C6F3E /* ch001.pst */,
 				5819A122194DD071002C6F3E /* ch002.pst */,
+				5819A12B194DF651002C6F3E /* ci001.pst */,
 			);
 			name = Curves;
 			sourceTree = "<group>";
@@ -1907,6 +1918,7 @@
 				58FCAF57194B09D6001D936E /* br003.pst in Resources */,
 				58FD79A6194C097A00DA2B11 /* ac001.pst in Resources */,
 				58F3E3F21940C5F1001AEB8D /* am001.pst in Resources */,
+				5819A12C194DF651002C6F3E /* ci001.pst in Resources */,
 				58F3E3FD1940C5F1001AEB8D /* au001.pst in Resources */,
 				58F3E4091940C5F1001AEB8D /* bb004.pst in Resources */,
 				58F3E4141940C5F1001AEB8D /* bi001.pst in Resources */,
@@ -1955,6 +1967,7 @@
 				58F3E4131940C5F1001AEB8D /* bh002.pst in Resources */,
 				580E4F0C194757E50014B7C8 /* ad002.pst in Resources */,
 				58F3E4071940C5F1001AEB8D /* bb002.pst in Resources */,
+				5819A12E194E1615002C6F3E /* ba002.pst in Resources */,
 				58F3E4221940C5F1001AEB8D /* by001.pst in Resources */,
 				58F3E40A1940C5F1001AEB8D /* bc001.pst in Resources */,
 				580E4F0F19475F3D0014B7C8 /* ad001.pst in Resources */,
@@ -2158,6 +2171,7 @@
 				58F3E3A81940C5DA001AEB8D /* VnEffectColorSerenity.m in Sources */,
 				58F3E3A61940C5DA001AEB8D /* VnEffectColorPurrr.m in Sources */,
 				580722DE194C668A0044395A /* VnEffectDusk.m in Sources */,
+				5819A126194DDD38002C6F3E /* VnEffectRaven.m in Sources */,
 				583669011942AE9D00E55C7C /* VnEffectJoyful.m in Sources */,
 				58F3E37B1940C5B5001AEB8D /* VnEffectOverlayPinkHaze.m in Sources */,
 				580E727A1948574700615D31 /* VnEffectHappy.m in Sources */,

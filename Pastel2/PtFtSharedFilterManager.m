@@ -437,6 +437,13 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
+    //// Black White 20
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdRaven;
+    item.name = NSLocalizedString(@"BW4", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
     //// Blur Berry
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdBlueBerry;
@@ -972,6 +979,8 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
             return [VnEffectVSCOBrown new];
         case VnEffectIdVSCODarkfilm:
             return [VnEffectVSCODarkfilm new];
+        case VnEffectIdRaven:
+            return [VnEffectRaven new];
         default:
             break;
     }

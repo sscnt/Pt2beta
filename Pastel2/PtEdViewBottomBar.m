@@ -27,13 +27,14 @@
 }
 - (void)addFiltersButton:(PtEdViewBarButton*)button
 {
-    float x = button.width / 2.0f * 3.0f;
+    float x = button.width / 2.0f * 5.0f;
     button.center = CGPointMake(x, self.height / 2.0f);
     [self addSubview:button];
 }
+
 - (void)addSlidersButton:(PtEdViewBarButton*)button
 {
-    float x = button.width / 2.0f * 5.0f;
+    float x = button.width / 2.0f * 3.0f;
     button.center = CGPointMake(x, self.height / 2.0f);
     [self addSubview:button];
 }

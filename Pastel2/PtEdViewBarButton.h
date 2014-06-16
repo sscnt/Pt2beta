@@ -22,6 +22,7 @@ typedef NS_ENUM(NSInteger, PtEdViewBarButtonType){
 @interface PtEdViewBarButton : UIButton
 
 @property (nonatomic, assign) PtEdViewBarButtonType type;
+@property (nonatomic, assign) BOOL active;
 
 - (id)initWithType:(PtEdViewBarButtonType)type;
 

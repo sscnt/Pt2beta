@@ -68,7 +68,7 @@ NSString* const keyChainKeyPremiumFilterPack1 = @"jp.shelbyapps.pastel2.keychain
 
 + (UIColor*)bottomNavigationBarBgColor
 {
-    return [PtEdConfig bgColor];
+    return [UIColor blackColor];
 }
 
 

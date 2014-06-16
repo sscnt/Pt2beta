@@ -16,6 +16,7 @@
 + (float)bottomBarHeight;
 + (UIColor*)topBarColor;
 + (UIColor*)bottomBarColor;
++ (UIColor*)toolBarColor;
 + (UIColor*)bgColor;
 
 @end

@@ -61,7 +61,7 @@ static PtEdConfig* sharedPtSharedEditor = nil;
 
 + (UIColor *)topBarColor
 {
-    return [UIColor colorWithWhite:0.1f alpha:1.0f];
+    return [UIColor colorWithWhite:0.12f alpha:1.0f];
 }
 
 + (UIColor *)bottomBarColor
@@ -69,9 +69,14 @@ static PtEdConfig* sharedPtSharedEditor = nil;
     return [self topBarColor];
 }
 
++ (UIColor *)toolBarColor
+{
+    return [UIColor colorWithWhite:0.05f alpha:1.0f];
+}
+
 + (UIColor *)bgColor
 {
-    return [UIColor colorWithWhite:0.0f alpha:1.0f];
+    return [UIColor colorWithWhite:0.11f alpha:1.0f];
 }
 
 @end

@@ -28,7 +28,7 @@
     VnAdjustmentLayerHueSaturation* hueSaturation2 = [[VnAdjustmentLayerHueSaturation alloc] init];
     hueSaturation2.hue = 0.0f;
     hueSaturation2.saturation = -15;
-    hueSaturation2.lightness = 10.0f;
+    hueSaturation2.lightness = 50.0f;
     hueSaturation2.colorize = NO;
     
     // Fill Layer
@@ -77,7 +77,7 @@
     [solidColor3 addTarget:solidColor4];
     [solidColor4 addTarget:solidColor5];
     [solidColor5 addTarget:inputMerge atTextureLocation:0];
-    self.endFilter = inputMerge;
+    self.endFilter = hueSaturation2;
 }
 
 @end

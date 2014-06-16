@@ -45,7 +45,7 @@ NSString* const kVnImageFilterFragmentShaderString = SHADER_STRING
  }
  
  
- mediump vec3 rgb2hsv(mediump vec3 color){
+ mediump vec3 rgb2hsv(const in mediump vec3 color){
      mediump float r = color.r;
      mediump float g = color.g;
      mediump float b = color.b;
@@ -83,13 +83,14 @@ NSString* const kVnImageFilterFragmentShaderString = SHADER_STRING
      return vec3(h, s, v);
  }
  
- mediump vec3 hsv2rgb(mediump vec3 color){
+ mediump vec3 hsv2rgb(const in mediump vec3 color){
      //float h = color.r;
      //float s = color.g;
      //float v = color.b;
      mediump float r;
      mediump float g;
      mediump float b;
+     //int hi = int(mod(float(floor(color.r / 60.0)), 6.0));
      int hi = int(mod(float(floor(color.r / 60.0)), 6.0));
      mediump float f = (color.r / 60.0) - float(hi);
      mediump float p = color.b * (1.0 - color.g);

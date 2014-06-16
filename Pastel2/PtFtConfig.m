@@ -51,22 +51,22 @@
 
 + (UIColor *)toolBarBgColor
 {
-    return [PtEdConfig bgColor];
+    return [UIColor colorWithWhite:0.0f alpha:1.0f];
 }
 
 + (UIColor *)colorBarBgColor
 {
-    return [UIColor colorWithWhite:0.10f alpha:1.0f];
+    return [UIColor colorWithWhite:0.12f alpha:1.0f];
 }
 
 + (UIColor *)artisticBarBgColor
 {
-    return [UIColor colorWithWhite:0.05f alpha:1.0f];
+    return [UIColor colorWithWhite:0.0f alpha:1.0f];
 }
 
 + (UIColor *)overlayBarBgColor
 {
-    return [UIColor colorWithWhite:0.10f alpha:1.0f];
+    return [UIColor colorWithWhite:0.12f alpha:1.0f];
 }
 
 #pragma mark height

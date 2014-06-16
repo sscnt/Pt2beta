@@ -294,6 +294,7 @@
 		58F3E53A1940CA7D001AEB8D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F3E5391940CA7D001AEB8D /* CoreMedia.framework */; };
 		58F6FD2419498D1900823407 /* VnEffectVintageSummer.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F6FD2319498D1900823407 /* VnEffectVintageSummer.m */; };
 		58F6FD261949905700823407 /* bw001.pst in Resources */ = {isa = PBXBuildFile; fileRef = 58F6FD251949905700823407 /* bw001.pst */; };
+		58F9D5AD194EA47100D20083 /* PtEdViewToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F9D5AC194EA47100D20083 /* PtEdViewToolBar.m */; };
 		58FC4226194B2B4E005D63EA /* VnEffectGlamourBw.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FC4225194B2B4E005D63EA /* VnEffectGlamourBw.m */; };
 		58FC422B194B324C005D63EA /* ba001.pst in Resources */ = {isa = PBXBuildFile; fileRef = 58FC422A194B324C005D63EA /* ba001.pst */; };
 		58FC422E194B3654005D63EA /* VnEffectBlackWhite20.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FC422D194B3654005D63EA /* VnEffectBlackWhite20.m */; };
@@ -806,6 +807,8 @@
 		58F6FD2219498D1900823407 /* VnEffectVintageSummer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectVintageSummer.h; sourceTree = "<group>"; };
 		58F6FD2319498D1900823407 /* VnEffectVintageSummer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectVintageSummer.m; sourceTree = "<group>"; };
 		58F6FD251949905700823407 /* bw001.pst */ = {isa = PBXFileReference; lastKnownFileType = file; path = bw001.pst; sourceTree = "<group>"; };
+		58F9D5AB194EA47100D20083 /* PtEdViewToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtEdViewToolBar.h; sourceTree = "<group>"; };
+		58F9D5AC194EA47100D20083 /* PtEdViewToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PtEdViewToolBar.m; sourceTree = "<group>"; };
 		58FC4224194B2B4E005D63EA /* VnEffectGlamourBw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectGlamourBw.h; sourceTree = "<group>"; };
 		58FC4225194B2B4E005D63EA /* VnEffectGlamourBw.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectGlamourBw.m; sourceTree = "<group>"; };
 		58FC422A194B324C005D63EA /* ba001.pst */ = {isa = PBXFileReference; lastKnownFileType = file; path = ba001.pst; sourceTree = "<group>"; };
@@ -1553,6 +1556,8 @@
 				58F3E4A01940C7AF001AEB8D /* PtEdViewBottomBar.m */,
 				58F3E4A11940C7AF001AEB8D /* PtEdViewBarButton.h */,
 				58F3E4A21940C7AF001AEB8D /* PtEdViewBarButton.m */,
+				58F9D5AB194EA47100D20083 /* PtEdViewToolBar.h */,
+				58F9D5AC194EA47100D20083 /* PtEdViewToolBar.m */,
 			);
 			name = Bar;
 			sourceTree = "<group>";
@@ -2070,6 +2075,7 @@
 				58F3E3A41940C5DA001AEB8D /* VnEffectColorPotion9.m in Sources */,
 				583669131942AE9D00E55C7C /* VnEffectFixieFaded.m in Sources */,
 				58F3E44A1940C622001AEB8D /* UIViewController+extend.m in Sources */,
+				58F9D5AD194EA47100D20083 /* PtEdViewToolBar.m in Sources */,
 				58F3E3361940C546001AEB8D /* VnFilterTemperature.m in Sources */,
 				5836690E1942AE9D00E55C7C /* VnEffectFujiSuperia1600.m in Sources */,
 				58F3E3AC1940C5DA001AEB8D /* VnEffectColorVintageMatte.m in Sources */,

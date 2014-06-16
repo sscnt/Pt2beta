@@ -23,6 +23,9 @@
     //// Bar
     _topBar = [[PtEdViewTopBar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen width], [PtEdConfig topBarHeight])];
     _bottomBar = [[PtEdViewBottomBar alloc] initWithFrame:CGRectMake(0.0f, [UIScreen height] - [PtEdConfig bottomBarHeight], [UIScreen width], [PtEdConfig bottomBarHeight])];
+    _toolBar = [[PtEdViewToolBar alloc] initWithFrame:_bottomBar.frame];
+    [_toolBar setY:_toolBar.frame.origin.y - [PtEdConfig bottomBarHeight]];
+    [_toolBar setHidden:YES];
     
     //// Progress
     _progressView = [[VnViewProgress alloc] initWithFrame:self.view.bounds Radius:16.0f];
@@ -38,6 +41,7 @@
     
     [self.view addSubview:_topBar];
     [self.view addSubview:_bottomBar];
+    [self.view addSubview:_toolBar];
     
     //// Buttons - Top
     _camerarollButton = [[PtEdViewBarButton alloc] initWithType:PtEdViewBarButtonTypeSaveToCameraRoll];
@@ -207,7 +211,8 @@
 
 - (void)buttonSlidersDidTouchUpInside:(PtEdViewBarButton *)button
 {
-    
+    _toolBar.hidden = button.active;
+    button.active = !button.active;
 }
 
 #pragma mark workflow

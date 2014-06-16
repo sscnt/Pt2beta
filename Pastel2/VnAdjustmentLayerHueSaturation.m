@@ -80,10 +80,11 @@ NSString *const kGPUImageHueSaturationFilterFragmentShaderString = SHADER_STRING
          B = L;
      } else{
          mediump float var2;
-         if(L < 0.5)
+         if(L < 0.5){
              var2 = L * (1.0 + S);
-         else
+         }else{
              var2 = (L + S) - (S * L);
+         }
          mediump float var1 = 2.0 * L - var2;
          
          R = hue2rgb(var1, var2, H + (1.0 / 3.0));
@@ -131,7 +132,7 @@ NSString *const kGPUImageHueSaturationFilterFragmentShaderString = SHADER_STRING
          hsl.z = min(1.0, max(0.0, hsl.z));
          rs.rgb = hsl2rgb(hsl);
      } else {
-         mediump vec3 hsl = rgb2hsl(pixel.rgb);
+         mediump vec3 hsl = rgb2hsv(pixel.rgb);
          hsl.x += hue;
          if(hsl.x < 0.0){
              hsl.x = 1.0 + hsl.x;
@@ -144,7 +145,7 @@ NSString *const kGPUImageHueSaturationFilterFragmentShaderString = SHADER_STRING
          hsl.y = min(1.0, max(0.0, hsl.y));
          hsl.z += lightness;
          hsl.z = min(1.0, max(0.0, hsl.z));
-         rs.rgb = hsl2rgb(hsl);
+         rs.rgb = hsv2rgb(hsl);
      }
      
      gl_FragColor = blendWithBlendingMode(pixel, vec4(rs.r, rs.g, rs.b, topLayerOpacity), blendingMode);

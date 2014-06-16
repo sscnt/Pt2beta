@@ -18,6 +18,7 @@
 #import "ShareOtherAppViewController.h"
 #import "PtViewControllerExportToInstagram.h"
 #import "VnViewProgress.h"
+#import "PtEdViewToolBar.h"
 
 typedef NS_ENUM(NSInteger, PtViewControllerEditorWorkflowAfterSavingPhoto){
     PtViewControllerEditorWorkflowAfterSavingPhotoDoNothing = 1,
@@ -34,6 +35,7 @@ typedef NS_ENUM(NSInteger, PtViewControllerEditorWorkflowAfterSavingPhoto){
 @property (nonatomic, strong) PtEdViewBottomBar* bottomBar;
 @property (nonatomic, strong) PtEdViewTopBar* topBar;
 @property (nonatomic, strong) PtEdViewImagePreview* imagePreview;
+@property (nonatomic, strong) PtEdViewToolBar* toolBar;
 
 @property (nonatomic, strong) PtEdViewBarButton* camerarollButton;
 @property (nonatomic, strong) PtEdViewBarButton* instagramButton;
@@ -43,6 +45,8 @@ typedef NS_ENUM(NSInteger, PtViewControllerEditorWorkflowAfterSavingPhoto){
 @property (nonatomic, strong) PtEdViewBarButton* cameraButton;
 @property (nonatomic, strong) PtEdViewBarButton* filtersButton;
 @property (nonatomic, strong) PtEdViewBarButton* slidersButton;
+
+@property (nonatomic, strong) PtEdViewBarButton* brightnessButton;
 
 @property (nonatomic, strong) VnViewProgress* progressView;
 @property (nonatomic, strong) PtFtViewBlur* blurView;

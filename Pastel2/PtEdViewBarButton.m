@@ -22,10 +22,11 @@
     return self;
 }
 
-- (void)setHighlighted:(BOOL)highlighted
+- (void)setActive:(BOOL)active
 {
-    if (highlighted) {
-        self.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.30f];
+    _active = active;
+    if (active) {
+        self.backgroundColor = [PtEdConfig toolBarColor];
     }else{
         self.backgroundColor = [UIColor clearColor];
     }

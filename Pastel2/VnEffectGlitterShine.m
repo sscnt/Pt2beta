@@ -21,7 +21,6 @@
 
 - (void)makeFilterGroup
 {
-    
     VnFilterBrightness* brightnessFilter = [[VnFilterBrightness alloc] init];
     brightnessFilter.brightness = -0.2f;
     
@@ -37,7 +36,7 @@
     [selectiveColor1 setRedsCyan:18 Magenta:0 Yellow:0 Black:0];
     [selectiveColor1 setYellowsCyan:-4 Magenta:0 Yellow:15 Black:2];
     [selectiveColor1 setGreensCyan:16 Magenta:0 Yellow:7 Black:21];
-    [selectiveColor1 setBluesCyan:0 Magenta:2 Yellow:31 Black:3];
+    [selectiveColor1 setBluesCyan:0 Magenta:2 Yellow:100 Black:3];
     [selectiveColor1 setBlacksCyan:-4 Magenta:6 Yellow:16 Black:12];
     
     // Selective Color

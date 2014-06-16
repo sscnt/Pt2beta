@@ -205,10 +205,10 @@ NSString *const kVnAdjustmentLayerSelectiveColorFragmentShaderString = SHADER_ST
      // Reds
      mediump vec3 redHsv = rgb2hsv(vec3(1.0, 0.0, 0.0));
      mediump float diff = abs(hsv.x - redHsv.x);
-     if(diff > 180.0){
-         diff = 360.0 - diff;
+     if(diff > 0.5){
+         diff = 1.0 - diff;
      }
-     mediump float redsWeight = (1.0 - max(0.0, min(1.0, diff / 60.0))) * hsv.y;
+     mediump float redsWeight = (1.0 - max(0.0, min(1.0, diff * 6.0))) * hsv.y;
      if(redsCyan > 0.0)
          ca += (1.0 - c) * redsCyan * redsWeight * (1.0 - hsv.z);
      else
@@ -225,7 +225,7 @@ NSString *const kVnAdjustmentLayerSelectiveColorFragmentShaderString = SHADER_ST
      // Yellows
      mediump vec3 yellowHsv = rgb2hsv(vec3(1.0, 1.0, 0.0));
      diff = abs(hsv.x - yellowHsv.x);
-     mediump float yellowsWeight = (1.0 - max(0.0, min(1.0, diff / 60.0))) * hsv.y;
+     mediump float yellowsWeight = (1.0 - max(0.0, min(1.0, diff * 6.0))) * hsv.y;
      if(yellowsCyan > 0.0)
          ca += (1.0 - c) * yellowsCyan * yellowsWeight * (1.0 - hsv.z);
      else
@@ -242,7 +242,7 @@ NSString *const kVnAdjustmentLayerSelectiveColorFragmentShaderString = SHADER_ST
      // Greens
      mediump vec3 greenHsv = rgb2hsv(vec3(0.0, 1.0, 0.0));
      diff = abs(hsv.x - greenHsv.x);
-     mediump float greensWeight = (1.0 - max(0.0, min(1.0, diff / 60.0))) * hsv.y;
+     mediump float greensWeight = (1.0 - max(0.0, min(1.0, diff * 6.0))) * hsv.y;
      if(greensCyan > 0.0)
          ca += c * greensCyan * greensWeight;
      else
@@ -259,7 +259,7 @@ NSString *const kVnAdjustmentLayerSelectiveColorFragmentShaderString = SHADER_ST
      // Cyan
      mediump vec3 cyanHsv = rgb2hsv(vec3(0.0, 1.0, 1.0));
      diff = abs(hsv.x - cyanHsv.x);
-     mediump float cyansWeight = (1.0 - max(0.0, min(1.0, diff / 60.0))) * hsv.y;
+     mediump float cyansWeight = (1.0 - max(0.0, min(1.0, diff * 6.0))) * hsv.y;
      if(cyansCyan > 0.0)
          ca += c * cyansCyan * cyansWeight;
      else
@@ -276,7 +276,7 @@ NSString *const kVnAdjustmentLayerSelectiveColorFragmentShaderString = SHADER_ST
      // Blue
      mediump vec3 blueHsv = rgb2hsv(vec3(0.0, 0.0, 1.0));
      diff = abs(hsv.x - blueHsv.x);
-     mediump float bluesWeight = (1.0 - max(0.0, min(1.0, diff / 60.0))) * hsv.y;
+     mediump float bluesWeight = (1.0 - max(0.0, min(1.0, diff * 6.0))) * hsv.y;
      if(bluesCyan > 0.0)
          ca += c * bluesCyan * bluesWeight;
      else
@@ -293,7 +293,7 @@ NSString *const kVnAdjustmentLayerSelectiveColorFragmentShaderString = SHADER_ST
      // Magentas
      mediump vec3 magentaHsv = rgb2hsv(vec3(1.0, 0.0, 1.0));
      diff = abs(hsv.x - magentaHsv.x);
-     mediump float magentasWeight = (1.0 - max(0.0, min(1.0, diff / 60.0))) * hsv.y;
+     mediump float magentasWeight = (1.0 - max(0.0, min(1.0, diff * 6.0))) * hsv.y;
      if(magentasCyan > 0.0)
          ca += (1.0 - c) * magentasCyan * magentasWeight * (1.0 - hsv.z);
      else

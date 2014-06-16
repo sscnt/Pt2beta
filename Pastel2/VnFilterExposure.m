@@ -61,7 +61,7 @@ NSString *const kVnFilterExposureFragmentShaderString = SHADER_STRING
 
 - (void)setExposure:(float)exposure
 {
-    [self setFloat:exposure forUniformName:@"exposure"];
+    [self setFloat:exposure / 20.0f forUniformName:@"exposure"];
 }
 
 - (void)setOffset:(float)offset

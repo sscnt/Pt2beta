@@ -76,10 +76,18 @@
     VnFilterBrightness* brightnessFilter3 = [[VnFilterBrightness alloc] init];
     brightnessFilter3.brightness = 0.1f;
     
+    // Gradient Map
+    VnAdjustmentLayerGradientMap* gradientMap = [[VnAdjustmentLayerGradientMap alloc] init];
+    [gradientMap addColorRed:238.0f Green:215.0f Blue:200.0f Opacity:100.0f Location:0 Midpoint:50];
+    [gradientMap addColorRed:12.0f Green:12.0f Blue:11.0f Opacity:100.0f Location:4096 Midpoint:50];
+    gradientMap.topLayerOpacity = 0.3f;
+    gradientMap.blendingMode = VnBlendingModeSoftLight;
+    
     // Levels
     VnFilterLevels* levelsFilter6 = [[VnFilterLevels alloc] init];
     [levelsFilter6 setMin:0.0f gamma:1.0f max:1.0f minOut:0.0f maxOut:1.0f];
     [levelsFilter6 setBlueMin:s255(0.0f) gamma:1.0f max:1.0f minOut:s255(39.0f) maxOut:s255(229.0f)];
+    levelsFilter6.topLayerOpacity = 0.50f;
     
     self.startFilter = solidColor1;
     [solidColor1 addTarget:levelsFilter1];

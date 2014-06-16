@@ -119,35 +119,40 @@ NSString *const kGPUImageHueSaturationFilterFragmentShaderString = SHADER_STRING
      return ceil(a);
  }
  
+ 
  void main()
  {
      mediump vec4 pixel   = texture2D(inputImageTexture, textureCoordinate);
      mediump vec4 rs;
 
      if(colorize == 1){
-         mediump vec3 hsl = rgb2hsl(pixel.rgb);
-         hsl.x = hue;
-         hsl.y = saturation;
-         hsl.z += lightness;
-         hsl.z = min(1.0, max(0.0, hsl.z));
-         rs.rgb = hsl2rgb(hsl);
+         mediump vec3 hsv = rgb2hsv(pixel.rgb);
+         mediump vec3 hueRGB = hsv2rgb(vec3(hue, 1.0, 1.0));
+         mediump vec3 color = blend2(vec3(0.5, 0.5, 0.5), hueRGB, saturation);
+         if(lightness <= -1.0){
+             rs = vec4(0.0);
+         }else if(lightness >= 1.0){
+             rs = vec4(1.0);
+         }else if(lightness >= 0.0){
+             rs.rgb = blend3(vec3(0.0), color, vec3(1.0), 2.0 * (1.0 - lightness) * (hsv.z - 1.0) + 1.0);
+         }else{
+             rs.rgb = blend3(vec3(0.0), color, vec3(1.0), 2.0 * (1.0 + lightness) * (hsv.z) - 1.0);
+         }
      } else {
          mediump vec3 hsl = rgb2hsv(pixel.rgb);
          hsl.x += hue;
-         if(hsl.x < 0.0){
-             hsl.x = 1.0 + hsl.x;
-         }else if(hsl.x > 1.0){
-             hsl.x = hsl.x - 1.0;
-         }
          mediump float weight = hsl.y * 2.0 - 1.0;
          weight = 1.0 - weight * weight;
          hsl.y += saturation * weight;
-         hsl.y = min(1.0, max(0.0, hsl.y));
-         hsl.z += lightness;
-         hsl.z = min(1.0, max(0.0, hsl.z));
          rs.rgb = hsv2rgb(hsl);
      }
      
+     if(lightness > 0.0){
+         rs.rgb = rs.rgb * (1.0 - lightness) + lightness;
+     }else{
+         rs.rgb = rs.rgb * (1.0 + lightness);
+     }
+
      gl_FragColor = blendWithBlendingMode(pixel, vec4(rs.r, rs.g, rs.b, topLayerOpacity), blendingMode);
  }
  );

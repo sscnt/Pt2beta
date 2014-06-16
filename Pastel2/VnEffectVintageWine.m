@@ -39,6 +39,7 @@
     
     // Curve
     VnFilterToneCurve* curveFilter = [[VnFilterToneCurve alloc] initWithACV:@"ca001"];
+    curveFilter.topLayerOpacity = 0.80f;
     
     // Hue / Saturation
     VnAdjustmentLayerHueSaturation* hueSaturation2 = [[VnAdjustmentLayerHueSaturation alloc] init];

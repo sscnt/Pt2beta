@@ -21,6 +21,11 @@
 
 - (void)makeFilterGroup
 {
+    // Exposure
+    VnFilterExposure* exposureFilter = [[VnFilterExposure alloc] init];
+    exposureFilter.exposure = 1.0f;
+    exposureFilter.gamma = 1.0f;
+    
     // Curve
     VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"ab001"];
     
@@ -28,7 +33,7 @@
     VnAdjustmentLayerHueSaturation* hueSaturation2 = [[VnAdjustmentLayerHueSaturation alloc] init];
     hueSaturation2.hue = 0.0f;
     hueSaturation2.saturation = -15;
-    hueSaturation2.lightness = 50.0f;
+    hueSaturation2.lightness = 10;
     hueSaturation2.colorize = NO;
     
     // Fill Layer
@@ -68,8 +73,9 @@
     inputMerge.blendingMode = VnBlendingModeSoftLight;
     
     self.startFilter = inputFilter;
-    [inputFilter addTarget:curveFilter1];
+    [inputFilter addTarget:exposureFilter];
     [inputFilter addTarget:inputMerge atTextureLocation:1];
+    [exposureFilter addTarget:curveFilter1];
     [curveFilter1 addTarget:hueSaturation2];
     [hueSaturation2 addTarget:solidColor1];
     [solidColor1 addTarget:solidColor2];
@@ -77,7 +83,7 @@
     [solidColor3 addTarget:solidColor4];
     [solidColor4 addTarget:solidColor5];
     [solidColor5 addTarget:inputMerge atTextureLocation:0];
-    self.endFilter = hueSaturation2;
+    self.endFilter = inputMerge;
 }
 
 @end

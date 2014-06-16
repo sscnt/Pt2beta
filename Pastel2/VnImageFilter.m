@@ -37,6 +37,15 @@ NSString* const kVnImageFilterFragmentShaderString = SHADER_STRING
      
      return c;
  }
+ mediump vec3 rgb2hsv(const in mediump vec3 c){
+    mediump vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
+    mediump vec4 p = mix(vec4(c.bg, K.wz), vec4(c.gb, K.xy), step(c.b, c.g));
+    mediump vec4 q = mix(vec4(p.xyw, c.r), vec4(c.r, p.yzx), step(p.x, c.r));
+    
+    mediump float d = q.x - min(q.w, q.y);
+    mediump float e = 1.0e-10;
+    return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);
+}
  
  mediump vec3 setlum(mediump vec3 c, mediump float l) {
      mediump float d = l - luminosity(c);
@@ -44,92 +53,98 @@ NSString* const kVnImageFilterFragmentShaderString = SHADER_STRING
      return clipcolor(c);
  }
  
- 
- mediump vec3 rgb2hsv(const in mediump vec3 color){
-     mediump float r = color.r;
-     mediump float g = color.g;
-     mediump float b = color.b;
-     
-     mediump float max = max(r, max(g, b));
-     mediump float min = min(r, min(g, b));
-     mediump float h = 0.0;
-     if(max < min){
-         max = 0.0;
-         min = 0.0;
+ /*
+ mediump vec3 _rgb2hsv(const in mediump vec3 color){
+     mediump float max = color.r;
+     if(color.r < color.g){
+         max = color.g;
      }
-     
-     if(max == min){
-         
-     } else if(max == r){
-         h = 60.0 * (g - b) / (max - min);
-     } else if(max == g){
-         h = 60.0 * (b - r) / (max - min) + 120.0;
-     } else if(max == b){
-         h = 60.0 * (r - g) / (max - min) + 240.0;
+     if(max < color.b){
+         max = color.b;
      }
-     if(h < 0.0){
-         h += 360.0;
+     mediump float min = color.r;
+     if(color.r > color.g){
+         min = color.g;
      }
-     h = mod(h, 360.0);
-     
-     mediump float s;
-     if(max == 0.0) {
-         s = 0.0;
-     } else {
-         s = (max - min) / max;
+     if(min > color.b){
+         min = color.b;
+     }
+     mediump float h = max - min;
+     if (h > 0.0) {
+         if (max == color.r) {
+             h = (color.g - color.b) / h;
+             if (h < 0.0) {
+                 h += 6.0;
+             }
+         } else if (max == color.g) {
+             h = 2.0 + (color.b - color.r) / h;
+         } else {
+             h = 4.0 + (color.r - color.b) / h;
+         }
+     }
+     h /= 6.0;
+     mediump float s = (max - min);
+     if (max != 0.0){
+         s /= max;
      }
      mediump float v = max;
-     
      return vec3(h, s, v);
  }
+  */
  
- mediump vec3 hsv2rgb(const in mediump vec3 color){
-     //float h = color.r;
-     //float s = color.g;
-     //float v = color.b;
-     mediump float r;
-     mediump float g;
-     mediump float b;
-     //int hi = int(mod(float(floor(color.r / 60.0)), 6.0));
-     int hi = int(mod(float(floor(color.r / 60.0)), 6.0));
-     mediump float f = (color.r / 60.0) - float(hi);
-     mediump float p = color.b * (1.0 - color.g);
-     mediump float q = color.b * (1.0 - color.g * f);
-     mediump float t = color.b * (1.0 - color.g * (1.0 - f));
-     
-     if(hi == 0){
-         r = color.b;
-         g = t;
-         b = p;
-     } else if(hi == 1){
-         r = q;
-         g = color.b;
-         b = p;
-     } else if(hi == 2){
-         r = p;
-         g = color.b;
-         b = t;
-     } else if(hi == 3){
-         r = p;
-         g = q;
-         b = color.b;
-     } else if(hi == 4){
-         r = t;
-         g = p;
-         b = color.b;
-     } else if(hi == 5){
-         r = color.b;
-         g = p;
-         b = q;
-     } else {
-         r = color.b;
-         g = t;
-         b = p;
+ mediump vec3 hsv2rgb(const in mediump vec3 c){
+    mediump vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+    mediump vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
+    return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
+}
+ /*
+ mediump vec3 _hsv2rgb(mediump vec3 color){
+     if(color.x > 1.0){
+         color.x -= 1.0;
+     }else if(color.x < 0.0){
+         color.x += 1.0;
+     }
+     if(color.y > 1.0){
+         color.y = 1.0;
+     }else if(color.y < 0.0){
+         color.y = 0.0;
+     }
+     if(color.z > 1.0){
+         color.z = 1.0;
+     }else if(color.z < 0.0){
+         color.z = 0.0;
+     }
+     mediump float r = color.z;
+     mediump float g = color.z;
+     mediump float b = color.z;
+     if(color.y > 0.0){
+         mediump float f = color.x * 6.0;
+         int hi = int(f);
+         f = f - float(hi);
+         if(hi == 0){
+             g *= 1.0 - color.y * (1.0 - f);
+             b *= 1.0 - color.y;
+         } else if(hi == 1){
+             r *= 1.0 - color.y * f;
+             b *= 1.0 - color.y;
+         } else if(hi == 2){
+             r *= 1.0 - color.y;
+             b *= 1.0 - color.y * (1.0 - f);
+         } else if(hi == 3){
+             r *= 1.0 - color.y;
+             g *= 1.0 - color.y * f;
+         } else if(hi == 4){
+             r *= 1.0 - color.y * (1.0 - f);
+             g *= 1.0 - color.y;
+         } else if(hi == 5){
+             g *= 1.0 - color.y;
+             b *= 1.0 - color.y * f;
+         }
+         return vec3(g, 0.0, 0.0);
      }
      return vec3(r, g, b);
-     
  }
- 
+ */
 
  // Normal
  mediump vec4 blendNormal(const in mediump vec4 bottom, const in mediump vec4 top)

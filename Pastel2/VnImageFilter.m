@@ -37,15 +37,6 @@ NSString* const kVnImageFilterFragmentShaderString = SHADER_STRING
      
      return c;
  }
- mediump vec3 rgb2hsv(const in mediump vec3 c){
-    mediump vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
-    mediump vec4 p = mix(vec4(c.bg, K.wz), vec4(c.gb, K.xy), step(c.b, c.g));
-    mediump vec4 q = mix(vec4(p.xyw, c.r), vec4(c.r, p.yzx), step(p.x, c.r));
-    
-    mediump float d = q.x - min(q.w, q.y);
-    mediump float e = 1.0e-10;
-    return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);
-}
  
  mediump vec3 setlum(mediump vec3 c, mediump float l) {
      mediump float d = l - luminosity(c);
@@ -53,6 +44,15 @@ NSString* const kVnImageFilterFragmentShaderString = SHADER_STRING
      return clipcolor(c);
  }
  
+ mediump vec3 rgb2hsv(const in mediump vec3 c){
+     mediump vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
+     mediump vec4 p = mix(vec4(c.bg, K.wz), vec4(c.gb, K.xy), step(c.b, c.g));
+     mediump vec4 q = mix(vec4(p.xyw, c.r), vec4(c.r, p.yzx), step(p.x, c.r));
+     
+     mediump float d = q.x - min(q.w, q.y);
+     mediump float e = 1.0e-10;
+     return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);
+}
  /*
  mediump vec3 _rgb2hsv(const in mediump vec3 color){
      mediump float max = color.r;
@@ -92,10 +92,18 @@ NSString* const kVnImageFilterFragmentShaderString = SHADER_STRING
  }
   */
  
- mediump vec3 hsv2rgb(const in mediump vec3 c){
-    mediump vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
-    mediump vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
-    return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
+ mediump vec3 hsv2rgb(mediump vec3 c){
+     if(c.x > 1.0){
+         c.x -= 1.0;
+     }else if(c.x < 0.0){
+         c.x += 1.0;
+     }
+     c.y = max(min(c.y, 1.0), 0.0);
+     c.z = max(min(c.z, 1.0), 0.0);
+
+     mediump vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+     mediump vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
+     return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
 }
  /*
  mediump vec3 _hsv2rgb(mediump vec3 color){

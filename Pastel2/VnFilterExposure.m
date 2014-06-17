@@ -23,14 +23,14 @@ NSString *const kVnFilterExposureFragmentShaderString = SHADER_STRING
      mediump vec4 rs;
      
      // exposure
-     rs.r = pixel.r * pow(2.0, exposure);
-     rs.g = pixel.g * pow(2.0, exposure);
-     rs.b = pixel.b * pow(2.0, exposure);
+     rs.rgb = pixel.rgb * pow(2.0, exposure);
      
      // offset
-     rs.r += sqrt(offset) * (1.0 - rs.r);
-     rs.g += sqrt(offset) * (1.0 - rs.g);
-     rs.b += sqrt(offset) * (1.0 - rs.b);
+     if(offset > 0.0){
+         rs.rgb = rs.rgb * (1.0 - offset) + offset;
+     }else{
+         rs.rgb *= (1.0 + offset);
+     }
      
      // gamma
      rs.r = pow(rs.r, 1.0 / gamma);
@@ -61,11 +61,20 @@ NSString *const kVnFilterExposureFragmentShaderString = SHADER_STRING
 
 - (void)setExposure:(float)exposure
 {
-    [self setFloat:exposure / 20.0f forUniformName:@"exposure"];
+    exposure /= 2.0f;
+    [self setFloat:exposure forUniformName:@"exposure"];
 }
 
 - (void)setOffset:(float)offset
 {
+    offset *= 10.0f;
+    if (offset < 0.0) {
+        offset *= -1.0f;
+        offset = logf(offset * 0.90f + 1.0f) / logf(10.0f);
+        offset *= -1.0f;
+    }else{
+        offset = logf(offset * 0.90f + 1.0f) / logf(10.0f);
+    }
     [self setFloat:offset forUniformName:@"offset"];
 }
 

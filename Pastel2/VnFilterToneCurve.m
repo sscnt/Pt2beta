@@ -271,10 +271,10 @@ NSString *const kVnFilterToneCurveFragmentShaderString = SHADER_STRING
         if (firstSplinePoint.x > 0) {
             for (int i=firstSplinePoint.x; i >= 0; i--) {
 #if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
-                CGPoint newCGPoint = CGPointMake(i, 0);
+                CGPoint newCGPoint = CGPointMake(i, firstSplinePoint.y);
                 [splinePoints insertObject:[NSValue valueWithCGPoint:newCGPoint] atIndex:0];
 #else
-                NSPoint newNSPoint = NSMakePoint(i, 0);
+                NSPoint newNSPoint = NSMakePoint(i, firstSplinePoint.y);
                 [splinePoints insertObject:[NSValue valueWithPoint:newNSPoint] atIndex:0];
 #endif
             }
@@ -286,7 +286,7 @@ NSString *const kVnFilterToneCurveFragmentShaderString = SHADER_STRING
         
         if (lastSplinePoint.x < 255) {
             for (int i = lastSplinePoint.x + 1; i <= 255; i++) {
-                CGPoint newCGPoint = CGPointMake(i, 255);
+                CGPoint newCGPoint = CGPointMake(i, lastSplinePoint.y);
                 [splinePoints addObject:[NSValue valueWithCGPoint:newCGPoint]];
             }
         }
@@ -295,7 +295,7 @@ NSString *const kVnFilterToneCurveFragmentShaderString = SHADER_STRING
         
         if (lastSplinePoint.x < 255) {
             for (int i = lastSplinePoint.x + 1; i <= 255; i++) {
-                NSPoint newNSPoint = NSMakePoint(i, 255);
+                NSPoint newNSPoint = NSMakePoint(i, lastSplinePoint.y);
                 [splinePoints addObject:[NSValue valueWithPoint:newNSPoint]];
             }
         }

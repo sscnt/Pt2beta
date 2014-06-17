@@ -24,18 +24,16 @@
 - (void)makeFilterGroup
 {
     VnFilterDuplicate* duplicateFilter = [[VnFilterDuplicate alloc] init];
-    duplicateFilter.topLayerOpacity = 0.30f;
+    duplicateFilter.topLayerOpacity = 0.70f;
     duplicateFilter.blendingMode = VnBlendingModeSoftLight;
     
     // Curve
     VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"ao001"];
     
-    
     // Fill Layer
     VnFilterSolidColor* solidColor = [[VnFilterSolidColor alloc] init];
     [solidColor setColorRed:7.0f/255.0f green:37.0f/255.0f blue:61.0f/255.0 alpha:1.0f];
     solidColor.blendingMode = VnBlendingModeExclusion;
-    
     
     // Hue / Saturation
     VnAdjustmentLayerHueSaturation* hueSaturation = [[VnAdjustmentLayerHueSaturation alloc] init];
@@ -44,6 +42,7 @@
     hueSaturation.lightness = 0.0f;
     hueSaturation.colorize = YES;
     hueSaturation.blendingMode = VnBlendingModeSoftLight;
+    
     
     self.startFilter = curveFilter1;
     [curveFilter1 addTarget:solidColor];

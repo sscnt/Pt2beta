@@ -61,7 +61,7 @@
 
 + (UIColor *)artisticBarBgColor
 {
-    return [UIColor colorWithWhite:0.0f alpha:1.0f];
+    return [UIColor colorWithWhite:0.06f alpha:1.0f];
 }
 
 + (UIColor *)overlayBarBgColor

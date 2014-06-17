@@ -107,6 +107,16 @@
 #import "VnEffectVSCOBrown.h"
 #import "VnEffectVSCODarkfilm.h"
 #import "VnEffectRaven.h"
+#import "VnEffectOverlayFilm.h"
+#import "VnEffectOverlayDusk.h"
+#import "VnEffectOverlayFeelsLikeHome.h"
+#import "VnEffectOverlaySunshowerLeft.h"
+#import "VnEffectOverlaySunshowerRight.h"
+#import "VnEffectAmelia.h"
+#import "VnEffectDorian.h"
+#import "VnEffectElkins.h"
+#import "VnEffectGrove.h"
+#import "VnEffectVogue.h"
 
 @interface PtFtSharedFilterManager : NSObject
 

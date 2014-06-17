@@ -171,10 +171,31 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
-    //// Glitter Shine
+    //// Vintage Haze
     item = [[PtFtObjectFilterItem alloc] init];
-    item.effectId = VnEffectIdGlitterShine;
-    item.name = NSLocalizedString(@"CX1", nil);
+    item.effectId = VnEffectIdAmeria;
+    item.name = NSLocalizedString(@"VM1", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
+    //// Vintage Haze
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdElkins;
+    item.name = NSLocalizedString(@"VM2", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
+    //// Vintage Haze
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdGrove;
+    item.name = NSLocalizedString(@"VM3", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
+    //// Vintage Haze
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdVogue;
+    item.name = NSLocalizedString(@"VM4", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
@@ -220,6 +241,13 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
 
+    //// Glitter Shine
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdGlitterShine;
+    item.name = NSLocalizedString(@"CS7", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
     //// Weekend
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdWeekend;
@@ -512,17 +540,53 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdColorBronze;
     item.effectGroup = VnEffectGroupColor;
-    item.name = NSLocalizedString(@"P1", nil);
+    item.name = NSLocalizedString(@"R1", nil);
     item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(219.0f) blue:s255(194.0f) alpha:1.0f];
     item.selectionColor = item.previewColor;
     [_colorFilters addObject:item];
     
-    //// Little Blue Secret
+    //// Rosy Vintage
     item = [[PtFtObjectFilterItem alloc] init];
-    item.effectId = VnEffectIdColorLittleBlueSecret;
+    item.effectId = VnEffectIdColorRosyVintage;
     item.effectGroup = VnEffectGroupColor;
-    item.name = NSLocalizedString(@"W1", nil);
-    item.previewColor = [UIColor colorWithRed:s255(205.0f) green:s255(201.0f) blue:s255(255.0f) alpha:1.0f];
+    item.name = NSLocalizedString(@"R2", nil);
+    item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(222.0f) blue:s255(222.0f) alpha:1.0f];
+    item.selectionColor = item.previewColor;
+    [_colorFilters addObject:item];
+    
+    //// Summer Skin
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdColorSummerSkin;
+    item.effectGroup = VnEffectGroupColor;
+    item.name = NSLocalizedString(@"R3", nil);
+    item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(223) blue:s255(199.0f) alpha:1.0f];
+    item.selectionColor = item.previewColor;
+    [_colorFilters addObject:item];
+    
+    //// Vintage Matte
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdColorVintageMatte;
+    item.effectGroup = VnEffectGroupColor;
+    item.name = NSLocalizedString(@"R4", nil);
+    item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(216.0f) blue:s255(201.0f) alpha:1.0f];
+    item.selectionColor = item.previewColor;
+    [_colorFilters addObject:item];
+    
+    //// Warm Haze
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdColorWarmHaze;
+    item.effectGroup = VnEffectGroupColor;
+    item.name = NSLocalizedString(@"R5", nil);
+    item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(216.0f) blue:s255(191.0f) alpha:1.0f];
+    item.selectionColor = item.previewColor;
+    [_colorFilters addObject:item];
+    
+    //// Sunny Light
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdColorSunnyLight;
+    item.effectGroup = VnEffectGroupColor;
+    item.name = NSLocalizedString(@"R6", nil);
+    item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(242.0f) blue:s255(212.0f) alpha:1.0f];
     item.selectionColor = item.previewColor;
     [_colorFilters addObject:item];
     
@@ -530,7 +594,7 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdColorOphelia;
     item.effectGroup = VnEffectGroupColor;
-    item.name = NSLocalizedString(@"R1", nil);
+    item.name = NSLocalizedString(@"P1", nil);
     item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(196.0f) blue:s255(220.0f) alpha:1.0f];
     item.selectionColor = item.previewColor;
     [_colorFilters addObject:item];
@@ -539,7 +603,7 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdColorPinkMilk;
     item.effectGroup = VnEffectGroupColor;
-    item.name = NSLocalizedString(@"R2", nil);
+    item.name = NSLocalizedString(@"P2", nil);
     item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(204.0f) blue:s255(229.0f) alpha:1.0f];
     item.selectionColor = item.previewColor;
     [_colorFilters addObject:item];
@@ -548,7 +612,7 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdColorPotion9;
     item.effectGroup = VnEffectGroupColor;
-    item.name = NSLocalizedString(@"R3", nil);
+    item.name = NSLocalizedString(@"P3", nil);
     item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(196.0f) blue:s255(208.0f) alpha:1.0f];
     item.selectionColor = item.previewColor;
     [_colorFilters addObject:item];
@@ -557,8 +621,26 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdColorPurePeach;
     item.effectGroup = VnEffectGroupColor;
-    item.name = NSLocalizedString(@"R4", nil);
+    item.name = NSLocalizedString(@"P4", nil);
     item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(202.0f) blue:s255(199.0f) alpha:1.0f];
+    item.selectionColor = item.previewColor;
+    [_colorFilters addObject:item];
+    
+    //// Wild Honey
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdColorWildHoney;
+    item.effectGroup = VnEffectGroupColor;
+    item.name = NSLocalizedString(@"P5", nil);
+    item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(207.0f) blue:s255(214.0f) alpha:1.0f];
+    item.selectionColor = item.previewColor;
+    [_colorFilters addObject:item];
+    
+    //// Little Blue Secret
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdColorLittleBlueSecret;
+    item.effectGroup = VnEffectGroupColor;
+    item.name = NSLocalizedString(@"B1", nil);
+    item.previewColor = [UIColor colorWithRed:s255(205.0f) green:s255(201.0f) blue:s255(255.0f) alpha:1.0f];
     item.selectionColor = item.previewColor;
     [_colorFilters addObject:item];
     
@@ -571,48 +653,12 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item.selectionColor = item.previewColor;
     [_colorFilters addObject:item];
     
-    //// Rosy Vintage
-    item = [[PtFtObjectFilterItem alloc] init];
-    item.effectId = VnEffectIdColorRosyVintage;
-    item.effectGroup = VnEffectGroupColor;
-    item.name = NSLocalizedString(@"R5", nil);
-    item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(222.0f) blue:s255(222.0f) alpha:1.0f];
-    item.selectionColor = item.previewColor;
-    [_colorFilters addObject:item];
-    
     //// Serenity
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdColorSerenity;
     item.effectGroup = VnEffectGroupColor;
     item.name = NSLocalizedString(@"W3", nil);
     item.previewColor = [UIColor colorWithRed:s255(217.0f) green:s255(196.0f) blue:s255(255.0f) alpha:1.0f];
-    item.selectionColor = item.previewColor;
-    [_colorFilters addObject:item];
-    
-    //// Summer Skin
-    item = [[PtFtObjectFilterItem alloc] init];
-    item.effectId = VnEffectIdColorSummerSkin;
-    item.effectGroup = VnEffectGroupColor;
-    item.name = NSLocalizedString(@"P2", nil);
-    item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(223) blue:s255(199.0f) alpha:1.0f];
-    item.selectionColor = item.previewColor;
-    [_colorFilters addObject:item];
-    
-    //// Sunny Light
-    item = [[PtFtObjectFilterItem alloc] init];
-    item.effectId = VnEffectIdColorSunnyLight;
-    item.effectGroup = VnEffectGroupColor;
-    item.name = NSLocalizedString(@"P3", nil);
-    item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(242.0f) blue:s255(212.0f) alpha:1.0f];
-    item.selectionColor = item.previewColor;
-    [_colorFilters addObject:item];
-    
-    //// Wild Honey
-    item = [[PtFtObjectFilterItem alloc] init];
-    item.effectId = VnEffectIdColorWildHoney;
-    item.effectGroup = VnEffectGroupColor;
-    item.name = NSLocalizedString(@"P4", nil);
-    item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(207.0f) blue:s255(214.0f) alpha:1.0f];
     item.selectionColor = item.previewColor;
     [_colorFilters addObject:item];
     
@@ -625,23 +671,6 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item.selectionColor = item.previewColor;
     [_colorFilters addObject:item];
     
-    //// Vintage Matte
-    item = [[PtFtObjectFilterItem alloc] init];
-    item.effectId = VnEffectIdColorVintageMatte;
-    item.effectGroup = VnEffectGroupColor;
-    item.name = NSLocalizedString(@"P5", nil);
-    item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(216.0f) blue:s255(201.0f) alpha:1.0f];
-    item.selectionColor = item.previewColor;
-    [_colorFilters addObject:item];
-    
-    //// Warm Haze
-    item = [[PtFtObjectFilterItem alloc] init];
-    item.effectId = VnEffectIdColorWarmHaze;
-    item.effectGroup = VnEffectGroupColor;
-    item.name = NSLocalizedString(@"P6", nil);
-    item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(216.0f) blue:s255(191.0f) alpha:1.0f];
-    item.selectionColor = item.previewColor;
-    [_colorFilters addObject:item];
 }
 
 - (void)initOverlayFilters
@@ -661,7 +690,7 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     //// Gentle Color
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdGentleColor;
-    item.name = NSLocalizedString(@"A1", nil);
+    item.name = NSLocalizedString(@"X1", nil);
     item.effectGroup = VnEffectGroupOverlays;
     item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(241.0f) blue:s255(227.0f) alpha:1.0f];
     item.selectionColor = item.previewColor;
@@ -670,7 +699,7 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     //// Velvet Color
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdVelvetColor;
-    item.name = NSLocalizedString(@"H3", nil);
+    item.name = NSLocalizedString(@"X2", nil);
     item.effectGroup = VnEffectGroupOverlays;
     item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(241.0f) blue:s255(227.0f) alpha:1.0f];
     item.selectionColor = item.previewColor;
@@ -680,7 +709,7 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdOverlayLightBrightMatte;
     item.effectGroup = VnEffectGroupOverlays;
-    item.name = NSLocalizedString(@"A2", nil);
+    item.name = NSLocalizedString(@"X3", nil);
     item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(229.0f) blue:s255(217.0f) alpha:1.0f];
     item.selectionColor = item.previewColor;
     [_overlayFilters addObject:item];
@@ -689,7 +718,7 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdOverlayCandyHaze;
     item.effectGroup = VnEffectGroupOverlays;
-    item.name = NSLocalizedString(@"B1", nil);
+    item.name = NSLocalizedString(@"H1", nil);
     item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(231.0f) blue:s255(204.0f) alpha:1.0f];
     item.selectionColor = item.previewColor;
     [_overlayFilters addObject:item];
@@ -698,7 +727,7 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdOverlayRetroSun;
     item.effectGroup = VnEffectGroupOverlays;
-    item.name = NSLocalizedString(@"C1", nil);
+    item.name = NSLocalizedString(@"H2", nil);
     item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(221.0f) blue:s255(201.0f) alpha:1.0f];
     item.selectionColor = item.previewColor;
     [_overlayFilters addObject:item];
@@ -707,26 +736,8 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdOverlayPinkHaze;
     item.effectGroup = VnEffectGroupOverlays;
-    item.name = NSLocalizedString(@"D1", nil);
+    item.name = NSLocalizedString(@"H3", nil);
     item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(229.0f) blue:s255(233.0f) alpha:1.0f];
-    item.selectionColor = item.previewColor;
-    [_overlayFilters addObject:item];
-    
-    //// Hazy Light Warm Pink
-    item = [[PtFtObjectFilterItem alloc] init];
-    item.effectId = VnEffectIdOverlayHazyLightWarmPink;
-    item.effectGroup = VnEffectGroupOverlays;
-    item.name = NSLocalizedString(@"D2", nil);
-    item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(216.0f) blue:s255(212.0f) alpha:1.0f];
-    item.selectionColor = item.previewColor;
-    [_overlayFilters addObject:item];
-    
-    //// Hazy Light Warm Pink
-    item = [[PtFtObjectFilterItem alloc] init];
-    item.effectId = VnEffectIdOverlayHazyLightWarmPink2;
-    item.effectGroup = VnEffectGroupOverlays;
-    item.name = NSLocalizedString(@"D3", nil);
-    item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(216.0f) blue:s255(212.0f) alpha:1.0f];
     item.selectionColor = item.previewColor;
     [_overlayFilters addObject:item];
     
@@ -734,7 +745,7 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdOverlayLightBrightPop;
     item.effectGroup = VnEffectGroupOverlays;
-    item.name = NSLocalizedString(@"E1", nil);
+    item.name = NSLocalizedString(@"H4", nil);
     item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(241.0f) blue:s255(227.0f) alpha:1.0f];
     item.selectionColor = item.previewColor;
     [_overlayFilters addObject:item];
@@ -743,7 +754,7 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdOverlayLightBrightHaze;
     item.effectGroup = VnEffectGroupOverlays;
-    item.name = NSLocalizedString(@"D4", nil);
+    item.name = NSLocalizedString(@"H5", nil);
     item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(224.0f) blue:s255(245.0f) alpha:1.0f];
     item.selectionColor = item.previewColor;
     [_overlayFilters addObject:item];
@@ -752,7 +763,7 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdOverlayBlueHaze;
     item.effectGroup = VnEffectGroupOverlays;
-    item.name = NSLocalizedString(@"F1", nil);
+    item.name = NSLocalizedString(@"H6", nil);
     item.previewColor = [UIColor colorWithRed:s255(191.0f) green:s255(191.0f) blue:s255(255.0f) alpha:1.0f];
     item.selectionColor = item.previewColor;
     [_overlayFilters addObject:item];
@@ -761,8 +772,44 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdOverlayWarmVintage;
     item.effectGroup = VnEffectGroupOverlays;
-    item.name = NSLocalizedString(@"C2", nil);
+    item.name = NSLocalizedString(@"H7", nil);
     item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(245.0f) blue:s255(224.0f) alpha:1.0f];
+    item.selectionColor = item.previewColor;
+    [_overlayFilters addObject:item];
+    
+    //// Warm Vintage
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdOverlayFilm;
+    item.effectGroup = VnEffectGroupOverlays;
+    item.name = NSLocalizedString(@"H8", nil);
+    item.previewColor = [UIColor colorWithRed:s255(224.0f) green:s255(224.0f) blue:s255(224.0f) alpha:1.0f];
+    item.selectionColor = item.previewColor;
+    [_overlayFilters addObject:item];
+    
+    //// Warm Vintage
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdOverlayDusk;
+    item.effectGroup = VnEffectGroupOverlays;
+    item.name = NSLocalizedString(@"H9", nil);
+    item.previewColor = [UIColor colorWithRed:s255(188.0f) green:s255(176.0f) blue:s255(164.0f) alpha:1.0f];
+    item.selectionColor = item.previewColor;
+    [_overlayFilters addObject:item];
+    
+    //// Hazy Light Warm Pink
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdOverlayHazyLightWarmPink;
+    item.effectGroup = VnEffectGroupOverlays;
+    item.name = NSLocalizedString(@"L1", nil);
+    item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(216.0f) blue:s255(212.0f) alpha:1.0f];
+    item.selectionColor = item.previewColor;
+    [_overlayFilters addObject:item];
+    
+    //// Hazy Light Warm Pink
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdOverlayHazyLightWarmPink2;
+    item.effectGroup = VnEffectGroupOverlays;
+    item.name = NSLocalizedString(@"L2", nil);
+    item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(216.0f) blue:s255(212.0f) alpha:1.0f];
     item.selectionColor = item.previewColor;
     [_overlayFilters addObject:item];
     
@@ -770,7 +817,7 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdOverlaySunhazeLeft;
     item.effectGroup = VnEffectGroupOverlays;
-    item.name = NSLocalizedString(@"C3", nil);
+    item.name = NSLocalizedString(@"L3", nil);
     item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(245.0f) blue:s255(224.0f) alpha:1.0f];
     item.selectionColor = item.previewColor;
     [_overlayFilters addObject:item];
@@ -779,8 +826,35 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdOverlaySunhazeRight;
     item.effectGroup = VnEffectGroupOverlays;
-    item.name = NSLocalizedString(@"C4", nil);
+    item.name = NSLocalizedString(@"L4", nil);
     item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(245.0f) blue:s255(224.0f) alpha:1.0f];
+    item.selectionColor = item.previewColor;
+    [_overlayFilters addObject:item];
+    
+    //// Feels Like Home
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdOverlayFeelsLikeHome;
+    item.effectGroup = VnEffectGroupOverlays;
+    item.name = NSLocalizedString(@"L5", nil);
+    item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(245.0f) blue:s255(224.0f) alpha:1.0f];
+    item.selectionColor = item.previewColor;
+    [_overlayFilters addObject:item];
+    
+    //// Sunshower Left
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdOverlaySunshowerLeft;
+    item.effectGroup = VnEffectGroupOverlays;
+    item.name = NSLocalizedString(@"L5", nil);
+    item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(231.0f) blue:s255(216.0f) alpha:1.0f];
+    item.selectionColor = item.previewColor;
+    [_overlayFilters addObject:item];
+    
+    //// Sunshower Left
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdOverlaySunshowerRight;
+    item.effectGroup = VnEffectGroupOverlays;
+    item.name = NSLocalizedString(@"L6", nil);
+    item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(231.0f) blue:s255(216.0f) alpha:1.0f];
     item.selectionColor = item.previewColor;
     [_overlayFilters addObject:item];
 }
@@ -848,6 +922,16 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
             return [VnEffectOverlayHazyLightWarmPink new];
         case VnEffectIdOverlayHazyLightWarmPink2:
             return [VnEffectOverlayHazyLightWarmPink2 new];
+        case VnEffectIdOverlayFilm:
+            return [VnEffectOverlayFilm new];
+        case VnEffectIdOverlayDusk:
+            return [VnEffectOverlayDusk new];
+        case VnEffectIdOverlayFeelsLikeHome:
+            return [VnEffectOverlayFeelsLikeHome new];
+        case VnEffectIdOverlaySunshowerLeft:
+            return [VnEffectOverlaySunshowerLeft new];
+        case VnEffectIdOverlaySunshowerRight:
+            return [VnEffectOverlaySunshowerRight new];
             //// Artistic
         case VnEffectIdBeachVintage:
             return [VnEffectBeachVintage new];
@@ -981,6 +1065,16 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
             return [VnEffectVSCODarkfilm new];
         case VnEffectIdRaven:
             return [VnEffectRaven new];
+        case VnEffectIdAmeria:
+            return [VnEffectAmelia new];
+        case VnEffectIdDorian:
+            return [VnEffectDorian new];
+        case VnEffectIdElkins:
+            return [VnEffectElkins new];
+        case VnEffectIdGrove:
+            return [VnEffectGrove new];
+        case VnEffectIdVogue:
+            return [VnEffectVogue new];
         default:
             break;
     }

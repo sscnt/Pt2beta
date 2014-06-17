@@ -24,7 +24,8 @@
     
     // Exposure
     VnFilterExposure* expFilter = [[VnFilterExposure alloc] init];
-    expFilter.exposure = -0.36f;
+    expFilter.exposure = -0.66f;
+    expFilter.offset = 0.0026;
     expFilter.gamma = 1.15f;
     
     // Hue / Saturation
@@ -53,6 +54,12 @@
     // Curve
     VnFilterToneCurve* curveFilter1 = [[VnFilterToneCurve alloc] initWithACV:@"ch001"];
     curveFilter1.topLayerOpacity = 0.8f;
+    
+    // Fill Layer
+    VnFilterSolidColor* solidColor2 = [[VnFilterSolidColor alloc] init];
+    [solidColor2 setColorRed:64.0f/255.0f green:64.0f/255.0f blue:64.0f/255.0 alpha:1.0f];
+    solidColor2.topLayerOpacity = 0.50f;
+    solidColor2.blendingMode = VnBlendingModeLighten;
     
     // Cntrast
     VnFilterLevels* levelsFilter1 = [[VnFilterLevels alloc] init];

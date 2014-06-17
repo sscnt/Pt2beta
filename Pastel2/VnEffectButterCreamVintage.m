@@ -23,7 +23,7 @@
 {
     // Exposure
     VnFilterExposure* exposureFilter = [[VnFilterExposure alloc] init];
-    exposureFilter.exposure = 1.0f;
+    exposureFilter.exposure = 0.40f;
     exposureFilter.gamma = 1.0f;
     
     // Curve
@@ -69,7 +69,7 @@
     // Contrast
     VnFilterPassThrough* inputFilter = [[VnFilterPassThrough alloc] init];
     VnImageNormalBlendFilter* inputMerge = [[VnImageNormalBlendFilter alloc] init];
-    inputMerge.topLayerOpacity = 0.10f;
+    inputMerge.topLayerOpacity = 0.30f;
     inputMerge.blendingMode = VnBlendingModeSoftLight;
     
     self.startFilter = inputFilter;

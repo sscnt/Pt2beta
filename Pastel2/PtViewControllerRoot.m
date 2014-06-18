@@ -43,13 +43,17 @@
 
 - (void)applicationDidEnterBackground
 {
-    [self.lmCmViewController disableCamera];
+    if([self.visibleViewController isKindOfClass:[LmCmViewController class]]){
+        [self.lmCmViewController disableCamera];
+    }
 }
 
 - (void)applicationWillEnterForeground
 {
-    [self.lmCmViewController enableCamera];
-    [self.lmCmViewController loadLastPhoto];
+    if([self.visibleViewController isKindOfClass:[LmCmViewController class]]){
+        [self.lmCmViewController enableCamera];
+        [self.lmCmViewController loadLastPhoto];
+    }
 }
 
 - (BOOL)shouldAutorotate

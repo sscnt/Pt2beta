@@ -310,7 +310,6 @@
         case PtEdViewBarButtonTypeBackToCamera:
         {
             
-            
             //// BackToCamera Drawing
             UIBezierPath* backToCameraPath = [UIBezierPath bezierPath];
             [backToCameraPath moveToPoint: CGPointMake(-3.89, -2.89)];
@@ -340,17 +339,10 @@
             [backToCameraPath addCurveToPoint: CGPointMake(-2.47, 3.47) controlPoint1: CGPointMake(-3.84, -0.11) controlPoint2: CGPointMake(-3.84, 2.11)];
             [backToCameraPath addCurveToPoint: CGPointMake(2.47, 3.47) controlPoint1: CGPointMake(-1.11, 4.84) controlPoint2: CGPointMake(1.11, 4.84)];
             [backToCameraPath closePath];
-            [backToCameraPath moveToPoint: CGPointMake(-23, 0)];
-            [backToCameraPath addLineToPoint: CGPointMake(-19, 9)];
-            [backToCameraPath addLineToPoint: CGPointMake(-15, 9)];
-            [backToCameraPath addLineToPoint: CGPointMake(-19, 0)];
-            [backToCameraPath addLineToPoint: CGPointMake(-15, -9)];
-            [backToCameraPath addLineToPoint: CGPointMake(-19, -9)];
-            [backToCameraPath addLineToPoint: CGPointMake(-23, 0)];
-            [backToCameraPath closePath];
             [backToCameraPath applyTransform:move];
             [color setFill];
             [backToCameraPath fill];
+            
             
 
         }
@@ -385,6 +377,103 @@
 
         }
             break;
+        case PtEdViewBarButtonTypeFilm:
+        {
+            
+            //// Film Drawing
+            UIBezierPath* filmPath = [UIBezierPath bezierPath];
+            [filmPath moveToPoint: CGPointMake(11, 11.5)];
+            [filmPath addLineToPoint: CGPointMake(9.5, 11.5)];
+            [filmPath addLineToPoint: CGPointMake(9.5, 10.5)];
+            [filmPath addLineToPoint: CGPointMake(7, 10.5)];
+            [filmPath addLineToPoint: CGPointMake(7, 11.5)];
+            [filmPath addLineToPoint: CGPointMake(5.5, 11.5)];
+            [filmPath addLineToPoint: CGPointMake(5.5, 10.5)];
+            [filmPath addLineToPoint: CGPointMake(5.5, 8)];
+            [filmPath addLineToPoint: CGPointMake(-5.5, 8)];
+            [filmPath addLineToPoint: CGPointMake(-5.5, 10.5)];
+            [filmPath addLineToPoint: CGPointMake(-5.5, 11.5)];
+            [filmPath addLineToPoint: CGPointMake(-7, 11.5)];
+            [filmPath addLineToPoint: CGPointMake(-7, 10.5)];
+            [filmPath addLineToPoint: CGPointMake(-9.5, 10.5)];
+            [filmPath addLineToPoint: CGPointMake(-9.5, 11.5)];
+            [filmPath addLineToPoint: CGPointMake(-11, 11.5)];
+            [filmPath addLineToPoint: CGPointMake(-11, 10.5)];
+            [filmPath addLineToPoint: CGPointMake(-11, -11)];
+            [filmPath addLineToPoint: CGPointMake(-9.5, -11)];
+            [filmPath addLineToPoint: CGPointMake(-9.5, -10)];
+            [filmPath addLineToPoint: CGPointMake(-7, -10)];
+            [filmPath addLineToPoint: CGPointMake(-7, -11)];
+            [filmPath addLineToPoint: CGPointMake(-5.5, -11)];
+            [filmPath addLineToPoint: CGPointMake(-5.5, -7.5)];
+            [filmPath addLineToPoint: CGPointMake(5.5, -7.5)];
+            [filmPath addLineToPoint: CGPointMake(5.5, -11)];
+            [filmPath addLineToPoint: CGPointMake(7, -11)];
+            [filmPath addLineToPoint: CGPointMake(7, -10)];
+            [filmPath addLineToPoint: CGPointMake(9.5, -10)];
+            [filmPath addLineToPoint: CGPointMake(9.5, -11)];
+            [filmPath addLineToPoint: CGPointMake(11, -11)];
+            [filmPath addLineToPoint: CGPointMake(11, 11.5)];
+            [filmPath closePath];
+            [filmPath moveToPoint: CGPointMake(9.5, -7.5)];
+            [filmPath addLineToPoint: CGPointMake(7, -7.5)];
+            [filmPath addLineToPoint: CGPointMake(7, -5.5)];
+            [filmPath addLineToPoint: CGPointMake(9.5, -5.5)];
+            [filmPath addLineToPoint: CGPointMake(9.5, -7.5)];
+            [filmPath closePath];
+            [filmPath moveToPoint: CGPointMake(-7, -7.5)];
+            [filmPath addLineToPoint: CGPointMake(-9.5, -7.5)];
+            [filmPath addLineToPoint: CGPointMake(-9.5, -5.5)];
+            [filmPath addLineToPoint: CGPointMake(-7, -5.5)];
+            [filmPath addLineToPoint: CGPointMake(-7, -7.5)];
+            [filmPath closePath];
+            [filmPath moveToPoint: CGPointMake(9.5, -3)];
+            [filmPath addLineToPoint: CGPointMake(7, -3)];
+            [filmPath addLineToPoint: CGPointMake(7, -1)];
+            [filmPath addLineToPoint: CGPointMake(9.5, -1)];
+            [filmPath addLineToPoint: CGPointMake(9.5, -3)];
+            [filmPath closePath];
+            [filmPath moveToPoint: CGPointMake(-7, -3)];
+            [filmPath addLineToPoint: CGPointMake(-9.5, -3)];
+            [filmPath addLineToPoint: CGPointMake(-9.5, -1)];
+            [filmPath addLineToPoint: CGPointMake(-7, -1)];
+            [filmPath addLineToPoint: CGPointMake(-7, -3)];
+            [filmPath closePath];
+            [filmPath moveToPoint: CGPointMake(9.5, 1.5)];
+            [filmPath addLineToPoint: CGPointMake(7, 1.5)];
+            [filmPath addLineToPoint: CGPointMake(7, 3.5)];
+            [filmPath addLineToPoint: CGPointMake(9.5, 3.5)];
+            [filmPath addLineToPoint: CGPointMake(9.5, 1.5)];
+            [filmPath closePath];
+            [filmPath moveToPoint: CGPointMake(-7, 1.5)];
+            [filmPath addLineToPoint: CGPointMake(-9.5, 1.5)];
+            [filmPath addLineToPoint: CGPointMake(-9.5, 3.5)];
+            [filmPath addLineToPoint: CGPointMake(-7, 3.5)];
+            [filmPath addLineToPoint: CGPointMake(-7, 1.5)];
+            [filmPath closePath];
+            [filmPath moveToPoint: CGPointMake(5.5, -5)];
+            [filmPath addLineToPoint: CGPointMake(-5.5, -5)];
+            [filmPath addLineToPoint: CGPointMake(-5.5, 5.5)];
+            [filmPath addLineToPoint: CGPointMake(5.5, 5.5)];
+            [filmPath addLineToPoint: CGPointMake(5.5, -5)];
+            [filmPath closePath];
+            [filmPath moveToPoint: CGPointMake(9.5, 6)];
+            [filmPath addLineToPoint: CGPointMake(7, 6)];
+            [filmPath addLineToPoint: CGPointMake(7, 8)];
+            [filmPath addLineToPoint: CGPointMake(9.5, 8)];
+            [filmPath addLineToPoint: CGPointMake(9.5, 6)];
+            [filmPath closePath];
+            [filmPath moveToPoint: CGPointMake(-7, 6)];
+            [filmPath addLineToPoint: CGPointMake(-9.5, 6)];
+            [filmPath addLineToPoint: CGPointMake(-9.5, 8)];
+            [filmPath addLineToPoint: CGPointMake(-7, 8)];
+            [filmPath addLineToPoint: CGPointMake(-7, 6)];
+            [filmPath closePath];
+            [filmPath applyTransform:move];
+            [color setFill];
+            [filmPath fill];
+
+        }
         default:
             break;
     }

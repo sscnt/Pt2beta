@@ -14,6 +14,7 @@
 {
     self = [super init];
     if(self){
+        self.defaultOpacity = 0.70f;
         self.effectId = VnEffectIdVogue;
     }
     return self;

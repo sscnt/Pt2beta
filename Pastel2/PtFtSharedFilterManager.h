@@ -117,6 +117,9 @@
 #import "VnEffectElkins.h"
 #import "VnEffectGrove.h"
 #import "VnEffectVogue.h"
+#import "VnEffectThorn.h"
+#import "VnEffectLove.h"
+#import "VnEffectWashedMemories.h"
 
 @interface PtFtSharedFilterManager : NSObject
 

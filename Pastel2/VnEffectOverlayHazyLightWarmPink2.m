@@ -14,8 +14,7 @@
 {
     self = [super init];
     if(self){
-        self.defaultOpacity = 0.60f;
-        self.faceOpacity = 0.60f;
+        self.defaultOpacity = 0.70f;
         self.effectId = VnEffectIdOverlayHazyLightWarmPink2;
     }
     return self;

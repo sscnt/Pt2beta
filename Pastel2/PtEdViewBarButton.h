@@ -16,7 +16,8 @@ typedef NS_ENUM(NSInteger, PtEdViewBarButtonType){
     PtEdViewBarButtonTypeOther,
     PtEdViewBarButtonTypeBackToCamera,
     PtEdViewBarButtonTypeFilters,
-    PtEdViewBarButtonTypeSliders
+    PtEdViewBarButtonTypeSliders,
+    PtEdViewBarButtonTypeFilm
 };
 
 @interface PtEdViewBarButton : UIButton

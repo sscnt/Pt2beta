@@ -45,6 +45,7 @@ typedef NS_ENUM(NSInteger, PtViewControllerEditorWorkflowAfterSavingPhoto){
 @property (nonatomic, strong) PtEdViewBarButton* cameraButton;
 @property (nonatomic, strong) PtEdViewBarButton* filtersButton;
 @property (nonatomic, strong) PtEdViewBarButton* slidersButton;
+@property (nonatomic, strong) PtEdViewBarButton* filmButton;
 
 @property (nonatomic, strong) PtEdViewBarButton* brightnessButton;
 
@@ -71,6 +72,7 @@ typedef NS_ENUM(NSInteger, PtViewControllerEditorWorkflowAfterSavingPhoto){
 - (void)buttonCameraDidTouchUpInside:(PtEdViewBarButton*)button;
 - (void)buttonFiltersDidTouchUpInside:(PtEdViewBarButton*)button;
 - (void)buttonSlidersDidTouchUpInside:(PtEdViewBarButton*)button;
+- (void)buttonFilmDidTouchUpInside:(PtEdViewBarButton*)button;
 
 - (void)imageDidSaveToCameraRoll:(UIImage*)image didFinishSavingWithError:(NSError*)error contextInfo:(void*)contextInfo;
 

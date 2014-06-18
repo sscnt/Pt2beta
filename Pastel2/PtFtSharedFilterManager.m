@@ -108,6 +108,13 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
+    //// Love
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdLove;
+    item.name = NSLocalizedString(@"MX1", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
     //// Girder
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdGirder;
@@ -173,31 +180,32 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     
     //// Vintage Haze
     item = [[PtFtObjectFilterItem alloc] init];
-    item.effectId = VnEffectIdAmeria;
-    item.name = NSLocalizedString(@"VM1", nil);
+    item.effectId = VnEffectIdVogue;
+    item.name = NSLocalizedString(@"VX10", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
     //// Vintage Haze
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdElkins;
-    item.name = NSLocalizedString(@"VM2", nil);
+    item.name = NSLocalizedString(@"VX11", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
     //// Vintage Haze
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdGrove;
-    item.name = NSLocalizedString(@"VM3", nil);
+    item.name = NSLocalizedString(@"VX12", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
     //// Vintage Haze
     item = [[PtFtObjectFilterItem alloc] init];
-    item.effectId = VnEffectIdVogue;
-    item.name = NSLocalizedString(@"VM4", nil);
+    item.effectId = VnEffectIdAmeria;
+    item.name = NSLocalizedString(@"VX13", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
+    
     
     //// VSCO Fresh
     item = [[PtFtObjectFilterItem alloc] init];
@@ -240,11 +248,18 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item.name = NSLocalizedString(@"CS6", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
-
+    
     //// Glitter Shine
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdGlitterShine;
     item.name = NSLocalizedString(@"CS7", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
+    //// Carnival
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdWashedMemories;
+    item.name = NSLocalizedString(@"CS8", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
@@ -398,49 +413,49 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     //// Fresno Faded
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdFresnoFaded;
-    item.name = NSLocalizedString(@"FV1", nil);
+    item.name = NSLocalizedString(@"F10", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
     //// Deutan Faded
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdDeutanFaded;
-    item.name = NSLocalizedString(@"FV2", nil);
+    item.name = NSLocalizedString(@"F11", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
     //// Brannan Faded
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdBrannanFaded;
-    item.name = NSLocalizedString(@"FV3", nil);
+    item.name = NSLocalizedString(@"F12", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
     //// Fixie Faded
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdFixieFaded;
-    item.name = NSLocalizedString(@"FV4", nil);
+    item.name = NSLocalizedString(@"F13", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
     //// Breeze Faded
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdLeningradFaded;
-    item.name = NSLocalizedString(@"FV5", nil);
+    item.name = NSLocalizedString(@"F14", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
     //// Nashville Faded
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdNashvilleFaded;
-    item.name = NSLocalizedString(@"FV6", nil);
+    item.name = NSLocalizedString(@"F15", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
     //// XPro 2 Faded
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdXPro2Faded;
-    item.name = NSLocalizedString(@"FV7", nil);
+    item.name = NSLocalizedString(@"F16", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
@@ -648,7 +663,7 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdColorPurrr;
     item.effectGroup = VnEffectGroupColor;
-    item.name = NSLocalizedString(@"W2", nil);
+    item.name = NSLocalizedString(@"B2", nil);
     item.previewColor = [UIColor colorWithRed:s255(227.0f) green:s255(209.0f) blue:s255(255.0f) alpha:1.0f];
     item.selectionColor = item.previewColor;
     [_colorFilters addObject:item];
@@ -657,7 +672,7 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdColorSerenity;
     item.effectGroup = VnEffectGroupColor;
-    item.name = NSLocalizedString(@"W3", nil);
+    item.name = NSLocalizedString(@"B3", nil);
     item.previewColor = [UIColor colorWithRed:s255(217.0f) green:s255(196.0f) blue:s255(255.0f) alpha:1.0f];
     item.selectionColor = item.previewColor;
     [_colorFilters addObject:item];
@@ -666,7 +681,7 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdColorUrbanCandy;
     item.effectGroup = VnEffectGroupColor;
-    item.name = NSLocalizedString(@"W4", nil);
+    item.name = NSLocalizedString(@"B4", nil);
     item.previewColor = [UIColor colorWithRed:s255(241.0f) green:s255(224.0f) blue:s255(255.0f) alpha:1.0f];
     item.selectionColor = item.previewColor;
     [_colorFilters addObject:item];
@@ -1075,6 +1090,12 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
             return [VnEffectGrove new];
         case VnEffectIdVogue:
             return [VnEffectVogue new];
+        case VnEffectIdThorn:
+            return [VnEffectThorn new];
+        case VnEffectIdLove:
+            return [VnEffectLove new];
+        case VnEffectIdWashedMemories:
+            return [VnEffectWashedMemories new];
         default:
             break;
     }

@@ -77,6 +77,10 @@
     [_slidersButton addTarget:self action:@selector(buttonSlidersDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
     [_bottomBar addSlidersButton:_slidersButton];
     
+    _filmButton = [[PtEdViewBarButton alloc] initWithType:PtEdViewBarButtonTypeFilm];
+    [_filmButton addTarget:self action:@selector(buttonFilmDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
+    [_bottomBar addFilmButton:_filmButton];
+    
     //// Preview
     [self initPreview];
     self.currentImageDidChange = NO;
@@ -155,6 +159,7 @@
             [_self.view bringSubviewToFront:_self.blurView];
             [_self.view bringSubviewToFront:_self.progressView];
             [_self.view bringSubviewToFront:_self.topBar];
+            [_self.view bringSubviewToFront:_self.toolBar];
             [_self.view bringSubviewToFront:_self.bottomBar];
             [_self.progressView setHidden:YES];
             [_self.progressView resetProgress];
@@ -213,6 +218,11 @@
 {
     _toolBar.hidden = button.active;
     button.active = !button.active;
+}
+
+- (void)buttonFilmDidTouchUpInside:(PtEdViewBarButton *)button
+{
+    
 }
 
 #pragma mark workflow

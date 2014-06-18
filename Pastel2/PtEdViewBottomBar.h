@@ -14,5 +14,6 @@
 - (void)addBackToCameraButton:(PtEdViewBarButton*)button;
 - (void)addFiltersButton:(PtEdViewBarButton*)button;
 - (void)addSlidersButton:(PtEdViewBarButton*)button;
+- (void)addFilmButton:(PtEdViewBarButton*)button;
 
 @end

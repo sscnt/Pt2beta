@@ -32,7 +32,6 @@
     [gradientColor addColorRed:255.0f Green:164.0f Blue:133.0f Opacity:78.0f Location:1848 Midpoint:50];
     [gradientColor addColorRed:255.0f Green:185.0f Blue:141.0f Opacity:22.0f Location:4096 Midpoint:50];
     gradientColor.blendingMode = VnBlendingModeScreen;
-    gradientColor.topLayerOpacity = 0.58f;
     
     self.startFilter = self.endFilter = gradientColor;
     

@@ -124,6 +124,7 @@
 #import "VnEffectOverlayPureMilk.h"
 #import "VnEffectOverlayBlueExclusion.h"
 #import "VnEffectOverlayCreamHaze.h"
+#import "VnEffectMilk.h"
 
 @interface PtFtSharedFilterManager : NSObject
 

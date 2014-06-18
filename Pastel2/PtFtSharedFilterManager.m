@@ -115,10 +115,17 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
-    //// Love
+    //// Swoon
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdSwoon;
     item.name = NSLocalizedString(@"MX2", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
+    //// Milk
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdMilk;
+    item.name = NSLocalizedString(@"MX3", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
@@ -989,6 +996,8 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
             return [VnEffectOverlayBlueExclusion new];
         case VnEffectIdOverlayCreamHaze:
             return [VnEffectOverlayCreamHaze new];
+        case VnEffectIdMilk:
+            return [VnEffectMilk new];
             //// Artistic
         case VnEffectIdBeachVintage:
             return [VnEffectBeachVintage new];

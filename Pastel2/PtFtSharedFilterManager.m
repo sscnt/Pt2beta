@@ -115,6 +115,13 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
+    //// Love
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdSwoon;
+    item.name = NSLocalizedString(@"MX2", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
     //// Girder
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdGirder;
@@ -792,24 +799,52 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item.selectionColor = item.previewColor;
     [_overlayFilters addObject:item];
     
+    //// Pure Milk
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdOverlayPureMilk;
+    item.effectGroup = VnEffectGroupOverlays;
+    item.name = NSLocalizedString(@"H8", nil);
+    item.previewColor = [UIColor colorWithRed:s255(245.0f) green:s255(237.0f) blue:s255(234.0f) alpha:1.0f];
+    item.selectionColor = item.previewColor;
+    [_overlayFilters addObject:item];
+    
     //// Warm Vintage
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdOverlayFilm;
     item.effectGroup = VnEffectGroupOverlays;
-    item.name = NSLocalizedString(@"H8", nil);
+    item.name = NSLocalizedString(@"E1", nil);
     item.previewColor = [UIColor colorWithRed:s255(224.0f) green:s255(224.0f) blue:s255(224.0f) alpha:1.0f];
     item.selectionColor = item.previewColor;
     [_overlayFilters addObject:item];
     
-    //// Warm Vintage
+    //// Dusk
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdOverlayDusk;
     item.effectGroup = VnEffectGroupOverlays;
-    item.name = NSLocalizedString(@"H9", nil);
+    item.name = NSLocalizedString(@"E2", nil);
     item.previewColor = [UIColor colorWithRed:s255(188.0f) green:s255(176.0f) blue:s255(164.0f) alpha:1.0f];
     item.selectionColor = item.previewColor;
     [_overlayFilters addObject:item];
     
+    //// Blue Exclusion
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdOverlayBlueExclusion;
+    item.effectGroup = VnEffectGroupOverlays;
+    item.name = NSLocalizedString(@"E3", nil);
+    item.previewColor = [UIColor colorWithRed:s255(245.0f) green:s255(237.0f) blue:s255(234.0f) alpha:1.0f];
+    item.selectionColor = item.previewColor;
+    [_overlayFilters addObject:item];
+    
+    //// Blue Exclusion
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdOverlayCreamHaze;
+    item.effectGroup = VnEffectGroupOverlays;
+    item.name = NSLocalizedString(@"E4", nil);
+    item.previewColor = [UIColor colorWithRed:s255(245.0f) green:s255(237.0f) blue:s255(234.0f) alpha:1.0f];
+    item.selectionColor = item.previewColor;
+    [_overlayFilters addObject:item];
+    
+    /*
     //// Hazy Light Warm Pink
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdOverlayHazyLightWarmPink;
@@ -872,6 +907,7 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item.previewColor = [UIColor colorWithRed:s255(255.0f) green:s255(231.0f) blue:s255(216.0f) alpha:1.0f];
     item.selectionColor = item.previewColor;
     [_overlayFilters addObject:item];
+     */
 }
 
 #pragma mark getter
@@ -947,6 +983,12 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
             return [VnEffectOverlaySunshowerLeft new];
         case VnEffectIdOverlaySunshowerRight:
             return [VnEffectOverlaySunshowerRight new];
+        case VnEffectIdOverlayPureMilk:
+            return [VnEffectOverlayPureMilk new];
+        case VnEffectIdOverlayBlueExclusion:
+            return [VnEffectOverlayBlueExclusion new];
+        case VnEffectIdOverlayCreamHaze:
+            return [VnEffectOverlayCreamHaze new];
             //// Artistic
         case VnEffectIdBeachVintage:
             return [VnEffectBeachVintage new];
@@ -1096,6 +1138,8 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
             return [VnEffectLove new];
         case VnEffectIdWashedMemories:
             return [VnEffectWashedMemories new];
+        case VnEffectIdSwoon:
+            return [VnEffectSwoon new];
         default:
             break;
     }

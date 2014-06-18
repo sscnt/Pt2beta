@@ -14,8 +14,7 @@
 {
     self = [super init];
     if(self){
-        self.defaultOpacity = 0.65f;
-        self.faceOpacity = 0.65f;
+        self.defaultOpacity = 0.3f;
         self.effectId = VnEffectIdOverlayBlueHaze;
     }
     return self;

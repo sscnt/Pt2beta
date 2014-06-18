@@ -120,6 +120,10 @@
 #import "VnEffectThorn.h"
 #import "VnEffectLove.h"
 #import "VnEffectWashedMemories.h"
+#import "VnEffectSwoon.h"
+#import "VnEffectOverlayPureMilk.h"
+#import "VnEffectOverlayBlueExclusion.h"
+#import "VnEffectOverlayCreamHaze.h"
 
 @interface PtFtSharedFilterManager : NSObject
 

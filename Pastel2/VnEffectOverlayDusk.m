@@ -14,7 +14,7 @@
 {
     self = [super init];
     if(self){
-        self.defaultOpacity = 0.7f;
+        self.defaultOpacity = 0.30f;
         self.effectId = VnEffectIdOverlayDusk;
     }
     return self;
@@ -29,7 +29,7 @@
     // Fill Layer
     VnFilterSolidColor* solidColor1 = [[VnFilterSolidColor alloc] init];
     [solidColor1 setColorRed:s255(188.0f) green:s255(176.0f) blue:s255(164.0f) alpha:1.0f];
-    solidColor1.topLayerOpacity = 0.2f;
+    solidColor1.topLayerOpacity = 0.4f;
     solidColor1.blendingMode = VnBlendingModeDifference;
     
     self.startFilter = brightnessFilter;

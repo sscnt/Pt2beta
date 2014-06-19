@@ -98,6 +98,7 @@
 #import "VnEffectButterCreamVintage.h"
 #import "VnEffectFawn.h"
 #import "VnEffectDusk.h"
+#import "VnEffectCaramel.h"
 #import "VnEffectBlush.h"
 #import "VnEffectSunshower.h"
 #import "VnEffectAngel.h"

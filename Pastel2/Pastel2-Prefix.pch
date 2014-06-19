@@ -148,6 +148,7 @@ typedef NS_ENUM(NSInteger, VnEffectId){
     VnEffectIdLove,
     VnEffectIdPosh,
     VnEffectIdBlush,
+    VnEffectIdCaramel,
     VnEffectIdWashedMemories,
     VnEffectIdXPro2Faded,
     VnEffectIdFixieFaded,

@@ -234,6 +234,12 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
+    //// Vintage Haze
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdCaramel;
+    item.name = NSLocalizedString(@"VX14", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
     
     //// VSCO Fresh
     item = [[PtFtObjectFilterItem alloc] init];
@@ -1167,6 +1173,8 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
             return [VnEffectPosh new];
         case VnEffectIdBlush:
             return [VnEffectBlush new];
+        case VnEffectIdCaramel:
+            return [VnEffectCaramel new];
         default:
             break;
     }

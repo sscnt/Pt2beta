@@ -314,6 +314,10 @@
 		58F7720B195191A8000179F7 /* VnEffectWashedMemories.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F7720A195191A8000179F7 /* VnEffectWashedMemories.m */; };
 		58F78EEC1952B0B80051562F /* VnEffectPosh.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F78EEB1952B0B80051562F /* VnEffectPosh.m */; };
 		58F78EF21952B7980051562F /* VnEffectBlush.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F78EF11952B7980051562F /* VnEffectBlush.m */; };
+		58F78EF51952BD990051562F /* VnEffectCaramel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F78EF41952BD990051562F /* VnEffectCaramel.m */; };
+		58F78EF91952BEF60051562F /* cp001.pst in Resources */ = {isa = PBXBuildFile; fileRef = 58F78EF61952BEF60051562F /* cp001.pst */; };
+		58F78EFA1952BEF60051562F /* cp002.pst in Resources */ = {isa = PBXBuildFile; fileRef = 58F78EF71952BEF60051562F /* cp002.pst */; };
+		58F78EFB1952BEF60051562F /* cp003.pst in Resources */ = {isa = PBXBuildFile; fileRef = 58F78EF81952BEF60051562F /* cp003.pst */; };
 		58F9D5AD194EA47100D20083 /* PtEdViewToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F9D5AC194EA47100D20083 /* PtEdViewToolBar.m */; };
 		58FA69C219505AAD00ED7AED /* VnEffectElkins.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FA69C119505AAD00ED7AED /* VnEffectElkins.m */; };
 		58FA69C719505C7000ED7AED /* cl001.pst in Resources */ = {isa = PBXBuildFile; fileRef = 58FA69C619505C7000ED7AED /* cl001.pst */; };
@@ -871,6 +875,11 @@
 		58F78EEB1952B0B80051562F /* VnEffectPosh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectPosh.m; sourceTree = "<group>"; };
 		58F78EF01952B7980051562F /* VnEffectBlush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectBlush.h; sourceTree = "<group>"; };
 		58F78EF11952B7980051562F /* VnEffectBlush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectBlush.m; sourceTree = "<group>"; };
+		58F78EF31952BD990051562F /* VnEffectCaramel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectCaramel.h; sourceTree = "<group>"; };
+		58F78EF41952BD990051562F /* VnEffectCaramel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectCaramel.m; sourceTree = "<group>"; };
+		58F78EF61952BEF60051562F /* cp001.pst */ = {isa = PBXFileReference; lastKnownFileType = file; path = cp001.pst; sourceTree = "<group>"; };
+		58F78EF71952BEF60051562F /* cp002.pst */ = {isa = PBXFileReference; lastKnownFileType = file; path = cp002.pst; sourceTree = "<group>"; };
+		58F78EF81952BEF60051562F /* cp003.pst */ = {isa = PBXFileReference; lastKnownFileType = file; path = cp003.pst; sourceTree = "<group>"; };
 		58F9D5AB194EA47100D20083 /* PtEdViewToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtEdViewToolBar.h; sourceTree = "<group>"; };
 		58F9D5AC194EA47100D20083 /* PtEdViewToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PtEdViewToolBar.m; sourceTree = "<group>"; };
 		58FA69C019505AAD00ED7AED /* VnEffectElkins.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectElkins.h; sourceTree = "<group>"; };
@@ -1271,6 +1280,8 @@
 				58F78EEB1952B0B80051562F /* VnEffectPosh.m */,
 				58F78EF01952B7980051562F /* VnEffectBlush.h */,
 				58F78EF11952B7980051562F /* VnEffectBlush.m */,
+				58F78EF31952BD990051562F /* VnEffectCaramel.h */,
+				58F78EF41952BD990051562F /* VnEffectCaramel.m */,
 			);
 			name = Effects;
 			sourceTree = "<group>";
@@ -1458,6 +1469,9 @@
 				58FA69D61950A59200ED7AED /* cn004.pst */,
 				58FA69D41950A55900ED7AED /* cn003.pst */,
 				58F772041951648B000179F7 /* co001.pst */,
+				58F78EF61952BEF60051562F /* cp001.pst */,
+				58F78EF71952BEF60051562F /* cp002.pst */,
+				58F78EF81952BEF60051562F /* cp003.pst */,
 			);
 			name = Curves;
 			sourceTree = "<group>";
@@ -2078,6 +2092,7 @@
 				580722EB194CB6510044395A /* ca001.pst in Resources */,
 				58F3E3F61940C5F1001AEB8D /* ap002.pst in Resources */,
 				58F3E3FA1940C5F1001AEB8D /* as001.pst in Resources */,
+				58F78EFA1952BEF60051562F /* cp002.pst in Resources */,
 				58F3E4011940C5F1001AEB8D /* ay001.pst in Resources */,
 				580E4F1319476B7B0014B7C8 /* ao001.pst in Resources */,
 				58FC422B194B324C005D63EA /* ba001.pst in Resources */,
@@ -2098,7 +2113,9 @@
 				58FCAF55194B09D6001D936E /* br001.pst in Resources */,
 				58F3E41A1940C5F1001AEB8D /* bo001.pst in Resources */,
 				58F3E4131940C5F1001AEB8D /* bh002.pst in Resources */,
+				58F78EF91952BEF60051562F /* cp001.pst in Resources */,
 				580E4F0C194757E50014B7C8 /* ad002.pst in Resources */,
+				58F78EFB1952BEF60051562F /* cp003.pst in Resources */,
 				58F3E4071940C5F1001AEB8D /* bb002.pst in Resources */,
 				5819A12E194E1615002C6F3E /* ba002.pst in Resources */,
 				58F3E4221940C5F1001AEB8D /* by001.pst in Resources */,
@@ -2225,6 +2242,7 @@
 				58FCAF4E194B004C001D936E /* VnEffectRoseyMatte.m in Sources */,
 				58F3E4B01940C7CC001AEB8D /* PtEdConfig.m in Sources */,
 				5809A30A194862A200D48B19 /* VnEffectGlitterShine.m in Sources */,
+				58F78EF51952BD990051562F /* VnEffectCaramel.m in Sources */,
 				58F3E3331940C546001AEB8D /* VnFilterLensBlur.m in Sources */,
 				58F3E4CD1940C834001AEB8D /* LmCmViewTopBar.m in Sources */,
 				58F3E4751940C6D3001AEB8D /* PtFtButtonToolBar.m in Sources */,

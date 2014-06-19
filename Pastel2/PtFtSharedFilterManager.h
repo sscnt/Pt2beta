@@ -131,6 +131,8 @@
 #import "VnEffectLume.h"
 #import "VnEffectOverlayPeachHaze.h"
 #import "VnEffectTimeless.h"
+#import "VnEffectBlackWhiteFilm.h"
+#import "VnEffectPearl.h"
 
 @interface PtFtSharedFilterManager : NSObject
 

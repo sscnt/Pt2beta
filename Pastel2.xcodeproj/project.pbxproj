@@ -30,6 +30,8 @@
 		580B927619530E7D00E7CB58 /* VnEffectLume.m in Sources */ = {isa = PBXBuildFile; fileRef = 580B927519530E7D00E7CB58 /* VnEffectLume.m */; };
 		580B927C1953139000E7CB58 /* VnEffectOverlayPeachHaze.m in Sources */ = {isa = PBXBuildFile; fileRef = 580B927B1953139000E7CB58 /* VnEffectOverlayPeachHaze.m */; };
 		580B927F19531A8600E7CB58 /* VnEffectTimeless.m in Sources */ = {isa = PBXBuildFile; fileRef = 580B927E19531A8600E7CB58 /* VnEffectTimeless.m */; };
+		580B928219532DE800E7CB58 /* VnEffectBlackWhiteFilm.m in Sources */ = {isa = PBXBuildFile; fileRef = 580B928119532DE800E7CB58 /* VnEffectBlackWhiteFilm.m */; };
+		580B9285195339DE00E7CB58 /* VnEffectPearl.m in Sources */ = {isa = PBXBuildFile; fileRef = 580B9284195339DE00E7CB58 /* VnEffectPearl.m */; };
 		580E4F04194756D90014B7C8 /* VnEffectVividVintage.m in Sources */ = {isa = PBXBuildFile; fileRef = 580E4F03194756D90014B7C8 /* VnEffectVividVintage.m */; };
 		580E4F0C194757E50014B7C8 /* ad002.pst in Resources */ = {isa = PBXBuildFile; fileRef = 580E4F09194757E50014B7C8 /* ad002.pst */; };
 		580E4F0D194757E50014B7C8 /* ad003.pst in Resources */ = {isa = PBXBuildFile; fileRef = 580E4F0A194757E50014B7C8 /* ad003.pst */; };
@@ -411,6 +413,10 @@
 		580B927B1953139000E7CB58 /* VnEffectOverlayPeachHaze.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectOverlayPeachHaze.m; sourceTree = "<group>"; };
 		580B927D19531A8600E7CB58 /* VnEffectTimeless.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectTimeless.h; sourceTree = "<group>"; };
 		580B927E19531A8600E7CB58 /* VnEffectTimeless.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectTimeless.m; sourceTree = "<group>"; };
+		580B928019532DE800E7CB58 /* VnEffectBlackWhiteFilm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectBlackWhiteFilm.h; sourceTree = "<group>"; };
+		580B928119532DE800E7CB58 /* VnEffectBlackWhiteFilm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectBlackWhiteFilm.m; sourceTree = "<group>"; };
+		580B9283195339DE00E7CB58 /* VnEffectPearl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectPearl.h; sourceTree = "<group>"; };
+		580B9284195339DE00E7CB58 /* VnEffectPearl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectPearl.m; sourceTree = "<group>"; };
 		580E4F02194756D90014B7C8 /* VnEffectVividVintage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectVividVintage.h; sourceTree = "<group>"; };
 		580E4F03194756D90014B7C8 /* VnEffectVividVintage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectVividVintage.m; sourceTree = "<group>"; };
 		580E4F09194757E50014B7C8 /* ad002.pst */ = {isa = PBXFileReference; lastKnownFileType = file; path = ad002.pst; sourceTree = "<group>"; };
@@ -1295,6 +1301,10 @@
 				580B927519530E7D00E7CB58 /* VnEffectLume.m */,
 				580B927D19531A8600E7CB58 /* VnEffectTimeless.h */,
 				580B927E19531A8600E7CB58 /* VnEffectTimeless.m */,
+				580B928019532DE800E7CB58 /* VnEffectBlackWhiteFilm.h */,
+				580B928119532DE800E7CB58 /* VnEffectBlackWhiteFilm.m */,
+				580B9283195339DE00E7CB58 /* VnEffectPearl.h */,
+				580B9284195339DE00E7CB58 /* VnEffectPearl.m */,
 			);
 			name = Effects;
 			sourceTree = "<group>";
@@ -2192,6 +2202,7 @@
 				58F7720819518516000179F7 /* VnEffectLove.m in Sources */,
 				580E4F04194756D90014B7C8 /* VnEffectVividVintage.m in Sources */,
 				58F3E4311940C60B001AEB8D /* SVProgressHUD.m in Sources */,
+				580B9285195339DE00E7CB58 /* VnEffectPearl.m in Sources */,
 				58F7720B195191A8000179F7 /* VnEffectWashedMemories.m in Sources */,
 				583669151942AE9D00E55C7C /* VnEffectNashvilleFaded.m in Sources */,
 				583669031942AE9D00E55C7C /* VnEffectPurpleBerry.m in Sources */,
@@ -2283,6 +2294,7 @@
 				58F3E3A71940C5DA001AEB8D /* VnEffectColorRosyVintage.m in Sources */,
 				58F3E4E11940C868001AEB8D /* LmCmViewSettingsList.m in Sources */,
 				580B927F19531A8600E7CB58 /* VnEffectTimeless.m in Sources */,
+				580B928219532DE800E7CB58 /* VnEffectBlackWhiteFilm.m in Sources */,
 				58F3E4E21940C868001AEB8D /* LmCmButtonSettingsItem.m in Sources */,
 				583669061942AE9D00E55C7C /* VnEffectSweetFlower.m in Sources */,
 				58F3E37A1940C5B5001AEB8D /* VnEffectOverlayLightBrightPop.m in Sources */,

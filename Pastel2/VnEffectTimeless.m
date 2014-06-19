@@ -54,7 +54,7 @@
     
     // Photo Filter
     VnAdjustmentLayerPhotoFilter* photoFilter1 = [[VnAdjustmentLayerPhotoFilter alloc] init];
-    photoFilter1.color = (GPUVector3){s255(254.0f), s255(177.0f), 121.0f};
+    photoFilter1.color = (GPUVector3){s255(254.0f), s255(177.0f), s255(121.0f)};
     photoFilter1.density = 0.1f;
     photoFilter1.preserveLuminosity = YES;
     photoFilter1.topLayerOpacity = 0.20f;

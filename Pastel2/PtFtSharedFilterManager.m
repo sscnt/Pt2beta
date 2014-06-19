@@ -157,6 +157,13 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
+    //// Dusk
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdPearl;
+    item.name = NSLocalizedString(@"MX9", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
     //// Girder
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdGirder;
@@ -532,6 +539,13 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdRaven;
     item.name = NSLocalizedString(@"BW4", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
+    //// Black White 20
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdBlackWhiteFilm;
+    item.name = NSLocalizedString(@"BW5", nil);
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
@@ -1206,6 +1220,10 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
             return [VnEffectLume new];
         case VnEffectIdTimeless:
             return [VnEffectTimeless new];
+        case VnEffectIdBlackWhiteFilm:
+            return [VnEffectBlackWhiteFilm new];
+        case VnEffectIdPearl:
+            return [VnEffectPearl new];
         default:
             break;
     }

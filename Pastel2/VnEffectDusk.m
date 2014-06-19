@@ -14,6 +14,7 @@
 {
     self = [super init];
     if(self){
+        self.defaultOpacity = 0.80f;
         self.effectId = VnEffectIdDusk;
     }
     return self;

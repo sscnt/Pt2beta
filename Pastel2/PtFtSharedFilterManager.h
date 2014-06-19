@@ -128,6 +128,9 @@
 #import "VnEffectOverlayBlueExclusion.h"
 #import "VnEffectOverlayCreamHaze.h"
 #import "VnEffectMilk.h"
+#import "VnEffectLume.h"
+#import "VnEffectOverlayPeachHaze.h"
+#import "VnEffectTimeless.h"
 
 @interface PtFtSharedFilterManager : NSObject
 

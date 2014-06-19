@@ -129,6 +129,20 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
     item.effectGroup = VnEffectGroupEffects;
     [_artisticFilters addObject:item];
     
+    //// Milk
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdPosh;
+    item.name = NSLocalizedString(@"MX4", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
+    //// Milk
+    item = [[PtFtObjectFilterItem alloc] init];
+    item.effectId = VnEffectIdBlush;
+    item.name = NSLocalizedString(@"MX5", nil);
+    item.effectGroup = VnEffectGroupEffects;
+    [_artisticFilters addObject:item];
+    
     //// Girder
     item = [[PtFtObjectFilterItem alloc] init];
     item.effectId = VnEffectIdGirder;
@@ -1149,6 +1163,10 @@ static PtFtSharedFilterManager* sharedPtFtSharedFilterManager = nil;
             return [VnEffectWashedMemories new];
         case VnEffectIdSwoon:
             return [VnEffectSwoon new];
+        case VnEffectIdPosh:
+            return [VnEffectPosh new];
+        case VnEffectIdBlush:
+            return [VnEffectBlush new];
         default:
             break;
     }

@@ -61,7 +61,7 @@
     [gradientColor1 setOffsetX:0.0f Y:0.0f];
     [gradientColor1 addColorRed:227.0f Green:218.0f Blue:211.0f Opacity:0.0f Location:0 Midpoint:50];
     [gradientColor1 addColorRed:66.0f Green:39.0f Blue:16.0f Opacity:100.0f Location:4096 Midpoint:50];
-    gradientColor1.topLayerOpacity = 0.50f;
+    gradientColor1.topLayerOpacity = 0.20f;
     gradientColor1.blendingMode = VnBlendingModeSoftLight;
     
     // Fill Layer
@@ -84,7 +84,7 @@
     [gradientColor2 setOffsetX:0.0f Y:0.0f];
     [gradientColor2 addColorRed:227.0f Green:218.0f Blue:211.0f Opacity:100.0f Location:0 Midpoint:50];
     [gradientColor2 addColorRed:13.0f Green:11.0f Blue:88.0f Opacity:0.0f Location:4096 Midpoint:50];
-    gradientColor2.topLayerOpacity = 0.60f;
+    gradientColor2.topLayerOpacity = 0.30f;
     gradientColor2.blendingMode = VnBlendingModeSoftLight;
     
     

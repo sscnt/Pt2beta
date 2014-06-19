@@ -312,6 +312,8 @@
 		58F772051951648B000179F7 /* co001.pst in Resources */ = {isa = PBXBuildFile; fileRef = 58F772041951648B000179F7 /* co001.pst */; };
 		58F7720819518516000179F7 /* VnEffectLove.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F7720719518516000179F7 /* VnEffectLove.m */; };
 		58F7720B195191A8000179F7 /* VnEffectWashedMemories.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F7720A195191A8000179F7 /* VnEffectWashedMemories.m */; };
+		58F78EEC1952B0B80051562F /* VnEffectPosh.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F78EEB1952B0B80051562F /* VnEffectPosh.m */; };
+		58F78EF21952B7980051562F /* VnEffectBlush.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F78EF11952B7980051562F /* VnEffectBlush.m */; };
 		58F9D5AD194EA47100D20083 /* PtEdViewToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F9D5AC194EA47100D20083 /* PtEdViewToolBar.m */; };
 		58FA69C219505AAD00ED7AED /* VnEffectElkins.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FA69C119505AAD00ED7AED /* VnEffectElkins.m */; };
 		58FA69C719505C7000ED7AED /* cl001.pst in Resources */ = {isa = PBXBuildFile; fileRef = 58FA69C619505C7000ED7AED /* cl001.pst */; };
@@ -865,6 +867,10 @@
 		58F7720719518516000179F7 /* VnEffectLove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectLove.m; sourceTree = "<group>"; };
 		58F77209195191A8000179F7 /* VnEffectWashedMemories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectWashedMemories.h; sourceTree = "<group>"; };
 		58F7720A195191A8000179F7 /* VnEffectWashedMemories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectWashedMemories.m; sourceTree = "<group>"; };
+		58F78EEA1952B0B70051562F /* VnEffectPosh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectPosh.h; sourceTree = "<group>"; };
+		58F78EEB1952B0B80051562F /* VnEffectPosh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectPosh.m; sourceTree = "<group>"; };
+		58F78EF01952B7980051562F /* VnEffectBlush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectBlush.h; sourceTree = "<group>"; };
+		58F78EF11952B7980051562F /* VnEffectBlush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectBlush.m; sourceTree = "<group>"; };
 		58F9D5AB194EA47100D20083 /* PtEdViewToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtEdViewToolBar.h; sourceTree = "<group>"; };
 		58F9D5AC194EA47100D20083 /* PtEdViewToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PtEdViewToolBar.m; sourceTree = "<group>"; };
 		58FA69C019505AAD00ED7AED /* VnEffectElkins.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectElkins.h; sourceTree = "<group>"; };
@@ -1261,6 +1267,10 @@
 				580535921951A9C2008F0AAE /* VnEffectSwoon.m */,
 				580535A01951C115008F0AAE /* VnEffectMilk.h */,
 				580535A11951C115008F0AAE /* VnEffectMilk.m */,
+				58F78EEA1952B0B70051562F /* VnEffectPosh.h */,
+				58F78EEB1952B0B80051562F /* VnEffectPosh.m */,
+				58F78EF01952B7980051562F /* VnEffectBlush.h */,
+				58F78EF11952B7980051562F /* VnEffectBlush.m */,
 			);
 			name = Effects;
 			sourceTree = "<group>";
@@ -2175,6 +2185,7 @@
 				5813EA06194C4951001F9DF3 /* VnEffectFawn.m in Sources */,
 				58F3E4881940C72F001AEB8D /* PtFtConfig.m in Sources */,
 				583668F31942AE9D00E55C7C /* VnEffectBluishRose.m in Sources */,
+				58F78EEC1952B0B80051562F /* VnEffectPosh.m in Sources */,
 				58F3E4901940C743001AEB8D /* PtFtViewManagerFilters.m in Sources */,
 				58F3E4731940C6D3001AEB8D /* PtFtButtonLayerBar.m in Sources */,
 				5819A113194DB9D0002C6F3E /* VnEffectVSCOSummer.m in Sources */,
@@ -2258,6 +2269,7 @@
 				58F7720019516454000179F7 /* VnEffectThorn.m in Sources */,
 				58F3E4D31940C840001AEB8D /* LmCmViewFlashModeList.m in Sources */,
 				5825A1C51950267200128F52 /* VnEffectAmelia.m in Sources */,
+				58F78EF21952B7980051562F /* VnEffectBlush.m in Sources */,
 				58F3E4341940C60B001AEB8D /* EVCircularProgressView.m in Sources */,
 				58F3E4761940C6D3001AEB8D /* PtFtButtonNavigation.m in Sources */,
 				58F3E4A51940C7AF001AEB8D /* PtEdViewBarButton.m in Sources */,

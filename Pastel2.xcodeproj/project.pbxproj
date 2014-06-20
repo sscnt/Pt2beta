@@ -112,6 +112,7 @@
 		583669161942AE9D00E55C7C /* VnEffectXPro2Faded.m in Sources */ = {isa = PBXBuildFile; fileRef = 583668F21942AE9D00E55C7C /* VnEffectXPro2Faded.m */; };
 		5836691919431CDA00E55C7C /* VnFilterPassThrough.m in Sources */ = {isa = PBXBuildFile; fileRef = 5836691819431CDA00E55C7C /* VnFilterPassThrough.m */; };
 		58AAE037194332AE003E7B09 /* be002.pst in Resources */ = {isa = PBXBuildFile; fileRef = 58AAE036194332AE003E7B09 /* be002.pst */; };
+		58F32D70195466CF001F5A6A /* VnFilterLocalContrast.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F32D6F195466CF001F5A6A /* VnFilterLocalContrast.m */; };
 		58F3E2E41940C502001AEB8D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F3E2E31940C502001AEB8D /* Foundation.framework */; };
 		58F3E2E61940C502001AEB8D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F3E2E51940C502001AEB8D /* CoreGraphics.framework */; };
 		58F3E2E81940C502001AEB8D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F3E2E71940C502001AEB8D /* UIKit.framework */; };
@@ -556,6 +557,8 @@
 		5836691719431CDA00E55C7C /* VnFilterPassThrough.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnFilterPassThrough.h; sourceTree = "<group>"; };
 		5836691819431CDA00E55C7C /* VnFilterPassThrough.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnFilterPassThrough.m; sourceTree = "<group>"; };
 		58AAE036194332AE003E7B09 /* be002.pst */ = {isa = PBXFileReference; lastKnownFileType = file; path = be002.pst; sourceTree = "<group>"; };
+		58F32D6E195466CF001F5A6A /* VnFilterLocalContrast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnFilterLocalContrast.h; sourceTree = "<group>"; };
+		58F32D6F195466CF001F5A6A /* VnFilterLocalContrast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnFilterLocalContrast.m; sourceTree = "<group>"; };
 		58F3E2E01940C502001AEB8D /* Pastel2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pastel2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58F3E2E31940C502001AEB8D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		58F3E2E51940C502001AEB8D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1098,6 +1101,8 @@
 				5836691819431CDA00E55C7C /* VnFilterPassThrough.m */,
 				58007CD4194D654300AFAD38 /* VnFilterExposure.h */,
 				58007CD5194D654300AFAD38 /* VnFilterExposure.m */,
+				58F32D6E195466CF001F5A6A /* VnFilterLocalContrast.h */,
+				58F32D6F195466CF001F5A6A /* VnFilterLocalContrast.m */,
 			);
 			name = VnFilters;
 			sourceTree = "<group>";
@@ -1181,8 +1186,6 @@
 				5813EA05194C4951001F9DF3 /* VnEffectFawn.m */,
 				583668B91942AE9D00E55C7C /* VnEffectFruitPop.h */,
 				583668BA1942AE9D00E55C7C /* VnEffectFruitPop.m */,
-				583668BB1942AE9D00E55C7C /* VnEffectGentleColor.h */,
-				583668BC1942AE9D00E55C7C /* VnEffectGentleColor.m */,
 				583668BD1942AE9D00E55C7C /* VnEffectGentleMemories.h */,
 				583668BE1942AE9D00E55C7C /* VnEffectGentleMemories.m */,
 				5809A308194862A200D48B19 /* VnEffectGlitterShine.h */,
@@ -1314,6 +1317,8 @@
 			children = (
 				58F3E35D1940C5B5001AEB8D /* VnEffectOverlayBlueHaze.h */,
 				58F3E35E1940C5B5001AEB8D /* VnEffectOverlayBlueHaze.m */,
+				583668BB1942AE9D00E55C7C /* VnEffectGentleColor.h */,
+				583668BC1942AE9D00E55C7C /* VnEffectGentleColor.m */,
 				58F3E35F1940C5B5001AEB8D /* VnEffectOverlayHazyLightWarmPink.h */,
 				58F3E3601940C5B5001AEB8D /* VnEffectOverlayHazyLightWarmPink.m */,
 				58F3E3611940C5B5001AEB8D /* VnEffectOverlayHazyLightWarmPink2.h */,
@@ -2300,6 +2305,7 @@
 				58F3E37A1940C5B5001AEB8D /* VnEffectOverlayLightBrightPop.m in Sources */,
 				5836690A1942AE9D00E55C7C /* VnEffectFrontpageFaded.m in Sources */,
 				58F3E45A1940C675001AEB8D /* PtFtObjectProcessQueue.m in Sources */,
+				58F32D70195466CF001F5A6A /* VnFilterLocalContrast.m in Sources */,
 				583669001942AE9D00E55C7C /* VnEffectHazelnutPink.m in Sources */,
 				5825A1BF195017A400128F52 /* VnEffectOverlaySunshowerLeft.m in Sources */,
 				58F3E3541940C586001AEB8D /* VnEffect.m in Sources */,

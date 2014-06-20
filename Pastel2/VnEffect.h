@@ -24,6 +24,7 @@
 #import "VnFilterSolidColor.h"
 #import "VnFilterDuplicate.h"
 #import "VnFilterExposure.h"
+#import "VnFilterLocalContrast.h"
 
 @interface VnEffect : NSObject
 

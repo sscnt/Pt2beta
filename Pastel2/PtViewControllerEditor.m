@@ -77,9 +77,17 @@
     [_slidersButton addTarget:self action:@selector(buttonSlidersDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
     [_bottomBar addSlidersButton:_slidersButton];
     
+    //// Buttons - Tool
+    _brightnessButton = [[PtEdViewBarButton alloc] initWithType:PtEdViewBarButtonTypeBrightness];
+    [_brightnessButton addTarget:self action:@selector(buttonBrightnessDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
+    [_toolBar appendButton:_brightnessButton];
+    
+    _saturationsButton = [[PtEdViewBarButton alloc] initWithType:PtEdViewBarButtonTypeSaturation];
+    [_toolBar appendButton:_saturationsButton];
+    
     _filmButton = [[PtEdViewBarButton alloc] initWithType:PtEdViewBarButtonTypeFilm];
     [_filmButton addTarget:self action:@selector(buttonFilmDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
-    [_bottomBar addFilmButton:_filmButton];
+    [_toolBar appendButton:_filmButton];
     
     //// Preview
     [self initPreview];
@@ -221,6 +229,11 @@
 }
 
 - (void)buttonFilmDidTouchUpInside:(PtEdViewBarButton *)button
+{
+    
+}
+
+- (void)buttonBrightnessDidTouchUpInside:(PtEdViewBarButton *)button
 {
     
 }

@@ -21,6 +21,7 @@
         _addingY = 0.0f;
         _multiplierX = 0.0f;
         _multiplierY = 0.0f;
+        _radiusMultiplier = 1.0f;
     }
     return self;
 }

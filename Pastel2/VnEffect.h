@@ -41,6 +41,7 @@
 @property (nonatomic, assign) float addingY;
 @property (nonatomic, assign) float transformX;
 @property (nonatomic, assign) float transformY;
+@property (nonatomic, assign) float radiusMultiplier;
 
 + (UIImage*)processImage:(UIImage*)image WithStartFilter:(VnImageFilter*)startFilter EndFilter:(VnImageFilter*)endFilter;
 

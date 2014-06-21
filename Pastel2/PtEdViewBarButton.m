@@ -474,6 +474,134 @@
             [filmPath fill];
 
         }
+            break;
+        case PtEdViewBarButtonTypeBrightness:
+        {
+            
+            //// Brightness Drawing
+            UIBezierPath* brightnessPath = [UIBezierPath bezierPath];
+            [brightnessPath moveToPoint: CGPointMake(3.89, 3.89)];
+            [brightnessPath addCurveToPoint: CGPointMake(3.89, -3.89) controlPoint1: CGPointMake(6.04, 1.74) controlPoint2: CGPointMake(6.04, -1.74)];
+            [brightnessPath addCurveToPoint: CGPointMake(-3.89, -3.89) controlPoint1: CGPointMake(1.74, -6.04) controlPoint2: CGPointMake(-1.74, -6.04)];
+            [brightnessPath addCurveToPoint: CGPointMake(-3.89, 3.89) controlPoint1: CGPointMake(-6.04, -1.74) controlPoint2: CGPointMake(-6.04, 1.74)];
+            [brightnessPath addCurveToPoint: CGPointMake(3.89, 3.89) controlPoint1: CGPointMake(-1.74, 6.04) controlPoint2: CGPointMake(1.74, 6.04)];
+            [brightnessPath closePath];
+            [brightnessPath moveToPoint: CGPointMake(-1.5, -9.5)];
+            [brightnessPath addCurveToPoint: CGPointMake(-0, -8) controlPoint1: CGPointMake(-1.5, -8.67) controlPoint2: CGPointMake(-0.83, -8)];
+            [brightnessPath addCurveToPoint: CGPointMake(0.73, -8.19) controlPoint1: CGPointMake(0.27, -8) controlPoint2: CGPointMake(0.52, -8.07)];
+            [brightnessPath addCurveToPoint: CGPointMake(1.47, -9.21) controlPoint1: CGPointMake(1.11, -8.4) controlPoint2: CGPointMake(1.39, -8.77)];
+            [brightnessPath addCurveToPoint: CGPointMake(1.5, -9.5) controlPoint1: CGPointMake(1.49, -9.3) controlPoint2: CGPointMake(1.5, -9.4)];
+            [brightnessPath addLineToPoint: CGPointMake(1.5, -10.5)];
+            [brightnessPath addCurveToPoint: CGPointMake(-0, -12) controlPoint1: CGPointMake(1.5, -11.33) controlPoint2: CGPointMake(0.83, -12)];
+            [brightnessPath addCurveToPoint: CGPointMake(-1.5, -10.5) controlPoint1: CGPointMake(-0.83, -12) controlPoint2: CGPointMake(-1.5, -11.33)];
+            [brightnessPath addLineToPoint: CGPointMake(-1.5, -9.5)];
+            [brightnessPath closePath];
+            [brightnessPath moveToPoint: CGPointMake(-1.5, 10.5)];
+            [brightnessPath addCurveToPoint: CGPointMake(-0, 12) controlPoint1: CGPointMake(-1.5, 11.33) controlPoint2: CGPointMake(-0.83, 12)];
+            [brightnessPath addCurveToPoint: CGPointMake(1.5, 10.5) controlPoint1: CGPointMake(0.83, 12) controlPoint2: CGPointMake(1.5, 11.33)];
+            [brightnessPath addLineToPoint: CGPointMake(1.5, 9.5)];
+            [brightnessPath addCurveToPoint: CGPointMake(-0, 8) controlPoint1: CGPointMake(1.5, 8.67) controlPoint2: CGPointMake(0.83, 8)];
+            [brightnessPath addCurveToPoint: CGPointMake(-1.5, 9.5) controlPoint1: CGPointMake(-0.83, 8) controlPoint2: CGPointMake(-1.5, 8.67)];
+            [brightnessPath addLineToPoint: CGPointMake(-1.5, 10.5)];
+            [brightnessPath closePath];
+            [brightnessPath moveToPoint: CGPointMake(9.5, -1.5)];
+            [brightnessPath addCurveToPoint: CGPointMake(8, 0) controlPoint1: CGPointMake(8.67, -1.5) controlPoint2: CGPointMake(8, -0.83)];
+            [brightnessPath addCurveToPoint: CGPointMake(9.21, 1.47) controlPoint1: CGPointMake(8, 0.73) controlPoint2: CGPointMake(8.52, 1.34)];
+            [brightnessPath addCurveToPoint: CGPointMake(9.5, 1.5) controlPoint1: CGPointMake(9.3, 1.49) controlPoint2: CGPointMake(9.4, 1.5)];
+            [brightnessPath addLineToPoint: CGPointMake(10.5, 1.5)];
+            [brightnessPath addCurveToPoint: CGPointMake(12, 0) controlPoint1: CGPointMake(11.33, 1.5) controlPoint2: CGPointMake(12, 0.83)];
+            [brightnessPath addCurveToPoint: CGPointMake(10.5, -1.5) controlPoint1: CGPointMake(12, -0.83) controlPoint2: CGPointMake(11.33, -1.5)];
+            [brightnessPath addLineToPoint: CGPointMake(9.5, -1.5)];
+            [brightnessPath closePath];
+            [brightnessPath moveToPoint: CGPointMake(-10.5, -1.5)];
+            [brightnessPath addCurveToPoint: CGPointMake(-12, 0) controlPoint1: CGPointMake(-11.33, -1.5) controlPoint2: CGPointMake(-12, -0.83)];
+            [brightnessPath addCurveToPoint: CGPointMake(-10.5, 1.5) controlPoint1: CGPointMake(-12, 0.83) controlPoint2: CGPointMake(-11.33, 1.5)];
+            [brightnessPath addLineToPoint: CGPointMake(-9.5, 1.5)];
+            [brightnessPath addCurveToPoint: CGPointMake(-8, 0) controlPoint1: CGPointMake(-8.67, 1.5) controlPoint2: CGPointMake(-8, 0.83)];
+            [brightnessPath addCurveToPoint: CGPointMake(-9.5, -1.5) controlPoint1: CGPointMake(-8, -0.83) controlPoint2: CGPointMake(-8.67, -1.5)];
+            [brightnessPath addLineToPoint: CGPointMake(-10.5, -1.5)];
+            [brightnessPath closePath];
+            [brightnessPath moveToPoint: CGPointMake(5.66, -7.78)];
+            [brightnessPath addCurveToPoint: CGPointMake(5.66, -5.66) controlPoint1: CGPointMake(5.07, -7.19) controlPoint2: CGPointMake(5.07, -6.24)];
+            [brightnessPath addCurveToPoint: CGPointMake(6.31, -5.27) controlPoint1: CGPointMake(5.85, -5.47) controlPoint2: CGPointMake(6.07, -5.34)];
+            [brightnessPath addCurveToPoint: CGPointMake(7.55, -5.47) controlPoint1: CGPointMake(6.73, -5.16) controlPoint2: CGPointMake(7.18, -5.22)];
+            [brightnessPath addCurveToPoint: CGPointMake(7.78, -5.66) controlPoint1: CGPointMake(7.63, -5.52) controlPoint2: CGPointMake(7.71, -5.59)];
+            [brightnessPath addLineToPoint: CGPointMake(8.49, -6.36)];
+            [brightnessPath addCurveToPoint: CGPointMake(8.49, -8.49) controlPoint1: CGPointMake(9.07, -6.95) controlPoint2: CGPointMake(9.07, -7.9)];
+            [brightnessPath addCurveToPoint: CGPointMake(6.36, -8.49) controlPoint1: CGPointMake(7.9, -9.07) controlPoint2: CGPointMake(6.95, -9.07)];
+            [brightnessPath addLineToPoint: CGPointMake(5.66, -7.78)];
+            [brightnessPath closePath];
+            [brightnessPath moveToPoint: CGPointMake(-8.49, 6.36)];
+            [brightnessPath addCurveToPoint: CGPointMake(-8.49, 8.49) controlPoint1: CGPointMake(-9.07, 6.95) controlPoint2: CGPointMake(-9.07, 7.9)];
+            [brightnessPath addCurveToPoint: CGPointMake(-6.36, 8.49) controlPoint1: CGPointMake(-7.9, 9.07) controlPoint2: CGPointMake(-6.95, 9.07)];
+            [brightnessPath addLineToPoint: CGPointMake(-5.66, 7.78)];
+            [brightnessPath addCurveToPoint: CGPointMake(-5.66, 5.66) controlPoint1: CGPointMake(-5.07, 7.19) controlPoint2: CGPointMake(-5.07, 6.24)];
+            [brightnessPath addCurveToPoint: CGPointMake(-7.78, 5.66) controlPoint1: CGPointMake(-6.24, 5.07) controlPoint2: CGPointMake(-7.19, 5.07)];
+            [brightnessPath addLineToPoint: CGPointMake(-8.49, 6.36)];
+            [brightnessPath closePath];
+            [brightnessPath moveToPoint: CGPointMake(7.78, 5.66)];
+            [brightnessPath addCurveToPoint: CGPointMake(5.66, 5.66) controlPoint1: CGPointMake(7.19, 5.07) controlPoint2: CGPointMake(6.24, 5.07)];
+            [brightnessPath addCurveToPoint: CGPointMake(5.47, 7.55) controlPoint1: CGPointMake(5.14, 6.17) controlPoint2: CGPointMake(5.08, 6.97)];
+            [brightnessPath addCurveToPoint: CGPointMake(5.66, 7.78) controlPoint1: CGPointMake(5.52, 7.63) controlPoint2: CGPointMake(5.59, 7.71)];
+            [brightnessPath addLineToPoint: CGPointMake(6.36, 8.49)];
+            [brightnessPath addCurveToPoint: CGPointMake(8.49, 8.49) controlPoint1: CGPointMake(6.95, 9.07) controlPoint2: CGPointMake(7.9, 9.07)];
+            [brightnessPath addCurveToPoint: CGPointMake(8.49, 6.36) controlPoint1: CGPointMake(9.07, 7.9) controlPoint2: CGPointMake(9.07, 6.95)];
+            [brightnessPath addLineToPoint: CGPointMake(7.78, 5.66)];
+            [brightnessPath closePath];
+            [brightnessPath moveToPoint: CGPointMake(-6.36, -8.49)];
+            [brightnessPath addCurveToPoint: CGPointMake(-8.49, -8.49) controlPoint1: CGPointMake(-6.95, -9.07) controlPoint2: CGPointMake(-7.9, -9.07)];
+            [brightnessPath addCurveToPoint: CGPointMake(-8.49, -6.36) controlPoint1: CGPointMake(-9.07, -7.9) controlPoint2: CGPointMake(-9.07, -6.95)];
+            [brightnessPath addLineToPoint: CGPointMake(-7.78, -5.66)];
+            [brightnessPath addCurveToPoint: CGPointMake(-5.66, -5.66) controlPoint1: CGPointMake(-7.19, -5.07) controlPoint2: CGPointMake(-6.24, -5.07)];
+            [brightnessPath addCurveToPoint: CGPointMake(-5.66, -7.78) controlPoint1: CGPointMake(-5.07, -6.24) controlPoint2: CGPointMake(-5.07, -7.19)];
+            [brightnessPath addLineToPoint: CGPointMake(-6.36, -8.49)];
+            [brightnessPath closePath];
+            [brightnessPath applyTransform:move];
+            [color setFill];
+            [brightnessPath fill];
+        }
+            break;
+        case PtEdViewBarButtonTypeSaturation:
+        {
+            
+            UIColor* color2 = [UIColor colorWithRed: 0.6 green: 0.6 blue: 0.6 alpha: 0.8];
+            UIColor* color3 = [UIColor colorWithRed: 0.9 green: 0.9 blue: 0.9 alpha: 0.8];
+            
+            //// Oval Drawing
+            UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(-7, -12, 14, 14)];
+            [ovalPath applyTransform:move];
+            [color setFill];
+            [ovalPath fill];
+            
+            
+            //// Oval 2 Drawing
+            UIBezierPath* oval2Path = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(-12, -3, 14, 14)];
+            [oval2Path applyTransform:move];
+            [color3 setFill];
+            [oval2Path fill];
+            
+            
+            //// Oval 3 Drawing
+            UIBezierPath* oval3Path = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(-2, -3, 14, 14)];
+            [oval3Path applyTransform:move];
+            [color2 setFill];
+            [oval3Path fill];
+            
+            
+            //// Bezier Drawing
+            UIBezierPath* bezierPath = [UIBezierPath bezierPath];
+            [bezierPath moveToPoint: CGPointMake(1.65, 1.8)];
+            [bezierPath addCurveToPoint: CGPointMake(-1.65, 1.8) controlPoint1: CGPointMake(0.57, 2.07) controlPoint2: CGPointMake(-0.57, 2.07)];
+            [bezierPath addCurveToPoint: CGPointMake(-0, -0.9) controlPoint1: CGPointMake(-1.32, 0.82) controlPoint2: CGPointMake(-0.77, -0.11)];
+            [bezierPath addCurveToPoint: CGPointMake(1.65, 1.8) controlPoint1: CGPointMake(0.77, -0.11) controlPoint2: CGPointMake(1.32, 0.82)];
+            [bezierPath closePath];
+            [bezierPath applyTransform:move];
+            [color setFill];
+            [bezierPath fill];
+            
+            
+        }
+            break;
         default:
             break;
     }

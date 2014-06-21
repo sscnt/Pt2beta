@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 SSC. All rights reserved.
 //
 
-#import "GPUImageTwoPassTextureSamplingFilter.h"
+#import "VnImageTwoPassTextureSamplingFilter.h"
 
-@interface VnFilterLocalContrast : GPUImageTwoPassTextureSamplingFilter
+@interface VnFilterLocalContrast : VnImageTwoPassTextureSamplingFilter
 {
     BOOL shouldResizeBlurRadiusWithImageSize;
     CGFloat _blurRadiusInPixels;

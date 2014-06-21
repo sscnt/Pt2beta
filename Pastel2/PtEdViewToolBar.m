@@ -22,9 +22,10 @@
 
 - (void)appendButton:(PtEdViewBarButton *)button
 {
-    float _x = button.width / 2.0f * 3.0f;
+    float _x = button.width / 2.0f;
     x += _x;
     button.center = CGPointMake(x, self.height / 2.0f);
+    x += _x;
     [self addSubview:button];
 }
 

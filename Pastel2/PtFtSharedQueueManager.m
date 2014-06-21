@@ -140,7 +140,8 @@ static PtFtSharedQueueManager* sharedPtFtSharedQueueManager = nil;
     if (imageSize.height > imageSize.width) {
         ty = imageSize.height / imageSize.width;
     }
-    [self setStartAndEndFiltersWithQueue:queue Multipliers:CGPointMake(1.0f, 1.0f) Adding:CGPointMake(0.0f, 0.0f) ImageSize:imageSize Transform:CGPointMake(tx, ty)];
+    float rm = imageSize.width / [PtSharedApp instance].sizeOfImageToProcess.width;
+    [self setStartAndEndFiltersWithQueue:queue Multipliers:CGPointMake(1.0f, 1.0f) Adding:CGPointMake(0.0f, 0.0f) ImageSize:imageSize Transform:CGPointMake(tx, ty) RadiusMultiplier:rm];
     dispatch_queue_t q_main = dispatch_get_main_queue();
     __block __weak PtViewControllerFilters* _con = self.delegate;
     dispatch_async(q_main, ^{
@@ -175,7 +176,7 @@ static PtFtSharedQueueManager* sharedPtFtSharedQueueManager = nil;
             UIImage* image = [parts objectAtIndex:i];
             CGPoint mult = [PtUtilImage multiplierAtIndex:i];
             CGPoint add = [PtUtilImage addingAtIndex:i];
-            [self setStartAndEndFiltersWithQueue:queue Multipliers:mult Adding:add ImageSize:imageSize Transform:CGPointMake(tx, ty)];
+            [self setStartAndEndFiltersWithQueue:queue Multipliers:mult Adding:add ImageSize:imageSize Transform:CGPointMake(tx, ty) RadiusMultiplier:1.0f];
             if (self.startFilter == nil) {
                 continue;
             }
@@ -195,7 +196,7 @@ static PtFtSharedQueueManager* sharedPtFtSharedQueueManager = nil;
     self.endFilter = nil;
 }
 
-- (void)setStartAndEndFiltersWithQueue:(PtFtObjectProcessQueue *)queue Multipliers:(CGPoint)mult Adding:(CGPoint)add ImageSize:(CGSize)imageSize Transform:(CGPoint)transform
+- (void)setStartAndEndFiltersWithQueue:(PtFtObjectProcessQueue *)queue Multipliers:(CGPoint)mult Adding:(CGPoint)add ImageSize:(CGSize)imageSize Transform:(CGPoint)transform RadiusMultiplier:(float)radiusMultiplier
 {
     VnImageFilter* startFilter;
     VnImageFilter* endFilter;
@@ -213,6 +214,7 @@ static PtFtSharedQueueManager* sharedPtFtSharedQueueManager = nil;
             effect.imageSize = imageSize;
             effect.transformX = transform.x;
             effect.transformY = transform.y;
+            effect.radiusMultiplier = radiusMultiplier;
             [effect makeFilterGroup];
             VnFilterPassThrough* inputFilter = [[VnFilterPassThrough alloc] init];
             VnImageNormalBlendFilter* blendFilter = [[VnImageNormalBlendFilter alloc] init];
@@ -237,6 +239,7 @@ static PtFtSharedQueueManager* sharedPtFtSharedQueueManager = nil;
             effect.imageSize = imageSize;
             effect.transformX = transform.x;
             effect.transformY = transform.y;
+            effect.radiusMultiplier = radiusMultiplier;
             [effect makeFilterGroup];
             if (startFilter) {
                 VnImageNormalBlendFilter* blendFilter = [[VnImageNormalBlendFilter alloc] init];
@@ -269,6 +272,7 @@ static PtFtSharedQueueManager* sharedPtFtSharedQueueManager = nil;
             effect.imageSize = imageSize;
             effect.transformX = transform.x;
             effect.transformY = transform.y;
+            effect.radiusMultiplier = radiusMultiplier;
             [effect makeFilterGroup];
             if (startFilter) {
                 VnImageNormalBlendFilter* blendFilter = [[VnImageNormalBlendFilter alloc] init];

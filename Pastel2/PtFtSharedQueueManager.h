@@ -45,7 +45,7 @@
 
 - (void)didFinishProcessingQueue:(PtFtObjectProcessQueue*)queue;
 
-- (void)setStartAndEndFiltersWithQueue:(PtFtObjectProcessQueue*)queue Multipliers:(CGPoint)mult Adding:(CGPoint)add ImageSize:(CGSize)imageSize Transform:(CGPoint)transform;
+- (void)setStartAndEndFiltersWithQueue:(PtFtObjectProcessQueue *)queue Multipliers:(CGPoint)mult Adding:(CGPoint)add ImageSize:(CGSize)imageSize Transform:(CGPoint)transform RadiusMultiplier:(float)radiusMultiplier;
 - (void)commonInit;
 - (void)cancelAllQueue;
 

@@ -299,7 +299,8 @@
      void main()\n\
      {\n\
      mediump vec4 pixel = texture2D(inputImageTexture, blurCoordinates[0]);\n\
-     mediump vec4 sum = vec4(0.0);\n", (unsigned long)(1 + (numberOfOptimizedOffsets * 2)) ];
+     mediump vec4 sum = vec4(0.0);\n\
+     mediump float num = 0.0;\n", (unsigned long)(1 + (numberOfOptimizedOffsets * 2)) ];
 #else
     [shaderString appendFormat:@"\
      uniform sampler2D inputImageTexture;\n\
@@ -310,11 +311,12 @@
      \n\
      void main()\n\
      {\n\
-     vec4 sum = vec4(0.0);\n", 1 + (numberOfOptimizedOffsets * 2) ];
+     vec4 sum = vec4(0.0);\n\
+     mediump float num = 0.0;\n", 1 + (numberOfOptimizedOffsets * 2) ];
 #endif
     
     // Inner texture loop
-    [shaderString appendFormat:@"sum += exp(4.0 * texture2D(inputImageTexture, blurCoordinates[0])) * %f;\n", standardGaussianWeights[0]];
+    [shaderString appendFormat:@"sum += texture2D(inputImageTexture, blurCoordinates[0]);num += 1.0;\n", standardGaussianWeights[0]];
     
     for (NSUInteger currentBlurCoordinateIndex = 0; currentBlurCoordinateIndex < numberOfOptimizedOffsets; currentBlurCoordinateIndex++)
     {
@@ -322,8 +324,8 @@
         GLfloat secondWeight = standardGaussianWeights[currentBlurCoordinateIndex * 2 + 2];
         GLfloat optimizedWeight = firstWeight + secondWeight;
         
-        [shaderString appendFormat:@"sum += exp(4.0 * texture2D(inputImageTexture, blurCoordinates[%lu])) * %f;\n", (unsigned long)((currentBlurCoordinateIndex * 2) + 1), optimizedWeight];
-        [shaderString appendFormat:@"sum += exp(4.0 * texture2D(inputImageTexture, blurCoordinates[%lu])) * %f;\n", (unsigned long)((currentBlurCoordinateIndex * 2) + 2), optimizedWeight];
+        [shaderString appendFormat:@"sum += texture2D(inputImageTexture, blurCoordinates[%lu]);num += 1.0;\n", (unsigned long)((currentBlurCoordinateIndex * 2) + 1), optimizedWeight];
+        [shaderString appendFormat:@"sum += texture2D(inputImageTexture, blurCoordinates[%lu]);num += 1.0;\n", (unsigned long)((currentBlurCoordinateIndex * 2) + 2), optimizedWeight];
     }
     
     // If the number of required samples exceeds the amount we can pass in via varyings, we have to do dependent texture reads in the fragment shader
@@ -343,22 +345,29 @@
             GLfloat optimizedWeight = firstWeight + secondWeight;
             GLfloat optimizedOffset = (firstWeight * (currentOverlowTextureRead * 2 + 1) + secondWeight * (currentOverlowTextureRead * 2 + 2)) / optimizedWeight;
             
-            [shaderString appendFormat:@"sum += exp(4.0 * texture2D(inputImageTexture, blurCoordinates[0] + singleStepOffset * %f)) * %f;\n", optimizedOffset, optimizedWeight];
-            [shaderString appendFormat:@"sum += exp(4.0 * texture2D(inputImageTexture, blurCoordinates[0] - singleStepOffset * %f)) * %f;\n", optimizedOffset, optimizedWeight];
+            [shaderString appendFormat:@"sum += texture2D(inputImageTexture, blurCoordinates[0] + singleStepOffset * %f);num += 1.0;\n", optimizedOffset, optimizedWeight];
+            [shaderString appendFormat:@"sum += texture2D(inputImageTexture, blurCoordinates[0] - singleStepOffset * %f);num += 1.0;\n", optimizedOffset, optimizedWeight];
         }
     }
     
     // Footer
     [shaderString appendString:@"\
-     mediump vec4 rs = log(sum) / 4.0;\n\
-     rs = abs(pixel - rs);\n\
-     mediump float opacity = rs.r / 3.0 + rs.g / 3.0 + rs.b / 3.0;\n\
-     mediump float brightness = rs.r * 0.299 + rs.g * 0.587 + rs.b * 0.114;\n\
-     opacity = pow(opacity, 0.60);\n\
-     opacity = min(max(opacity, 0.0), 1.0);\n\
-     rs = (pixel - brightness) * 1.3 + brightness;\n\
-     gl_FragColor = blendWithBlendingMode(pixel, vec4(rs.r, rs.g, rs.b, opacity), 1);\n\
-     gl_FragColor = vec4(rs.rgb, 1.0);\n\
+     mediump vec4 rs = sum / num;\n\
+     mediump vec3 hsv = rgb2hsv(pixel.rgb);\n\
+     mediump float saturation = hsv.y;\n\
+     //rs = abs(pixel - rs);\n\
+     //mediump float opacity = pixel.r / 3.0 + rs.g / 3.0 + rs.b / 3.0;\n\
+     mediump float brightness = pixel.r * 0.299 + pixel.g * 0.587 + pixel.b * 0.114;\n\
+     mediump float lum = rs.r * 0.299 + rs.g * 0.587 + rs.b * 0.114;\n\
+     //opacity = pow(opacity, 0.60);\n\
+     //opacity = min(max(opacity, 0.0), 1.0);\n\
+     mediump float com = brightness * 0.6 + 0.2;\n\
+     rs = (pixel - lum) * 1.8 + lum;\n\
+     hsv = rgb2hsv(rs.rgb);\n\
+     hsv.y = saturation;\n\
+     rs.rgb = hsv2rgb(hsv);\n\
+     //gl_FragColor = blendWithBlendingMode(pixel, vec4(rs.r, rs.g, rs.b, opacity), 1);\n\
+     gl_FragColor = blendWithBlendingMode(pixel, vec4(rs.r, rs.g, rs.b, 0.50), 1);\n\
      }\n"];
     
     free(standardGaussianWeights);

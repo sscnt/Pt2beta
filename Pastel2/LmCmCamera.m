@@ -281,8 +281,8 @@
                     if ([UIDevice isIOS6]) {
                         
                     }else{
-                        //[camera setActiveVideoMinFrameDuration:CMTimeMake(1, 5)];
-                        //[camera setActiveVideoMaxFrameDuration:CMTimeMake(1, 5)];
+                        //[camera setActiveVideoMinFrameDuration:CMTimeMake(1, (int32_t)min)];
+                        //[camera setActiveVideoMaxFrameDuration:CMTimeMake(1, (int32_t)min)];
                     }
                     [camera unlockForConfiguration];
                 }

@@ -22,9 +22,14 @@
 - (void)makeFilterGroup
 {
     {
+        VnFilterLevels* levelsFilter1 = [[VnFilterLevels alloc] init];
+        [levelsFilter1 setMin:s255(0.0f) gamma:1.1 max:s255(255.0f) minOut:s255(0.0f) maxOut:s255(255.0f)];
+        
         VnFilterLocalContrast* contrastFilter = [[VnFilterLocalContrast alloc] init];
-        contrastFilter.blurRadiusInPixels = 40.0f;
-        self.startFilter = self.endFilter = contrastFilter;
+        contrastFilter.blurRadiusInPixels = 40.0f * self.radiusMultiplier;
+        self.startFilter = levelsFilter1;
+        [levelsFilter1 addTarget:contrastFilter];
+        self.endFilter = contrastFilter;
         return;
     }
     // Levels

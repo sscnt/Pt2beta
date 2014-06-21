@@ -312,6 +312,8 @@
 		58F3E5361940CA6C001AEB8D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F3E5351940CA6C001AEB8D /* OpenGLES.framework */; };
 		58F3E5381940CA74001AEB8D /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F3E5371940CA74001AEB8D /* CoreVideo.framework */; };
 		58F3E53A1940CA7D001AEB8D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F3E5391940CA7D001AEB8D /* CoreMedia.framework */; };
+		58F5D33419554AC600BD930E /* VnImageTwoPassTextureSamplingFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F5D33319554AC600BD930E /* VnImageTwoPassTextureSamplingFilter.m */; };
+		58F5D33A19554BFA00BD930E /* VnImageTwoPassFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F5D33919554BFA00BD930E /* VnImageTwoPassFilter.m */; };
 		58F6FD2419498D1900823407 /* VnEffectVintageSummer.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F6FD2319498D1900823407 /* VnEffectVintageSummer.m */; };
 		58F6FD261949905700823407 /* bw001.pst in Resources */ = {isa = PBXBuildFile; fileRef = 58F6FD251949905700823407 /* bw001.pst */; };
 		58F7720019516454000179F7 /* VnEffectThorn.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F771FF19516454000179F7 /* VnEffectThorn.m */; };
@@ -879,6 +881,10 @@
 		58F3E5351940CA6C001AEB8D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		58F3E5371940CA74001AEB8D /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		58F3E5391940CA7D001AEB8D /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		58F5D33219554AC600BD930E /* VnImageTwoPassTextureSamplingFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnImageTwoPassTextureSamplingFilter.h; sourceTree = "<group>"; };
+		58F5D33319554AC600BD930E /* VnImageTwoPassTextureSamplingFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnImageTwoPassTextureSamplingFilter.m; sourceTree = "<group>"; };
+		58F5D33819554BFA00BD930E /* VnImageTwoPassFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnImageTwoPassFilter.h; sourceTree = "<group>"; };
+		58F5D33919554BFA00BD930E /* VnImageTwoPassFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnImageTwoPassFilter.m; sourceTree = "<group>"; };
 		58F6FD2219498D1900823407 /* VnEffectVintageSummer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectVintageSummer.h; sourceTree = "<group>"; };
 		58F6FD2319498D1900823407 /* VnEffectVintageSummer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectVintageSummer.m; sourceTree = "<group>"; };
 		58F6FD251949905700823407 /* bw001.pst */ = {isa = PBXFileReference; lastKnownFileType = file; path = bw001.pst; sourceTree = "<group>"; };
@@ -1071,6 +1077,10 @@
 				58F3E31D1940C536001AEB8D /* VnImageFilter.m */,
 				58F3E31E1940C536001AEB8D /* VnImageTwoInputFilter.h */,
 				58F3E31F1940C536001AEB8D /* VnImageTwoInputFilter.m */,
+				58F5D33219554AC600BD930E /* VnImageTwoPassTextureSamplingFilter.h */,
+				58F5D33319554AC600BD930E /* VnImageTwoPassTextureSamplingFilter.m */,
+				58F5D33819554BFA00BD930E /* VnImageTwoPassFilter.h */,
+				58F5D33919554BFA00BD930E /* VnImageTwoPassFilter.m */,
 				58F3E33B1940C54C001AEB8D /* VnAdjustmentLayers */,
 				58F3E3221940C539001AEB8D /* VnFilters */,
 				58F3E3511940C575001AEB8D /* VnEffects */,
@@ -2225,6 +2235,7 @@
 				58F3E4671940C6BD001AEB8D /* PtFtViewLayerBarWrapper.m in Sources */,
 				5836691919431CDA00E55C7C /* VnFilterPassThrough.m in Sources */,
 				58FD79A1194BF2E000DA2B11 /* VnEffectRetroVintage.m in Sources */,
+				58F5D33419554AC600BD930E /* VnImageTwoPassTextureSamplingFilter.m in Sources */,
 				5825A1BC1950120F00128F52 /* VnEffectOverlayFeelsLikeHome.m in Sources */,
 				58FD70161941B9A200D1E64F /* PtUtilImage.m in Sources */,
 				58F3E5161940C8EE001AEB8D /* PtViewControllerRoot.m in Sources */,
@@ -2388,6 +2399,7 @@
 				58F3E4741940C6D3001AEB8D /* PtFtViewLayerBarButtonMask.m in Sources */,
 				583669051942AE9D00E55C7C /* VnEffectWeekend.m in Sources */,
 				5836690B1942AE9D00E55C7C /* VnEffectKodakPortra800.m in Sources */,
+				58F5D33A19554BFA00BD930E /* VnImageTwoPassFilter.m in Sources */,
 				58F3E45B1940C675001AEB8D /* PtFtObjectFilterItem.m in Sources */,
 				58F3E35A1940C59D001AEB8D /* VnEffectBeachVintage.m in Sources */,
 				583668FB1942AE9D00E55C7C /* VnEffectGentleColor.m in Sources */,

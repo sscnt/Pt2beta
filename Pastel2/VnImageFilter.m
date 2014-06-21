@@ -53,6 +53,27 @@ NSString* const kVnImageFilterFragmentShaderString = SHADER_STRING
      mediump float e = 1.0e-10;
      return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);
 }
+ 
+ mediump vec3 levelShift(mediump vec3 color, mediump float gamma){
+     mediump float bound = (2.0 - gamma) / 2.0;
+     if(color.r < bound){
+         color.r /= bound * 2.0;
+     }else{
+         color.r = (color.r - bound) / (1.0 - bound) / 2.0 + 0.5;
+     }
+     if(color.g < bound){
+         color.g /= bound * 2.0;
+     }else{
+         color.g = (color.g - bound) / (1.0 - bound) / 2.0 + 0.5;
+     }
+     if(color.b < bound){
+         color.b /= bound * 2.0;
+     }else{
+         color.b = (color.b - bound) / (1.0 - bound) / 2.0 + 0.5;
+     }
+     return color;
+ }
+
  /*
  mediump vec3 _rgb2hsv(const in mediump vec3 color){
      mediump float max = color.r;

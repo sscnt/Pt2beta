@@ -362,12 +362,14 @@
      //opacity = pow(opacity, 0.60);\n\
      //opacity = min(max(opacity, 0.0), 1.0);\n\
      mediump float com = brightness * 0.6 + 0.2;\n\
-     rs = (pixel - lum) * 1.8 + lum;\n\
-     hsv = rgb2hsv(rs.rgb);\n\
-     hsv.y = saturation;\n\
-     rs.rgb = hsv2rgb(hsv);\n\
+     rs = (pixel - lum) * 1.3 + lum;\n\
+     //rs = log(exp(4.0 * pixel) * 1.6) / 4.0;\n\
+     //rs.rgb = levelShift(pixel.rgb, 0.3);\n\
+     //hsv = rgb2hsv(rs.rgb);\n\
+     //hsv.y = saturation;\n\
+     //rs.rgb = hsv2rgb(hsv);\n\
      //gl_FragColor = blendWithBlendingMode(pixel, vec4(rs.r, rs.g, rs.b, opacity), 1);\n\
-     gl_FragColor = blendWithBlendingMode(pixel, vec4(rs.r, rs.g, rs.b, 0.50), 1);\n\
+     gl_FragColor = blendWithBlendingMode(pixel, vec4(rs.r, rs.g, rs.b, 1.0), 1);\n\
      }\n"];
     
     free(standardGaussianWeights);

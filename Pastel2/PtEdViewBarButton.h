@@ -19,7 +19,14 @@ typedef NS_ENUM(NSInteger, PtEdViewBarButtonType){
     PtEdViewBarButtonTypeSliders,
     PtEdViewBarButtonTypeFilm,
     PtEdViewBarButtonTypeBrightness,
-    PtEdViewBarButtonTypeSaturation
+    PtEdViewBarButtonTypeSaturation,
+    PtEdViewBarButtonTypeShadow,
+    PtEdViewBarButtonTypeHighlight,
+    PtEdViewBarButtonTypeExposure,
+    PtEdViewBarButtonTypeClarify,
+    PtEdViewBarButtonTypeTemp,
+    PtEdViewBarButtonTypeVignette,
+    PtEdViewBarButtonTypeSkyEnhancement
 };
 
 @interface PtEdViewBarButton : UIButton

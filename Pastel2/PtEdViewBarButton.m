@@ -382,96 +382,94 @@
             
             //// Film Drawing
             UIBezierPath* filmPath = [UIBezierPath bezierPath];
-            [filmPath moveToPoint: CGPointMake(11, 11.5)];
-            [filmPath addLineToPoint: CGPointMake(9.5, 11.5)];
-            [filmPath addLineToPoint: CGPointMake(9.5, 10.5)];
-            [filmPath addLineToPoint: CGPointMake(7, 10.5)];
-            [filmPath addLineToPoint: CGPointMake(7, 11.5)];
-            [filmPath addLineToPoint: CGPointMake(5.5, 11.5)];
-            [filmPath addLineToPoint: CGPointMake(5.5, 10.5)];
-            [filmPath addLineToPoint: CGPointMake(5.5, 8)];
-            [filmPath addLineToPoint: CGPointMake(-5.5, 8)];
-            [filmPath addLineToPoint: CGPointMake(-5.5, 10.5)];
-            [filmPath addLineToPoint: CGPointMake(-5.5, 11.5)];
-            [filmPath addLineToPoint: CGPointMake(-7, 11.5)];
-            [filmPath addLineToPoint: CGPointMake(-7, 10.5)];
-            [filmPath addLineToPoint: CGPointMake(-9.5, 10.5)];
-            [filmPath addLineToPoint: CGPointMake(-9.5, 11.5)];
-            [filmPath addLineToPoint: CGPointMake(-11, 11.5)];
-            [filmPath addLineToPoint: CGPointMake(-11, 10.5)];
-            [filmPath addLineToPoint: CGPointMake(-11, -11)];
-            [filmPath addLineToPoint: CGPointMake(-9.5, -11)];
-            [filmPath addLineToPoint: CGPointMake(-9.5, -10)];
-            [filmPath addLineToPoint: CGPointMake(-7, -10)];
-            [filmPath addLineToPoint: CGPointMake(-7, -11)];
-            [filmPath addLineToPoint: CGPointMake(-5.5, -11)];
-            [filmPath addLineToPoint: CGPointMake(-5.5, -7.5)];
-            [filmPath addLineToPoint: CGPointMake(5.5, -7.5)];
-            [filmPath addLineToPoint: CGPointMake(5.5, -11)];
-            [filmPath addLineToPoint: CGPointMake(7, -11)];
-            [filmPath addLineToPoint: CGPointMake(7, -10)];
-            [filmPath addLineToPoint: CGPointMake(9.5, -10)];
-            [filmPath addLineToPoint: CGPointMake(9.5, -11)];
-            [filmPath addLineToPoint: CGPointMake(11, -11)];
-            [filmPath addLineToPoint: CGPointMake(11, 11.5)];
+            [filmPath moveToPoint: CGPointMake(10, 10)];
+            [filmPath addLineToPoint: CGPointMake(8.5, 10)];
+            [filmPath addLineToPoint: CGPointMake(8.5, 9)];
+            [filmPath addLineToPoint: CGPointMake(6.5, 9)];
+            [filmPath addLineToPoint: CGPointMake(6.5, 10)];
+            [filmPath addLineToPoint: CGPointMake(5, 10)];
+            [filmPath addLineToPoint: CGPointMake(5, 6.5)];
+            [filmPath addLineToPoint: CGPointMake(-5, 6.5)];
+            [filmPath addLineToPoint: CGPointMake(-5, 10)];
+            [filmPath addLineToPoint: CGPointMake(-6.5, 10)];
+            [filmPath addLineToPoint: CGPointMake(-6.5, 9)];
+            [filmPath addLineToPoint: CGPointMake(-8.5, 9)];
+            [filmPath addLineToPoint: CGPointMake(-8.5, 10)];
+            [filmPath addLineToPoint: CGPointMake(-10, 10)];
+            [filmPath addLineToPoint: CGPointMake(-10, -10)];
+            [filmPath addLineToPoint: CGPointMake(-8.5, -10)];
+            [filmPath addLineToPoint: CGPointMake(-8.5, -9)];
+            [filmPath addLineToPoint: CGPointMake(-6.5, -9)];
+            [filmPath addLineToPoint: CGPointMake(-6.5, -10)];
+            [filmPath addLineToPoint: CGPointMake(-5, -10)];
+            [filmPath addLineToPoint: CGPointMake(-5, -6.5)];
+            [filmPath addLineToPoint: CGPointMake(5, -6.5)];
+            [filmPath addLineToPoint: CGPointMake(5, -10)];
+            [filmPath addLineToPoint: CGPointMake(6.5, -10)];
+            [filmPath addLineToPoint: CGPointMake(6.5, -9)];
+            [filmPath addLineToPoint: CGPointMake(8.5, -9)];
+            [filmPath addLineToPoint: CGPointMake(8.5, -10)];
+            [filmPath addLineToPoint: CGPointMake(10, -10)];
+            [filmPath addLineToPoint: CGPointMake(10, 10)];
             [filmPath closePath];
-            [filmPath moveToPoint: CGPointMake(9.5, -7.5)];
-            [filmPath addLineToPoint: CGPointMake(7, -7.5)];
-            [filmPath addLineToPoint: CGPointMake(7, -5.5)];
-            [filmPath addLineToPoint: CGPointMake(9.5, -5.5)];
-            [filmPath addLineToPoint: CGPointMake(9.5, -7.5)];
+            [filmPath moveToPoint: CGPointMake(8.5, -7)];
+            [filmPath addLineToPoint: CGPointMake(6.5, -7)];
+            [filmPath addLineToPoint: CGPointMake(6.5, -5)];
+            [filmPath addLineToPoint: CGPointMake(8.5, -5)];
+            [filmPath addLineToPoint: CGPointMake(8.5, -7)];
             [filmPath closePath];
-            [filmPath moveToPoint: CGPointMake(-7, -7.5)];
-            [filmPath addLineToPoint: CGPointMake(-9.5, -7.5)];
-            [filmPath addLineToPoint: CGPointMake(-9.5, -5.5)];
-            [filmPath addLineToPoint: CGPointMake(-7, -5.5)];
-            [filmPath addLineToPoint: CGPointMake(-7, -7.5)];
+            [filmPath moveToPoint: CGPointMake(-6.5, -7)];
+            [filmPath addLineToPoint: CGPointMake(-8.5, -7)];
+            [filmPath addLineToPoint: CGPointMake(-8.5, -5)];
+            [filmPath addLineToPoint: CGPointMake(-6.5, -5)];
+            [filmPath addLineToPoint: CGPointMake(-6.5, -7)];
             [filmPath closePath];
-            [filmPath moveToPoint: CGPointMake(9.5, -3)];
-            [filmPath addLineToPoint: CGPointMake(7, -3)];
-            [filmPath addLineToPoint: CGPointMake(7, -1)];
-            [filmPath addLineToPoint: CGPointMake(9.5, -1)];
-            [filmPath addLineToPoint: CGPointMake(9.5, -3)];
+            [filmPath moveToPoint: CGPointMake(8.5, -3)];
+            [filmPath addLineToPoint: CGPointMake(6.5, -3)];
+            [filmPath addLineToPoint: CGPointMake(6.5, -1)];
+            [filmPath addLineToPoint: CGPointMake(8.5, -1)];
+            [filmPath addLineToPoint: CGPointMake(8.5, -3)];
             [filmPath closePath];
-            [filmPath moveToPoint: CGPointMake(-7, -3)];
-            [filmPath addLineToPoint: CGPointMake(-9.5, -3)];
-            [filmPath addLineToPoint: CGPointMake(-9.5, -1)];
-            [filmPath addLineToPoint: CGPointMake(-7, -1)];
-            [filmPath addLineToPoint: CGPointMake(-7, -3)];
+            [filmPath moveToPoint: CGPointMake(-6.5, -3)];
+            [filmPath addLineToPoint: CGPointMake(-8.5, -3)];
+            [filmPath addLineToPoint: CGPointMake(-8.5, -1)];
+            [filmPath addLineToPoint: CGPointMake(-6.5, -1)];
+            [filmPath addLineToPoint: CGPointMake(-6.5, -3)];
             [filmPath closePath];
-            [filmPath moveToPoint: CGPointMake(9.5, 1.5)];
-            [filmPath addLineToPoint: CGPointMake(7, 1.5)];
-            [filmPath addLineToPoint: CGPointMake(7, 3.5)];
-            [filmPath addLineToPoint: CGPointMake(9.5, 3.5)];
-            [filmPath addLineToPoint: CGPointMake(9.5, 1.5)];
+            [filmPath moveToPoint: CGPointMake(8.5, 1)];
+            [filmPath addLineToPoint: CGPointMake(6.5, 1)];
+            [filmPath addLineToPoint: CGPointMake(6.5, 3)];
+            [filmPath addLineToPoint: CGPointMake(8.5, 3)];
+            [filmPath addLineToPoint: CGPointMake(8.5, 1)];
             [filmPath closePath];
-            [filmPath moveToPoint: CGPointMake(-7, 1.5)];
-            [filmPath addLineToPoint: CGPointMake(-9.5, 1.5)];
-            [filmPath addLineToPoint: CGPointMake(-9.5, 3.5)];
-            [filmPath addLineToPoint: CGPointMake(-7, 3.5)];
-            [filmPath addLineToPoint: CGPointMake(-7, 1.5)];
+            [filmPath moveToPoint: CGPointMake(-6.5, 1)];
+            [filmPath addLineToPoint: CGPointMake(-8.5, 1)];
+            [filmPath addLineToPoint: CGPointMake(-8.5, 3)];
+            [filmPath addLineToPoint: CGPointMake(-6.5, 3)];
+            [filmPath addLineToPoint: CGPointMake(-6.5, 1)];
             [filmPath closePath];
-            [filmPath moveToPoint: CGPointMake(5.5, -5)];
-            [filmPath addLineToPoint: CGPointMake(-5.5, -5)];
-            [filmPath addLineToPoint: CGPointMake(-5.5, 5.5)];
-            [filmPath addLineToPoint: CGPointMake(5.5, 5.5)];
-            [filmPath addLineToPoint: CGPointMake(5.5, -5)];
+            [filmPath moveToPoint: CGPointMake(5, -4.5)];
+            [filmPath addLineToPoint: CGPointMake(-5, -4.5)];
+            [filmPath addLineToPoint: CGPointMake(-5, 4.5)];
+            [filmPath addLineToPoint: CGPointMake(5, 4.5)];
+            [filmPath addLineToPoint: CGPointMake(5, -4.5)];
             [filmPath closePath];
-            [filmPath moveToPoint: CGPointMake(9.5, 6)];
-            [filmPath addLineToPoint: CGPointMake(7, 6)];
-            [filmPath addLineToPoint: CGPointMake(7, 8)];
-            [filmPath addLineToPoint: CGPointMake(9.5, 8)];
-            [filmPath addLineToPoint: CGPointMake(9.5, 6)];
+            [filmPath moveToPoint: CGPointMake(8.5, 5)];
+            [filmPath addLineToPoint: CGPointMake(6.5, 5)];
+            [filmPath addLineToPoint: CGPointMake(6.5, 7)];
+            [filmPath addLineToPoint: CGPointMake(8.5, 7)];
+            [filmPath addLineToPoint: CGPointMake(8.5, 5)];
             [filmPath closePath];
-            [filmPath moveToPoint: CGPointMake(-7, 6)];
-            [filmPath addLineToPoint: CGPointMake(-9.5, 6)];
-            [filmPath addLineToPoint: CGPointMake(-9.5, 8)];
-            [filmPath addLineToPoint: CGPointMake(-7, 8)];
-            [filmPath addLineToPoint: CGPointMake(-7, 6)];
+            [filmPath moveToPoint: CGPointMake(-6.5, 5)];
+            [filmPath addLineToPoint: CGPointMake(-8.5, 5)];
+            [filmPath addLineToPoint: CGPointMake(-8.5, 7)];
+            [filmPath addLineToPoint: CGPointMake(-6.5, 7)];
+            [filmPath addLineToPoint: CGPointMake(-6.5, 5)];
             [filmPath closePath];
             [filmPath applyTransform:move];
             [color setFill];
             [filmPath fill];
+
 
         }
             break;
@@ -600,6 +598,311 @@
             [bezierPath fill];
             
             
+        }
+            break;
+        case PtEdViewBarButtonTypeShadow:
+        {
+            
+            //// Shadow Drawing
+            UIBezierPath* shadowPath = [UIBezierPath bezierPath];
+            [shadowPath moveToPoint: CGPointMake(8.5, -8)];
+            [shadowPath addLineToPoint: CGPointMake(7, -8)];
+            [shadowPath addLineToPoint: CGPointMake(7, 0.5)];
+            [shadowPath addLineToPoint: CGPointMake(6, 0.5)];
+            [shadowPath addLineToPoint: CGPointMake(6, -8)];
+            [shadowPath addLineToPoint: CGPointMake(4.5, -8)];
+            [shadowPath addLineToPoint: CGPointMake(4.5, 0.5)];
+            [shadowPath addLineToPoint: CGPointMake(3.5, 0.5)];
+            [shadowPath addLineToPoint: CGPointMake(3.5, -8)];
+            [shadowPath addLineToPoint: CGPointMake(2, -8)];
+            [shadowPath addLineToPoint: CGPointMake(2, 0.5)];
+            [shadowPath addLineToPoint: CGPointMake(1, 0.5)];
+            [shadowPath addLineToPoint: CGPointMake(1, -8)];
+            [shadowPath addLineToPoint: CGPointMake(-0.5, -8)];
+            [shadowPath addLineToPoint: CGPointMake(-0.5, 0.5)];
+            [shadowPath addLineToPoint: CGPointMake(-1.5, 0.5)];
+            [shadowPath addLineToPoint: CGPointMake(-1.5, -8)];
+            [shadowPath addLineToPoint: CGPointMake(-3, -8)];
+            [shadowPath addLineToPoint: CGPointMake(-3, 0.5)];
+            [shadowPath addLineToPoint: CGPointMake(-4, 0.5)];
+            [shadowPath addLineToPoint: CGPointMake(-4, -8)];
+            [shadowPath addLineToPoint: CGPointMake(-5.5, -8)];
+            [shadowPath addLineToPoint: CGPointMake(-5.5, 0.5)];
+            [shadowPath addLineToPoint: CGPointMake(-6.5, 0.5)];
+            [shadowPath addLineToPoint: CGPointMake(-6.5, -8)];
+            [shadowPath addLineToPoint: CGPointMake(-8, -8)];
+            [shadowPath addLineToPoint: CGPointMake(-8, 8.5)];
+            [shadowPath addLineToPoint: CGPointMake(8.5, 8.5)];
+            [shadowPath addLineToPoint: CGPointMake(8.5, -8)];
+            [shadowPath closePath];
+            [shadowPath moveToPoint: CGPointMake(10.5, 10.5)];
+            [shadowPath addLineToPoint: CGPointMake(-10, 10.5)];
+            [shadowPath addLineToPoint: CGPointMake(-10, -10)];
+            [shadowPath addLineToPoint: CGPointMake(10.5, -10)];
+            [shadowPath addLineToPoint: CGPointMake(10.5, 10.5)];
+            [shadowPath closePath];
+            [shadowPath applyTransform:move];
+            [color setFill];
+            [shadowPath fill];
+            
+            
+        }
+            break;
+        case PtEdViewBarButtonTypeHighlight:
+        {
+            //// Highlight Drawing
+            UIBezierPath* highlightPath = [UIBezierPath bezierPath];
+            [highlightPath moveToPoint: CGPointMake(8.5, 0)];
+            [highlightPath addLineToPoint: CGPointMake(7, 0)];
+            [highlightPath addLineToPoint: CGPointMake(7, 8.5)];
+            [highlightPath addLineToPoint: CGPointMake(8.5, 8.5)];
+            [highlightPath addLineToPoint: CGPointMake(8.5, 0)];
+            [highlightPath closePath];
+            [highlightPath moveToPoint: CGPointMake(6, 0)];
+            [highlightPath addLineToPoint: CGPointMake(4.5, 0)];
+            [highlightPath addLineToPoint: CGPointMake(4.5, 8.5)];
+            [highlightPath addLineToPoint: CGPointMake(6, 8.5)];
+            [highlightPath addLineToPoint: CGPointMake(6, 0)];
+            [highlightPath closePath];
+            [highlightPath moveToPoint: CGPointMake(3.5, 0)];
+            [highlightPath addLineToPoint: CGPointMake(2, 0)];
+            [highlightPath addLineToPoint: CGPointMake(2, 8.5)];
+            [highlightPath addLineToPoint: CGPointMake(3.5, 8.5)];
+            [highlightPath addLineToPoint: CGPointMake(3.5, 0)];
+            [highlightPath closePath];
+            [highlightPath moveToPoint: CGPointMake(1, 0)];
+            [highlightPath addLineToPoint: CGPointMake(-0.5, 0)];
+            [highlightPath addLineToPoint: CGPointMake(-0.5, 8.5)];
+            [highlightPath addLineToPoint: CGPointMake(1, 8.5)];
+            [highlightPath addLineToPoint: CGPointMake(1, 0)];
+            [highlightPath closePath];
+            [highlightPath moveToPoint: CGPointMake(-1.5, 0)];
+            [highlightPath addLineToPoint: CGPointMake(-3, 0)];
+            [highlightPath addLineToPoint: CGPointMake(-3, 8.5)];
+            [highlightPath addLineToPoint: CGPointMake(-1.5, 8.5)];
+            [highlightPath addLineToPoint: CGPointMake(-1.5, 0)];
+            [highlightPath closePath];
+            [highlightPath moveToPoint: CGPointMake(-4, 0)];
+            [highlightPath addLineToPoint: CGPointMake(-5.5, 0)];
+            [highlightPath addLineToPoint: CGPointMake(-5.5, 8.5)];
+            [highlightPath addLineToPoint: CGPointMake(-4, 8.5)];
+            [highlightPath addLineToPoint: CGPointMake(-4, 0)];
+            [highlightPath closePath];
+            [highlightPath moveToPoint: CGPointMake(-6.5, 0)];
+            [highlightPath addLineToPoint: CGPointMake(-8, 0)];
+            [highlightPath addLineToPoint: CGPointMake(-8, 8.5)];
+            [highlightPath addLineToPoint: CGPointMake(-6.5, 8.5)];
+            [highlightPath addLineToPoint: CGPointMake(-6.5, 0)];
+            [highlightPath closePath];
+            [highlightPath moveToPoint: CGPointMake(10.5, 10.5)];
+            [highlightPath addLineToPoint: CGPointMake(-10, 10.5)];
+            [highlightPath addLineToPoint: CGPointMake(-10, -10)];
+            [highlightPath addLineToPoint: CGPointMake(10.5, -10)];
+            [highlightPath addLineToPoint: CGPointMake(10.5, 10.5)];
+            [highlightPath closePath];
+            [highlightPath applyTransform:move];
+            [color setFill];
+            [highlightPath fill];
+        }
+            break;
+        case PtEdViewBarButtonTypeExposure:
+        {
+            
+            //// Exposure Drawing
+            UIBezierPath* exposurePath = [UIBezierPath bezierPath];
+            [exposurePath moveToPoint: CGPointMake(2.5, -11)];
+            [exposurePath addLineToPoint: CGPointMake(-4.5, -9.5)];
+            [exposurePath addLineToPoint: CGPointMake(-7, 2.5)];
+            [exposurePath addLineToPoint: CGPointMake(0, 1.5)];
+            [exposurePath addLineToPoint: CGPointMake(-1.5, 11.5)];
+            [exposurePath addLineToPoint: CGPointMake(7, -4)];
+            [exposurePath addLineToPoint: CGPointMake(-1, -2.5)];
+            [exposurePath addLineToPoint: CGPointMake(2.5, -11)];
+            [exposurePath closePath];
+            [exposurePath applyTransform:move];
+            exposurePath.miterLimit = 4;
+            
+            exposurePath.usesEvenOddFillRule = YES;
+            
+            [color setFill];
+            [exposurePath fill];
+            
+
+        }
+            break;
+        case PtEdViewBarButtonTypeClarify:
+        {
+            
+            //// Clarify Drawing
+            UIBezierPath* clarifyPath = [UIBezierPath bezierPath];
+            [clarifyPath moveToPoint: CGPointMake(0, -8.5)];
+            [clarifyPath addLineToPoint: CGPointMake(0, -8)];
+            [clarifyPath addLineToPoint: CGPointMake(0, 8)];
+            [clarifyPath addLineToPoint: CGPointMake(0, 8.5)];
+            [clarifyPath addCurveToPoint: CGPointMake(6.01, 6.01) controlPoint1: CGPointMake(2.18, 8.5) controlPoint2: CGPointMake(4.35, 7.67)];
+            [clarifyPath addCurveToPoint: CGPointMake(6.01, -6.01) controlPoint1: CGPointMake(9.33, 2.69) controlPoint2: CGPointMake(9.33, -2.69)];
+            [clarifyPath addCurveToPoint: CGPointMake(0, -8.5) controlPoint1: CGPointMake(4.35, -7.67) controlPoint2: CGPointMake(2.18, -8.5)];
+            [clarifyPath closePath];
+            [clarifyPath moveToPoint: CGPointMake(7.78, -7.78)];
+            [clarifyPath addCurveToPoint: CGPointMake(7.78, 7.78) controlPoint1: CGPointMake(12.07, -3.48) controlPoint2: CGPointMake(12.07, 3.48)];
+            [clarifyPath addCurveToPoint: CGPointMake(-7.78, 7.78) controlPoint1: CGPointMake(3.48, 12.07) controlPoint2: CGPointMake(-3.48, 12.07)];
+            [clarifyPath addCurveToPoint: CGPointMake(-7.78, -7.78) controlPoint1: CGPointMake(-12.07, 3.48) controlPoint2: CGPointMake(-12.07, -3.48)];
+            [clarifyPath addCurveToPoint: CGPointMake(7.78, -7.78) controlPoint1: CGPointMake(-3.48, -12.07) controlPoint2: CGPointMake(3.48, -12.07)];
+            [clarifyPath closePath];
+            [clarifyPath applyTransform:move];
+            [color setFill];
+            [clarifyPath fill];
+            
+            
+        }
+            break;
+        case PtEdViewBarButtonTypeTemp:
+        {
+            
+            //// Bezier 3 Drawing
+            UIBezierPath* tempPath = [UIBezierPath bezierPath];
+            [tempPath moveToPoint: CGPointMake(0, -10)];
+            [tempPath addCurveToPoint: CGPointMake(-3, -7) controlPoint1: CGPointMake(-1.66, -10) controlPoint2: CGPointMake(-3, -8.66)];
+            [tempPath addLineToPoint: CGPointMake(-3, -1.2)];
+            [tempPath addCurveToPoint: CGPointMake(-4.24, -0.24) controlPoint1: CGPointMake(-3.44, -0.94) controlPoint2: CGPointMake(-3.86, -0.62)];
+            [tempPath addCurveToPoint: CGPointMake(-4.24, 8.24) controlPoint1: CGPointMake(-6.59, 2.1) controlPoint2: CGPointMake(-6.59, 5.9)];
+            [tempPath addCurveToPoint: CGPointMake(4.24, 8.24) controlPoint1: CGPointMake(-1.9, 10.59) controlPoint2: CGPointMake(1.9, 10.59)];
+            [tempPath addCurveToPoint: CGPointMake(6, 4.13) controlPoint1: CGPointMake(5.38, 7.1) controlPoint2: CGPointMake(5.97, 5.62)];
+            [tempPath addCurveToPoint: CGPointMake(4.24, -0.24) controlPoint1: CGPointMake(6.03, 2.55) controlPoint2: CGPointMake(5.45, 0.96)];
+            [tempPath addCurveToPoint: CGPointMake(3, -1.2) controlPoint1: CGPointMake(3.86, -0.62) controlPoint2: CGPointMake(3.44, -0.94)];
+            [tempPath addLineToPoint: CGPointMake(3, -7)];
+            [tempPath addCurveToPoint: CGPointMake(0, -10) controlPoint1: CGPointMake(3, -8.66) controlPoint2: CGPointMake(1.66, -10)];
+            [tempPath closePath];
+            [tempPath moveToPoint: CGPointMake(5, -7)];
+            [tempPath addLineToPoint: CGPointMake(5, -2.25)];
+            [tempPath addCurveToPoint: CGPointMake(5.66, -1.66) controlPoint1: CGPointMake(5.23, -2.06) controlPoint2: CGPointMake(5.45, -1.87)];
+            [tempPath addCurveToPoint: CGPointMake(8, 4.13) controlPoint1: CGPointMake(7.25, -0.06) controlPoint2: CGPointMake(8.03, 2.04)];
+            [tempPath addCurveToPoint: CGPointMake(5.66, 9.66) controlPoint1: CGPointMake(7.97, 6.13) controlPoint2: CGPointMake(7.19, 8.13)];
+            [tempPath addCurveToPoint: CGPointMake(-5.66, 9.66) controlPoint1: CGPointMake(2.53, 12.78) controlPoint2: CGPointMake(-2.53, 12.78)];
+            [tempPath addCurveToPoint: CGPointMake(-5.66, -1.66) controlPoint1: CGPointMake(-8.78, 6.53) controlPoint2: CGPointMake(-8.78, 1.47)];
+            [tempPath addCurveToPoint: CGPointMake(-5, -2.25) controlPoint1: CGPointMake(-5.45, -1.87) controlPoint2: CGPointMake(-5.23, -2.06)];
+            [tempPath addLineToPoint: CGPointMake(-5, -7)];
+            [tempPath addCurveToPoint: CGPointMake(0, -12) controlPoint1: CGPointMake(-5, -9.76) controlPoint2: CGPointMake(-2.76, -12)];
+            [tempPath addCurveToPoint: CGPointMake(5, -7) controlPoint1: CGPointMake(2.76, -12) controlPoint2: CGPointMake(5, -9.76)];
+            [tempPath closePath];
+            [tempPath moveToPoint: CGPointMake(0.44, 2.44)];
+            [tempPath addCurveToPoint: CGPointMake(0.02, 3.28) controlPoint1: CGPointMake(0.2, 2.68) controlPoint2: CGPointMake(0.06, 2.98)];
+            [tempPath addCurveToPoint: CGPointMake(0.44, 4.56) controlPoint1: CGPointMake(-0.05, 3.74) controlPoint2: CGPointMake(0.09, 4.21)];
+            [tempPath addCurveToPoint: CGPointMake(2.56, 4.56) controlPoint1: CGPointMake(1.03, 5.15) controlPoint2: CGPointMake(1.97, 5.15)];
+            [tempPath addCurveToPoint: CGPointMake(2.56, 2.44) controlPoint1: CGPointMake(3.15, 3.97) controlPoint2: CGPointMake(3.15, 3.03)];
+            [tempPath addCurveToPoint: CGPointMake(0.44, 2.44) controlPoint1: CGPointMake(1.97, 1.85) controlPoint2: CGPointMake(1.03, 1.85)];
+            [tempPath closePath];
+            [tempPath moveToPoint: CGPointMake(1, -6)];
+            [tempPath addLineToPoint: CGPointMake(1, 0.13)];
+            [tempPath addCurveToPoint: CGPointMake(2.83, 1.17) controlPoint1: CGPointMake(1.67, 0.3) controlPoint2: CGPointMake(2.3, 0.65)];
+            [tempPath addCurveToPoint: CGPointMake(3.82, 2.82) controlPoint1: CGPointMake(3.31, 1.65) controlPoint2: CGPointMake(3.64, 2.22)];
+            [tempPath addCurveToPoint: CGPointMake(2.83, 6.83) controlPoint1: CGPointMake(4.24, 4.21) controlPoint2: CGPointMake(3.91, 5.75)];
+            [tempPath addCurveToPoint: CGPointMake(-2.83, 6.83) controlPoint1: CGPointMake(1.27, 8.39) controlPoint2: CGPointMake(-1.27, 8.39)];
+            [tempPath addCurveToPoint: CGPointMake(-2.83, 1.17) controlPoint1: CGPointMake(-4.39, 5.27) controlPoint2: CGPointMake(-4.39, 2.73)];
+            [tempPath addCurveToPoint: CGPointMake(-1, 0.13) controlPoint1: CGPointMake(-2.3, 0.65) controlPoint2: CGPointMake(-1.67, 0.3)];
+            [tempPath addLineToPoint: CGPointMake(-1, -6)];
+            [tempPath addCurveToPoint: CGPointMake(0, -7) controlPoint1: CGPointMake(-1, -6.55) controlPoint2: CGPointMake(-0.55, -7)];
+            [tempPath addCurveToPoint: CGPointMake(1, -6) controlPoint1: CGPointMake(0.55, -7) controlPoint2: CGPointMake(1, -6.55)];
+            [tempPath closePath];
+            [tempPath applyTransform:move];
+            [color setFill];
+            [tempPath fill];
+        }
+            break;
+        case PtEdViewBarButtonTypeVignette:
+        {
+            //// Bezier 2 Drawing
+            UIBezierPath* vignettePath = [UIBezierPath bezierPath];
+            [vignettePath moveToPoint: CGPointMake(-5.66, -5.66)];
+            [vignettePath addCurveToPoint: CGPointMake(-5.66, 5.66) controlPoint1: CGPointMake(-8.78, -2.53) controlPoint2: CGPointMake(-8.78, 2.53)];
+            [vignettePath addCurveToPoint: CGPointMake(5.66, 5.66) controlPoint1: CGPointMake(-2.53, 8.78) controlPoint2: CGPointMake(2.53, 8.78)];
+            [vignettePath addCurveToPoint: CGPointMake(5.66, -5.66) controlPoint1: CGPointMake(8.78, 2.53) controlPoint2: CGPointMake(8.78, -2.53)];
+            [vignettePath addCurveToPoint: CGPointMake(-5.66, -5.66) controlPoint1: CGPointMake(2.53, -8.78) controlPoint2: CGPointMake(-2.53, -8.78)];
+            [vignettePath closePath];
+            [vignettePath moveToPoint: CGPointMake(10, 10)];
+            [vignettePath addLineToPoint: CGPointMake(-10, 10)];
+            [vignettePath addLineToPoint: CGPointMake(-10, -10)];
+            [vignettePath addLineToPoint: CGPointMake(10, -10)];
+            [vignettePath addLineToPoint: CGPointMake(10, 10)];
+            [vignettePath closePath];
+            [vignettePath applyTransform:move];
+            [color setFill];
+            [vignettePath fill];
+            
+            
+        }
+            break;
+        case PtEdViewBarButtonTypeSkyEnhancement:
+        {
+            
+            //// Sky Drawing
+            UIBezierPath* skyPath = [UIBezierPath bezierPath];
+            [skyPath moveToPoint: CGPointMake(2.6, -1.6)];
+            [skyPath addCurveToPoint: CGPointMake(3.86, 0.18) controlPoint1: CGPointMake(3.13, -1.06) controlPoint2: CGPointMake(3.55, -0.46)];
+            [skyPath addCurveToPoint: CGPointMake(7.72, -0.36) controlPoint1: CGPointMake(5.04, -0.48) controlPoint2: CGPointMake(6.42, -0.66)];
+            [skyPath addCurveToPoint: CGPointMake(10.39, 1.11) controlPoint1: CGPointMake(8.7, -0.14) controlPoint2: CGPointMake(9.63, 0.35)];
+            [skyPath addCurveToPoint: CGPointMake(10.39, 8.89) controlPoint1: CGPointMake(12.54, 3.26) controlPoint2: CGPointMake(12.54, 6.74)];
+            [skyPath addCurveToPoint: CGPointMake(5.69, 10.44) controlPoint1: CGPointMake(9.11, 10.17) controlPoint2: CGPointMake(7.35, 10.69)];
+            [skyPath addCurveToPoint: CGPointMake(5, 10.5) controlPoint1: CGPointMake(5.47, 10.48) controlPoint2: CGPointMake(5.24, 10.5)];
+            [skyPath addLineToPoint: CGPointMake(-8, 10.5)];
+            [skyPath addCurveToPoint: CGPointMake(-12, 6.5) controlPoint1: CGPointMake(-10.21, 10.5) controlPoint2: CGPointMake(-12, 8.71)];
+            [skyPath addCurveToPoint: CGPointMake(-8.48, 2.53) controlPoint1: CGPointMake(-12, 4.45) controlPoint2: CGPointMake(-10.46, 2.77)];
+            [skyPath addCurveToPoint: CGPointMake(-6.6, -1.6) controlPoint1: CGPointMake(-8.37, 1.03) controlPoint2: CGPointMake(-7.75, -0.45)];
+            [skyPath addCurveToPoint: CGPointMake(2.6, -1.6) controlPoint1: CGPointMake(-4.06, -4.13) controlPoint2: CGPointMake(0.06, -4.13)];
+            [skyPath closePath];
+            [skyPath moveToPoint: CGPointMake(5.5, -9)];
+            [skyPath addLineToPoint: CGPointMake(5.5, -8)];
+            [skyPath addCurveToPoint: CGPointMake(5.49, -7.84) controlPoint1: CGPointMake(5.5, -7.95) controlPoint2: CGPointMake(5.5, -7.89)];
+            [skyPath addCurveToPoint: CGPointMake(4.99, -7.13) controlPoint1: CGPointMake(5.44, -7.53) controlPoint2: CGPointMake(5.25, -7.27)];
+            [skyPath addCurveToPoint: CGPointMake(4.5, -7) controlPoint1: CGPointMake(4.85, -7.05) controlPoint2: CGPointMake(4.68, -7)];
+            [skyPath addCurveToPoint: CGPointMake(3.5, -8) controlPoint1: CGPointMake(3.95, -7) controlPoint2: CGPointMake(3.5, -7.45)];
+            [skyPath addLineToPoint: CGPointMake(3.5, -9)];
+            [skyPath addCurveToPoint: CGPointMake(4.5, -10) controlPoint1: CGPointMake(3.5, -9.55) controlPoint2: CGPointMake(3.95, -10)];
+            [skyPath addCurveToPoint: CGPointMake(5.5, -9) controlPoint1: CGPointMake(5.05, -10) controlPoint2: CGPointMake(5.5, -9.55)];
+            [skyPath closePath];
+            [skyPath moveToPoint: CGPointMake(10.86, -7.36)];
+            [skyPath addCurveToPoint: CGPointMake(10.86, -5.95) controlPoint1: CGPointMake(11.25, -6.97) controlPoint2: CGPointMake(11.25, -6.34)];
+            [skyPath addLineToPoint: CGPointMake(10.16, -5.24)];
+            [skyPath addCurveToPoint: CGPointMake(10.03, -5.14) controlPoint1: CGPointMake(10.12, -5.2) controlPoint2: CGPointMake(10.08, -5.17)];
+            [skyPath addCurveToPoint: CGPointMake(9.18, -4.99) controlPoint1: CGPointMake(9.78, -4.96) controlPoint2: CGPointMake(9.47, -4.91)];
+            [skyPath addCurveToPoint: CGPointMake(8.82, -5.17) controlPoint1: CGPointMake(9.05, -5.02) controlPoint2: CGPointMake(8.93, -5.08)];
+            [skyPath addCurveToPoint: CGPointMake(8.74, -5.24) controlPoint1: CGPointMake(8.79, -5.19) controlPoint2: CGPointMake(8.77, -5.22)];
+            [skyPath addCurveToPoint: CGPointMake(8.74, -6.66) controlPoint1: CGPointMake(8.35, -5.63) controlPoint2: CGPointMake(8.35, -6.27)];
+            [skyPath addLineToPoint: CGPointMake(9.45, -7.36)];
+            [skyPath addCurveToPoint: CGPointMake(10.86, -7.36) controlPoint1: CGPointMake(9.84, -7.75) controlPoint2: CGPointMake(10.47, -7.75)];
+            [skyPath closePath];
+            [skyPath moveToPoint: CGPointMake(-0.45, -7.36)];
+            [skyPath addLineToPoint: CGPointMake(0.26, -6.66)];
+            [skyPath addCurveToPoint: CGPointMake(0.26, -5.24) controlPoint1: CGPointMake(0.65, -6.27) controlPoint2: CGPointMake(0.65, -5.63)];
+            [skyPath addCurveToPoint: CGPointMake(-1.16, -5.24) controlPoint1: CGPointMake(-0.13, -4.85) controlPoint2: CGPointMake(-0.77, -4.85)];
+            [skyPath addLineToPoint: CGPointMake(-1.86, -5.95)];
+            [skyPath addCurveToPoint: CGPointMake(-1.86, -7.36) controlPoint1: CGPointMake(-2.25, -6.34) controlPoint2: CGPointMake(-2.25, -6.97)];
+            [skyPath addCurveToPoint: CGPointMake(-0.45, -7.36) controlPoint1: CGPointMake(-1.47, -7.75) controlPoint2: CGPointMake(-0.84, -7.75)];
+            [skyPath closePath];
+            [skyPath moveToPoint: CGPointMake(7.68, -4.18)];
+            [skyPath addCurveToPoint: CGPointMake(9, -1.06) controlPoint1: CGPointMake(8.55, -3.32) controlPoint2: CGPointMake(8.99, -2.19)];
+            [skyPath addCurveToPoint: CGPointMake(4.28, -1.11) controlPoint1: CGPointMake(7.5, -1.63) controlPoint2: CGPointMake(5.8, -1.66)];
+            [skyPath addCurveToPoint: CGPointMake(3.3, -2.3) controlPoint1: CGPointMake(4, -1.53) controlPoint2: CGPointMake(3.67, -1.93)];
+            [skyPath addCurveToPoint: CGPointMake(1.03, -3.86) controlPoint1: CGPointMake(2.63, -2.98) controlPoint2: CGPointMake(1.85, -3.5)];
+            [skyPath addCurveToPoint: CGPointMake(1.32, -4.18) controlPoint1: CGPointMake(1.12, -3.97) controlPoint2: CGPointMake(1.22, -4.08)];
+            [skyPath addCurveToPoint: CGPointMake(7.68, -4.18) controlPoint1: CGPointMake(3.08, -5.94) controlPoint2: CGPointMake(5.92, -5.94)];
+            [skyPath closePath];
+            [skyPath moveToPoint: CGPointMake(13.5, -1)];
+            [skyPath addCurveToPoint: CGPointMake(12.5, 0) controlPoint1: CGPointMake(13.5, -0.45) controlPoint2: CGPointMake(13.05, 0)];
+            [skyPath addLineToPoint: CGPointMake(11.5, 0)];
+            [skyPath addCurveToPoint: CGPointMake(11.32, -0.02) controlPoint1: CGPointMake(11.45, 0) controlPoint2: CGPointMake(11.39, -0)];
+            [skyPath addCurveToPoint: CGPointMake(10.95, -0.17) controlPoint1: CGPointMake(11.18, -0.04) controlPoint2: CGPointMake(11.06, -0.09)];
+            [skyPath addCurveToPoint: CGPointMake(10.5, -1) controlPoint1: CGPointMake(10.68, -0.35) controlPoint2: CGPointMake(10.5, -0.65)];
+            [skyPath addCurveToPoint: CGPointMake(11.5, -2) controlPoint1: CGPointMake(10.5, -1.55) controlPoint2: CGPointMake(10.95, -2)];
+            [skyPath addLineToPoint: CGPointMake(12.5, -2)];
+            [skyPath addCurveToPoint: CGPointMake(13.5, -1) controlPoint1: CGPointMake(13.05, -2) controlPoint2: CGPointMake(13.5, -1.55)];
+            [skyPath closePath];
+            [skyPath applyTransform:move];
+            [color setFill];
+            [skyPath fill];
+            
+            
+
         }
             break;
         default:

@@ -85,9 +85,27 @@
     _saturationsButton = [[PtEdViewBarButton alloc] initWithType:PtEdViewBarButtonTypeSaturation];
     [_toolBar appendButton:_saturationsButton];
     
+    _clarifyButton = [[PtEdViewBarButton alloc] initWithType:PtEdViewBarButtonTypeClarify];
+    [_toolBar appendButton:_clarifyButton];
+    
+    _tempButton = [[PtEdViewBarButton alloc] initWithType:PtEdViewBarButtonTypeTemp];
+    [_toolBar appendButton:_tempButton];
+    
     _filmButton = [[PtEdViewBarButton alloc] initWithType:PtEdViewBarButtonTypeFilm];
     [_filmButton addTarget:self action:@selector(buttonFilmDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
     [_toolBar appendButton:_filmButton];
+    
+    _vignetteButton = [[PtEdViewBarButton alloc] initWithType:PtEdViewBarButtonTypeVignette];
+    [_toolBar appendButton:_vignetteButton];
+    
+    _shadowButton = [[PtEdViewBarButton alloc] initWithType:PtEdViewBarButtonTypeShadow];
+    [_toolBar appendButton:_shadowButton];
+    
+    _highlightButton = [[PtEdViewBarButton alloc] initWithType:PtEdViewBarButtonTypeHighlight];
+    [_toolBar appendButton:_highlightButton];
+    
+    _exposureButton = [[PtEdViewBarButton alloc] initWithType:PtEdViewBarButtonTypeExposure];
+    [_toolBar appendButton:_exposureButton];
     
     //// Preview
     [self initPreview];
@@ -235,7 +253,11 @@
 
 - (void)buttonBrightnessDidTouchUpInside:(PtEdViewBarButton *)button
 {
-    
+    [PtFtSharedQueueManager instance].canceled = NO;
+    self.currentImageDidChange = YES;
+    PtEdViewControllerAdjustmentBrightness* con = [[PtEdViewControllerAdjustmentBrightness alloc] init];
+    con.editorController = self;
+    [self.navigationController pushViewController:con animated:NO];
 }
 
 #pragma mark workflow

@@ -13,6 +13,7 @@
 @interface PtEdViewToolBar : UIView
 {
     float x;
+    UIScrollView* _view;
 }
 
 - (void)appendButton:(PtEdViewBarButton*)button;

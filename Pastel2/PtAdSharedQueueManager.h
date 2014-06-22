@@ -12,6 +12,8 @@
 #import "VnImageNormalBlendFilter.h"
 #import "VnFilterPassThrough.h"
 
+#import "VnFilterLevels.h"
+
 @class PtEdViewControllerAdjustment;
 
 @protocol PtAdSharedQueueManagerDelegate
@@ -32,15 +34,17 @@
 
 + (PtFtSharedQueueManager*)instance;
 
-- (PtFtObjectProcessQueue*)shiftQueue;
-- (void)addQueue:(PtFtObjectProcessQueue*)queue;
+- (PtAdObjectProcessQueue*)shiftQueue;
+- (void)addQueue:(PtAdObjectProcessQueue*)queue;
 
 - (void)processQueue;
-- (void)processQueueTypePreview:(PtFtObjectProcessQueue*)queue;
-- (void)processQueueTypeOriginal:(PtFtObjectProcessQueue*)queue;
+- (void)processQueueTypePreview:(PtAdObjectProcessQueue*)queue;
+- (void)processQueueTypeOriginal:(PtAdObjectProcessQueue*)queue;
 
-- (void)didFinishProcessingQueue:(PtFtObjectProcessQueue*)queue;
+- (void)didFinishProcessingQueue:(PtAdObjectProcessQueue*)queue;
 - (void)cancelAllQueue;
 - (void)commonInit;
+
+- (VnImageFilter*)adjustmentFilterWithQueue:(PtAdObjectProcessQueue*)queue;
 
 @end

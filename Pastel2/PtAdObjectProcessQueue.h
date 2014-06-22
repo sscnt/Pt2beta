@@ -20,7 +20,7 @@ typedef NS_ENUM(NSInteger, PtAdProcessQueueAdjustmentType){
 
 @interface PtAdObjectProcessQueue : NSObject
 
-@property (nonatomic, assign) PtFtProcessQueueType type;
+@property (nonatomic, assign) PtAdProcessQueueType type;
 @property (nonatomic, strong) UIImage* image;
 @property (nonatomic, assign) PtAdProcessQueueAdjustmentType adjustmentType;
 @property (nonatomic, assign) float opacity;

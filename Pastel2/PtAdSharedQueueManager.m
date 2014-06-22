@@ -52,7 +52,7 @@ static PtAdSharedQueueManager* sharedPtAdSharedQueueManager = nil;
     _queueList = [NSMutableArray array];
 }
 
-- (void)addQueue:(PtFtObjectProcessQueue *)queue
+- (void)addQueue:(PtAdObjectProcessQueue *)queue
 {
     [_queueList addObject:queue];
     if (_processing == NO) {
@@ -60,12 +60,12 @@ static PtAdSharedQueueManager* sharedPtAdSharedQueueManager = nil;
     }
 }
 
-- (PtFtObjectProcessQueue *)shiftQueue
+- (PtAdObjectProcessQueue *)shiftQueue
 {
     if ([_queueList count] == 0) {
         return nil;
     }
-    PtFtObjectProcessQueue* queue = [_queueList objectAtIndex:0];
+    PtAdObjectProcessQueue* queue = [_queueList objectAtIndex:0];
     [_queueList removeObjectAtIndex:0];
     return queue;
 }
@@ -84,7 +84,7 @@ static PtAdSharedQueueManager* sharedPtAdSharedQueueManager = nil;
     }
     _processing = YES;
     __block PtAdSharedQueueManager* _self = self;
-    __block PtFtObjectProcessQueue* queue;
+    __block PtAdObjectProcessQueue* queue;
     
     dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t q_main = dispatch_get_main_queue();
@@ -93,10 +93,10 @@ static PtAdSharedQueueManager* sharedPtAdSharedQueueManager = nil;
             queue = [_self shiftQueue];
             if (queue) {
                 switch (queue.type) {
-                    case PtFtProcessQueueTypePreview:
+                    case PtAdProcessQueueTypePreview:
                         [_self processQueueTypePreview:queue];
                         break;
-                    case PtFtProcessQueueTypeOriginal:
+                    case PtAdProcessQueueTypeOriginal:
                         [_self processQueueTypeOriginal:queue];
                         break;
                     default:
@@ -114,7 +114,7 @@ static PtAdSharedQueueManager* sharedPtAdSharedQueueManager = nil;
     });
 }
 
-- (void)processQueueTypePreview:(PtFtObjectProcessQueue *)queue
+- (void)processQueueTypePreview:(PtAdObjectProcessQueue *)queue
 {
     CGSize imageSize = queue.image.size;
     float tx = 1.0f;
@@ -133,14 +133,15 @@ static PtAdSharedQueueManager* sharedPtAdSharedQueueManager = nil;
     });
 
     //// Process
-    
+    VnImageFilter* filter = [self adjustmentFilterWithQueue:queue];
+    queue.image = [VnEffect processImage:queue.image WithStartFilter:filter EndFilter:filter];
 
     dispatch_async(q_main, ^{
         [_con.progressView setProgress:0.80f];
     });
 }
 
-- (void)processQueueTypeOriginal:(PtFtObjectProcessQueue *)queue
+- (void)processQueueTypeOriginal:(PtAdObjectProcessQueue *)queue
 {
     CGSize imageSize = [PtSharedApp instance].sizeOfImageToProcess;
     float tx = 1.0f;
@@ -161,7 +162,8 @@ static PtAdSharedQueueManager* sharedPtAdSharedQueueManager = nil;
             CGPoint add = [PtUtilImage addingAtIndex:i];
             if (image) {
                 //// Process
-                
+                VnImageFilter* filter = [self adjustmentFilterWithQueue:queue];
+                image = [VnEffect processImage:image WithStartFilter:filter EndFilter:filter];
                 
                 [parts replaceObjectAtIndex:i withObject:image];
             }
@@ -175,7 +177,7 @@ static PtAdSharedQueueManager* sharedPtAdSharedQueueManager = nil;
     }
 }
 
-- (void)didFinishProcessingQueue:(PtFtObjectProcessQueue *)queue
+- (void)didFinishProcessingQueue:(PtAdObjectProcessQueue *)queue
 {
     [self.delegate queueDidFinished:queue];
     _processing = NO;
@@ -196,7 +198,21 @@ static PtAdSharedQueueManager* sharedPtAdSharedQueueManager = nil;
     return _canceled;
 }
 
-
+- (VnImageFilter *)adjustmentFilterWithQueue:(PtAdObjectProcessQueue *)queue
+{
+    switch (queue.adjustmentType) {
+        case PtAdProcessQueueAdjustmentTypeBrightness:
+        {
+            VnFilterLevels* filter = [[VnFilterLevels alloc] init];
+            [filter setMin:0.0f gamma:queue.strength max:1.0f];
+            return filter;
+        }
+            
+        default:
+            break;
+    }
+    return nil;
+}
 
 
 @end

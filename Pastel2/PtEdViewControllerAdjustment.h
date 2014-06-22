@@ -32,6 +32,7 @@
 
 
 - (void)applyFiltersToOriginalImage;
+- (void)applyCurrentFiltersToOriginalImage;
 
 - (void)navigationDoneDidTouchUpInside:(PtFtButtonNavigation*)button;
 - (void)navigationCancelDidTouchUpInside:(PtFtButtonNavigation*)button;

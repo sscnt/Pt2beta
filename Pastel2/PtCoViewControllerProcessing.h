@@ -29,5 +29,6 @@
 
 - (void)resizeImage;
 - (void)didResizeImage;
+- (void)didFinishProcessingOriginalImage;
 
 @end

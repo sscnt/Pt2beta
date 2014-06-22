@@ -44,6 +44,34 @@
     [_navigationBar addDoneButton:_doneButton];
 }
 
+- (void)applyFiltersToOriginalImage
+{
+    self.view.userInteractionEnabled = NO;
+    self.blurView.isBlurred = YES;
+    self.progressView.hidden = NO;
+    [self.progressView resetProgress];
+    
+    [self.editorController deallocImage];
+    
+    __block __weak PtEdViewControllerAdjustment* _self = self;
+    dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t q_main = dispatch_get_main_queue();
+    dispatch_async(q_global, ^{
+        @autoreleasepool {
+            _self.originalImageParts = [PtUtilImage splitImageIn25Parts:[PtSharedApp instance].imageToProcess];
+            [PtSharedApp instance].imageToProcess = nil;
+            _self.previewImage = nil;
+            _self.originalPreviewImage = nil;
+            _self.previewImageView.image = nil;
+        }
+        dispatch_async(q_main, ^{
+            [_self.progressView setProgress:0.10f];
+            [_self applyCurrentFiltersToOriginalImage];
+        });
+    });
+    
+}
+
 #pragma mark navigation
 
 - (void)navigationCancelDidTouchUpInside:(PtFtButtonNavigation *)button

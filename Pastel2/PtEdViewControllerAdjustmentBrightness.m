@@ -53,12 +53,52 @@
     self.view.userInteractionEnabled = YES;
 }
 
+- (void)applyCurrentFiltersToOriginalImage
+{
+    PtAdObjectProcessQueue* queue = [[PtAdObjectProcessQueue alloc] init];
+    queue.type = PtAdProcessQueueTypeOriginal;
+    queue.adjustmentType = PtAdProcessQueueAdjustmentTypeBrightness;
+    queue.strength = 1.0 + _sliderBar.slider.value;
+    [[PtAdSharedQueueManager instance] addQueue:queue];
+}
+
+- (void)queueDidFinished:(PtAdObjectProcessQueue *)queue
+{
+    LOG(@"Queue did finished.");
+    switch (queue.type) {
+        case PtAdProcessQueueTypePreview:
+        {
+            self.previewImageView.image = queue.image;
+            self.previewImage = queue.image;
+            self.progressView.hidden = YES;
+            self.blurView.isBlurred = NO;
+        }
+            break;
+
+        case PtAdProcessQueueTypeOriginal:
+        {
+            [self didFinishProcessingOriginalImage];
+        }
+            break;
+        default:
+            break;
+    }
+}
+
 
 #pragma mark slider
 
 - (void)sliderDidValueChange:(CGFloat)value
 {
     _percentageBar.percentage = value * 100.0f;
+    if ([PtAdSharedQueueManager instance].processing == NO) {
+        PtAdObjectProcessQueue* queue = [[PtAdObjectProcessQueue alloc] init];
+        queue.image = self.originalPreviewImage;
+        queue.type = PtAdProcessQueueTypePreview;
+        queue.adjustmentType = PtAdProcessQueueAdjustmentTypeBrightness;
+        queue.strength = 1.0 + value;
+        [[PtAdSharedQueueManager instance] addQueue:queue];
+    }
 }
 
 - (void)didReceiveMemoryWarning

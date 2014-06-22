@@ -33,108 +33,22 @@
     _navigationManager.delegate = self;
     _navigationManager.view = self.view;
     
-    //// Preview
-    float restHeight = self.view.height - [PtFtConfig colorBarHeight] - [PtFtConfig overlayBarHeight] - [PtFtConfig artisticBarHeight] - [PtSharedApp bottomNavigationBarHeight];
-    float w, h;
-    UIImage* image = [PtSharedApp instance].imageToProcess;
-    if (image.size.width > image.size.height) {
-        w = self.view.width;
-        h = image.size.height * w / image.size.width;
-    }else{
-        h = restHeight - 40.0f;
-        w = image.size.width * h / image.size.height;
-    }
-    _previewImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, w, h)];
-    _previewImageView.center = CGPointMake(self.view.width / 2.0f, restHeight / 2.0f + 20.0f);
-    [self.view addSubview:_previewImageView];
-    
-    //// Blur
-    _blurView = [[PtFtViewBlur alloc] initWithFrame:self.view.bounds];
-    _blurView.center = _previewImageView.center;
-    [self.view addSubview:_blurView];
-    
-    //// Progress
-    _progressView = [[VnViewProgress alloc] initWithFrame:_previewImageView.frame Radius:16.0f];
-    _progressView.center = _previewImageView.center;
-    [_progressView resetProgress];
-    [self.view addSubview:_progressView];
-    
-    //// Tap
-    _tapRecognizerView = [[PtFtViewTapRecognizer alloc] initWithFrame:_previewImageView.frame];
-    _tapRecognizerView.delegate = self;
-    [self.view addSubview:_tapRecognizerView];
     
     [_filtersManager viewDidLoad];
     [_slidersManager viewDidLoad];
     [_navigationManager viewDidLoad];
     
-    [_progressView setProgress:0.10f];
-    
-    __block __weak PtViewControllerFilters* _self = self;
-    dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t q_main = dispatch_get_main_queue();
-    dispatch_async(q_global, ^{
-        @autoreleasepool {
-            CGSize size = CGSizeMake(_self.previewImageView.width * [[UIScreen mainScreen] scale], _self.previewImageView.height * [[UIScreen mainScreen] scale]);
-            UIImage* image = [PtUtilImage resizedImageUrl:[PtSharedApp originalImageUrl] ToSize:size];
-            _self.originalPreviewImage = image;
-        }
-        dispatch_async(q_main, ^{
-            [_self.progressView setProgress:0.60f];
-        });
-        @autoreleasepool {
-            UIImage* image = _self.originalPreviewImage;
-            if (image) {
-                //// for preset image
-                CGSize presetImageSizeWithAspect = [PtFtConfig presetBaseImageSize];
-                if (image.size.width > image.size.height) {
-                    presetImageSizeWithAspect.width = image.size.width * presetImageSizeWithAspect.height / image.size.height;
-                } else {
-                    presetImageSizeWithAspect.height = image.size.height * presetImageSizeWithAspect.width / image.size.width;
-                }
-                image = [image resizedImage:presetImageSizeWithAspect interpolationQuality:kCGInterpolationHigh];
-                float x = 0.0f;
-                float y = 0.0f;
-                CGSize presetImageSize = [PtFtConfig presetBaseImageSize];
-                if (image.size.width > image.size.height) {
-                    x = (image.size.width - presetImageSize.width) / 2.0f;
-                } else {
-                    y = (image.size.height - presetImageSize.height) / 2.0f;
-                }
-                image = [image croppedImage:CGRectMake(x, y, presetImageSize.width, presetImageSize.height)];
-                _self.presetOriginalImage = image;
-            }
-        }
-        dispatch_async(q_main, ^{
-            [_self.progressView setProgress:0.90f];
-        });
-        @autoreleasepool {
-            /*
-            if (YES) {
-                
-            }else{
-                //// Detect faces
-                NSDictionary *options = [NSDictionary dictionaryWithObject:CIDetectorAccuracyHigh forKey:CIDetectorAccuracy];
-                CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeFace context:nil options:options];
-                CIImage *ciImage = [[CIImage alloc] initWithCGImage:_self.previewImage.CGImage];
-                NSDictionary *imageOptions = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:1] forKey:CIDetectorImageOrientation];
-                NSArray *array = [detector featuresInImage:ciImage options:imageOptions];
-                
-                if([array count] > 0){
-                    LOG(@"Face detected!");
-                    _self.faceDetected = YES;
-                }
-            }
-             */
-        }
-        dispatch_async(q_main, ^{
-            //_self.previewImageView.image = _self.previewImage;
-            [_self initPresetQueuePool];
-            [PtFtSharedQueueManager instance].delegate = self;
-            [[PtFtSharedQueueManager instance] addQueue:[_self shiftQueueFromPool]];
-            //[_self.progressView setHidden:YES];
-        });
-    });
+    [self.progressView setProgress:0.10f];
+    [self resizeImage];
+}
+
+- (void)didResizeImage
+{
+    //_self.previewImageView.image = _self.previewImage;
+    [self initPresetQueuePool];
+    [PtFtSharedQueueManager instance].delegate = self;
+    [[PtFtSharedQueueManager instance] addQueue:[self shiftQueueFromPool]];
+    //[_self.progressView setHidden:YES];
 }
 
 #pragma mark queue
@@ -179,9 +93,8 @@
     switch (queue.type) {
         case PtFtProcessQueueTypePreview:
         {
-            _releasePreviewImage = YES;
-            _previewImageView.image = queue.image;
-            _previewImage = queue.image;
+            self.previewImageView.image = queue.image;
+            self.previewImage = queue.image;
             self.progressView.hidden = YES;
             self.blurView.isBlurred = NO;
             self.view.userInteractionEnabled = YES;
@@ -192,8 +105,8 @@
             [_filtersManager setPresetImage:queue.image ToEffect:queue.effectId];
             if (_firstPresetFinished == NO && queue.effectId != VnEffectIdNone) {
                 _firstPresetFinished = YES;
-                _previewImageView.image = _originalPreviewImage;
-                _progressView.hidden = YES;
+                self.previewImageView.image = self.originalPreviewImage;
+                self.progressView.hidden = YES;
                 self.view.userInteractionEnabled = YES;
             }
             PtFtObjectProcessQueue* queue = [self shiftQueueFromPool];
@@ -225,20 +138,6 @@
     self.blurView.isBlurred = NO;
     [self.editorController initPreview];
     [self.navigationController popViewControllerAnimated:NO];
-}
-
-#pragma mark tap
-
-- (void)tapRecognizerDidTouchUp
-{
-    if (_previewImage) {
-        _previewImageView.image = _previewImage;
-    }
-}
-
-- (void)tapRecognizerDidTouchDown
-{
-    _previewImageView.image = _originalPreviewImage;
 }
 
 #pragma mark filter button

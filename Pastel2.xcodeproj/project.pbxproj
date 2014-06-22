@@ -118,6 +118,10 @@
 		5883F36419560AF8001ABCE3 /* PtAdViewSliderBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5883F36319560AF8001ABCE3 /* PtAdViewSliderBar.m */; };
 		58AAE037194332AE003E7B09 /* be002.pst in Resources */ = {isa = PBXBuildFile; fileRef = 58AAE036194332AE003E7B09 /* be002.pst */; };
 		58F2223119569B9200619936 /* PtAdConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2223019569B9200619936 /* PtAdConfig.m */; };
+		58F222341956B58C00619936 /* PtAdViewPercentage.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F222331956B58C00619936 /* PtAdViewPercentage.m */; };
+		58F222381956C0B900619936 /* PtCoViewControllerProcessing.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F222371956C0B900619936 /* PtCoViewControllerProcessing.m */; };
+		58F2223C1956C5F800619936 /* PtAdSharedQueueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2223B1956C5F800619936 /* PtAdSharedQueueManager.m */; };
+		58F222401956C67400619936 /* PtAdObjectProcessQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2223F1956C67400619936 /* PtAdObjectProcessQueue.m */; };
 		58F32D70195466CF001F5A6A /* VnFilterLocalContrast.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F32D6F195466CF001F5A6A /* VnFilterLocalContrast.m */; };
 		58F3E2E41940C502001AEB8D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F3E2E31940C502001AEB8D /* Foundation.framework */; };
 		58F3E2E61940C502001AEB8D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F3E2E51940C502001AEB8D /* CoreGraphics.framework */; };
@@ -577,6 +581,14 @@
 		58AAE036194332AE003E7B09 /* be002.pst */ = {isa = PBXFileReference; lastKnownFileType = file; path = be002.pst; sourceTree = "<group>"; };
 		58F2222F19569B9200619936 /* PtAdConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtAdConfig.h; sourceTree = "<group>"; };
 		58F2223019569B9200619936 /* PtAdConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PtAdConfig.m; sourceTree = "<group>"; };
+		58F222321956B58C00619936 /* PtAdViewPercentage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtAdViewPercentage.h; sourceTree = "<group>"; };
+		58F222331956B58C00619936 /* PtAdViewPercentage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PtAdViewPercentage.m; sourceTree = "<group>"; };
+		58F222361956C0B900619936 /* PtCoViewControllerProcessing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtCoViewControllerProcessing.h; sourceTree = "<group>"; };
+		58F222371956C0B900619936 /* PtCoViewControllerProcessing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PtCoViewControllerProcessing.m; sourceTree = "<group>"; };
+		58F2223A1956C5F800619936 /* PtAdSharedQueueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtAdSharedQueueManager.h; sourceTree = "<group>"; };
+		58F2223B1956C5F800619936 /* PtAdSharedQueueManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PtAdSharedQueueManager.m; sourceTree = "<group>"; };
+		58F2223E1956C67400619936 /* PtAdObjectProcessQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtAdObjectProcessQueue.h; sourceTree = "<group>"; };
+		58F2223F1956C67400619936 /* PtAdObjectProcessQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PtAdObjectProcessQueue.m; sourceTree = "<group>"; };
 		58F32D6E195466CF001F5A6A /* VnFilterLocalContrast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnFilterLocalContrast.h; sourceTree = "<group>"; };
 		58F32D6F195466CF001F5A6A /* VnFilterLocalContrast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnFilterLocalContrast.m; sourceTree = "<group>"; };
 		58F3E2E01940C502001AEB8D /* Pastel2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pastel2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1002,6 +1014,8 @@
 			children = (
 				5883F3541955C8B0001ABCE3 /* PtEdViewControllerAdjustment.h */,
 				5883F3551955C8B0001ABCE3 /* PtEdViewControllerAdjustment.m */,
+				58F2223D1956C64A00619936 /* Objects */,
+				58F222391956C5D500619936 /* Shared */,
 				58F2222B19569B7800619936 /* Config */,
 				5883F35A1955FBFA001ABCE3 /* Views */,
 				5883F3531955C856001ABCE3 /* Brightness */,
@@ -1021,6 +1035,8 @@
 		5883F35A1955FBFA001ABCE3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				58F222321956B58C00619936 /* PtAdViewPercentage.h */,
+				58F222331956B58C00619936 /* PtAdViewPercentage.m */,
 				5883F35B1955FC05001ABCE3 /* Slider */,
 			);
 			name = Views;
@@ -1046,6 +1062,33 @@
 				58F2223019569B9200619936 /* PtAdConfig.m */,
 			);
 			name = Config;
+			sourceTree = "<group>";
+		};
+		58F222351956C07A00619936 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				58F222361956C0B900619936 /* PtCoViewControllerProcessing.h */,
+				58F222371956C0B900619936 /* PtCoViewControllerProcessing.m */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		58F222391956C5D500619936 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				58F2223A1956C5F800619936 /* PtAdSharedQueueManager.h */,
+				58F2223B1956C5F800619936 /* PtAdSharedQueueManager.m */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
+		58F2223D1956C64A00619936 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				58F2223E1956C67400619936 /* PtAdObjectProcessQueue.h */,
+				58F2223F1956C67400619936 /* PtAdObjectProcessQueue.m */,
+			);
+			name = Objects;
 			sourceTree = "<group>";
 		};
 		58F3E2D71940C502001AEB8D = {
@@ -1974,6 +2017,7 @@
 		58F3E50E1940C8CA001AEB8D /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				58F222351956C07A00619936 /* Common */,
 				58FD70131941B97C00D1E64F /* Util */,
 				58F3E5131940C8E5001AEB8D /* Root */,
 				58F3E50F1940C8D7001AEB8D /* Shared */,
@@ -2261,6 +2305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58F3E4681940C6BD001AEB8D /* PtFtViewNavigationBar.m in Sources */,
+				58F222381956C0B900619936 /* PtCoViewControllerProcessing.m in Sources */,
 				58F3E3A01940C5DA001AEB8D /* VnEffectColorBronze.m in Sources */,
 				583669101942AE9D00E55C7C /* VnEffectFresnoFaded.m in Sources */,
 				5825A1B919500F3D00128F52 /* VnEffectOverlayDusk.m in Sources */,
@@ -2308,6 +2353,7 @@
 				58F5D33419554AC600BD930E /* VnImageTwoPassTextureSamplingFilter.m in Sources */,
 				5825A1BC1950120F00128F52 /* VnEffectOverlayFeelsLikeHome.m in Sources */,
 				58FD70161941B9A200D1E64F /* PtUtilImage.m in Sources */,
+				58F2223C1956C5F800619936 /* PtAdSharedQueueManager.m in Sources */,
 				58F3E5161940C8EE001AEB8D /* PtViewControllerRoot.m in Sources */,
 				58FD79A4194C01AD00DA2B11 /* VnEffectVivaLaVida.m in Sources */,
 				5825A1CA19502F6100128F52 /* VnEffectDorian.m in Sources */,
@@ -2455,7 +2501,9 @@
 				58F3E3201940C536001AEB8D /* VnImageFilter.m in Sources */,
 				583668FA1942AE9D00E55C7C /* VnEffectFruitPop.m in Sources */,
 				58F3E5071940C8BA001AEB8D /* LmCmSharedCamera.m in Sources */,
+				58F222341956B58C00619936 /* PtAdViewPercentage.m in Sources */,
 				58F3E4EE1940C882001AEB8D /* LmCmViewCropBlackRect.m in Sources */,
+				58F222401956C67400619936 /* PtAdObjectProcessQueue.m in Sources */,
 				5825A1C219501ADC00128F52 /* VnEffectOverlaySunshowerRight.m in Sources */,
 				5819A102194DAFFD002C6F3E /* VnEffectVSCOBreakfast.m in Sources */,
 				583668FF1942AE9D00E55C7C /* VnEffectHazelnut.m in Sources */,

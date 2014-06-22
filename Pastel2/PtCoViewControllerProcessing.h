@@ -1,13 +1,12 @@
 //
-//  PtEdViewControllerAdjustment.h
+//  PtCoViewControllerProcessing.h
 //  Pastel2
 //
-//  Created by SSC on 2014/06/21.
+//  Created by SSC on 2014/06/22.
 //  Copyright (c) 2014年 SSC. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "PtCoViewControllerProcessing.h"
 #import "PtFtViewNavigationBar.h"
 #import "PtFtObjectProcessQueue.h"
 #import "PtFtViewBlur.h"
@@ -15,25 +14,20 @@
 
 @class PtViewControllerEditor;
 
-@interface PtEdViewControllerAdjustment : PtCoViewControllerProcessing <PtFtSharedQueueManagerDelegate, PtFtViewTapRecognizerDelegate>
+@interface PtCoViewControllerProcessing : UIViewController <PtFtViewTapRecognizerDelegate>
 
 @property (nonatomic, strong) UIImageView* previewImageView;
 @property (nonatomic, strong) UIImage* previewImage;
 @property (nonatomic, strong) UIImage* originalPreviewImage;
+@property (nonatomic, strong) UIImage* presetOriginalImage;
 @property (nonatomic, strong) VnViewProgress* progressView;
 @property (nonatomic, strong) PtFtViewBlur* blurView;
 @property (nonatomic, strong) NSMutableArray* originalImageParts;
 @property (nonatomic, weak) PtViewControllerEditor* editorController;
+@property (nonatomic, assign) BOOL releasePreviewImage;
 @property (nonatomic, strong) PtFtViewTapRecognizer* tapRecognizerView;
 
-@property (nonatomic, strong) PtFtViewNavigationBar* navigationBar;
-@property (nonatomic, strong) PtFtButtonNavigation* cancelButton;
-@property (nonatomic, strong) PtFtButtonNavigation* doneButton;
-
-
-- (void)applyFiltersToOriginalImage;
-
-- (void)navigationDoneDidTouchUpInside:(PtFtButtonNavigation*)button;
-- (void)navigationCancelDidTouchUpInside:(PtFtButtonNavigation*)button;
+- (void)resizeImage;
+- (void)didResizeImage;
 
 @end

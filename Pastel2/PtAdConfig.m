@@ -15,9 +15,19 @@
     return 80.0f;
 }
 
++ (float)percentageBarHeight
+{
+    return 40.0f;
+}
+
 + (UIColor *)barBgColor
 {
     return [UIColor colorWithWhite:0.12f alpha:1.0f];    
+}
+
++ (UIColor *)percentageBarBgColor
+{
+    return [UIColor colorWithWhite:0.08f alpha:1.0f];
 }
 
 @end

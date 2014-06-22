@@ -11,6 +11,8 @@
 @interface PtAdConfig : NSObject
 
 + (float)sliderBarHeight;
++ (float)percentageBarHeight;
 + (UIColor*)barBgColor;
++ (UIColor*)percentageBarBgColor;
 
 @end

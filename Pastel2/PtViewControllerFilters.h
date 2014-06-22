@@ -7,34 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PtFtViewNavigationBar.h"
+#import "PtCoViewControllerProcessing.h"
 #import "PtFtViewManagerFilters.h"
 #import "PtFtViewManagerSliders.h"
 #import "PtFtViewManagerNavigation.h"
-#import "PtFtObjectProcessQueue.h"
-#import "PtFtViewBlur.h"
-#import "PtFtViewTapRecognizer.h"
 
 @class PtViewControllerEditor;
 
-@interface PtViewControllerFilters : UIViewController <PtFtSharedQueueManagerDelegate, PtFtViewTapRecognizerDelegate>
+@interface PtViewControllerFilters : PtCoViewControllerProcessing <PtFtSharedQueueManagerDelegate>
 
 @property (nonatomic, strong) PtFtViewManagerFilters* filtersManager;
 @property (nonatomic, strong) PtFtViewManagerSliders* slidersManager;
 @property (nonatomic, strong) PtFtViewManagerNavigation* navigationManager;
-@property (nonatomic, strong) UIImageView* previewImageView;
 @property (nonatomic, strong) NSMutableArray* presetQueuePool;
-@property (nonatomic, strong) UIImage* previewImage;
-@property (nonatomic, strong) UIImage* originalPreviewImage;
 @property (nonatomic, strong) UIImage* presetOriginalImage;
-@property (nonatomic, strong) VnViewProgress* progressView;
-@property (nonatomic, strong) PtFtViewBlur* blurView;
 @property (nonatomic, assign) BOOL faceDetected;
 @property (nonatomic, assign) BOOL firstPresetFinished;
-@property (nonatomic, strong) NSMutableArray* originalImageParts;
-@property (nonatomic, weak) PtViewControllerEditor* editorController;
-@property (nonatomic, assign) BOOL releasePreviewImage;
-@property (nonatomic, strong) PtFtViewTapRecognizer* tapRecognizerView;
 
 - (void)initPresetQueuePool;
 - (PtFtObjectProcessQueue*)shiftQueueFromPool;

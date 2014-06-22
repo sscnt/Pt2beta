@@ -24,9 +24,27 @@
         _slider.strokeColor = [UIColor colorWithWhite:0.8f alpha:1.0f];
         _slider.indicatorColor = [UIColor whiteColor];
         _slider.thumbBgColor = self.backgroundColor;
+        _slider.delegate = self;
         [self addSubview:_slider];
     }
     return self;
+}
+
+- (void)slider:(PtAdViewSlider *)slider DidValueChange:(CGFloat)value
+{
+    [self.delegate sliderDidValueChange:value];
+}
+- (void)touchesBeganWithSlider:(PtAdViewSlider*)slider
+{
+    
+}
+- (void)touchesMovedWithSlider:(PtAdViewSlider*)slider
+{
+    
+}
+- (void)touchesEndedWithSlider:(PtAdViewSlider*)slider
+{
+    
 }
 
 @end

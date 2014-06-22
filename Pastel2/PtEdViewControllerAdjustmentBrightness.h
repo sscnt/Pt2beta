@@ -8,9 +8,11 @@
 
 #import "PtEdViewControllerAdjustment.h"
 #import "PtAdViewSliderBar.h"
+#import "PtAdViewPercentage.h"
 
-@interface PtEdViewControllerAdjustmentBrightness : PtEdViewControllerAdjustment
+@interface PtEdViewControllerAdjustmentBrightness : PtEdViewControllerAdjustment <PtAdViewSliderBarDelegate, PtAdSharedQueueManagerDelegate>
 
 @property (nonatomic, strong) PtAdViewSliderBar* sliderBar;
+@property (nonatomic, strong) PtAdViewPercentage* percentageBar;
 
 @end

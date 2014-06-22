@@ -18,81 +18,11 @@ NSString *const kGPUImageHueSaturationFilterFragmentShaderString = SHADER_STRING
  uniform sampler2D inputImageTexture;
  
  uniform int colorize;
+ uniform int vibrance;
  uniform mediump float hue;
  uniform mediump float saturation;
  uniform mediump float lightness;
- 
- vec3 rgb2hsl(vec3 color){
-     mediump float min = min(color.r, min(color.g, color.b));
-     mediump float max = max(color.r, max(color.g, color.b));
-     mediump float delMax = max - min;
-     
-     mediump float H = 0.0;
-     mediump float S = 0.0;
-     mediump float L = (max + min) / 2.0;
-     if(delMax != 0.0){
-         if(L < 0.5)
-             S = delMax / (max + min);
-         else
-             S = delMax / (2.0 - max - min);
-         
-         mediump float delR = (((max - color.r) / 6.0) + (delMax / 2.0)) / delMax;
-         mediump float delG = (((max - color.g) / 6.0) + (delMax / 2.0)) / delMax;
-         mediump float delB = (((max - color.b) / 6.0) + (delMax / 2.0)) / delMax;
-         
-         if(color.r == max)
-             H = delB - delG;
-         else if(color.g == max)
-             H = (1.0 / 3.0) + delR - delB;
-         else if(color.b == max)
-             H = (2.0 / 3.0) + delG - delR;
-         
-         if(H < 0.0)
-             H += 1.0;
-         if(H > 1.0)
-             H -= 1.0;
-     }
-     
-     return vec3(H, S, L);
- }
- 
- float hue2rgb(float v1, float v2, float vH){
-     if(vH < 0.0) vH += 1.0;
-     if(vH > 1.0) vH -= 1.0;
-     if((6.0 * vH) < 1.0) return (v1 + (v2 - v1) * 6.0 * vH);
-     if((2.0 * vH) < 1.0) return v2;
-     if((3.0 * vH) < 2.0) return (v1 + (v2 - v1) * ((2.0 / 3.0) - vH) * 6.0);
-     return v1;
- }
- 
- vec3 hsl2rgb(vec3 hsl){
-     mediump float H = hsl.x;
-     mediump float S = hsl.y;
-     mediump float L = hsl.z;
-     
-     mediump float R = 0.0;
-     mediump float G = 0.0;
-     mediump float B = 0.0;
-     
-     if(S == 0.0){
-         R = L;
-         G = L;
-         B = L;
-     } else{
-         mediump float var2;
-         if(L < 0.5){
-             var2 = L * (1.0 + S);
-         }else{
-             var2 = (L + S) - (S * L);
-         }
-         mediump float var1 = 2.0 * L - var2;
-         
-         R = hue2rgb(var1, var2, H + (1.0 / 3.0));
-         G = hue2rgb(var1, var2, H);
-         B = hue2rgb(var1, var2, H - (1.0 / 3.0));
-     }
-     return vec3(R, G, B);
- }
+
  
  vec3 blend2(vec3 left, vec3 right, float pos){
      return vec3(left.r * (1.0 - pos) + right.r * pos,
@@ -145,6 +75,17 @@ NSString *const kGPUImageHueSaturationFilterFragmentShaderString = SHADER_STRING
          weight = 1.0 - weight * weight;
          hsl.y += saturation * weight;
          rs.rgb = hsv2rgb(hsl);
+         if(vibrance == 1){
+             mediump vec3 hsv = rgb2hsv(pixel.rgb);
+             
+             mediump vec3 base = vec3(241.0 / 255.0, 187.0 / 255.0, 147.0 / 255.0);
+             mediump float dist = sqrt((base.r - pixel.r) * (base.r - pixel.r) + (base.g - pixel.g) * (base.g - pixel.g) + (base.b - pixel.b) * (base.b - pixel.b));
+             dist = min(max(dist, 0.0), 1.0);
+             dist = 1.0 / (1.0 + pow(2.718, -(12.0 * dist - 6.0)));
+             rs.rgb = rs.rgb * dist + pixel.rgb * (1.0 - dist);
+         }else{
+             
+         }
      }
      
      if(lightness > 0.0){
@@ -180,6 +121,9 @@ NSString *const kGPUImageHueSaturationFilterFragmentShaderString = SHADER_STRING
     colorizeUniform = [filterProgram uniformIndex:@"colorize"];
     self.colorize = NO;
     
+    vibranceUniform = [filterProgram uniformIndex:@"vibrance"];
+    self.vibrance = NO;
+    
     return self;
 }
 
@@ -187,6 +131,12 @@ NSString *const kGPUImageHueSaturationFilterFragmentShaderString = SHADER_STRING
 {
     _colorize = colorize;
     [self setInteger:_colorize forUniform:colorizeUniform program:filterProgram];
+}
+
+- (void)setVibrance:(BOOL)vibrance
+{
+    _vibrance = vibrance;
+    [self setInteger:_vibrance forUniform:vibranceUniform program:filterProgram];
 }
 
 - (void)setSaturation:(float)saturation

@@ -14,7 +14,13 @@ typedef NS_ENUM(NSInteger, PtAdProcessQueueType){
 };
 
 typedef NS_ENUM(NSInteger, PtAdProcessQueueAdjustmentType){
-    PtAdProcessQueueAdjustmentTypeBrightness = 1
+    PtAdProcessQueueAdjustmentTypeBrightness = 1,
+    PtAdProcessQueueAdjustmentTypeSaturation,
+    PtAdProcessQueueAdjustmentTypeContrast,
+    PtAdProcessQueueAdjustmentTypeTemp,
+    PtAdProcessQueueAdjustmentTypeShadow,
+    PtAdProcessQueueAdjustmentTypeHighlight,
+    PtAdProcessQueueAdjustmentTypeExposure
 };
 
 

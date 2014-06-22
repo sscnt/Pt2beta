@@ -15,7 +15,7 @@
 #import "VnFilterLevels.h"
 #import "VnFilterGammaCorection.h"
 
-@class PtEdViewControllerAdjustment;
+@class PtAdViewController;
 
 @protocol PtAdSharedQueueManagerDelegate
 - (void)queueDidFinished:(PtAdObjectProcessQueue*)queue;
@@ -27,7 +27,7 @@
     NSMutableArray* _queueList;
 }
 
-@property (nonatomic, weak) PtEdViewControllerAdjustment<PtAdSharedQueueManagerDelegate>* delegate;
+@property (nonatomic, weak) PtAdViewController<PtAdSharedQueueManagerDelegate>* delegate;
 @property (nonatomic, assign) BOOL processing;
 @property (nonatomic, assign) BOOL canceled;
 @property (nonatomic, weak) UIImage* originalImage;

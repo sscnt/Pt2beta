@@ -6,14 +6,14 @@
 //  Copyright (c) 2014年 SSC. All rights reserved.
 //
 
-#import "PtEdViewControllerAdjustment.h"
+#import "PtAdViewController.h"
 #import "PtViewControllerEditor.h"
 
-@interface PtEdViewControllerAdjustment ()
+@interface PtAdViewController ()
 
 @end
 
-@implementation PtEdViewControllerAdjustment
+@implementation PtAdViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,6 +42,20 @@
     _doneButton.type = PtFtButtonNavigationTypeDone;
     [_doneButton addTarget:self action:@selector(navigationDoneDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
     [_navigationBar addDoneButton:_doneButton];
+    
+    _sliderBar = [[PtAdViewSliderBar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [self.view width], [PtAdConfig sliderBarHeight])];
+    [_sliderBar setY:[self.view height] - [PtSharedApp bottomNavigationBarHeight] - [_sliderBar height]];
+    _sliderBar.slider.zeroPointAtCenter = YES;
+    _sliderBar.slider.value = 0.0f;
+    _sliderBar.delegate = self;
+    [self.view addSubview:_sliderBar];
+    
+    _percentageBar = [[PtAdViewPercentage alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [self.view width], [PtAdConfig percentageBarHeight])];
+    [_percentageBar setY:_sliderBar.frame.origin.y - [_percentageBar height]];
+    _percentageBar.percentage = 0.0f;
+    [self.view addSubview:_percentageBar];
+    
+
 }
 
 - (void)applyFiltersToOriginalImage
@@ -53,7 +67,7 @@
     
     [self.editorController deallocImage];
     
-    __block __weak PtEdViewControllerAdjustment* _self = self;
+    __block __weak PtAdViewController* _self = self;
     dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t q_main = dispatch_get_main_queue();
     dispatch_async(q_global, ^{
@@ -70,6 +84,42 @@
         });
     });
     
+}
+
+
+- (void)queueDidFinished:(PtAdObjectProcessQueue *)queue
+{
+    LOG(@"Queue did finished.");
+    switch (queue.type) {
+        case PtAdProcessQueueTypePreview:
+        {
+            self.previewImageView.image = queue.image;
+            self.previewImage = queue.image;
+            self.progressView.hidden = YES;
+            self.blurView.isBlurred = NO;
+        }
+            break;
+            
+        case PtAdProcessQueueTypeOriginal:
+        {
+            [self didFinishProcessingOriginalImage];
+        }
+            break;
+        default:
+            break;
+    }
+}
+- (void)didResizeImage
+{
+    [PtAdSharedQueueManager instance].delegate = self;
+    self.progressView.hidden = YES;
+    self.previewImageView.image = self.originalPreviewImage;
+    self.view.userInteractionEnabled = YES;
+}
+
+- (void)sliderDidTouchUpInside
+{
+    [self registerQueue];
 }
 
 #pragma mark navigation

@@ -7,7 +7,7 @@
 //
 
 #import "PtAdSharedQueueManager.h"
-#import "PtEdViewControllerAdjustment.h"
+#import "PtAdViewController.h"
 
 @implementation PtAdSharedQueueManager
 
@@ -127,7 +127,7 @@ static PtAdSharedQueueManager* sharedPtAdSharedQueueManager = nil;
     }
     float rm = imageSize.width / [PtSharedApp instance].sizeOfImageToProcess.width;
     dispatch_queue_t q_main = dispatch_get_main_queue();
-    __block __weak PtEdViewControllerAdjustment* _con = self.delegate;
+    __block __weak PtAdViewController* _con = self.delegate;
     dispatch_async(q_main, ^{
         [_con.progressView setProgress:0.60f];
     });
@@ -156,7 +156,7 @@ static PtAdSharedQueueManager* sharedPtAdSharedQueueManager = nil;
     if (imageSize.height > imageSize.width) {
         ty = imageSize.height / imageSize.width;
     }
-    __block __weak PtEdViewControllerAdjustment* _con = self.delegate;
+    __block __weak PtAdViewController* _con = self.delegate;
     dispatch_queue_t q_main = dispatch_get_main_queue();
     NSMutableArray* parts = self.delegate.originalImageParts;
     for (int i = 0; i < parts.count; i++) {
@@ -223,6 +223,16 @@ static PtAdSharedQueueManager* sharedPtAdSharedQueueManager = nil;
             self.endFilter = filter;
             
         }
+            break;
+        case PtAdProcessQueueAdjustmentTypeSaturation:
+        {
+            VnAdjustmentLayerHueSaturation* filter = [[VnAdjustmentLayerHueSaturation alloc] init];
+            filter.saturation = queue.strength * 100.0f;
+            filter.vibrance = YES;
+            
+            self.startFilter = self.endFilter = filter;
+        }
+            break;
             
         default:
             break;

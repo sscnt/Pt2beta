@@ -19,7 +19,8 @@
 #import "PtViewControllerExportToInstagram.h"
 #import "VnViewProgress.h"
 #import "PtEdViewToolBar.h"
-#import "PtEdViewControllerAdjustmentBrightness.h"
+#import "PtAdViewControllerBrightness.h"
+#import "PtAdViewControllerSaturation.h"
 
 typedef NS_ENUM(NSInteger, PtViewControllerEditorWorkflowAfterSavingPhoto){
     PtViewControllerEditorWorkflowAfterSavingPhotoDoNothing = 1,
@@ -82,6 +83,12 @@ typedef NS_ENUM(NSInteger, PtViewControllerEditorWorkflowAfterSavingPhoto){
 - (void)buttonSlidersDidTouchUpInside:(PtEdViewBarButton*)button;
 - (void)buttonFilmDidTouchUpInside:(PtEdViewBarButton*)button;
 - (void)buttonBrightnessDidTouchUpInside:(PtEdViewBarButton*)button;
+- (void)buttonSaturationDidTouchUpInside:(PtEdViewBarButton*)button;
+- (void)buttonContrastDidTouchUpInside:(PtEdViewBarButton*)button;
+- (void)buttonTempDidTouchUpInside:(PtEdViewBarButton*)button;
+- (void)buttonShadowDidTouchUpInside:(PtEdViewBarButton*)button;
+- (void)buttonHighlightDidTouchUpInside:(PtEdViewBarButton*)button;
+- (void)buttonExposureDidTouchUpInside:(PtEdViewBarButton*)button;
 
 - (void)imageDidSaveToCameraRoll:(UIImage*)image didFinishSavingWithError:(NSError*)error contextInfo:(void*)contextInfo;
 

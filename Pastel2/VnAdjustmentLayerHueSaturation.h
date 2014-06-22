@@ -14,11 +14,13 @@
     GLuint saturationUniform;
     GLuint lightnessUniform;
     GLuint colorizeUniform;
+    GLuint vibranceUniform;
 }
 
 @property (nonatomic, assign) float hue;
 @property (nonatomic, assign) float saturation;
 @property (nonatomic, assign) float lightness;
 @property (nonatomic, assign) BOOL colorize;
+@property (nonatomic, assign) BOOL vibrance;
 
 @end

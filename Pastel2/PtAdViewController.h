@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PtAdViewSliderBar.h"
+#import "PtAdViewPercentage.h"
 #import "PtCoViewControllerProcessing.h"
 #import "PtFtViewNavigationBar.h"
 #import "PtFtObjectProcessQueue.h"
@@ -15,7 +17,7 @@
 
 @class PtViewControllerEditor;
 
-@interface PtEdViewControllerAdjustment : PtCoViewControllerProcessing <PtAdSharedQueueManagerDelegate, PtFtViewTapRecognizerDelegate>
+@interface PtAdViewController : PtCoViewControllerProcessing <PtAdSharedQueueManagerDelegate, PtFtViewTapRecognizerDelegate, PtAdViewSliderBarDelegate, PtAdSharedQueueManagerDelegate>
 
 @property (nonatomic, strong) UIImageView* previewImageView;
 @property (nonatomic, strong) UIImage* previewImage;
@@ -30,11 +32,15 @@
 @property (nonatomic, strong) PtFtButtonNavigation* cancelButton;
 @property (nonatomic, strong) PtFtButtonNavigation* doneButton;
 
+@property (nonatomic, strong) PtAdViewSliderBar* sliderBar;
+@property (nonatomic, strong) PtAdViewPercentage* percentageBar;
 
 - (void)applyFiltersToOriginalImage;
 - (void)applyCurrentFiltersToOriginalImage;
 
 - (void)navigationDoneDidTouchUpInside:(PtFtButtonNavigation*)button;
 - (void)navigationCancelDidTouchUpInside:(PtFtButtonNavigation*)button;
+
+- (void)registerQueue;
 
 @end

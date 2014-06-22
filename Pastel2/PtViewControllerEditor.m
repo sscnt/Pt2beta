@@ -83,12 +83,15 @@
     [_toolBar appendButton:_brightnessButton];
     
     _saturationsButton = [[PtEdViewBarButton alloc] initWithType:PtEdViewBarButtonTypeSaturation];
+    [_saturationsButton addTarget:self action:@selector(buttonSaturationDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
     [_toolBar appendButton:_saturationsButton];
     
     _clarifyButton = [[PtEdViewBarButton alloc] initWithType:PtEdViewBarButtonTypeClarify];
+    [_clarifyButton addTarget:self action:@selector(buttonContrastDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
     [_toolBar appendButton:_clarifyButton];
     
     _tempButton = [[PtEdViewBarButton alloc] initWithType:PtEdViewBarButtonTypeTemp];
+    [_tempButton addTarget:self action:@selector(buttonTempDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
     [_toolBar appendButton:_tempButton];
     
     _filmButton = [[PtEdViewBarButton alloc] initWithType:PtEdViewBarButtonTypeFilm];
@@ -99,12 +102,15 @@
     [_toolBar appendButton:_vignetteButton];
     
     _shadowButton = [[PtEdViewBarButton alloc] initWithType:PtEdViewBarButtonTypeShadow];
+    [_shadowButton addTarget:self action:@selector(buttonShadowDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
     [_toolBar appendButton:_shadowButton];
     
     _highlightButton = [[PtEdViewBarButton alloc] initWithType:PtEdViewBarButtonTypeHighlight];
+    [_highlightButton addTarget:self action:@selector(buttonHighlightDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
     [_toolBar appendButton:_highlightButton];
     
     _exposureButton = [[PtEdViewBarButton alloc] initWithType:PtEdViewBarButtonTypeExposure];
+    [_exposureButton addTarget:self action:@selector(buttonExposureDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
     [_toolBar appendButton:_exposureButton];
     
     //// Preview
@@ -255,9 +261,43 @@
 {
     [PtFtSharedQueueManager instance].canceled = NO;
     self.currentImageDidChange = YES;
-    PtEdViewControllerAdjustmentBrightness* con = [[PtEdViewControllerAdjustmentBrightness alloc] init];
+    PtAdViewControllerBrightness* con = [[PtAdViewControllerBrightness alloc] init];
     con.editorController = self;
     [self.navigationController pushViewController:con animated:NO];
+}
+
+- (void)buttonSaturationDidTouchUpInside:(PtEdViewBarButton *)button
+{
+    [PtFtSharedQueueManager instance].canceled = NO;
+    self.currentImageDidChange = YES;
+    PtAdViewControllerSaturation* con = [[PtAdViewControllerSaturation alloc] init];
+    con.editorController = self;
+    [self.navigationController pushViewController:con animated:NO];
+}
+
+- (void)buttonContrastDidTouchUpInside:(PtEdViewBarButton *)button
+{
+
+}
+
+- (void)buttonTempDidTouchUpInside:(PtEdViewBarButton *)button
+{
+    
+}
+
+- (void)buttonShadowDidTouchUpInside:(PtEdViewBarButton *)button
+{
+    
+}
+
+- (void)buttonHighlightDidTouchUpInside:(PtEdViewBarButton *)button
+{
+    
+}
+
+- (void)buttonExposureDidTouchUpInside:(PtEdViewBarButton *)button
+{
+    
 }
 
 #pragma mark workflow

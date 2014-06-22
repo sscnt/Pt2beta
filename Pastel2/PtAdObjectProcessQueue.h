@@ -25,6 +25,7 @@ typedef NS_ENUM(NSInteger, PtAdProcessQueueAdjustmentType){
 @property (nonatomic, assign) PtAdProcessQueueAdjustmentType adjustmentType;
 @property (nonatomic, assign) float opacity;
 @property (nonatomic, assign) float strength;
+@property (nonatomic, assign) float radiusMultiplier;
 
 
 @end

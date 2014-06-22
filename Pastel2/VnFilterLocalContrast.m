@@ -14,6 +14,7 @@
 @synthesize blurRadiusAsFractionOfImageWidth  = _blurRadiusAsFractionOfImageWidth;
 @synthesize blurRadiusAsFractionOfImageHeight = _blurRadiusAsFractionOfImageHeight;
 @synthesize blurPasses = _blurPasses;
+@synthesize contrast = _contrast;
 
 #pragma mark -
 #pragma mark Initialization and teardown
@@ -35,7 +36,11 @@
 - (id)init;
 {
     NSString *currentGaussianBlurVertexShader = [[self class] vertexShaderForOptimizedBlurOfRadius:4 sigma:2.0];
-    NSString *currentGaussianBlurFragmentShader = [[self class] fragmentShaderForOptimizedBlurOfRadius:4 sigma:2.0];
+    NSString *currentGaussianBlurFragmentShader = [[self class] fragmentShaderForOptimizedBlurOfRadius:4 sigma:2.0 contrast:1.0 opacity:1.0];
+    
+    self.topLayerOpacity = 1.0f;
+    self.contrast = 1.0f;
+    self.blendingMode = VnBlendingModeNormal;
     
     return [self initWithFirstStageVertexShaderFromString:currentGaussianBlurVertexShader firstStageFragmentShaderFromString:currentGaussianBlurFragmentShader secondStageVertexShaderFromString:currentGaussianBlurVertexShader secondStageFragmentShaderFromString:currentGaussianBlurFragmentShader];
 }
@@ -250,7 +255,7 @@
     return shaderString;
 }
 
-+ (NSString *)fragmentShaderForOptimizedBlurOfRadius:(NSUInteger)blurRadius sigma:(CGFloat)sigma;
++ (NSString *)fragmentShaderForOptimizedBlurOfRadius:(NSUInteger)blurRadius sigma:(CGFloat)sigma contrast:(float)contrast opacity:(float)opacity;
 {
     if (blurRadius < 1)
     {
@@ -295,6 +300,7 @@
      uniform highp float texelHeightOffset;\n\
      \n\
      varying highp vec2 blurCoordinates[%lu];\n\
+     uniform mediump float contrast;\n\
      \n\
      void main()\n\
      {\n\
@@ -351,28 +357,15 @@
     }
     
     // Footer
-    [shaderString appendString:@"\
+    [shaderString appendFormat:@"\
      mediump vec4 rs = sum / num;\n\
-     mediump vec3 hsv = rgb2hsv(pixel.rgb);\n\
-     mediump float saturation = hsv.y;\n\
-     //rs = abs(pixel - rs);\n\
-     //mediump float opacity = pixel.r / 3.0 + rs.g / 3.0 + rs.b / 3.0;\n\
-     mediump float brightness = pixel.r * 0.299 + pixel.g * 0.587 + pixel.b * 0.114;\n\
      mediump float lum = rs.r * 0.299 + rs.g * 0.587 + rs.b * 0.114;\n\
-     //opacity = pow(opacity, 0.60);\n\
-     //opacity = min(max(opacity, 0.0), 1.0);\n\
-     mediump float com = brightness * 0.6 + 0.2;\n\
-     rs = (pixel - lum) * 1.3 + lum;\n\
-     //rs = log(exp(4.0 * pixel) * 1.6) / 4.0;\n\
-     //rs.rgb = levelShift(pixel.rgb, 0.3);\n\
-     //hsv = rgb2hsv(rs.rgb);\n\
-     //hsv.y = saturation;\n\
-     //rs.rgb = hsv2rgb(hsv);\n\
-     //gl_FragColor = blendWithBlendingMode(pixel, vec4(rs.r, rs.g, rs.b, opacity), 1);\n\
-     gl_FragColor = blendWithBlendingMode(pixel, vec4(rs.r, rs.g, rs.b, 1.0), 1);\n\
-     }\n"];
+     rs = (pixel - lum) * %f + lum;\n\
+     gl_FragColor = blendWithBlendingMode(pixel, vec4(rs.r, rs.g, rs.b, %f), 1);\n\
+     }\n", contrast, opacity];
     
     free(standardGaussianWeights);
+    
     return shaderString;
 }
 
@@ -459,14 +452,13 @@
         horizontalPassTexelWidthOffsetUniform = [secondFilterProgram uniformIndex:@"texelWidthOffset"];
         horizontalPassTexelHeightOffsetUniform = [secondFilterProgram uniformIndex:@"texelHeightOffset"];
         [GPUImageContext setActiveShaderProgram:secondFilterProgram];
-        
+
         glEnableVertexAttribArray(secondFilterPositionAttribute);
         glEnableVertexAttribArray(secondFilterTextureCoordinateAttribute);
         
         [self setupFilterForSize:[self sizeOfFBO]];
         glFinish();
     });
-    
 }
 
 #pragma mark -
@@ -487,26 +479,44 @@
 {
     // 7.0 is the limit for blur size for hardcoded varying offsets
     
-    if (round(newValue) != _blurRadiusInPixels)
-    {
-        _blurRadiusInPixels = round(newValue); // For now, only do integral sigmas
-        
-        // Calculate the number of pixels to sample from by setting a bottom limit for the contribution of the outermost pixel
-        CGFloat minimumWeightToFindEdgeOfSamplingArea = 1.0/256.0;
-        NSUInteger calculatedSampleRadius = floor(sqrt(-2.0 * pow(_blurRadiusInPixels, 2.0) * log(minimumWeightToFindEdgeOfSamplingArea * sqrt(2.0 * M_PI * pow(_blurRadiusInPixels, 2.0))) ));
-        calculatedSampleRadius += calculatedSampleRadius % 2; // There's nothing to gain from handling odd radius sizes, due to the optimizations I use
-        
-        //        NSLog(@"Blur radius: %f, calculated sample radius: %d", _blurRadiusInPixels, calculatedSampleRadius);
-        //
-        NSString *newGaussianBlurVertexShader = [[self class] vertexShaderForOptimizedBlurOfRadius:calculatedSampleRadius sigma:_blurRadiusInPixels];
-        NSString *newGaussianBlurFragmentShader = [[self class] fragmentShaderForOptimizedBlurOfRadius:calculatedSampleRadius sigma:_blurRadiusInPixels];
-        
-        //        NSLog(@"Optimized vertex shader: \n%@", newGaussianBlurVertexShader);
-        //        NSLog(@"Optimized fragment shader: \n%@", newGaussianBlurFragmentShader);
-        //
-        [self switchToVertexShader:newGaussianBlurVertexShader fragmentShader:newGaussianBlurFragmentShader];
-    }
+    _blurRadiusInPixels = round(newValue); // For now, only do integral sigmas
+    [self createShader];
+    
     shouldResizeBlurRadiusWithImageSize = NO;
 }
+
+- (void)setContrast:(float)contrast
+{
+    _contrast = contrast;
+    [self createShader];
+}
+
+- (void)setTopLayerOpacity:(float)topLayerOpacity
+{
+    _opacity = topLayerOpacity;
+    [self createShader];
+}
+
+- (void)createShader
+{
+    
+    // Calculate the number of pixels to sample from by setting a bottom limit for the contribution of the outermost pixel
+    CGFloat minimumWeightToFindEdgeOfSamplingArea = 1.0/256.0;
+    NSUInteger calculatedSampleRadius = floor(sqrt(-2.0 * pow(_blurRadiusInPixels, 2.0) * log(minimumWeightToFindEdgeOfSamplingArea * sqrt(2.0 * M_PI * pow(_blurRadiusInPixels, 2.0))) ));
+    calculatedSampleRadius += calculatedSampleRadius % 2; // There's nothing to gain from handling odd radius sizes, due to the optimizations I use
+    
+    //        NSLog(@"Blur radius: %f, calculated sample radius: %d", _blurRadiusInPixels, calculatedSampleRadius);
+    //
+    NSString *newGaussianBlurVertexShader = [[self class] vertexShaderForOptimizedBlurOfRadius:calculatedSampleRadius sigma:_blurRadiusInPixels];
+    NSString *newGaussianBlurFragmentShader = [[self class] fragmentShaderForOptimizedBlurOfRadius:calculatedSampleRadius sigma:_blurRadiusInPixels contrast:self.contrast opacity:self.opacity];
+    
+    //        NSLog(@"Optimized vertex shader: \n%@", newGaussianBlurVertexShader);
+    //        NSLog(@"Optimized fragment shader: \n%@", newGaussianBlurFragmentShader);
+    //
+    [self switchToVertexShader:newGaussianBlurVertexShader fragmentShader:newGaussianBlurFragmentShader];
+    
+
+}
+
 
 @end

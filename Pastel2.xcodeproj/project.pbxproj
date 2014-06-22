@@ -361,6 +361,7 @@
 		58FD79A9194C1AD500DA2B11 /* VnEffectButterCreamVintage.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FD79A8194C1AD500DA2B11 /* VnEffectButterCreamVintage.m */; };
 		58FD79AB194C1C6B00DA2B11 /* ab001.pst in Resources */ = {isa = PBXBuildFile; fileRef = 58FD79AA194C1C6B00DA2B11 /* ab001.pst */; };
 		58FE6ED21945ED4C00B61E72 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FE6ED11945ED4C00B61E72 /* Social.framework */; };
+		58FFA82D1956FE0900B35A6C /* VnFilterGammaCorection.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FFA82C1956FE0900B35A6C /* VnFilterGammaCorection.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -972,6 +973,8 @@
 		58FD79A8194C1AD500DA2B11 /* VnEffectButterCreamVintage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectButterCreamVintage.m; sourceTree = "<group>"; };
 		58FD79AA194C1C6B00DA2B11 /* ab001.pst */ = {isa = PBXFileReference; lastKnownFileType = file; path = ab001.pst; sourceTree = "<group>"; };
 		58FE6ED11945ED4C00B61E72 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		58FFA82B1956FE0900B35A6C /* VnFilterGammaCorection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnFilterGammaCorection.h; sourceTree = "<group>"; };
+		58FFA82C1956FE0900B35A6C /* VnFilterGammaCorection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnFilterGammaCorection.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1014,11 +1017,11 @@
 			children = (
 				5883F3541955C8B0001ABCE3 /* PtEdViewControllerAdjustment.h */,
 				5883F3551955C8B0001ABCE3 /* PtEdViewControllerAdjustment.m */,
+				58FFA8311957384D00B35A6C /* Controllers */,
 				58F2223D1956C64A00619936 /* Objects */,
 				58F222391956C5D500619936 /* Shared */,
 				58F2222B19569B7800619936 /* Config */,
 				5883F35A1955FBFA001ABCE3 /* Views */,
-				5883F3531955C856001ABCE3 /* Brightness */,
 			);
 			name = AdjustmentModule;
 			sourceTree = "<group>";
@@ -1225,6 +1228,8 @@
 				58007CD5194D654300AFAD38 /* VnFilterExposure.m */,
 				58F32D6E195466CF001F5A6A /* VnFilterLocalContrast.h */,
 				58F32D6F195466CF001F5A6A /* VnFilterLocalContrast.m */,
+				58FFA82B1956FE0900B35A6C /* VnFilterGammaCorection.h */,
+				58FFA82C1956FE0900B35A6C /* VnFilterGammaCorection.m */,
 			);
 			name = VnFilters;
 			sourceTree = "<group>";
@@ -2080,6 +2085,62 @@
 			name = ExportToInstagramModule;
 			sourceTree = "<group>";
 		};
+		58FFA8311957384D00B35A6C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				58FFA8371957388800B35A6C /* Exposure */,
+				58FFA8361957388100B35A6C /* Highlight */,
+				58FFA8351957387800B35A6C /* Shadow */,
+				58FFA8341957386E00B35A6C /* Temp */,
+				58FFA8331957386600B35A6C /* Contrast */,
+				58FFA8321957385800B35A6C /* Saturation */,
+				5883F3531955C856001ABCE3 /* Brightness */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		58FFA8321957385800B35A6C /* Saturation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Saturation;
+			sourceTree = "<group>";
+		};
+		58FFA8331957386600B35A6C /* Contrast */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Contrast;
+			sourceTree = "<group>";
+		};
+		58FFA8341957386E00B35A6C /* Temp */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Temp;
+			sourceTree = "<group>";
+		};
+		58FFA8351957387800B35A6C /* Shadow */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Shadow;
+			sourceTree = "<group>";
+		};
+		58FFA8361957388100B35A6C /* Highlight */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Highlight;
+			sourceTree = "<group>";
+		};
+		58FFA8371957388800B35A6C /* Exposure */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Exposure;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2362,6 +2423,7 @@
 				583668F31942AE9D00E55C7C /* VnEffectBluishRose.m in Sources */,
 				58F78EEC1952B0B80051562F /* VnEffectPosh.m in Sources */,
 				58F3E4901940C743001AEB8D /* PtFtViewManagerFilters.m in Sources */,
+				58FFA82D1956FE0900B35A6C /* VnFilterGammaCorection.m in Sources */,
 				58F3E4731940C6D3001AEB8D /* PtFtButtonLayerBar.m in Sources */,
 				5819A113194DB9D0002C6F3E /* VnEffectVSCOSummer.m in Sources */,
 				58F3E4BA1940C7F3001AEB8D /* PtViewControllerExportToInstagram.m in Sources */,

@@ -15,4 +15,6 @@
 @property (nonatomic, strong) PtAdViewSliderBar* sliderBar;
 @property (nonatomic, strong) PtAdViewPercentage* percentageBar;
 
+- (void)registerQueue;
+
 @end

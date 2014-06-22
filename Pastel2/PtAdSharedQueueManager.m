@@ -133,12 +133,16 @@ static PtAdSharedQueueManager* sharedPtAdSharedQueueManager = nil;
     });
 
     //// Process
-    VnImageFilter* filter = [self adjustmentFilterWithQueue:queue];
-    queue.image = [VnEffect processImage:queue.image WithStartFilter:filter EndFilter:filter];
+    [self setAdjustmentFilterWithQueue:queue];
+    
+    if (self.startFilter) {
+        queue.image = [VnEffect processImage:queue.image WithStartFilter:self.startFilter EndFilter:self.endFilter];
+    }
 
     dispatch_async(q_main, ^{
         [_con.progressView setProgress:0.80f];
     });
+    self.startFilter = self.endFilter = nil;
 }
 
 - (void)processQueueTypeOriginal:(PtAdObjectProcessQueue *)queue
@@ -162,8 +166,10 @@ static PtAdSharedQueueManager* sharedPtAdSharedQueueManager = nil;
             CGPoint add = [PtUtilImage addingAtIndex:i];
             if (image) {
                 //// Process
-                VnImageFilter* filter = [self adjustmentFilterWithQueue:queue];
-                image = [VnEffect processImage:image WithStartFilter:filter EndFilter:filter];
+                [self setAdjustmentFilterWithQueue:queue];
+                if (self.startFilter) {
+                    image = [VnEffect processImage:image WithStartFilter:self.startFilter EndFilter:self.endFilter];
+                }
                 
                 [parts replaceObjectAtIndex:i withObject:image];
             }
@@ -198,20 +204,29 @@ static PtAdSharedQueueManager* sharedPtAdSharedQueueManager = nil;
     return _canceled;
 }
 
-- (VnImageFilter *)adjustmentFilterWithQueue:(PtAdObjectProcessQueue *)queue
+- (void)setAdjustmentFilterWithQueue:(PtAdObjectProcessQueue *)queue
 {
     switch (queue.adjustmentType) {
         case PtAdProcessQueueAdjustmentTypeBrightness:
         {
             VnFilterLevels* filter = [[VnFilterLevels alloc] init];
-            [filter setMin:0.0f gamma:queue.strength max:1.0f];
-            return filter;
+            float gamma;
+            //// -1.0 <-> +1.0
+            if (queue.strength < 0.0) {
+                gamma = 1.0 + 0.445 * queue.strength;
+            }else{
+                gamma = queue.strength * 0.899 + 1.0;
+            }
+            [filter setMin:0.0f gamma:gamma max:1.0];
+                        
+            self.startFilter = filter;
+            self.endFilter = filter;
+            
         }
             
         default:
             break;
     }
-    return nil;
 }
 
 

@@ -44,7 +44,7 @@
 }
 - (void)touchesEndedWithSlider:(PtAdViewSlider*)slider
 {
-    
+    [self.delegate sliderDidTouchUpInside];
 }
 
 @end

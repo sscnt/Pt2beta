@@ -11,6 +11,7 @@
 
 @protocol PtAdViewSliderBarDelegate
 - (void)sliderDidValueChange:(CGFloat)value;
+- (void)sliderDidTouchUpInside;
 @end
 
 @interface PtAdViewSliderBar : UIView <PtAdViewSliderDelegate>

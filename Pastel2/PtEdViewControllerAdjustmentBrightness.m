@@ -58,7 +58,7 @@
     PtAdObjectProcessQueue* queue = [[PtAdObjectProcessQueue alloc] init];
     queue.type = PtAdProcessQueueTypeOriginal;
     queue.adjustmentType = PtAdProcessQueueAdjustmentTypeBrightness;
-    queue.strength = 1.0 + _sliderBar.slider.value;
+    queue.strength = _sliderBar.slider.value;
     [[PtAdSharedQueueManager instance] addQueue:queue];
 }
 
@@ -85,6 +85,18 @@
     }
 }
 
+- (void)registerQueue
+{
+    
+    PtAdObjectProcessQueue* queue = [[PtAdObjectProcessQueue alloc] init];
+    queue.image = self.originalPreviewImage;
+    queue.type = PtAdProcessQueueTypePreview;
+    queue.adjustmentType = PtAdProcessQueueAdjustmentTypeBrightness;
+    queue.strength = _sliderBar.slider.value;
+    queue.radiusMultiplier = self.presetOriginalImage.size.width / [PtSharedApp instance].sizeOfImageToProcess.width;
+    [[PtAdSharedQueueManager instance] addQueue:queue];
+}
+
 
 #pragma mark slider
 
@@ -92,14 +104,15 @@
 {
     _percentageBar.percentage = value * 100.0f;
     if ([PtAdSharedQueueManager instance].processing == NO) {
-        PtAdObjectProcessQueue* queue = [[PtAdObjectProcessQueue alloc] init];
-        queue.image = self.originalPreviewImage;
-        queue.type = PtAdProcessQueueTypePreview;
-        queue.adjustmentType = PtAdProcessQueueAdjustmentTypeBrightness;
-        queue.strength = 1.0 + value;
-        [[PtAdSharedQueueManager instance] addQueue:queue];
+        [self registerQueue];
     }
 }
+
+- (void)sliderDidTouchUpInside
+{
+    [self registerQueue];
+}
+
 
 - (void)didReceiveMemoryWarning
 {

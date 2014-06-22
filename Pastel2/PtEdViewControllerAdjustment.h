@@ -15,7 +15,7 @@
 
 @class PtViewControllerEditor;
 
-@interface PtEdViewControllerAdjustment : PtCoViewControllerProcessing <PtFtSharedQueueManagerDelegate, PtFtViewTapRecognizerDelegate>
+@interface PtEdViewControllerAdjustment : PtCoViewControllerProcessing <PtAdSharedQueueManagerDelegate, PtFtViewTapRecognizerDelegate>
 
 @property (nonatomic, strong) UIImageView* previewImageView;
 @property (nonatomic, strong) UIImage* previewImage;

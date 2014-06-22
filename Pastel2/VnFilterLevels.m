@@ -34,7 +34,7 @@ NSString *const kVnFilterLevelsFragmentShaderString = SHADER_STRING
  {
      mediump vec4 pixel = texture2D(inputImageTexture, textureCoordinate);
      mediump vec4 rs = vec4(LevelsControl(pixel.rgb, levelMinimum, levelMiddle, levelMaximum, minOutput, maxOutput), pixel.a);
-     
+
      gl_FragColor = blendWithBlendingMode(pixel, vec4(rs.r, rs.g, rs.b, topLayerOpacity), blendingMode);
  }
  );

@@ -29,14 +29,17 @@
 
 /// The number of times to sequentially blur the incoming image. The more passes, the slower the filter.
 @property(readwrite, nonatomic) NSUInteger blurPasses;
+@property(readwrite, nonatomic) float contrast;
+@property(readwrite, nonatomic) float opacity;
 
 + (NSString *)vertexShaderForStandardBlurOfRadius:(NSUInteger)blurRadius sigma:(CGFloat)sigma;
 + (NSString *)fragmentShaderForStandardBlurOfRadius:(NSUInteger)blurRadius sigma:(CGFloat)sigma;
 + (NSString *)vertexShaderForOptimizedBlurOfRadius:(NSUInteger)blurRadius sigma:(CGFloat)sigma;
-+ (NSString *)fragmentShaderForOptimizedBlurOfRadius:(NSUInteger)blurRadius sigma:(CGFloat)sigma;
++ (NSString *)fragmentShaderForOptimizedBlurOfRadius:(NSUInteger)blurRadius sigma:(CGFloat)sigma contrast:(float)contrast opacity:(float)opacity;
 
 - (void)switchToVertexShader:(NSString *)newVertexShader fragmentShader:(NSString *)newFragmentShader;
 
+- (void)createShader;
 
 
 @end

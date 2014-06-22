@@ -13,6 +13,7 @@
 #import "VnFilterPassThrough.h"
 
 #import "VnFilterLevels.h"
+#import "VnFilterGammaCorection.h"
 
 @class PtEdViewControllerAdjustment;
 
@@ -31,8 +32,11 @@
 @property (nonatomic, assign) BOOL canceled;
 @property (nonatomic, weak) UIImage* originalImage;
 @property (nonatomic, weak) UIImage* previewImage;
+@property (nonatomic, strong) VnImageFilter* startFilter;
+@property (nonatomic, strong) VnImageFilter* endFilter;
 
-+ (PtFtSharedQueueManager*)instance;
+
++ (PtAdSharedQueueManager*)instance;
 
 - (PtAdObjectProcessQueue*)shiftQueue;
 - (void)addQueue:(PtAdObjectProcessQueue*)queue;
@@ -45,6 +49,6 @@
 - (void)cancelAllQueue;
 - (void)commonInit;
 
-- (VnImageFilter*)adjustmentFilterWithQueue:(PtAdObjectProcessQueue*)queue;
+- (void)setAdjustmentFilterWithQueue:(PtAdObjectProcessQueue*)queue;
 
 @end

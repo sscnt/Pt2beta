@@ -28,6 +28,11 @@
     [super viewDidLoad];
     self.navigationBar.title = NSLocalizedString(@"Brightness", nil);
     
+    _sliderBar = [[PtAdViewSliderBar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [self.view width], [PtAdConfig sliderBarHeight])];
+    [_sliderBar setY:[self.view height] - [PtSharedApp bottomNavigationBarHeight] - [_sliderBar height]];
+    _sliderBar.slider.zeroPointAtCenter = YES;
+    _sliderBar.slider.value = 0.0f;
+    [self.view addSubview:_sliderBar];
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,16 +40,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

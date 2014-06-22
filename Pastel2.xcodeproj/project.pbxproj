@@ -117,6 +117,7 @@
 		5883F36119560043001ABCE3 /* PtAdViewSliderThumb.m in Sources */ = {isa = PBXBuildFile; fileRef = 5883F36019560043001ABCE3 /* PtAdViewSliderThumb.m */; };
 		5883F36419560AF8001ABCE3 /* PtAdViewSliderBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5883F36319560AF8001ABCE3 /* PtAdViewSliderBar.m */; };
 		58AAE037194332AE003E7B09 /* be002.pst in Resources */ = {isa = PBXBuildFile; fileRef = 58AAE036194332AE003E7B09 /* be002.pst */; };
+		58F2223119569B9200619936 /* PtAdConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2223019569B9200619936 /* PtAdConfig.m */; };
 		58F32D70195466CF001F5A6A /* VnFilterLocalContrast.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F32D6F195466CF001F5A6A /* VnFilterLocalContrast.m */; };
 		58F3E2E41940C502001AEB8D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F3E2E31940C502001AEB8D /* Foundation.framework */; };
 		58F3E2E61940C502001AEB8D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F3E2E51940C502001AEB8D /* CoreGraphics.framework */; };
@@ -574,6 +575,8 @@
 		5883F36219560AF8001ABCE3 /* PtAdViewSliderBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtAdViewSliderBar.h; sourceTree = "<group>"; };
 		5883F36319560AF8001ABCE3 /* PtAdViewSliderBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PtAdViewSliderBar.m; sourceTree = "<group>"; };
 		58AAE036194332AE003E7B09 /* be002.pst */ = {isa = PBXFileReference; lastKnownFileType = file; path = be002.pst; sourceTree = "<group>"; };
+		58F2222F19569B9200619936 /* PtAdConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtAdConfig.h; sourceTree = "<group>"; };
+		58F2223019569B9200619936 /* PtAdConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PtAdConfig.m; sourceTree = "<group>"; };
 		58F32D6E195466CF001F5A6A /* VnFilterLocalContrast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnFilterLocalContrast.h; sourceTree = "<group>"; };
 		58F32D6F195466CF001F5A6A /* VnFilterLocalContrast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnFilterLocalContrast.m; sourceTree = "<group>"; };
 		58F3E2E01940C502001AEB8D /* Pastel2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pastel2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -999,6 +1002,7 @@
 			children = (
 				5883F3541955C8B0001ABCE3 /* PtEdViewControllerAdjustment.h */,
 				5883F3551955C8B0001ABCE3 /* PtEdViewControllerAdjustment.m */,
+				58F2222B19569B7800619936 /* Config */,
 				5883F35A1955FBFA001ABCE3 /* Views */,
 				5883F3531955C856001ABCE3 /* Brightness */,
 			);
@@ -1033,6 +1037,15 @@
 				5883F36319560AF8001ABCE3 /* PtAdViewSliderBar.m */,
 			);
 			name = Slider;
+			sourceTree = "<group>";
+		};
+		58F2222B19569B7800619936 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				58F2222F19569B9200619936 /* PtAdConfig.h */,
+				58F2223019569B9200619936 /* PtAdConfig.m */,
+			);
+			name = Config;
 			sourceTree = "<group>";
 		};
 		58F3E2D71940C502001AEB8D = {
@@ -2381,6 +2394,7 @@
 				58F3E3541940C586001AEB8D /* VnEffect.m in Sources */,
 				580B927C1953139000E7CB58 /* VnEffectOverlayPeachHaze.m in Sources */,
 				5883F36119560043001ABCE3 /* PtAdViewSliderThumb.m in Sources */,
+				58F2223119569B9200619936 /* PtAdConfig.m in Sources */,
 				583669041942AE9D00E55C7C /* VnEffectVelvetColor.m in Sources */,
 				58F3E4EF1940C882001AEB8D /* LmCmViewPreviewLayer.m in Sources */,
 				58F3E4321940C60B001AEB8D /* VnViewLabel.m in Sources */,

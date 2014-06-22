@@ -22,7 +22,6 @@
         recognizer.maximumNumberOfTouches = 1;
         recognizer.delegate = self;
         [self addGestureRecognizer:recognizer];
-        
         self.zeroPointAtCenter = NO;
     }
     return self;
@@ -42,16 +41,21 @@
         _thumbEndPoint = [self height] - _radius - _paddingHorizontal;
         
     }else{
-        _paddingHorizontal = 0.0f;
-        _paddingVertical = 0.0f;
+        _paddingHorizontal = 25.0f;
+        _paddingVertical = 27.0f;
+        
+        _indicatorView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 0.0f, 3.0f)];
+        _indicatorView.center = CGPointMake([self width] / 2.0f, [self height] / 2.0f);
         
         _radius = floorf(([self height] - 2.0f - _paddingVertical * 2.0f) / 2.0f);
         _thumbView = [[PtAdViewSliderThumb alloc] initWithRadius:_radius];
-        _thumbView.center = CGPointMake([self width] / 2.0f, [self height] / 2.0f - 1.0f);
+        _thumbView.center = CGPointMake([self width] / 2.0f, [self height] / 2.0f);
         
-        _thumbStartPoint = _radius - 1.0f + _paddingHorizontal;
-        _thumbEndPoint = [self width] - _radius - 1.0f - _paddingHorizontal;
+        
+        _thumbStartPoint = _radius + _paddingHorizontal;
+        _thumbEndPoint = [self width] - _radius - _paddingHorizontal;
     }
+    [self addSubview:_indicatorView];
     [self addSubview:_thumbView];
     self.value = 1.0f;
     [self bringSubviewToFront:_thumbView];
@@ -73,6 +77,23 @@
     _thumbColor = thumbColor;
     _thumbView.color = thumbColor;
 }
+- (void)setZeroPointAtCenter:(BOOL)zeroPointAtCenter
+{
+    _zeroPointAtCenter = zeroPointAtCenter;
+    [self setNeedsDisplay];
+}
+
+- (void)setIndicatorColor:(UIColor *)indicatorColor
+{
+    _indicatorColor = indicatorColor;
+    _indicatorView.backgroundColor = indicatorColor;
+}
+
+- (void)setThumbBgColor:(UIColor *)thumbBgColor
+{
+    _thumbBgColor = thumbBgColor;
+    _thumbView.bgColor = thumbBgColor;
+}
 
 - (CGFloat)value
 {
@@ -88,6 +109,31 @@
     }else{
         _thumbView.center = CGPointMake(point, _thumbView.center.y);
     }
+    
+    [self layoutIndicatorViewWithValue:value];
+}
+
+- (void)layoutIndicatorViewWithValue:(float)value
+{
+    if (_vertical) {
+        
+    }else{
+        if (_zeroPointAtCenter) {
+            float w = [self width] - _paddingHorizontal * 2.0f;
+            w /= 2.0f;
+            float ww = abs(w * value);
+            if (value < 0.0f) {
+                _indicatorView.frame = CGRectMake(w + _paddingHorizontal - ww, _indicatorView.frame.origin.y, ww, [_indicatorView height]);
+            }else{
+                _indicatorView.frame = CGRectMake(w + _paddingHorizontal, _indicatorView.frame.origin.y, ww, [_indicatorView height]);
+            }
+        }else{
+            float w = [self width] - _paddingHorizontal * 2.0f;
+            w *= value;
+            _indicatorView.frame = CGRectMake(_paddingHorizontal, _indicatorView.frame.origin.y, w, [_indicatorView height]);
+        }
+
+    }
 }
 
 - (void)setLocked:(BOOL)locked
@@ -101,6 +147,9 @@
     if (_vertical) {
         return _thumbEndPoint - (_thumbEndPoint - _thumbStartPoint) * value;
     }
+    if (_zeroPointAtCenter) {
+        value = (value + 1.0f) / 2.0f;
+    }
     return (_thumbEndPoint - _thumbStartPoint) * value + _thumbStartPoint;
 }
 
@@ -111,7 +160,11 @@
         return MAX(MIN(value, 1.0), 0.0f);
     }
     CGFloat value = (x - _thumbStartPoint) / (_thumbEndPoint - _thumbStartPoint);
-    return MAX(MIN(value, 1.0), 0.0f);
+    value = MAX(MIN(value, 1.0), 0.0f);
+    if (_zeroPointAtCenter) {
+        return (value - 0.50f) * 2.0f;
+    }
+    return value;
 }
 
 - (void)didDragThumb:(UIPanGestureRecognizer *)sender
@@ -147,6 +200,8 @@
         
         _value = [self calcValueByThumbPosition:x];
     }
+    
+    [self layoutIndicatorViewWithValue:_value];
     
     [self.delegate slider:self DidValueChange:_value];
     
@@ -194,9 +249,18 @@
         [rectanglePath fill];
     }else{
         //// Rectangle Drawing
-        UIBezierPath* rectanglePath = [UIBezierPath bezierPathWithRect: CGRectMake(_paddingHorizontal, rect.size.height / 2.0f - 1.0f, rect.size.width - 2.0f - _paddingHorizontal * 2.0f, 2.0f)];
+        UIBezierPath* rectanglePath = [UIBezierPath bezierPathWithRect: CGRectMake(_paddingHorizontal, rect.size.height / 2.0f - 0.5, rect.size.width - 2.0f - _paddingHorizontal * 2.0f, 1.0f)];
         [_strokeColor setFill];
         [rectanglePath fill];
+        
+        if (_zeroPointAtCenter) {
+            //// Rectangle Drawing
+            rectanglePath = [UIBezierPath bezierPathWithRect: CGRectMake(rect.size.width / 2.0 - 0.5, rect.size.height / 2.0f - 8.0f, 1.0f, 16.0f)];
+            [_strokeColor setFill];
+            [rectanglePath fill];
+        }else{
+            
+        }
     }
 }
 

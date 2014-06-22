@@ -15,6 +15,7 @@
 
 @property (nonatomic, assign) BOOL locked;
 @property (nonatomic, strong) UIColor* color;
+@property (nonatomic, strong) UIColor* bgColor;
 @property (nonatomic, strong) UIColor* strokeColor;
 
 - (id)initWithRadius:(CGFloat)radius;

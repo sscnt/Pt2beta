@@ -252,6 +252,7 @@ typedef NS_ENUM(NSInteger, LmCmViewBarButtonFlashMode){
 #import "PtSharedApp.h"
 #import "LmCmSharedCamera.h"
 #import "PtEdConfig.h"
+#import "PtAdConfig.h"
 #import "PtFtConfig.h"
 #import "PtFtSharedQueueManager.h"
 #import "PtFtSharedFilterManager.h"

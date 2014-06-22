@@ -7,7 +7,10 @@
 //
 
 #import "PtEdViewControllerAdjustment.h"
+#import "PtAdViewSliderBar.h"
 
 @interface PtEdViewControllerAdjustmentBrightness : PtEdViewControllerAdjustment
+
+@property (nonatomic, strong) PtAdViewSliderBar* sliderBar;
 
 @end

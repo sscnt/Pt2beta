@@ -15,18 +15,18 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        self.backgroundColor = [PtAdConfig barBgColor];
+        float padding = 0.0f;
+        _slider = [[PtAdViewSlider alloc] initWithFrame:CGRectMake(frame.origin.x, frame.origin.y, frame.size.width - padding * 2.0, frame.size.height)];
+        _slider.vertical = NO;
+        _slider.center = CGPointMake([self width] / 2.0f, [self height] / 2.0);
+        _slider.thumbColor = [UIColor whiteColor];
+        _slider.strokeColor = [UIColor colorWithWhite:0.8f alpha:1.0f];
+        _slider.indicatorColor = [UIColor whiteColor];
+        _slider.thumbBgColor = self.backgroundColor;
+        [self addSubview:_slider];
     }
     return self;
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

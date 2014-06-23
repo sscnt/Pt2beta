@@ -76,12 +76,25 @@ NSString *const kGPUImageHueSaturationFilterFragmentShaderString = SHADER_STRING
          hsl.y += saturation * weight;
          rs.rgb = hsv2rgb(hsl);
          if(vibrance == 1){
-             mediump vec3 hsv = rgb2hsv(pixel.rgb);
+             mediump vec3 base = rgb2hsv(pixel.rgb);
+             mediump float dist = base.x;
+             mediump float x;
              
-             mediump vec3 base = vec3(241.0 / 255.0, 187.0 / 255.0, 147.0 / 255.0);
-             mediump float dist = sqrt((base.r - pixel.r) * (base.r - pixel.r) + (base.g - pixel.g) * (base.g - pixel.g) + (base.b - pixel.b) * (base.b - pixel.b));
-             dist = min(max(dist, 0.0), 1.0);
-             dist = 1.0 / (1.0 + pow(2.718, -(12.0 * dist - 6.0)));
+             if(base.x < 0.3){
+                 x = base.x / 0.3;
+                 dist = 1.0 / (1.0 + pow(2.718, -(12.0 * x - 6.0)));
+             }else if(base.x > 0.8){
+                 x = (base.x - 0.8) / 0.2;
+                 x = 1.0 - x;
+                 dist = 1.0 / (1.0 + pow(2.718, -(12.0 * x - 6.0)));
+             }else{
+                 dist = 1.0;
+             }
+             dist = 1.0;
+             
+             //mediump vec3 base = vec3(241.0 / 255.0, 187.0 / 255.0, 147.0 / 255.0);
+             //mediump float dist = sqrt((base.r - pixel.r) * (base.r - pixel.r) + (base.g - pixel.g) * (base.g - pixel.g) + (base.b - pixel.b) * (base.b - pixel.b));
+
              rs.rgb = rs.rgb * dist + pixel.rgb * (1.0 - dist);
          }else{
              

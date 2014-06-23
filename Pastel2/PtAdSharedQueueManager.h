@@ -14,6 +14,7 @@
 
 #import "VnFilterLevels.h"
 #import "VnFilterGammaCorection.h"
+#import "VnAdjustmentLayerKelvin.h"
 
 @class PtAdViewController;
 

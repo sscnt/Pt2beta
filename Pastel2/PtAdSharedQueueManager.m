@@ -11,6 +11,13 @@
 
 @implementation PtAdSharedQueueManager
 
+float absf(float v){
+    if (v < 0.0f) {
+        return -v;
+    }
+    return v;
+}
+
 static PtAdSharedQueueManager* sharedPtAdSharedQueueManager = nil;
 
 + (PtAdSharedQueueManager*)instance {
@@ -250,7 +257,12 @@ static PtAdSharedQueueManager* sharedPtAdSharedQueueManager = nil;
             
         case PtAdProcessQueueAdjustmentTypeTemp:
         {
+            VnAdjustmentLayerKelvin* filter = [[VnAdjustmentLayerKelvin alloc] init];
+            filter.strength = 100.0f;
+            filter.kelvin = 6500 - 5500.0f * queue.strength;
+            filter.topLayerOpacity = absf(queue.strength) * 0.50f;
             
+            self.startFilter = self.endFilter = filter;
         }
             break;
             

@@ -21,6 +21,11 @@
 #import "PtEdViewToolBar.h"
 #import "PtAdViewControllerBrightness.h"
 #import "PtAdViewControllerSaturation.h"
+#import "PtAdViewControllerContrast.h"
+#import "PtAdViewControllerTemp.h"
+#import "PtAdViewControllerShadow.h"
+#import "PtAdViewControllerHighlight.h"
+#import "PtAdViewControllerExposure.h"
 
 typedef NS_ENUM(NSInteger, PtViewControllerEditorWorkflowAfterSavingPhoto){
     PtViewControllerEditorWorkflowAfterSavingPhotoDoNothing = 1,

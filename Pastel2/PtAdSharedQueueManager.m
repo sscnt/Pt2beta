@@ -233,6 +233,26 @@ static PtAdSharedQueueManager* sharedPtAdSharedQueueManager = nil;
             self.startFilter = self.endFilter = filter;
         }
             break;
+        case PtAdProcessQueueAdjustmentTypeContrast:
+        {
+            VnFilterLocalContrast* filter = [[VnFilterLocalContrast alloc] init];
+            float abs = queue.strength;
+            if (abs < 0.0) {
+                abs *= -1.0f;
+            }
+            filter.blurRadiusInPixels = (1.0 + 80.0 * abs) * queue.radiusMultiplier;
+            filter.contrast = 1.0 + queue.strength / 2.0;
+            filter.topLayerOpacity = 1.0f;
+            
+            self.startFilter = self.endFilter = filter;
+        }
+            break;
+            
+        case PtAdProcessQueueAdjustmentTypeTemp:
+        {
+            
+        }
+            break;
             
         default:
             break;

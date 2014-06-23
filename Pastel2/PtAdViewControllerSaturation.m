@@ -49,7 +49,7 @@
     queue.type = PtAdProcessQueueTypePreview;
     queue.adjustmentType = PtAdProcessQueueAdjustmentTypeSaturation;
     queue.strength = self.sliderBar.slider.value;
-    queue.radiusMultiplier = self.presetOriginalImage.size.width / [PtSharedApp instance].sizeOfImageToProcess.width;
+    queue.radiusMultiplier = self.originalPreviewImage.size.width / [PtSharedApp instance].sizeOfImageToProcess.width;
     [[PtAdSharedQueueManager instance] addQueue:queue];
 }
 

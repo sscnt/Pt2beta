@@ -277,27 +277,47 @@
 
 - (void)buttonContrastDidTouchUpInside:(PtEdViewBarButton *)button
 {
-
+    [PtFtSharedQueueManager instance].canceled = NO;
+    self.currentImageDidChange = YES;
+    PtAdViewControllerContrast* con = [[PtAdViewControllerContrast alloc] init];
+    con.editorController = self;
+    [self.navigationController pushViewController:con animated:NO];
 }
 
 - (void)buttonTempDidTouchUpInside:(PtEdViewBarButton *)button
 {
-    
+    [PtFtSharedQueueManager instance].canceled = NO;
+    self.currentImageDidChange = YES;
+    PtAdViewControllerTemp* con = [[PtAdViewControllerTemp alloc] init];
+    con.editorController = self;
+    [self.navigationController pushViewController:con animated:NO];
 }
 
 - (void)buttonShadowDidTouchUpInside:(PtEdViewBarButton *)button
 {
-    
+    [PtFtSharedQueueManager instance].canceled = NO;
+    self.currentImageDidChange = YES;
+    PtAdViewControllerShadow* con = [[PtAdViewControllerShadow alloc] init];
+    con.editorController = self;
+    [self.navigationController pushViewController:con animated:NO];
 }
 
 - (void)buttonHighlightDidTouchUpInside:(PtEdViewBarButton *)button
 {
-    
+    [PtFtSharedQueueManager instance].canceled = NO;
+    self.currentImageDidChange = YES;
+    PtAdViewControllerHighlight* con = [[PtAdViewControllerHighlight alloc] init];
+    con.editorController = self;
+    [self.navigationController pushViewController:con animated:NO];
 }
 
 - (void)buttonExposureDidTouchUpInside:(PtEdViewBarButton *)button
 {
-    
+    [PtFtSharedQueueManager instance].canceled = NO;
+    self.currentImageDidChange = YES;
+    PtAdViewControllerExposure* con = [[PtAdViewControllerHighlight alloc] init];
+    con.editorController = self;
+    [self.navigationController pushViewController:con animated:NO];
 }
 
 #pragma mark workflow

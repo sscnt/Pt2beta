@@ -265,6 +265,14 @@ static PtAdSharedQueueManager* sharedPtAdSharedQueueManager = nil;
             self.startFilter = self.endFilter = filter;
         }
             break;
+        case PtAdProcessQueueAdjustmentTypeShadow:
+        {
+            VnFilterShadows* filter = [[VnFilterShadows alloc] init];
+            filter.shadows = queue.strength;
+            
+            self.startFilter = self.endFilter = filter;
+        }
+            return;
             
         default:
             break;

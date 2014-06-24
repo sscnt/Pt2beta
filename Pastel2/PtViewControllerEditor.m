@@ -98,16 +98,16 @@
     [_clarifyButton addTarget:self action:@selector(buttonContrastDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
     [_toolBar appendButton:_clarifyButton];
     
-    _tempButton = [[PtEdViewBarButton alloc] initWithType:PtEdViewBarButtonTypeTemp];
-    [_tempButton addTarget:self action:@selector(buttonTempDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
-    [_toolBar appendButton:_tempButton];
-    
     _filmButton = [[PtEdViewBarButton alloc] initWithType:PtEdViewBarButtonTypeFilm];
     [_filmButton addTarget:self action:@selector(buttonFilmDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
     [_toolBar appendButton:_filmButton];
     
     _vignetteButton = [[PtEdViewBarButton alloc] initWithType:PtEdViewBarButtonTypeVignette];
     [_toolBar appendButton:_vignetteButton];
+    
+    _tempButton = [[PtEdViewBarButton alloc] initWithType:PtEdViewBarButtonTypeTemp];
+    [_tempButton addTarget:self action:@selector(buttonTempDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
+    [_toolBar appendButton:_tempButton];
         
     _exposureButton = [[PtEdViewBarButton alloc] initWithType:PtEdViewBarButtonTypeExposure];
     [_exposureButton addTarget:self action:@selector(buttonExposureDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
@@ -184,18 +184,18 @@
                 maxPixelSize = osize.width;
             }
             psize = CGSizeMake(maxPixelSize, osize.height * maxPixelSize / osize.width);
+            dispatch_async(q_main, ^{
+                _self.imagePreview.image = [PtUtilImage resizedImageUrl:[PtSharedApp originalImageUrl] ToSize:psize];
+                [_self.view addSubview:_self.imagePreview];
+                [_self.view bringSubviewToFront:_self.blurView];
+                [_self.view bringSubviewToFront:_self.progressView];
+                [_self.view bringSubviewToFront:_self.topBar];
+                [_self.view bringSubviewToFront:_self.toolBar];
+                [_self.view bringSubviewToFront:_self.bottomBar];
+                [_self.progressView setHidden:YES];
+                [_self.progressView resetProgress];
+            });
         }
-        dispatch_async(q_main, ^{            
-            _self.imagePreview.image = [PtUtilImage resizedImageUrl:[PtSharedApp originalImageUrl] ToSize:psize];
-            [_self.view addSubview:_self.imagePreview];
-            [_self.view bringSubviewToFront:_self.blurView];
-            [_self.view bringSubviewToFront:_self.progressView];
-            [_self.view bringSubviewToFront:_self.topBar];
-            [_self.view bringSubviewToFront:_self.toolBar];
-            [_self.view bringSubviewToFront:_self.bottomBar];
-            [_self.progressView setHidden:YES];
-            [_self.progressView resetProgress];
-        });
     });
     
 }

@@ -71,12 +71,11 @@
             CGSize size = CGSizeMake(_self.previewImageView.width * [[UIScreen mainScreen] scale], _self.previewImageView.height * [[UIScreen mainScreen] scale]);
             UIImage* image = [PtUtilImage resizedImageUrl:[PtSharedApp originalImageUrl] ToSize:size];
             _self.originalPreviewImage = image;
-        }
-        dispatch_async(q_main, ^{
-            [_self.progressView setProgress:0.60f];
-        });
-        @autoreleasepool {
-            UIImage* image = _self.originalPreviewImage;
+            
+            dispatch_async(q_main, ^{
+                [_self.progressView setProgress:0.60f];
+            });
+            image = _self.originalPreviewImage;
             if (image) {
                 //// for preset image
                 CGSize presetImageSizeWithAspect = [PtFtConfig presetBaseImageSize];
@@ -97,32 +96,15 @@
                 image = [image croppedImage:CGRectMake(x, y, presetImageSize.width, presetImageSize.height)];
                 _self.presetOriginalImage = image;
             }
+            
+            dispatch_async(q_main, ^{
+                [_self.progressView setProgress:0.90f];
+            });
+            
+            dispatch_async(q_main, ^{
+                [_self didResizeImage];
+            });
         }
-        dispatch_async(q_main, ^{
-            [_self.progressView setProgress:0.90f];
-        });
-        @autoreleasepool {
-            /*
-             if (YES) {
-             
-             }else{
-             //// Detect faces
-             NSDictionary *options = [NSDictionary dictionaryWithObject:CIDetectorAccuracyHigh forKey:CIDetectorAccuracy];
-             CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeFace context:nil options:options];
-             CIImage *ciImage = [[CIImage alloc] initWithCGImage:_self.previewImage.CGImage];
-             NSDictionary *imageOptions = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:1] forKey:CIDetectorImageOrientation];
-             NSArray *array = [detector featuresInImage:ciImage options:imageOptions];
-             
-             if([array count] > 0){
-             LOG(@"Face detected!");
-             _self.faceDetected = YES;
-             }
-             }
-             */
-        }
-        dispatch_async(q_main, ^{
-            [_self didResizeImage];
-        });
     });
 
 }

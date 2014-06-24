@@ -119,12 +119,12 @@
         dispatch_async(q_global, ^{
             @autoreleasepool {
                 [_self.cameraManager enableCamera];
+                dispatch_async(q_main, ^{
+                    _self.blackoutView.isBlurred = NO;
+                    [_self loadLastPhoto];
+                    _self.view.userInteractionEnabled = YES;
+                });
             }
-            dispatch_async(q_main, ^{
-                _self.blackoutView.isBlurred = NO;
-                [_self loadLastPhoto];
-                _self.view.userInteractionEnabled = YES;
-            });
         });
     }else if(_state != LmCmViewControllerStatePhotoLibraryIsOpening){
         _blackoutView.isBlurred = NO;
@@ -269,13 +269,13 @@
                     }
                 }
                 [PtSharedApp instance].imageToProcess = _image;
+                dispatch_async(q_main, ^{
+                    PtViewControllerEditor* con = [[PtViewControllerEditor alloc] init];
+                    [_self.navigationController pushViewController:con animated:NO];
+                    _self.state = LmCmViewControllerStatePresentedEditorController;
+                });
+                
             }
-            dispatch_async(q_main, ^{
-                PtViewControllerEditor* con = [[PtViewControllerEditor alloc] init];
-                [_self.navigationController pushViewController:con animated:NO];
-                _self.state = LmCmViewControllerStatePresentedEditorController;
-            });
-            
         });
     }
     
@@ -320,11 +320,11 @@
             NSUInteger buffered = [rep getBytes:buffer fromOffset:0.0 length:rep.size error:nil];
             NSData *data = [NSData dataWithBytesNoCopy:buffer length:buffered freeWhenDone:YES];
             [PtSharedApp saveOriginalImageDataToFile:data];
-            */
+             */
+            dispatch_async(q_main, ^{
+                [_self presentEditorViewControllerWithImage:image];
+            });
         }
-        dispatch_async(q_main, ^{
-            [_self presentEditorViewControllerWithImage:image];
-        });
         
     });
     

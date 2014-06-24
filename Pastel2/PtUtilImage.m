@@ -549,6 +549,7 @@ static PtUtilImage* sharedPtUtilImage = nil;
         CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, CGRectMake(0.0f, 0.0f, image.size.width - padding, image.size.height - padding));
         CGContextDrawImage(context, CGRectMake(0.0f, height - height1, width1, height1), imageRef);
         [array removeObjectAtIndex:0];
+        CGImageRelease(imageRef);
     }
     //// 2
     @autoreleasepool {
@@ -556,6 +557,7 @@ static PtUtilImage* sharedPtUtilImage = nil;
         CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, CGRectMake(padding, 0.0f, image.size.width - padding * 2.0f, image.size.height - padding));
         CGContextDrawImage(context, CGRectMake(width1, height - height1, width2, height1), imageRef);
         [array removeObjectAtIndex:0];
+        CGImageRelease(imageRef);
     }
     //// 3
     @autoreleasepool {
@@ -563,6 +565,7 @@ static PtUtilImage* sharedPtUtilImage = nil;
         CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, CGRectMake(padding, 0.0f, image.size.width - padding * 2.0f, image.size.height - padding));
         CGContextDrawImage(context, CGRectMake(width1 + width2, height - height1, width3, height1), imageRef);
         [array removeObjectAtIndex:0];
+        CGImageRelease(imageRef);
     }
     //// 4
     @autoreleasepool {
@@ -570,6 +573,7 @@ static PtUtilImage* sharedPtUtilImage = nil;
         CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, CGRectMake(padding, 0.0f, image.size.width - padding * 2.0f, image.size.height - padding));
         CGContextDrawImage(context, CGRectMake(width1 + width2 + width3, height - height1, width4, height1), imageRef);
         [array removeObjectAtIndex:0];
+        CGImageRelease(imageRef);
     }
     //// 5
     @autoreleasepool {
@@ -577,6 +581,7 @@ static PtUtilImage* sharedPtUtilImage = nil;
         CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, CGRectMake(padding, 0.0f, image.size.width - padding, image.size.height - padding));
         CGContextDrawImage(context, CGRectMake(width1 + width2 + width3 + width4, height - height1, width5, height1), imageRef);
         [array removeObjectAtIndex:0];
+        CGImageRelease(imageRef);
     }
     //// 6
     @autoreleasepool {
@@ -584,6 +589,7 @@ static PtUtilImage* sharedPtUtilImage = nil;
         CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, CGRectMake(0.0f, padding, image.size.width - padding, image.size.height - padding * 2.0f));
         CGContextDrawImage(context, CGRectMake(0.0f, height - height1 - height2, width1, height2), imageRef);
         [array removeObjectAtIndex:0];
+        CGImageRelease(imageRef);
     }
     //// 7
     @autoreleasepool {
@@ -591,6 +597,7 @@ static PtUtilImage* sharedPtUtilImage = nil;
         CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, CGRectMake(padding, padding, image.size.width - padding * 2.0f, image.size.height - padding * 2.0f));
         CGContextDrawImage(context, CGRectMake(width1, height - height1 - height2, width2, height2), imageRef);
         [array removeObjectAtIndex:0];
+        CGImageRelease(imageRef);
     }
     //// 8
     @autoreleasepool {
@@ -598,6 +605,7 @@ static PtUtilImage* sharedPtUtilImage = nil;
         CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, CGRectMake(padding, padding, image.size.width - padding * 2.0f, image.size.height - padding * 2.0f));
         CGContextDrawImage(context, CGRectMake(width1 + width2, height - height1 - height2, width3, height2), imageRef);
         [array removeObjectAtIndex:0];
+        CGImageRelease(imageRef);
     }
     //// 9
     @autoreleasepool {
@@ -605,6 +613,7 @@ static PtUtilImage* sharedPtUtilImage = nil;
         CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, CGRectMake(padding, padding, image.size.width - padding * 2.0f, image.size.height - padding * 2.0f));
         CGContextDrawImage(context, CGRectMake(width1 + width2 + width3, height - height1 - height2, width4, height2), imageRef);
         [array removeObjectAtIndex:0];
+        CGImageRelease(imageRef);
     }
     //// 10
     @autoreleasepool {
@@ -612,6 +621,7 @@ static PtUtilImage* sharedPtUtilImage = nil;
         CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, CGRectMake(padding, padding, image.size.width, image.size.height - padding * 2.0f));
         CGContextDrawImage(context, CGRectMake(width1 + width2 + width3 + width4, height - height1 - height2, width5, height2), imageRef);
         [array removeObjectAtIndex:0];
+        CGImageRelease(imageRef);
     }
     //// 11
     @autoreleasepool {
@@ -619,6 +629,7 @@ static PtUtilImage* sharedPtUtilImage = nil;
         CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, CGRectMake(0.0f, padding, image.size.width - padding, image.size.height - padding * 2.0f));
         CGContextDrawImage(context, CGRectMake(0.0f, height5 + height4, width1, height3), imageRef);
         [array removeObjectAtIndex:0];
+        CGImageRelease(imageRef);
     }
     //// 12
     @autoreleasepool {
@@ -626,6 +637,7 @@ static PtUtilImage* sharedPtUtilImage = nil;
         CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, CGRectMake(padding, padding, image.size.width - padding * 2.0f, image.size.height - padding * 2.0f));
         CGContextDrawImage(context, CGRectMake(width1, height5 + height4, width2, height3), imageRef);
         [array removeObjectAtIndex:0];
+        CGImageRelease(imageRef);
     }
     //// 13
     @autoreleasepool {
@@ -633,6 +645,7 @@ static PtUtilImage* sharedPtUtilImage = nil;
         CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, CGRectMake(padding, padding, image.size.width - padding * 2.0f, image.size.height - padding * 2.0f));
         CGContextDrawImage(context, CGRectMake(width1 + width2, height5 + height4, width3, height3), imageRef);
         [array removeObjectAtIndex:0];
+        CGImageRelease(imageRef);
     }
     //// 14
     @autoreleasepool {
@@ -640,6 +653,7 @@ static PtUtilImage* sharedPtUtilImage = nil;
         CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, CGRectMake(padding, padding, image.size.width - padding * 2.0f, image.size.height - padding * 2.0f));
         CGContextDrawImage(context, CGRectMake(width1 + width2 + width3, height5 + height4, width4, height3), imageRef);
         [array removeObjectAtIndex:0];
+        CGImageRelease(imageRef);
     }
     //// 15
     @autoreleasepool {
@@ -647,6 +661,7 @@ static PtUtilImage* sharedPtUtilImage = nil;
         CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, CGRectMake(padding, padding, image.size.width - padding, image.size.height - padding * 2.0f));
         CGContextDrawImage(context, CGRectMake(width1 + width2 + width3 + width4, height5 + height4, width5, height3), imageRef);
         [array removeObjectAtIndex:0];
+        CGImageRelease(imageRef);
     }
     //// 16
     @autoreleasepool {
@@ -654,6 +669,7 @@ static PtUtilImage* sharedPtUtilImage = nil;
         CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, CGRectMake(0.0f, padding, image.size.width - padding, image.size.height - padding * 2.0f));
         CGContextDrawImage(context, CGRectMake(0.0f, height5, width1, height4), imageRef);
         [array removeObjectAtIndex:0];
+        CGImageRelease(imageRef);
     }
     //// 17
     @autoreleasepool {
@@ -661,6 +677,7 @@ static PtUtilImage* sharedPtUtilImage = nil;
         CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, CGRectMake(padding, padding, image.size.width - padding * 2.0f, image.size.height - padding * 2.0f));
         CGContextDrawImage(context, CGRectMake(width1, height5, width2, height4), imageRef);
         [array removeObjectAtIndex:0];
+        CGImageRelease(imageRef);
     }
     //// 18
     @autoreleasepool {
@@ -668,6 +685,7 @@ static PtUtilImage* sharedPtUtilImage = nil;
         CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, CGRectMake(padding, padding, image.size.width - padding * 2.0f, image.size.height - padding * 2.0f));
         CGContextDrawImage(context, CGRectMake(width1 + width2, height5, width3, height4), imageRef);
         [array removeObjectAtIndex:0];
+        CGImageRelease(imageRef);
     }
     //// 19
     @autoreleasepool {
@@ -675,6 +693,7 @@ static PtUtilImage* sharedPtUtilImage = nil;
         CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, CGRectMake(padding, padding, image.size.width - padding * 2.0f, image.size.height - padding * 2.0f));
         CGContextDrawImage(context, CGRectMake(width1 + width2 + width3, height5, width4, height4), imageRef);
         [array removeObjectAtIndex:0];
+        CGImageRelease(imageRef);
     }
     //// 20
     @autoreleasepool {
@@ -682,6 +701,7 @@ static PtUtilImage* sharedPtUtilImage = nil;
         CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, CGRectMake(padding, padding, image.size.width - padding, image.size.height - padding * 2.0f));
         CGContextDrawImage(context, CGRectMake(width1 + width2 + width3 + width4, height5, width5, height4), imageRef);
         [array removeObjectAtIndex:0];
+        CGImageRelease(imageRef);
     }
     //// 21
     @autoreleasepool {
@@ -689,6 +709,7 @@ static PtUtilImage* sharedPtUtilImage = nil;
         CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, CGRectMake(0.0f, padding, image.size.width - padding, image.size.height - padding));
         CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, width1, height5), imageRef);
         [array removeObjectAtIndex:0];
+        CGImageRelease(imageRef);
     }
     //// 22
     @autoreleasepool {
@@ -696,6 +717,7 @@ static PtUtilImage* sharedPtUtilImage = nil;
         CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, CGRectMake(padding, padding, image.size.width - padding * 2.0f, image.size.height - padding));
         CGContextDrawImage(context, CGRectMake(width1, 0.0f, width2, height5), imageRef);
         [array removeObjectAtIndex:0];
+        CGImageRelease(imageRef);
     }
     //// 23
     @autoreleasepool {
@@ -703,6 +725,7 @@ static PtUtilImage* sharedPtUtilImage = nil;
         CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, CGRectMake(padding, padding, image.size.width - padding * 2.0f, image.size.height - padding));
         CGContextDrawImage(context, CGRectMake(width1 + width2, 0.0f, width3, height5), imageRef);
         [array removeObjectAtIndex:0];
+        CGImageRelease(imageRef);
     }
     //// 24
     @autoreleasepool {
@@ -710,6 +733,7 @@ static PtUtilImage* sharedPtUtilImage = nil;
         CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, CGRectMake(padding, padding, image.size.width - padding * 2.0f, image.size.height - padding));
         CGContextDrawImage(context, CGRectMake(width1 + width2 + width3, 0.0f, width4, height5), imageRef);
         [array removeObjectAtIndex:0];
+        CGImageRelease(imageRef);
     }
     //// 25
     @autoreleasepool {
@@ -717,6 +741,7 @@ static PtUtilImage* sharedPtUtilImage = nil;
         CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, CGRectMake(padding, padding, image.size.width - padding, image.size.height - padding));
         CGContextDrawImage(context, CGRectMake(width1 + width2 + width3 + width4, 0.0f, width5, height5), imageRef);
         [array removeObjectAtIndex:0];
+        CGImageRelease(imageRef);
     }
     
     

@@ -77,11 +77,11 @@
             _self.previewImage = nil;
             _self.originalPreviewImage = nil;
             _self.previewImageView.image = nil;
+            dispatch_async(q_main, ^{
+                [_self.progressView setProgress:0.10f];
+                [_self applyCurrentFiltersToOriginalImage];
+            });
         }
-        dispatch_async(q_main, ^{
-            [_self.progressView setProgress:0.10f];
-            [_self applyCurrentFiltersToOriginalImage];
-        });
     });
     
 }

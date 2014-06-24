@@ -106,14 +106,14 @@ static PtFtSharedQueueManager* sharedPtFtSharedQueueManager = nil;
                         break;
                 }
             }
+            dispatch_async(q_main, ^{
+                if (_self.canceled) {
+                    _self.processing = NO;
+                    return;
+                }
+                [_self didFinishProcessingQueue:queue];
+            });
         }
-        dispatch_async(q_main, ^{
-            if (_self.canceled) {
-                _self.processing = NO;
-                return;
-            }
-            [_self didFinishProcessingQueue:queue];
-        });
     });
 }
 

@@ -175,10 +175,11 @@ static PtAdSharedQueueManager* sharedPtAdSharedQueueManager = nil;
                 //// Process
                 [self setAdjustmentFilterWithQueue:queue];
                 if (self.startFilter) {
-                    image = [VnEffect processImage:image WithStartFilter:self.startFilter EndFilter:self.endFilter];
+                    UIImage* newImage = [VnEffect processImage:image WithStartFilter:self.startFilter EndFilter:self.endFilter];
+                    image = nil;
+                    [parts replaceObjectAtIndex:i withObject:newImage];
                 }
                 
-                [parts replaceObjectAtIndex:i withObject:image];
             }
         }
         dispatch_async(q_main, ^{
@@ -267,10 +268,70 @@ static PtAdSharedQueueManager* sharedPtAdSharedQueueManager = nil;
             break;
         case PtAdProcessQueueAdjustmentTypeShadow:
         {
-            VnFilterShadows* filter = [[VnFilterShadows alloc] init];
-            filter.shadows = queue.strength;
+            VnFilterGaussianBlur* gauss = [[VnFilterGaussianBlur alloc] init];
+            gauss.blurRadiusInPixels = 1.0;
             
-            self.startFilter = self.endFilter = filter;
+            VnFilterShadows* shadow = [[VnFilterShadows alloc] init];
+            
+            VnImageMaskBlendFilter* blend = [[VnImageMaskBlendFilter alloc] init];
+            VnImageNormalBlendFilter* normal = [[VnImageNormalBlendFilter alloc] init];
+            
+            VnFilterPassThrough* input = [[VnFilterPassThrough alloc] init];
+            
+            
+            VnFilterDuplicate* screen1 = [[VnFilterDuplicate alloc] init];
+            if (queue.strength < 0.0f) {
+                screen1.topLayerOpacity = -queue.strength;
+                screen1.blendingMode = VnBlendingModeMultiply;
+            }else{
+                screen1.topLayerOpacity = queue.strength;
+                screen1.blendingMode = VnBlendingModeScreen;
+            }
+            
+            self.startFilter = input;
+            [input addTarget:screen1];
+            [input addTarget:gauss];
+            [gauss addTarget:shadow];
+            [screen1 addTarget:blend atTextureLocation:0];
+            [shadow addTarget:blend atTextureLocation:1];
+            [input addTarget:normal atTextureLocation:0];
+            [blend addTarget:normal atTextureLocation:1];
+            self.endFilter = normal;
+        }
+            return;
+            
+            
+        case PtAdProcessQueueAdjustmentTypeHighlight:
+        {
+            VnFilterGaussianBlur* gauss = [[VnFilterGaussianBlur alloc] init];
+            gauss.blurRadiusInPixels = 1.0;
+            
+            VnFilterHighlights* highlights = [[VnFilterHighlights alloc] init];
+            
+            VnImageMaskBlendFilter* blend = [[VnImageMaskBlendFilter alloc] init];
+            VnImageNormalBlendFilter* normal = [[VnImageNormalBlendFilter alloc] init];
+            
+            VnFilterPassThrough* input = [[VnFilterPassThrough alloc] init];
+            
+            
+            VnFilterDuplicate* screen1 = [[VnFilterDuplicate alloc] init];
+            if (queue.strength < 0.0f) {
+                screen1.topLayerOpacity = -queue.strength;
+                screen1.blendingMode = VnBlendingModeMultiply;
+            }else{
+                screen1.topLayerOpacity = queue.strength;
+                screen1.blendingMode = VnBlendingModeScreen;
+            }
+            
+            self.startFilter = input;
+            [input addTarget:screen1];
+            [input addTarget:gauss];
+            [gauss addTarget:highlights];
+            [screen1 addTarget:blend atTextureLocation:0];
+            [highlights addTarget:blend atTextureLocation:1];
+            [input addTarget:normal atTextureLocation:0];
+            [blend addTarget:normal atTextureLocation:1];
+            self.endFilter = normal;
         }
             return;
             
@@ -278,6 +339,38 @@ static PtAdSharedQueueManager* sharedPtAdSharedQueueManager = nil;
             break;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @end

@@ -1,5 +1,5 @@
 //
-//  VnFilterShadows.h
+//  VnFilterHighlights.h
 //  Pastel2
 //
 //  Created by SSC on 2014/06/24.
@@ -8,7 +8,7 @@
 
 #import "VnImageFilter.h"
 
-@interface VnFilterShadows : VnImageFilter
+@interface VnFilterHighlights : VnImageFilter
 
 @property(readwrite, nonatomic, copy) NSArray *redControlPoints;
 @property(readwrite, nonatomic, copy) NSArray *greenControlPoints;
@@ -34,5 +34,6 @@
 - (NSMutableArray *)splineCurve:(NSArray *)points;
 - (NSMutableArray *)secondDerivative:(NSArray *)cgPoints;
 - (void)updateToneCurveTexture;
+
 
 @end

@@ -534,7 +534,7 @@ NSString* const kVnImageFilterFragmentShaderString = SHADER_STRING
 - (void)setTopLayerOpacity:(float)topLayerOpacity
 {
     //topLayerOpacityUniform = [filterProgram uniformIndex:@"topLayerOpacity"];
-    _topLayerOpacity = topLayerOpacity;
+    _topLayerOpacity = MAX(MIN(topLayerOpacity, 1.0f), 0.0f);
     //[self setFloat:topLayerOpacity forUniform:topLayerOpacityUniform program:filterProgram];
     [self setFloat:topLayerOpacity forUniformName:@"topLayerOpacity"];
 }

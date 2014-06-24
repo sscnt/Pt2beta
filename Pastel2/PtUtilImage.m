@@ -534,7 +534,7 @@ static PtUtilImage* sharedPtUtilImage = nil;
     size_t bitsPerComponent = 8;
     size_t bytesPerRow = align16(4 * width);
     size_t bufferSize = bytesPerRow * height;
-    uint8_t *bytes = malloc(bufferSize);
+    uint8_t *bytes = (uint8_t*)malloc(bufferSize);
     CGBitmapInfo bitmapInfo = kCGImageAlphaPremultipliedFirst | kCGBitmapByteOrderDefault;
     
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
@@ -733,8 +733,9 @@ static PtUtilImage* sharedPtUtilImage = nil;
     CGColorSpaceRelease(colorSpace);
     colorSpace = NULL;
     UIImage* mergedImage = [UIImage imageWithCGImage:image scale:1.0f orientation:UIImageOrientationUp];
-    NSData* data = UIImageJPEGRepresentation(mergedImage, 0.99);
+    NSData* data = UIImageJPEGRepresentation(mergedImage, 0.96);
     CGImageRelease(image);
+    image = NULL;
     free(bytes);
     return data;
 }

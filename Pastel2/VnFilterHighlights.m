@@ -1,14 +1,15 @@
 //
-//  VnFilterShadows.m
+//  VnFilterHighlights.m
 //  Pastel2
 //
 //  Created by SSC on 2014/06/24.
 //  Copyright (c) 2014年 SSC. All rights reserved.
 //
 
-#import "VnFilterShadows.h"
+#import "VnFilterHighlights.h"
 
-@interface VnShadowsImageACVFile : NSObject{
+
+@interface VnHighlightsImageACVFile : NSObject{
     short version;
     short totalCurves;
     
@@ -26,10 +27,10 @@
 - (id) initWithACVFileData:(NSData*)data;
 
 
-unsigned short vnShadowsInt16WithBytes(Byte* bytes);
+unsigned short vnHighlightsInt16WithBytes(Byte* bytes);
 @end
 
-@implementation VnShadowsImageACVFile
+@implementation VnHighlightsImageACVFile
 
 @synthesize rgbCompositeCurvePoints, redCurvePoints, greenCurvePoints, blueCurvePoints;
 
@@ -45,10 +46,10 @@ unsigned short vnShadowsInt16WithBytes(Byte* bytes);
         }
         
         Byte* rawBytes = (Byte*) [data bytes];
-        version        = vnShadowsInt16WithBytes(rawBytes);
+        version        = vnHighlightsInt16WithBytes(rawBytes);
         rawBytes+=2;
         
-        totalCurves    = vnShadowsInt16WithBytes(rawBytes);
+        totalCurves    = vnHighlightsInt16WithBytes(rawBytes);
         rawBytes+=2;
         
         NSMutableArray *curves = [NSMutableArray new];
@@ -57,7 +58,7 @@ unsigned short vnShadowsInt16WithBytes(Byte* bytes);
         // The following is the data for each curve specified by count above
         for (NSInteger x = 0; x<totalCurves; x++)
         {
-            unsigned short pointCount = vnShadowsInt16WithBytes(rawBytes);
+            unsigned short pointCount = vnHighlightsInt16WithBytes(rawBytes);
             rawBytes+=2;
             
             NSMutableArray *points = [NSMutableArray new];
@@ -67,9 +68,9 @@ unsigned short vnShadowsInt16WithBytes(Byte* bytes);
             // Curves dialog graph) and the second is the input value. All coordinates have range 0 to 255.
             for (NSInteger y = 0; y<pointCount; y++)
             {
-                unsigned short y = vnShadowsInt16WithBytes(rawBytes);
+                unsigned short y = vnHighlightsInt16WithBytes(rawBytes);
                 rawBytes+=2;
-                unsigned short x = vnShadowsInt16WithBytes(rawBytes);
+                unsigned short x = vnHighlightsInt16WithBytes(rawBytes);
                 rawBytes+=2;
 #if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
                 [points addObject:[NSValue valueWithCGSize:CGSizeMake(x * pointRate, y * pointRate)]];
@@ -87,14 +88,14 @@ unsigned short vnShadowsInt16WithBytes(Byte* bytes);
     return self;
 }
 
-unsigned short vnShadowsInt16WithBytes(Byte* bytes) {
+unsigned short vnHighlightsInt16WithBytes(Byte* bytes) {
     uint16_t result;
     memcpy(&result, bytes, sizeof(result));
     return CFSwapInt16BigToHost(result);
 }
 @end
 
-@interface VnFilterShadows()
+@interface VnFilterHighlights()
 {
     GLint toneCurveTextureUniform;
     GLuint toneCurveTexture;
@@ -105,7 +106,7 @@ unsigned short vnShadowsInt16WithBytes(Byte* bytes) {
 
 @end
 
-NSString *const kVnFilterShadowsFragmentShaderString = SHADER_STRING
+NSString *const kVnFilterHighlightsFragmentShaderString = SHADER_STRING
 (
  varying highp vec2 textureCoordinate;
  uniform sampler2D inputImageTexture;
@@ -118,13 +119,17 @@ NSString *const kVnFilterShadowsFragmentShaderString = SHADER_STRING
      
      mediump float lum = pixel.r * 0.299 + pixel.g * 0.587 + pixel.b * 0.114;
      mediump float w = texture2D(toneCurveTexture, vec2(lum, 0.0)).r;
-
+     
+     //w = lum;
      gl_FragColor = blendWithBlendingMode(pixel, vec4(w, w, w, topLayerOpacity), blendingMode);
-
+     
+     //gl_FragColor = vec4(vec3(w), 1.0);
  }
  );
 
-@implementation VnFilterShadows
+
+@implementation VnFilterHighlights
+
 @synthesize rgbCompositeControlPoints = _rgbCompositeControlPoints;
 @synthesize redControlPoints = _redControlPoints;
 @synthesize greenControlPoints = _greenControlPoints;
@@ -135,7 +140,7 @@ NSString *const kVnFilterShadowsFragmentShaderString = SHADER_STRING
 
 - (id)init;
 {
-    if (!(self = [self initWithACV:@"cq003"]))
+    if (!(self = [self initWithACV:@"cr001"]))
     {
 		return nil;
     }
@@ -145,14 +150,14 @@ NSString *const kVnFilterShadowsFragmentShaderString = SHADER_STRING
 
 // This pulls in Adobe ACV curve files to specify the tone curve
 - (id)initWithACVData:(NSData *)data {
-    if (!(self = [super initWithFragmentShaderFromString:kVnFilterShadowsFragmentShaderString]))
+    if (!(self = [super initWithFragmentShaderFromString:kVnFilterHighlightsFragmentShaderString]))
     {
 		return nil;
     }
     
     toneCurveTextureUniform = [filterProgram uniformIndex:@"toneCurveTexture"];
     
-    VnShadowsImageACVFile *curve = [[VnShadowsImageACVFile alloc] initWithACVFileData:data];
+    VnHighlightsImageACVFile *curve = [[VnHighlightsImageACVFile alloc] initWithACVFileData:data];
     
     [self setRgbCompositeControlPoints:curve.rgbCompositeCurvePoints];
     [self setRedControlPoints:curve.redCurvePoints];
@@ -184,7 +189,7 @@ NSString *const kVnFilterShadowsFragmentShaderString = SHADER_STRING
 - (void)setPointsWithACVURL:(NSURL*)curveFileURL
 {
     NSData* fileData = [NSData dataWithContentsOfURL:curveFileURL];
-    VnShadowsImageACVFile *curve = [[VnShadowsImageACVFile alloc] initWithACVFileData:fileData];
+    VnHighlightsImageACVFile *curve = [[VnHighlightsImageACVFile alloc] initWithACVFileData:fileData];
     
     [self setRgbCompositeControlPoints:curve.rgbCompositeCurvePoints];
     [self setRedControlPoints:curve.redCurvePoints];
@@ -573,6 +578,7 @@ NSString *const kVnFilterShadowsFragmentShaderString = SHADER_STRING
     
     [self updateToneCurveTexture];
 }
+
 
 
 

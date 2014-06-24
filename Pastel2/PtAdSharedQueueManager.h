@@ -16,6 +16,9 @@
 #import "VnFilterGammaCorection.h"
 #import "VnAdjustmentLayerKelvin.h"
 #import "VnFilterShadows.h"
+#import "VnFilterHighlights.h"
+#import "VnFilterGaussianBlur.h"
+#import "VnImageMaskBlendFilter.h"
 
 @class PtAdViewController;
 

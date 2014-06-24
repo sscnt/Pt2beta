@@ -82,6 +82,14 @@
     [_brightnessButton addTarget:self action:@selector(buttonBrightnessDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
     [_toolBar appendButton:_brightnessButton];
     
+    _shadowButton = [[PtEdViewBarButton alloc] initWithType:PtEdViewBarButtonTypeShadow];
+    [_shadowButton addTarget:self action:@selector(buttonShadowDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
+    [_toolBar appendButton:_shadowButton];
+    
+    _highlightButton = [[PtEdViewBarButton alloc] initWithType:PtEdViewBarButtonTypeHighlight];
+    [_highlightButton addTarget:self action:@selector(buttonHighlightDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
+    [_toolBar appendButton:_highlightButton];
+
     _saturationsButton = [[PtEdViewBarButton alloc] initWithType:PtEdViewBarButtonTypeSaturation];
     [_saturationsButton addTarget:self action:@selector(buttonSaturationDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
     [_toolBar appendButton:_saturationsButton];
@@ -100,15 +108,7 @@
     
     _vignetteButton = [[PtEdViewBarButton alloc] initWithType:PtEdViewBarButtonTypeVignette];
     [_toolBar appendButton:_vignetteButton];
-    
-    _shadowButton = [[PtEdViewBarButton alloc] initWithType:PtEdViewBarButtonTypeShadow];
-    [_shadowButton addTarget:self action:@selector(buttonShadowDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
-    [_toolBar appendButton:_shadowButton];
-    
-    _highlightButton = [[PtEdViewBarButton alloc] initWithType:PtEdViewBarButtonTypeHighlight];
-    [_highlightButton addTarget:self action:@selector(buttonHighlightDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
-    [_toolBar appendButton:_highlightButton];
-    
+        
     _exposureButton = [[PtEdViewBarButton alloc] initWithType:PtEdViewBarButtonTypeExposure];
     [_exposureButton addTarget:self action:@selector(buttonExposureDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
     [_toolBar appendButton:_exposureButton];

@@ -131,11 +131,12 @@
 - (void)didFinishProcessingOriginalImage
 {
     PtSharedApp* app = [PtSharedApp instance];
-    @autoreleasepool {
-        NSData* data = [PtUtilImage mergeSplitImage25:self.originalImageParts WithSize:app.sizeOfImageToProcess];
-        [PtSharedApp saveOriginalImageDataToFile:data];
-        [PtSharedApp instance].imageToProcess = [UIImage imageWithData:data];
-    }
+    
+    NSData* data = [PtUtilImage mergeSplitImage25:self.originalImageParts WithSize:app.sizeOfImageToProcess];
+    [self.originalImageParts removeAllObjects];
+    [PtSharedApp saveOriginalImageDataToFile:data];
+    [PtSharedApp instance].imageToProcess = [UIImage imageWithData:data];
+    
     self.view.userInteractionEnabled = YES;
     self.progressView.hidden = YES;
     self.blurView.isBlurred = NO;

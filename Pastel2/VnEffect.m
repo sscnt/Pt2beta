@@ -7,7 +7,6 @@
 //
 
 #import "VnEffect.h"
-#import "VnEffect.h"
 
 @implementation VnEffect
 
@@ -31,9 +30,7 @@
     GPUImagePicture* pic = [[GPUImagePicture alloc] initWithImage:image];
     [pic addTarget:startFilter];
     [pic processImage];
-    image = [endFilter imageFromCurrentlyProcessedOutputWithOrientation:UIImageOrientationUp];
-    [endFilter deleteOutputTexture];
-    [pic deleteOutputTexture];    
+    image = [endFilter imageFromCurrentlyProcessedOutputWithOrientation:UIImageOrientationUp]; 
     return image;
 }
 /*

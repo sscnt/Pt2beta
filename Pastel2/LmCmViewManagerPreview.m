@@ -43,6 +43,7 @@
         y = (width - y) / width;
         LOG(@"focus: (%f, %f)", x, y);
         [_self.cameraManager autoFocusAtPoint:CGPointMake(x, y)];
+        [_self.cameraManager autoExposureAtPoint:CGPointMake(x, y)];
     }    
     
 }

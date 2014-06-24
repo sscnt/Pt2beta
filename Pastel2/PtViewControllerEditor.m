@@ -103,6 +103,7 @@
     [_toolBar appendButton:_filmButton];
     
     _vignetteButton = [[PtEdViewBarButton alloc] initWithType:PtEdViewBarButtonTypeVignette];
+    [_vignetteButton addTarget:self action:@selector(buttonVignetteDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
     [_toolBar appendButton:_vignetteButton];
     
     _tempButton = [[PtEdViewBarButton alloc] initWithType:PtEdViewBarButtonTypeTemp];
@@ -315,7 +316,15 @@
 {
     [PtFtSharedQueueManager instance].canceled = NO;
     self.currentImageDidChange = YES;
-    PtAdViewControllerExposure* con = [[PtAdViewControllerHighlight alloc] init];
+    PtAdViewControllerExposure* con = [[PtAdViewControllerExposure alloc] init];
+    con.editorController = self;
+    [self.navigationController pushViewController:con animated:NO];
+}
+- (void)buttonVignetteDidTouchUpInside:(PtEdViewBarButton *)button
+{
+    [PtFtSharedQueueManager instance].canceled = NO;
+    self.currentImageDidChange = YES;
+    PtAdViewControllerVignette* con = [[PtAdViewControllerVignette alloc] init];
     con.editorController = self;
     [self.navigationController pushViewController:con animated:NO];
 }

@@ -171,6 +171,10 @@ static PtAdSharedQueueManager* sharedPtAdSharedQueueManager = nil;
             UIImage* image = [parts objectAtIndex:i];
             CGPoint mult = [PtUtilImage multiplierAtIndex:i];
             CGPoint add = [PtUtilImage addingAtIndex:i];
+            queue.multiplierY = mult.y;
+            queue.multiplierX = mult.x;
+            queue.addingX = add.x;
+            queue.addingY = add.y;
             if (image) {
                 //// Process
                 [self setAdjustmentFilterWithQueue:queue];
@@ -243,16 +247,23 @@ static PtAdSharedQueueManager* sharedPtAdSharedQueueManager = nil;
             break;
         case PtAdProcessQueueAdjustmentTypeContrast:
         {
-            VnFilterLocalContrast* filter = [[VnFilterLocalContrast alloc] init];
-            float abs = queue.strength;
-            if (abs < 0.0) {
-                abs *= -1.0f;
+            if(queue.strength >= 0.0){
+                VnFilterLocalContrast* filter = [[VnFilterLocalContrast alloc] init];
+                float abs = queue.strength;
+                if (abs < 0.0) {
+                    abs *= -1.0f;
+                }
+                filter.blurRadiusInPixels = (1.0 + 80.0 * abs) * queue.radiusMultiplier;
+                filter.contrast = 1.0 + queue.strength / 2.0;
+                filter.topLayerOpacity = 1.0f;
+                
+                self.startFilter = self.endFilter = filter;
+            }else{
+                VnFilterContrast* filter = [[VnFilterContrast alloc] init];
+                filter.contrast = queue.strength;
+                
+                self.startFilter = self.endFilter = filter;
             }
-            filter.blurRadiusInPixels = (1.0 + 80.0 * abs) * queue.radiusMultiplier;
-            filter.contrast = 1.0 + queue.strength / 2.0;
-            filter.topLayerOpacity = 1.0f;
-            
-            self.startFilter = self.endFilter = filter;
         }
             break;
             
@@ -299,8 +310,6 @@ static PtAdSharedQueueManager* sharedPtAdSharedQueueManager = nil;
             self.endFilter = normal;
         }
             return;
-            
-            
         case PtAdProcessQueueAdjustmentTypeHighlight:
         {
             VnFilterGaussianBlur* gauss = [[VnFilterGaussianBlur alloc] init];
@@ -334,7 +343,29 @@ static PtAdSharedQueueManager* sharedPtAdSharedQueueManager = nil;
             self.endFilter = normal;
         }
             return;
+        case PtAdProcessQueueAdjustmentTypeExposure:
+        {
+            VnFilterExposure* filter = [[VnFilterExposure alloc] init];
+            filter.exposure = queue.strength;
             
+            self.startFilter = self.endFilter = filter;
+        }
+            break;
+        case PtAdProcessQueueAdjustmentTypeVignetteAllAround:
+        {
+            VnFilterVignette* filter = [[VnFilterVignette alloc] init];
+            filter.mode = VnFilterVignetteModeAllAround;
+            filter.addingX = queue.addingX;
+            filter.addingY = queue.addingY;
+            filter.multiplierX = queue.multiplierX;
+            filter.multiplierY = queue.multiplierY;
+            filter.blendingMode = VnBlendingModeOverlay;
+            filter.topLayerOpacity = queue.strength;
+            
+            self.startFilter = self.endFilter = filter;
+            
+        }
+            break;
         default:
             break;
     }

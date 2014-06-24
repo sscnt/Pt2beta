@@ -20,7 +20,9 @@ typedef NS_ENUM(NSInteger, PtAdProcessQueueAdjustmentType){
     PtAdProcessQueueAdjustmentTypeTemp,
     PtAdProcessQueueAdjustmentTypeShadow,
     PtAdProcessQueueAdjustmentTypeHighlight,
-    PtAdProcessQueueAdjustmentTypeExposure
+    PtAdProcessQueueAdjustmentTypeExposure,
+    PtAdProcessQueueAdjustmentTypeVignetteAllAround,
+    PtAdProcessQueueAdjustmentTypeVignetteTop
 };
 
 
@@ -32,6 +34,10 @@ typedef NS_ENUM(NSInteger, PtAdProcessQueueAdjustmentType){
 @property (nonatomic, assign) float opacity;
 @property (nonatomic, assign) float strength;
 @property (nonatomic, assign) float radiusMultiplier;
+@property (nonatomic, assign) float multiplierX;
+@property (nonatomic, assign) float multiplierY;
+@property (nonatomic, assign) float addingX;
+@property (nonatomic, assign) float addingY;
 
 
 @end

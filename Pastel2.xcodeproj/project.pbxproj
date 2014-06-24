@@ -71,6 +71,9 @@
 		5819A126194DDD38002C6F3E /* VnEffectRaven.m in Sources */ = {isa = PBXBuildFile; fileRef = 5819A125194DDD38002C6F3E /* VnEffectRaven.m */; };
 		5819A12C194DF651002C6F3E /* ci001.pst in Resources */ = {isa = PBXBuildFile; fileRef = 5819A12B194DF651002C6F3E /* ci001.pst */; };
 		5819A12E194E1615002C6F3E /* ba002.pst in Resources */ = {isa = PBXBuildFile; fileRef = 5819A12D194E1615002C6F3E /* ba002.pst */; };
+		581E82EA1959BF0F0048B724 /* VnFilterContrast.m in Sources */ = {isa = PBXBuildFile; fileRef = 581E82E91959BF0F0048B724 /* VnFilterContrast.m */; };
+		581E82F11959C5BD0048B724 /* PtAdViewControllerVignette.m in Sources */ = {isa = PBXBuildFile; fileRef = 581E82F01959C5BD0048B724 /* PtAdViewControllerVignette.m */; };
+		581E82F51959C9BA0048B724 /* VnFilterVignette.m in Sources */ = {isa = PBXBuildFile; fileRef = 581E82F41959C9BA0048B724 /* VnFilterVignette.m */; };
 		5825A1B319500D3D00128F52 /* VnEffectOverlayFilm.m in Sources */ = {isa = PBXBuildFile; fileRef = 5825A1B219500D3D00128F52 /* VnEffectOverlayFilm.m */; };
 		5825A1B919500F3D00128F52 /* VnEffectOverlayDusk.m in Sources */ = {isa = PBXBuildFile; fileRef = 5825A1B819500F3D00128F52 /* VnEffectOverlayDusk.m */; };
 		5825A1BC1950120F00128F52 /* VnEffectOverlayFeelsLikeHome.m in Sources */ = {isa = PBXBuildFile; fileRef = 5825A1BB1950120F00128F52 /* VnEffectOverlayFeelsLikeHome.m */; };
@@ -506,6 +509,12 @@
 		5819A125194DDD38002C6F3E /* VnEffectRaven.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectRaven.m; sourceTree = "<group>"; };
 		5819A12B194DF651002C6F3E /* ci001.pst */ = {isa = PBXFileReference; lastKnownFileType = file; path = ci001.pst; sourceTree = "<group>"; };
 		5819A12D194E1615002C6F3E /* ba002.pst */ = {isa = PBXFileReference; lastKnownFileType = file; path = ba002.pst; sourceTree = "<group>"; };
+		581E82E81959BF0F0048B724 /* VnFilterContrast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnFilterContrast.h; sourceTree = "<group>"; };
+		581E82E91959BF0F0048B724 /* VnFilterContrast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnFilterContrast.m; sourceTree = "<group>"; };
+		581E82EF1959C5BD0048B724 /* PtAdViewControllerVignette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtAdViewControllerVignette.h; sourceTree = "<group>"; };
+		581E82F01959C5BD0048B724 /* PtAdViewControllerVignette.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PtAdViewControllerVignette.m; sourceTree = "<group>"; };
+		581E82F31959C9BA0048B724 /* VnFilterVignette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnFilterVignette.h; sourceTree = "<group>"; };
+		581E82F41959C9BA0048B724 /* VnFilterVignette.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnFilterVignette.m; sourceTree = "<group>"; };
 		5825A1B119500D3D00128F52 /* VnEffectOverlayFilm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectOverlayFilm.h; sourceTree = "<group>"; };
 		5825A1B219500D3D00128F52 /* VnEffectOverlayFilm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectOverlayFilm.m; sourceTree = "<group>"; };
 		5825A1B719500F3D00128F52 /* VnEffectOverlayDusk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectOverlayDusk.h; sourceTree = "<group>"; };
@@ -1053,6 +1062,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		581E82EE1959C59D0048B724 /* Vignette */ = {
+			isa = PBXGroup;
+			children = (
+				581E82EF1959C5BD0048B724 /* PtAdViewControllerVignette.h */,
+				581E82F01959C5BD0048B724 /* PtAdViewControllerVignette.m */,
+			);
+			name = Vignette;
+			sourceTree = "<group>";
+		};
 		5883F34F1955C7D8001ABCE3 /* AdjustmentModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -1251,6 +1269,8 @@
 				58F3E3241940C546001AEB8D /* VnFilterLensBlur.m */,
 				58F3E3251940C546001AEB8D /* VnFilterBrightness.h */,
 				58F3E3261940C546001AEB8D /* VnFilterBrightness.m */,
+				581E82E81959BF0F0048B724 /* VnFilterContrast.h */,
+				581E82E91959BF0F0048B724 /* VnFilterContrast.m */,
 				58F3E3271940C546001AEB8D /* VnFilterLevels.h */,
 				58F3E3281940C546001AEB8D /* VnFilterLevels.m */,
 				58F3E3291940C546001AEB8D /* VnFilterTemperature.h */,
@@ -1279,6 +1299,8 @@
 				58F8A55619593F3600A6746E /* VnImageMaskBlendFilter.m */,
 				58F8A54F19593A9A00A6746E /* VnFilterGaussianBlur.h */,
 				58F8A55019593A9A00A6746E /* VnFilterGaussianBlur.m */,
+				581E82F31959C9BA0048B724 /* VnFilterVignette.h */,
+				581E82F41959C9BA0048B724 /* VnFilterVignette.m */,
 			);
 			name = VnFilters;
 			sourceTree = "<group>";
@@ -2143,6 +2165,7 @@
 		58FFA8311957384D00B35A6C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				581E82EE1959C59D0048B724 /* Vignette */,
 				58FFA8371957388800B35A6C /* Exposure */,
 				58FFA8361957388100B35A6C /* Highlight */,
 				58FFA8351957387800B35A6C /* Shadow */,
@@ -2449,6 +2472,7 @@
 				58007CCE194D607B00AFAD38 /* VnEffectVSCOFresh.m in Sources */,
 				5802407519460A3C00E359BA /* PtFtViewTapRecognizer.m in Sources */,
 				58F3E4471940C622001AEB8D /* UIView+extend.m in Sources */,
+				581E82F51959C9BA0048B724 /* VnFilterVignette.m in Sources */,
 				58F3E4CC1940C834001AEB8D /* LmCmViewBottomBar.m in Sources */,
 				5836690D1942AE9D00E55C7C /* VnEffectFujiSuperia800.m in Sources */,
 				583669081942AE9D00E55C7C /* VnEffectAmaroFaded.m in Sources */,
@@ -2545,6 +2569,7 @@
 				58F3E4CD1940C834001AEB8D /* LmCmViewTopBar.m in Sources */,
 				58F3E4751940C6D3001AEB8D /* PtFtButtonToolBar.m in Sources */,
 				5819A11F194DC5A8002C6F3E /* VnEffectVSCODarkfilm.m in Sources */,
+				581E82EA1959BF0F0048B724 /* VnFilterContrast.m in Sources */,
 				5883F35E1955FFC0001ABCE3 /* PtAdViewSlider.m in Sources */,
 				58F3E5031940C8A9001AEB8D /* LmCmViewManagerTools.m in Sources */,
 				580535931951A9C2008F0AAE /* VnEffectSwoon.m in Sources */,
@@ -2634,6 +2659,7 @@
 				58F3E4461940C622001AEB8D /* UIScreen+extend.m in Sources */,
 				58F3E4A31940C7AF001AEB8D /* PtEdViewTopBar.m in Sources */,
 				58F3E3501940C56A001AEB8D /* VnAdjustmentLayerGradientColorFill.m in Sources */,
+				581E82F11959C5BD0048B724 /* PtAdViewControllerVignette.m in Sources */,
 				5836690C1942AE9D00E55C7C /* VnEffectPx680.m in Sources */,
 				5883F3591955D14C001ABCE3 /* PtAdViewControllerBrightness.m in Sources */,
 				580722E9194C8C940044395A /* VnEffectAngel.m in Sources */,

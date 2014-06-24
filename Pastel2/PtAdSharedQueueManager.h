@@ -19,6 +19,9 @@
 #import "VnFilterHighlights.h"
 #import "VnFilterGaussianBlur.h"
 #import "VnImageMaskBlendFilter.h"
+#import "VnFilterExposure.h"
+#import "VnFilterContrast.h"
+#import "VnFilterVignette.h"
 
 @class PtAdViewController;
 

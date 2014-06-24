@@ -81,6 +81,7 @@
 {
     _zeroPointAtCenter = zeroPointAtCenter;
     [self setNeedsDisplay];
+    self.value = _value;
 }
 
 - (void)setIndicatorColor:(UIColor *)indicatorColor

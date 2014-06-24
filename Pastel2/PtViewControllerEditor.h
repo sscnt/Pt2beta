@@ -26,6 +26,7 @@
 #import "PtAdViewControllerShadow.h"
 #import "PtAdViewControllerHighlight.h"
 #import "PtAdViewControllerExposure.h"
+#import "PtAdViewControllerVignette.h"
 
 typedef NS_ENUM(NSInteger, PtViewControllerEditorWorkflowAfterSavingPhoto){
     PtViewControllerEditorWorkflowAfterSavingPhotoDoNothing = 1,
@@ -94,6 +95,8 @@ typedef NS_ENUM(NSInteger, PtViewControllerEditorWorkflowAfterSavingPhoto){
 - (void)buttonShadowDidTouchUpInside:(PtEdViewBarButton*)button;
 - (void)buttonHighlightDidTouchUpInside:(PtEdViewBarButton*)button;
 - (void)buttonExposureDidTouchUpInside:(PtEdViewBarButton*)button;
+- (void)buttonVignetteDidTouchUpInside:(PtEdViewBarButton*)button;
+- (void)buttonFilmDidTouchUpInside:(PtEdViewBarButton*)button;
 
 - (void)imageDidSaveToCameraRoll:(UIImage*)image didFinishSavingWithError:(NSError*)error contextInfo:(void*)contextInfo;
 

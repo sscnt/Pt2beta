@@ -193,6 +193,22 @@
 	}
 }
 
+#pragma mark exposure
+
+- (void) autoExposureAtPoint:(CGPoint)point
+{
+    AVCaptureDevice *device = videoInput.device;
+    if ([device isExposurePointOfInterestSupported] && [device isExposureModeSupported:AVCaptureExposureModeContinuousAutoExposure]) {
+        NSError *error;
+        if ([device lockForConfiguration:&error]) {
+            [device setExposurePointOfInterest:point];
+            [device setExposureMode:AVCaptureExposureModeContinuousAutoExposure];
+            [device unlockForConfiguration];
+        }
+    }
+}
+
+
 #pragma  mark - 初期化
 
 //      デフォルト初期化

@@ -86,6 +86,7 @@
 /////////////////////////////////////////////////////////
 - (void) autoFocusAtPoint:(CGPoint)point;
 - (void) continuousFocusAtPoint:(CGPoint)point;
+- (void) autoExposureAtPoint:(CGPoint)point;
 
 /////////////////////////////////////////////////////////
 //   カメラ撮影(シャッター音あり)

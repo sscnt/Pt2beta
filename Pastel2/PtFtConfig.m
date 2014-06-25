@@ -78,7 +78,7 @@
 
 + (float)colorBarHeight
 {
-    return 50.0f;
+    return 44.0f;
 }
 
 + (float)artisticBarHeight
@@ -88,14 +88,14 @@
 
 + (float)overlayBarHeight
 {
-    return 50.0f;
+    return 44.0f;
 }
 
 #pragma mark mask
 
 + (float)colorLayerButtonMaskRadius
 {
-    return 10.0f;
+    return 8.0f;
 }
 
 + (float)artisticLayerButtonMaskRadius

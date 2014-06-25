@@ -46,5 +46,7 @@ typedef NS_ENUM(NSInteger, VnFilterVignetteMode){
 - (NSMutableArray *)secondDerivative:(NSArray *)cgPoints;
 - (void)updateToneCurveTexture;
 
+- (void)setACV:(NSString*)curveFilename;
+- (void)setACVData:(NSData *)data;
 
 @end

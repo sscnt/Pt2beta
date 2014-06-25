@@ -39,6 +39,8 @@
 		580B927F19531A8600E7CB58 /* VnEffectTimeless.m in Sources */ = {isa = PBXBuildFile; fileRef = 580B927E19531A8600E7CB58 /* VnEffectTimeless.m */; };
 		580B928219532DE800E7CB58 /* VnEffectBlackWhiteFilm.m in Sources */ = {isa = PBXBuildFile; fileRef = 580B928119532DE800E7CB58 /* VnEffectBlackWhiteFilm.m */; };
 		580B9285195339DE00E7CB58 /* VnEffectPearl.m in Sources */ = {isa = PBXBuildFile; fileRef = 580B9284195339DE00E7CB58 /* VnEffectPearl.m */; };
+		580B9FD6195AA74B005FF4E9 /* cs001.pst in Resources */ = {isa = PBXBuildFile; fileRef = 580B9FD4195AA74B005FF4E9 /* cs001.pst */; };
+		580B9FD7195AA74B005FF4E9 /* cs002.pst in Resources */ = {isa = PBXBuildFile; fileRef = 580B9FD5195AA74B005FF4E9 /* cs002.pst */; };
 		580E4F04194756D90014B7C8 /* VnEffectVividVintage.m in Sources */ = {isa = PBXBuildFile; fileRef = 580E4F03194756D90014B7C8 /* VnEffectVividVintage.m */; };
 		580E4F0C194757E50014B7C8 /* ad002.pst in Resources */ = {isa = PBXBuildFile; fileRef = 580E4F09194757E50014B7C8 /* ad002.pst */; };
 		580E4F0D194757E50014B7C8 /* ad003.pst in Resources */ = {isa = PBXBuildFile; fileRef = 580E4F0A194757E50014B7C8 /* ad003.pst */; };
@@ -463,6 +465,8 @@
 		580B928119532DE800E7CB58 /* VnEffectBlackWhiteFilm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectBlackWhiteFilm.m; sourceTree = "<group>"; };
 		580B9283195339DE00E7CB58 /* VnEffectPearl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectPearl.h; sourceTree = "<group>"; };
 		580B9284195339DE00E7CB58 /* VnEffectPearl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectPearl.m; sourceTree = "<group>"; };
+		580B9FD4195AA74B005FF4E9 /* cs001.pst */ = {isa = PBXFileReference; lastKnownFileType = file; path = cs001.pst; sourceTree = "<group>"; };
+		580B9FD5195AA74B005FF4E9 /* cs002.pst */ = {isa = PBXFileReference; lastKnownFileType = file; path = cs002.pst; sourceTree = "<group>"; };
 		580E4F02194756D90014B7C8 /* VnEffectVividVintage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectVividVintage.h; sourceTree = "<group>"; };
 		580E4F03194756D90014B7C8 /* VnEffectVividVintage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectVividVintage.m; sourceTree = "<group>"; };
 		580E4F09194757E50014B7C8 /* ad002.pst */ = {isa = PBXFileReference; lastKnownFileType = file; path = ad002.pst; sourceTree = "<group>"; };
@@ -1706,6 +1710,8 @@
 				583AEB7C1958BCD900A77E26 /* cq002.pst */,
 				58F8A5581959490A00A6746E /* cq003.pst */,
 				58F8A55A19595F3000A6746E /* cr001.pst */,
+				580B9FD4195AA74B005FF4E9 /* cs001.pst */,
+				580B9FD5195AA74B005FF4E9 /* cs002.pst */,
 			);
 			name = Curves;
 			sourceTree = "<group>";
@@ -2355,6 +2361,7 @@
 				58F3E3F01940C5F1001AEB8D /* ak001.pst in Resources */,
 				58F3E4101940C5F1001AEB8D /* bf002.pst in Resources */,
 				5819A10B194DB3CA002C6F3E /* ce001.pst in Resources */,
+				580B9FD6195AA74B005FF4E9 /* cs001.pst in Resources */,
 				58F3E3ED1940C5F1001AEB8D /* ah001.pst in Resources */,
 				58F3E51D1940C902001AEB8D /* mplus-1c-bold.ttf in Resources */,
 				58FCAF56194B09D6001D936E /* br002.pst in Resources */,
@@ -2393,6 +2400,7 @@
 				5819A123194DD071002C6F3E /* ch002.pst in Resources */,
 				5801CF4319488218007558E5 /* bd001.pst in Resources */,
 				5819A11C194DBF2D002C6F3E /* cg002.pst in Resources */,
+				580B9FD7195AA74B005FF4E9 /* cs002.pst in Resources */,
 				58F3E3FE1940C5F1001AEB8D /* av001.pst in Resources */,
 				58F3E4061940C5F1001AEB8D /* bb001.pst in Resources */,
 				58F3E3F71940C5F1001AEB8D /* ap001.pst in Resources */,

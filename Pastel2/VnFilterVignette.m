@@ -125,12 +125,17 @@ NSString *const kVnFilterVignetteFragmentShaderString = SHADER_STRING
      
      mediump float x = (textureCoordinate.x * multiplierX) + addingX;
      mediump float y = (textureCoordinate.y * multiplierY) + addingY;
+     mediump float d;
      
-     mediump float d = sqrt((x - 0.5) * (x - 0.5) + (y - 0.5) * (y - 0.5)) * 1.4141;
+     if(mode == 1){
+         d = sqrt((x - 0.5) * (x - 0.5) + (y - 0.5) * (y - 0.5)) * 1.4141;
+     }
+     else if(mode == 2){
+         d = sqrt((x - 0.5) * (x - 0.5) + (y - 1.0) * (y - 1.0)) * 0.89441;
+     }
+     
      mediump float w = texture2D(toneCurveTexture, vec2(d, 0.0)).r;
-     
-     rs.rgb = pixel.rgb * pixel.rgb;
-     
+          
      gl_FragColor = blendWithBlendingMode(pixel, vec4(vec3(0.0), topLayerOpacity * w), blendingMode);
  }
  );
@@ -148,7 +153,7 @@ NSString *const kVnFilterVignetteFragmentShaderString = SHADER_STRING
 
 - (id)init;
 {
-    if (!(self = [self initWithACV:@"cr001"]))
+    if (!(self = [self initWithACV:@"cs001"]))
     {
 		return nil;
     }
@@ -165,6 +170,13 @@ NSString *const kVnFilterVignetteFragmentShaderString = SHADER_STRING
     
     toneCurveTextureUniform = [filterProgram uniformIndex:@"toneCurveTexture"];
     
+    [self setACVData:data];
+    
+    return self;
+}
+
+- (void)setACVData:(NSData *)data
+{
     VnVignetteImageACVFile *curve = [[VnVignetteImageACVFile alloc] initWithACVFileData:data];
     
     [self setRgbCompositeControlPoints:curve.rgbCompositeCurvePoints];
@@ -173,20 +185,23 @@ NSString *const kVnFilterVignetteFragmentShaderString = SHADER_STRING
     [self setBlueControlPoints:curve.blueCurvePoints];
     
     curve = nil;
-    
-    return self;
 }
 
 - (id)initWithACV:(NSString*)curveFilename
 {
-    return [self initWithACVURL:[[NSBundle mainBundle] URLForResource:curveFilename
-                                                        withExtension:@"pst"]];
+    return [self initWithACVURL:[[NSBundle mainBundle] URLForResource:curveFilename withExtension:@"pst"]];
 }
 
 - (id)initWithACVURL:(NSURL*)curveFileURL
 {
     NSData* fileData = [NSData dataWithContentsOfURL:curveFileURL];
     return [self initWithACVData:fileData];
+}
+
+- (void)setACV:(NSString *)curveFilename
+{
+    NSData* fileData = [NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:curveFilename withExtension:@"pst"]];
+    [self setACVData:fileData];
 }
 
 - (void)setPointsWithACV:(NSString*)curveFilename
@@ -587,11 +602,18 @@ NSString *const kVnFilterVignetteFragmentShaderString = SHADER_STRING
     [self updateToneCurveTexture];
 }
 
-
-
-
 - (void)setMode:(VnFilterVignetteMode)mode
 {
+    switch (mode) {
+        case VnFilterVignetteModeAllAround:
+            [self setACV:@"cs001"];
+            break;
+        case VnFilterVignetteModeTopOnly:
+            [self setACV:@"cs002"];
+            break;
+        default:
+            break;
+    }
     [self setInteger:mode forUniformName:@"mode"];
 }
 - (void)setAddingX:(float)addingX

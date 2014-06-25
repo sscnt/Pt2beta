@@ -39,7 +39,7 @@
     
     
     float p = rect.size.width / 2.0f;
-    float t = rect.size.height / 2.0f;
+    float t = rect.size.height / 2.0f + 1.0f;
     CGContextAddArc(context, p, t, _radius, 0.0f, M_PI * 2.0f, 1);
     
     CGContextAddRect (context, self.bounds);
@@ -52,7 +52,7 @@
     if (_selected) {
         float r = _radius + 3.0f;
         p = (rect.size.width - r * 2.0f) / 2.0f;
-        t = (rect.size.height - r * 2.0f) / 2.0f;
+        t = (rect.size.height - r * 2.0f) / 2.0f + 1.0f;
         UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(p, t, r * 2.0f, r * 2.0f)];
         [_selectionColor setStroke];
         ovalPath.lineWidth = 2;

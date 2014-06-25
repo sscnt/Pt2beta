@@ -354,7 +354,7 @@ static PtAdSharedQueueManager* sharedPtAdSharedQueueManager = nil;
         case PtAdProcessQueueAdjustmentTypeVignetteAllAround:
         {
             VnFilterVignette* filter = [[VnFilterVignette alloc] init];
-            filter.mode = VnFilterVignetteModeAllAround;
+            filter.mode = VnFilterVignetteModeTopOnly;
             filter.addingX = queue.addingX;
             filter.addingY = queue.addingY;
             filter.multiplierX = queue.multiplierX;

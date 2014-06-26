@@ -470,6 +470,7 @@
 - (void)presetnToSettings
 {
     PtViewControllerSettings* con = [[PtViewControllerSettings alloc] init];
+    con.cameraController = self;
     [self.navigationController pushViewController:con animated:NO];
 }
 

@@ -51,7 +51,7 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     self.on = !_on;
-    [_target performSelector:_selector];
+    [_target performSelector:_selector withObject:self];
 }
 
 - (void)drawRect:(CGRect)rect

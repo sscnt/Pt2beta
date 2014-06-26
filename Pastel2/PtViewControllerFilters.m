@@ -33,6 +33,16 @@
     _navigationManager.delegate = self;
     _navigationManager.view = self.view;
     
+    //// Preview
+    float restHeight = self.view.height - [PtFtConfig toolBarHeight] - [PtFtConfig overlayBarHeight] - [PtFtConfig artisticBarHeight] - [PtFtConfig colorBarHeight] - [PtSharedApp bottomNavigationBarHeight];
+    CGSize isize = [PtSharedApp instance].originalImageSize;
+    if (isize.height > isize.width) {
+        float h = restHeight;
+        float w = isize.width * h / isize.height;
+        self.previewImageView.frame = CGRectMake(0.0f, 0.0f, w, h);
+    }
+    self.previewImageView.center = CGPointMake(self.view.width / 2.0f, restHeight / 2.0f);
+    self.progressView.center = self.previewImageView.center;
     
     [_filtersManager viewDidLoad];
     [_slidersManager viewDidLoad];

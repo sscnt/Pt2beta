@@ -338,7 +338,7 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    [picker dismissViewControllerAnimated:YES completion:nil];
+    [picker dismissViewControllerAnimated:NO completion:nil];
     self.loadedImageFromPickerController = [info objectForKey:UIImagePickerControllerOriginalImage];
     NSURL* url = [info objectForKey:UIImagePickerControllerReferenceURL];
     

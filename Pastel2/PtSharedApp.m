@@ -216,8 +216,6 @@ NSString* const keyChainKeyPremiumFilterPack1 = @"jp.shelbyapps.pastel2.keychain
 
 - (BOOL)leftHandedUI
 {
-    LOG(@"MUST DELETE LINE");
-    return YES;
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     NSInteger f = [ud integerForKey:@"leftHandedUI"];
     if (f == 2) {

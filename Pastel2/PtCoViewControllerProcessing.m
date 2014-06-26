@@ -29,18 +29,17 @@
     [super viewDidLoad];
     
     //// Preview
-    float restHeight = self.view.height - [PtFtConfig colorBarHeight] - [PtFtConfig overlayBarHeight] - [PtFtConfig artisticBarHeight] - [PtSharedApp bottomNavigationBarHeight];
     float w, h;
     UIImage* image = [PtSharedApp instance].imageToProcess;
     if (image.size.width > image.size.height) {
         w = self.view.width;
         h = image.size.height * w / image.size.width;
     }else{
-        h = restHeight - 40.0f;
+        h = self.view.height;
         w = image.size.width * h / image.size.height;
     }
     self.previewImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, w, h)];
-    self.previewImageView.center = CGPointMake(self.view.width / 2.0f, restHeight / 2.0f + 20.0f);
+    self.previewImageView.center = CGPointMake(self.view.width / 2.0f, self.view.height / 2.0f);
     [self.view addSubview:self.previewImageView];
     
     //// Blur

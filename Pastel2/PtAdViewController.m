@@ -29,6 +29,7 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [PtEdConfig bgColor];
     
+    
     //// Navigation Bar
     _navigationBar = [[PtCoViewNavigationBar alloc] initWithFrame:CGRectMake(0.0f, self.view.height - [PtSharedApp bottomNavigationBarHeight], self.view.width, [PtSharedApp bottomNavigationBarHeight])];
     [self.view addSubview:_navigationBar];
@@ -54,6 +55,17 @@
     _percentageBar.percentage = 0.0f;
     [self.view addSubview:_percentageBar];
     
+    //// Preview
+    float restHeight = _percentageBar.frame.origin.y;
+    CGSize isize = [PtSharedApp instance].originalImageSize;
+    if (isize.height > isize.width) {
+        float h = restHeight - 40.0f;
+        float w = isize.width * h / isize.height;
+        self.previewImageView.frame = CGRectMake(0.0f, 0.0f, w, h);
+    }
+    self.previewImageView.center = CGPointMake(self.view.width / 2.0f, restHeight / 2.0f);
+    self.progressView.center = self.previewImageView.center;
+
 
 }
 

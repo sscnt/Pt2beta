@@ -54,8 +54,14 @@ NSString* const keyChainKeyPremiumFilterPack1 = @"jp.shelbyapps.pastel2.keychain
         return;
     }
     _imageToProcess = imageToProcess;
-    _sizeOfImageToProcess = _imageToProcess.size;
-    LOG_SIZE(_sizeOfImageToProcess);
+    _originalImageSize = _imageToProcess.size;
+    LOG_SIZE(_originalImageSize);
+}
+
+- (void)setOriginalImageSize:(CGSize)originalImageSize
+{
+    _originalImageSize = originalImageSize;
+    _maxPixelSizeOfOriginalImage = (originalImageSize.width > originalImageSize.height) ? originalImageSize.width : originalImageSize.height;
 }
 
 #pragma mark ui
@@ -203,6 +209,32 @@ NSString* const keyChainKeyPremiumFilterPack1 = @"jp.shelbyapps.pastel2.keychain
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     NSInteger flag = (useFullResolutionImage) ? 2 : 1;
     [ud setInteger:flag forKey:@"useFullResolutionImage"];
+    [ud synchronize];
+}
+
+//// 左利き
+
+- (BOOL)leftHandedUI
+{
+    LOG(@"MUST DELETE LINE");
+    return YES;
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSInteger f = [ud integerForKey:@"leftHandedUI"];
+    if (f == 2) {
+        return YES;
+    }else if(f == 1){
+        return NO;
+    }
+    //// デフォルト
+    self.leftHandedUI = NO;
+    return NO;
+}
+
+- (void)setLeftHandedUI:(BOOL)leftHandedUI
+{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSInteger flag = (leftHandedUI) ? 2 : 1;
+    [ud setInteger:flag forKey:@"leftHandedUI"];
     [ud synchronize];
 }
 

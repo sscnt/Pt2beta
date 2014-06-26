@@ -27,7 +27,7 @@
 - (void)initPresetQueuePool;
 - (PtFtObjectProcessQueue*)shiftQueueFromPool;
 
-- (void)filterButtonDidTouchUpInside:(PtFtButtonLayerBar*)button;
+- (void)filterButtonDidTouchUpInside:(PtFtViewLayerBarButton*)button;
 - (void)applyFiltersToOriginalImage;
 
 - (void)didFinishProcessingOriginalImage;

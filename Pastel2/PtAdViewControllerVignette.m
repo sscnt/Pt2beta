@@ -23,7 +23,6 @@
     self.navigationBar.title = NSLocalizedString(@"Vignette", nil);
     
     self.sliderBar.slider.zeroPointAtCenter = NO;
-    self.sliderBar.slider.value = 0.50f;
     
     [self.progressView setProgress:0.10f];
     [self resizeImage];
@@ -57,14 +56,15 @@
     queue.multiplierX = 1.0f;
     queue.addingY = 0.0f;
     queue.addingX = 0.0f;
-    queue.radiusMultiplier = self.originalPreviewImage.size.width / [PtSharedApp instance].sizeOfImageToProcess.width;
+    queue.radiusMultiplier = self.originalPreviewImage.size.width / [PtSharedApp instance].originalImageSize.width;
     [[PtAdSharedQueueManager instance] addQueue:queue];
 }
 
 - (void)didResizeImage
 {
     [super didResizeImage];
-    [self registerQueue];
+    //[self registerQueue];
+    self.sliderBar.slider.value = 0.50f;
 }
 
 

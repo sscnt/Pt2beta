@@ -51,7 +51,7 @@
 
 + (UIColor *)toolBarBgColor
 {
-    return [UIColor colorWithWhite:0.0f alpha:1.0f];
+    return [self artisticBarBgColor];
 }
 
 + (UIColor *)colorBarBgColor

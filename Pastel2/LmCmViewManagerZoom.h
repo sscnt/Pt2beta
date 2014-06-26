@@ -25,6 +25,7 @@
 @property (nonatomic, assign) BOOL showZoomSlider;
 
 - (void)viewDidLoad;
+- (void)layoutViews;
 - (void)transformLayerWithZoomScale:(float)zoom;
 - (void)applyZoomScaleToSlider:(float)scale;
 

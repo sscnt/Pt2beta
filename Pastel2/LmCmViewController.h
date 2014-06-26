@@ -65,6 +65,8 @@ typedef NS_ENUM(NSInteger, LmCmViewControllerState){
 - (void)lastAssetDidLoad:(ALAsset*)asset;
 - (void)flashScreen;
 
+- (void)layoutViews;
+
 - (void)presentEditorViewControllerFromLastAsset;
 - (void)presentEditorViewControllerWithImage:(UIImage*)image;
 

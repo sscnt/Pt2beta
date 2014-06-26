@@ -34,6 +34,16 @@
     [_self.cameraPreviewOverlay addSubview:_zoomSlider];
 }
 
+- (void)layoutViews
+{
+    float sliderWidth = 30.0f;
+    if ([PtSharedApp instance].leftHandedUI) {
+        [_zoomSlider setX:sliderWidth - 16.0f];
+    }else{
+        [_zoomSlider setX:[UIScreen width] - sliderWidth];        
+    }
+}
+
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
     // gestureをセットしたview以外がタッチされた場合はgestureを無視

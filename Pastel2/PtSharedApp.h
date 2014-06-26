@@ -23,10 +23,12 @@ typedef NS_ENUM(NSInteger, PtSharedAppThemeColor){
 @property (nonatomic, assign) BOOL shootAndShare;
 @property (nonatomic, assign) BOOL useDefaultCameraApp;
 @property (nonatomic, assign) BOOL useFullResolutionImage;
+@property (nonatomic, assign) BOOL leftHandedUI;
 @property (nonatomic, assign) PtSharedAppThemeColor themeColor;
 
 @property (nonatomic, strong) UIImage* imageToProcess;
-@property (nonatomic, assign) CGSize sizeOfImageToProcess;
+@property (nonatomic, assign) CGSize originalImageSize;
+@property (nonatomic, assign) float maxPixelSizeOfOriginalImage;
 @property (nonatomic, assign) BOOL lastEditingPhotoExists;
 
 + (PtSharedApp*)instance;

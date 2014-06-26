@@ -7,16 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PtFtButtonNavigation.h"
+#import "PtCoViewNavigationButton.h"
 
-@interface PtFtViewNavigationBar : UIView
+@interface PtCoViewNavigationBar : UIView
 {
     VnViewLabel* _titleLabel;
 }
 
 @property (nonatomic, strong) NSString* title;
 
-- (void)addDoneButton:(PtFtButtonNavigation*)button;
-- (void)addCancelButton:(PtFtButtonNavigation*)button;
+- (void)addDoneButton:(PtCoViewNavigationButton*)button;
+- (void)addCancelButton:(PtCoViewNavigationButton*)button;
 
 @end

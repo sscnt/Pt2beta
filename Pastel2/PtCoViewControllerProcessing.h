@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PtFtViewNavigationBar.h"
+#import "PtCoViewNavigationBar.h"
 #import "PtFtObjectProcessQueue.h"
 #import "PtFtViewBlur.h"
 #import "PtFtViewTapRecognizer.h"

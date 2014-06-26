@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PtFtViewNavigationBar.h"
-#import "PtFtButtonNavigation.h"
+#import "PtCoViewNavigationBar.h"
+#import "PtCoViewNavigationButton.h"
 
 @class PtViewControllerFilters;
 
@@ -16,13 +16,13 @@
 
 @property (nonatomic, weak) UIView* view;
 @property (nonatomic, weak) PtViewControllerFilters* delegate;
-@property (nonatomic, strong) PtFtViewNavigationBar* navigationBar;
-@property (nonatomic, strong) PtFtButtonNavigation* cancelButton;
-@property (nonatomic, strong) PtFtButtonNavigation* doneButton;
+@property (nonatomic, strong) PtCoViewNavigationBar* navigationBar;
+@property (nonatomic, strong) PtCoViewNavigationButton* cancelButton;
+@property (nonatomic, strong) PtCoViewNavigationButton* doneButton;
 
 - (void)viewDidLoad;
 
-- (void)navigationDoneDidTouchUpInside:(PtFtButtonNavigation*)button;
-- (void)navigationCancelDidTouchUpInside:(PtFtButtonNavigation*)button;
+- (void)navigationDoneDidTouchUpInside:(PtCoViewNavigationButton*)button;
+- (void)navigationCancelDidTouchUpInside:(PtCoViewNavigationButton*)button;
 
 @end

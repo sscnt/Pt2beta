@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 SSC. All rights reserved.
 //
 
-#import "PtFtButtonLayerBar.h"
+#import "PtFtViewLayerBarButton.h"
 
-@implementation PtFtButtonLayerBar
+@implementation PtFtViewLayerBarButton
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -116,7 +116,7 @@
     [_maskView setNeedsDisplay];
 }
 
-- (void)didTouchUpInside:(PtFtButtonLayerBar *)sender
+- (void)didTouchUpInside:(PtFtViewLayerBarButton *)sender
 {
     [self.delegate didLayerBarButtonTouchUpInside:self];
 }

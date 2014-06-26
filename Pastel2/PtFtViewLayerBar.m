@@ -30,7 +30,7 @@
     return self;
 }
 
-- (void)appendLayerButton:(PtFtButtonLayerBar *)button
+- (void)appendLayerButton:(PtFtViewLayerBarButton *)button
 {
     if (!button) {
         return;
@@ -43,30 +43,7 @@
     }
 }
 
-- (void)appendToolButton:(PtFtButtonToolBar *)button
-{
-    if (!button) {
-        return;
-    }
-    [button setX:_left];
-    [self.view addSubview:button];
-    _left = [button right];
-    if (_left > self.view.contentSize.width) {
-        _view.contentSize = CGSizeMake(_left, self.view.contentSize.height);
-    }
-}
-
-- (void)appendToolButtonRight:(PtFtButtonToolBar *)button
-{
-    if (!button) {
-        return;
-    }
-    [button setX:_right - [button width]];
-    [self.view addSubview:button];
-    _right = button.frame.origin.x;
-}
-
-- (void)scrollToLayerButton:(PtFtButtonLayerBar *)button
+- (void)scrollToLayerButton:(PtFtViewLayerBarButton *)button
 {
     CGPoint cp = _view.contentOffset;
     float bx = button.frame.origin.x;
@@ -86,8 +63,8 @@
 
 - (void)deallocAllButtons
 {
-    for (PtFtButtonLayerBar* button in [_view subviews]) {
-        if ([button isKindOfClass:[PtFtButtonLayerBar class]]) {
+    for (PtFtViewLayerBarButton* button in [_view subviews]) {
+        if ([button isKindOfClass:[PtFtViewLayerBarButton class]]) {
             [button deallocImage];
         }
     }

@@ -35,6 +35,7 @@
 @property (nonatomic, strong) LmCmViewFlashModeList* flashList;
 
 - (void)viewDidLoad;
+- (void)layoutViews;
 - (void)showSettingsList;
 - (void)lastPhotoButtonSetAsset:(ALAsset*)asset;
 

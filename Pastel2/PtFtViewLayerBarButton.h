@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "PtFtViewLayerBarButtonMask.h"
 
-@class PtFtButtonLayerBar;
+@class PtFtViewLayerBarButton;
 
-@protocol PtFtButtonLayerBarDelegate
-- (void)didLayerBarButtonTouchUpInside:(PtFtButtonLayerBar*)button;
+@protocol PtFtViewLayerBarButtonDelegate
+- (void)didLayerBarButtonTouchUpInside:(PtFtViewLayerBarButton*)button;
 @end
 
-@interface PtFtButtonLayerBar : UIButton
+@interface PtFtViewLayerBarButton : UIButton
 {
     PtFtViewLayerBarButtonMask* _maskView;
     UIImageView* _imageView;
@@ -31,12 +31,12 @@
 @property (nonatomic, strong) NSString* title;
 @property (nonatomic, assign) float maskRadius;
 @property (nonatomic, assign) VnViewEditorLayerBarButtonMaskSelectionType selectionType;
-@property (nonatomic, weak) id<PtFtButtonLayerBarDelegate> delegate;
+@property (nonatomic, weak) id<PtFtViewLayerBarButtonDelegate> delegate;
 @property (nonatomic, assign) VnEffectId effectId;
 @property (nonatomic, assign) BOOL locked;
 
 
-- (void)didTouchUpInside:(PtFtButtonLayerBar*)sender;
+- (void)didTouchUpInside:(PtFtViewLayerBarButton*)sender;
 - (void)deallocImage;
 
 @end

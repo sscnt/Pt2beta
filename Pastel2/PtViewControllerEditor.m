@@ -180,7 +180,7 @@
         @autoreleasepool {
             _imagePreview = [[PtEdViewImagePreview  alloc] initWithFrame:CGRectMake(0.0f, _topBar.height, [UIScreen width], [UIScreen height] - _topBar.height - _bottomBar.height)];
             float maxPixelSize = [UIScreen width] * 4.0f;
-            CGSize osize = [PtSharedApp instance].sizeOfImageToProcess;
+            CGSize osize = [PtSharedApp instance].originalImageSize;
             if (maxPixelSize > osize.width) {
                 maxPixelSize = osize.width;
             }

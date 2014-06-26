@@ -15,11 +15,13 @@
 {
     
     //// Wrapper
-    _barWrapper = [[PtFtViewBarWrapper alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.width, [PtFtConfig overlayBarHeight] + [PtFtConfig artisticBarHeight] + [PtFtConfig colorBarHeight])];
+    _barWrapper = [[PtFtViewBarWrapper alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.width, [PtFtConfig overlayBarHeight] + [PtFtConfig artisticBarHeight] + [PtFtConfig colorBarHeight] + [PtFtConfig toolBarHeight])];
     [_barWrapper setY:self.view.height - _barWrapper.height - [PtSharedApp bottomNavigationBarHeight]];
     [self.view addSubview:_barWrapper];
     
     /// Bar
+    _toolBar = [[PtFtViewToolBar alloc] initWithFrame:CGRectMake(0.0f, self.view.height - [PtSharedApp bottomNavigationBarHeight], self.view.width, [PtSharedApp bottomNavigationBarHeight])];
+    [_barWrapper addToolBar:_toolBar];
     _overlayBar = [[PtFtViewLayerBar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.width, [PtFtConfig overlayBarHeight])];
     _overlayBar.backgroundColor = [PtFtConfig overlayBarBgColor];
     [_barWrapper addOverlayBar:_overlayBar];
@@ -58,7 +60,7 @@
     for (int i = 0; i < items.count; i++) {
         item = (PtFtObjectFilterItem*)[items objectAtIndex:i];
         if (item) {
-            PtFtButtonLayerBar* button = [[PtFtButtonLayerBar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, size.width, size.height)];
+            PtFtViewLayerBarButton* button = [[PtFtViewLayerBarButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, size.width, size.height)];
             button.maskColor = _overlayBar.backgroundColor;
             button.previewColor = item.previewColor;
             button.title = item.name;
@@ -86,7 +88,7 @@
     for (int i = 0; i < items.count; i++) {
         item = (PtFtObjectFilterItem*)[items objectAtIndex:i];
         if (item) {
-            PtFtButtonLayerBar* button = [[PtFtButtonLayerBar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, size.width, size.height)];
+            PtFtViewLayerBarButton* button = [[PtFtViewLayerBarButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, size.width, size.height)];
             button.maskColor = _colorBar.backgroundColor;
             button.previewColor = item.previewColor;
             button.title = item.name;
@@ -114,7 +116,7 @@
     for (int i = 0; i < items.count; i++) {
         item = (PtFtObjectFilterItem*)[items objectAtIndex:i];
         if (item) {
-            PtFtButtonLayerBar* button = [[PtFtButtonLayerBar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, size.width, size.height)];
+            PtFtViewLayerBarButton* button = [[PtFtViewLayerBarButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, size.width, size.height)];
             button.maskColor = _artisticBar.backgroundColor;
             button.previewColor = _artisticBar.backgroundColor;
             button.title = item.name;
@@ -133,7 +135,7 @@
 
 #pragma mark button
 
-- (void)didLayerBarButtonTouchUpInside:(PtFtButtonLayerBar *)button
+- (void)didLayerBarButtonTouchUpInside:(PtFtViewLayerBarButton *)button
 {
     [self selectLayerButtonWithButton:button];
     [self.delegate filterButtonDidTouchUpInside:button];
@@ -141,15 +143,15 @@
 
 - (void)setPresetImage:(UIImage *)image ToEffect:(VnEffectId)effectId
 {
-    PtFtButtonLayerBar* button = [self buttonByEffectId:effectId];
+    PtFtViewLayerBarButton* button = [self buttonByEffectId:effectId];
     if (button) {
         button.previewImage = image;
     }
 }
 
-- (PtFtButtonLayerBar*)buttonByEffectId:(VnEffectId)effectId
+- (PtFtViewLayerBarButton*)buttonByEffectId:(VnEffectId)effectId
 {
-    PtFtButtonLayerBar* button;
+    PtFtViewLayerBarButton* button;
     button = [_colorButtonsDictionary objectForKey:[NSString stringWithFormat:@"%d", (int)effectId]];
     if (button) {
         return button;
@@ -165,7 +167,7 @@
     return nil;
 }
 
-- (void)selectLayerButtonWithButton:(PtFtButtonLayerBar*)button
+- (void)selectLayerButtonWithButton:(PtFtViewLayerBarButton*)button
 {
     if (button == nil) {
         return;
@@ -206,7 +208,7 @@
 
 - (void)selectLayerButtonWithEffectId:(VnEffectId)effectId
 {
-    PtFtButtonLayerBar* button = [self buttonByEffectId:effectId];
+    PtFtViewLayerBarButton* button = [self buttonByEffectId:effectId];
     if (button) {
         [self selectLayerButtonWithButton:button];
     }

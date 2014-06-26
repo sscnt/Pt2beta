@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "PtFtViewLayerBar.h"
+#import "PtFtViewToolBar.h"
 
 @interface PtFtViewBarWrapper : UIView
 
+- (void)addToolBar:(PtFtViewToolBar*)bar;
 - (void)addOverlayBar:(PtFtViewLayerBar*)bar;
 - (void)addArtisticBar:(PtFtViewLayerBar*)bar;
 - (void)addColorBar:(PtFtViewLayerBar*)bar;

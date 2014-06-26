@@ -20,23 +20,28 @@
     return self;
 }
 
-- (void)addOverlayBar:(PtFtViewLayerBar *)bar
+- (void)addToolBar:(PtFtViewToolBar *)bar
 {
     [bar setY:0.0f];
     [self addSubview:bar];
-    
+}
+
+- (void)addOverlayBar:(PtFtViewLayerBar *)bar
+{
+    [bar setY:[PtFtConfig toolBarHeight]];
+    [self addSubview:bar];
 }
 
 - (void)addColorBar:(PtFtViewLayerBar *)bar
 {
-    [bar setY:[PtFtConfig overlayBarHeight] + [PtFtConfig artisticBarHeight]];
+    [bar setY:[PtFtConfig toolBarHeight] + [PtFtConfig overlayBarHeight] + [PtFtConfig artisticBarHeight]];
     [self addSubview:bar];
 }
 
 - (void)addArtisticBar:(PtFtViewLayerBar *)bar
 {
     
-    [bar setY:[PtFtConfig overlayBarHeight]];
+    [bar setY:[PtFtConfig toolBarHeight] + [PtFtConfig overlayBarHeight]];
     [self addSubview:bar];
 }
 

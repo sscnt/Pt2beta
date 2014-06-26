@@ -9,10 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "PtFtViewBarWrapper.h"
 #import "PtFtViewLayerBar.h"
+#import "PtFtViewToolBar.h"
+#import "PtFtViewToolBarButton.h"
 
 @class PtViewControllerFilters;
 
-@interface PtFtViewManagerFilters : NSObject <PtFtButtonLayerBarDelegate>
+@interface PtFtViewManagerFilters : NSObject <PtFtViewLayerBarButtonDelegate>
 
 @property (nonatomic, weak) UIView* view;
 @property (nonatomic, weak) PtViewControllerFilters* delegate;
@@ -20,14 +22,17 @@
 @property (nonatomic, strong) PtFtViewLayerBar* overlayBar;
 @property (nonatomic, strong) PtFtViewLayerBar* artisticBar;
 @property (nonatomic, strong) PtFtViewLayerBar* colorBar;
+@property (nonatomic, strong) PtFtViewToolBar* toolBar;
+@property (nonatomic, strong) PtFtViewToolBarButton* shuffleButton;
+@property (nonatomic, strong) PtFtViewToolBarButton* sliderButton;
 
 @property (nonatomic, strong) NSMutableDictionary* overlayButtonsDictionary;
 @property (nonatomic, strong) NSMutableDictionary* artisticButtonsDictionary;
 @property (nonatomic, strong) NSMutableDictionary* colorButtonsDictionary;
 
-@property (nonatomic, weak) PtFtButtonLayerBar* currentColorButton;
-@property (nonatomic, weak) PtFtButtonLayerBar* currentArtisticButton;
-@property (nonatomic, weak) PtFtButtonLayerBar* currentOverlayButton;
+@property (nonatomic, weak) PtFtViewLayerBarButton* currentColorButton;
+@property (nonatomic, weak) PtFtViewLayerBarButton* currentArtisticButton;
+@property (nonatomic, weak) PtFtViewLayerBarButton* currentOverlayButton;
 
 - (void)viewDidLoad;
 - (void)layoutButtons;
@@ -36,11 +41,11 @@
 - (void)layoutArtisticButtons;
 
 - (void)setPresetImage:(UIImage*)image ToEffect:(VnEffectId)effectId;
-- (PtFtButtonLayerBar*)buttonByEffectId:(VnEffectId)effectId;
-- (void)selectLayerButtonWithButton:(PtFtButtonLayerBar*)button;
+- (PtFtViewLayerBarButton*)buttonByEffectId:(VnEffectId)effectId;
+- (void)selectLayerButtonWithButton:(PtFtViewLayerBarButton*)button;
 - (void)selectLayerButtonWithEffectId:(VnEffectId)effectId;
 
-- (void)didLayerBarButtonTouchUpInside:(PtFtButtonLayerBar*)button;
+- (void)didLayerBarButtonTouchUpInside:(PtFtViewLayerBarButton*)button;
 - (void)deallocArtisticButtonImages;
 
 @end

@@ -114,7 +114,7 @@
 {
     PtSharedApp* app = [PtSharedApp instance];
     
-    NSData* data = [PtUtilImage mergeSplitImage25:self.originalImageParts WithSize:app.sizeOfImageToProcess];
+    NSData* data = [PtUtilImage mergeSplitImage25:self.originalImageParts WithSize:app.originalImageSize];
     [self.originalImageParts removeAllObjects];
     [PtSharedApp saveOriginalImageDataToFile:data];
     [PtSharedApp instance].imageToProcess = [UIImage imageWithData:data];

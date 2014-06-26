@@ -20,6 +20,7 @@
 @property (nonatomic, weak) LmCmViewController<LmCmViewManagerPreviewDelegate>* delegate;
 
 - (void)viewDidLoad;
+- (void)layoutViews;
 - (void)viewDidTouchUpInside:(UITapGestureRecognizer*)sender;
 
 @end

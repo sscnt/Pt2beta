@@ -103,8 +103,14 @@
     [_previewManager viewDidLoad];
     [_toolsManager viewDidLoad];
     
+    [self layoutViews];    
     [self loadLastPhoto];
+}
 
+- (void)layoutViews
+{
+    [_zoomViewManager layoutViews];
+    [_toolsManager layoutViews];
 }
 
 - (void)viewDidAppear:(BOOL)animated

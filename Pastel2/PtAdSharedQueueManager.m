@@ -132,7 +132,7 @@ static PtAdSharedQueueManager* sharedPtAdSharedQueueManager = nil;
     if (imageSize.height > imageSize.width) {
         ty = imageSize.height / imageSize.width;
     }
-    float rm = imageSize.width / [PtSharedApp instance].sizeOfImageToProcess.width;
+    float rm = imageSize.width / [PtSharedApp instance].originalImageSize.width;
     dispatch_queue_t q_main = dispatch_get_main_queue();
     __block __weak PtAdViewController* _con = self.delegate;
     dispatch_async(q_main, ^{
@@ -154,7 +154,7 @@ static PtAdSharedQueueManager* sharedPtAdSharedQueueManager = nil;
 
 - (void)processQueueTypeOriginal:(PtAdObjectProcessQueue *)queue
 {
-    CGSize imageSize = [PtSharedApp instance].sizeOfImageToProcess;
+    CGSize imageSize = [PtSharedApp instance].originalImageSize;
     float tx = 1.0f;
     float ty = 1.0f;
     if (imageSize.width > imageSize.height) {
@@ -189,7 +189,7 @@ static PtAdSharedQueueManager* sharedPtAdSharedQueueManager = nil;
         dispatch_async(q_main, ^{
             [_con.progressView setProgress:1.0 / parts.count + _con.progressView.progress];
         });
-        if ([PtSharedApp instance].sizeOfImageToProcess.width > 3500.0f || [PtSharedApp instance].sizeOfImageToProcess.height > 3500.0f) {
+        if ([PtSharedApp instance].originalImageSize.width > 3500.0f || [PtSharedApp instance].originalImageSize.height > 3500.0f) {
             [NSThread sleepForTimeInterval:0.25f];
         }
     }
@@ -253,7 +253,7 @@ static PtAdSharedQueueManager* sharedPtAdSharedQueueManager = nil;
                 if (abs < 0.0) {
                     abs *= -1.0f;
                 }
-                filter.blurRadiusInPixels = (1.0 + 80.0 * abs) * queue.radiusMultiplier;
+                filter.blurRadiusInPixels = (1.0 + 40.0 * abs) * queue.radiusMultiplier;
                 filter.contrast = 1.0 + queue.strength / 2.0;
                 filter.topLayerOpacity = 1.0f;
                 

@@ -13,11 +13,17 @@
 @interface LmCmViewBottomBar : UIView
 
 @property (nonatomic, assign) BOOL transparent;
+@property (nonatomic, weak) LmCmViewBarButton* settingsButton;
+@property (nonatomic, weak) LmCmViewBarButton* camerarollButton;
+@property (nonatomic, weak) LmCmViewBarButton* lastPhotoButton;
+@property (nonatomic, weak) LmCmViewBarButton* generalButton;
 
 - (void)addShutterButton:(LmCmButtonShutter*)button;
 - (void)addSettingsButton:(LmCmViewBarButton*)button;
 - (void)addCamerarollButton:(LmCmViewBarButton*)button;
 - (void)addLastPhotoButton:(LmCmViewBarButton*)button;
 - (void)addGeneralSettingsButton:(LmCmViewBarButton*)button;
+
+- (void)layoutViews;
 
 @end

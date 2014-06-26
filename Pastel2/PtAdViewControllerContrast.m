@@ -38,6 +38,7 @@
     queue.type = PtAdProcessQueueTypeOriginal;
     queue.adjustmentType = PtAdProcessQueueAdjustmentTypeContrast;
     queue.strength = self.sliderBar.slider.value;
+    queue.radiusMultiplier =[PtSharedApp instance].maxPixelSizeOfOriginalImage / 3264.0f;
     [[PtAdSharedQueueManager instance] addQueue:queue];
 }
 
@@ -49,7 +50,7 @@
     queue.type = PtAdProcessQueueTypePreview;
     queue.adjustmentType = PtAdProcessQueueAdjustmentTypeContrast;
     queue.strength = self.sliderBar.slider.value;
-    queue.radiusMultiplier = self.originalPreviewImage.size.width / [PtSharedApp instance].sizeOfImageToProcess.width;
+    queue.radiusMultiplier = self.originalPreviewImage.size.width / 3264.0f;
     [[PtAdSharedQueueManager instance] addQueue:queue];
 }
 

@@ -112,6 +112,7 @@
     }
     
     [self layoutIndicatorViewWithValue:value];
+    [self.delegate slider:self DidValueChange:value];
 }
 
 - (void)layoutIndicatorViewWithValue:(float)value
@@ -123,15 +124,23 @@
             float w = [self width] - _paddingHorizontal * 2.0f;
             w /= 2.0f;
             float ww = abs(w * value);
-            if (value < 0.0f) {
+            float v = value;
+            if ([PtSharedApp instance].leftHandedUI) {
+                v = -value;
+            }
+            if (v < 0.0f) {
                 _indicatorView.frame = CGRectMake(w + _paddingHorizontal - ww, _indicatorView.frame.origin.y, ww, [_indicatorView height]);
             }else{
                 _indicatorView.frame = CGRectMake(w + _paddingHorizontal, _indicatorView.frame.origin.y, ww, [_indicatorView height]);
             }
         }else{
             float w = [self width] - _paddingHorizontal * 2.0f;
-            w *= value;
-            _indicatorView.frame = CGRectMake(_paddingHorizontal, _indicatorView.frame.origin.y, w, [_indicatorView height]);
+            float ww = w * value;
+            if ([PtSharedApp instance].leftHandedUI) {
+                _indicatorView.frame = CGRectMake(_paddingHorizontal + w - ww, _indicatorView.frame.origin.y, ww, [_indicatorView height]);
+            }else{
+                _indicatorView.frame = CGRectMake(_paddingHorizontal, _indicatorView.frame.origin.y, ww, [_indicatorView height]);
+            }
         }
 
     }
@@ -151,7 +160,11 @@
     if (_zeroPointAtCenter) {
         value = (value + 1.0f) / 2.0f;
     }
-    return (_thumbEndPoint - _thumbStartPoint) * value + _thumbStartPoint;
+    if ([PtSharedApp instance].leftHandedUI) {
+        return (_thumbEndPoint - _thumbStartPoint) * (1.0 - value) + _thumbStartPoint;
+    }else{
+        return (_thumbEndPoint - _thumbStartPoint) * value + _thumbStartPoint;
+    }
 }
 
 - (CGFloat)calcValueByThumbPosition:(CGFloat)x
@@ -161,6 +174,9 @@
         return MAX(MIN(value, 1.0), 0.0f);
     }
     CGFloat value = (x - _thumbStartPoint) / (_thumbEndPoint - _thumbStartPoint);
+    if ([PtSharedApp instance].leftHandedUI) {
+        value = 1.0 - value;
+    }
     value = MAX(MIN(value, 1.0), 0.0f);
     if (_zeroPointAtCenter) {
         return (value - 0.50f) * 2.0f;

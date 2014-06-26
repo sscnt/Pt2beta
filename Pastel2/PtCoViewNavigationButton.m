@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 SSC. All rights reserved.
 //
 
-#import "PtFtButtonNavigation.h"
+#import "PtCoViewNavigationButton.h"
 
-@implementation PtFtButtonNavigation
+@implementation PtCoViewNavigationButton
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -19,7 +19,7 @@
     return self;
 }
 
-- (void)setType:(PtFtButtonNavigationType)type
+- (void)setType:(PtCoViewNavigationButtonType)type
 {
     _type = type;
     [self setNeedsDisplay];
@@ -30,29 +30,28 @@
     
     UIColor* color = [UIColor colorWithWhite:1.0f alpha:0.80f];
     switch (_type) {
-        case PtFtButtonNavigationTypeDone:
+        case PtCoViewNavigationButtonTypeDone:
         {
             
             //// Bezier Drawing
             UIBezierPath* bezierPath = [UIBezierPath bezierPath];
-            [bezierPath moveToPoint: CGPointMake(31.01, 17.61)];
-            [bezierPath addLineToPoint: CGPointMake(21.11, 27.51)];
-            [bezierPath addLineToPoint: CGPointMake(20.88, 27.28)];
-            [bezierPath addLineToPoint: CGPointMake(20.77, 27.39)];
-            [bezierPath addLineToPoint: CGPointMake(15.11, 21.73)];
-            [bezierPath addLineToPoint: CGPointMake(17.23, 19.61)];
-            [bezierPath addLineToPoint: CGPointMake(21, 23.38)];
-            [bezierPath addLineToPoint: CGPointMake(28.89, 15.49)];
-            [bezierPath addLineToPoint: CGPointMake(31.01, 17.61)];
+            [bezierPath moveToPoint: CGPointMake(31.01, 18.61)];
+            [bezierPath addLineToPoint: CGPointMake(21.11, 28.51)];
+            [bezierPath addLineToPoint: CGPointMake(20.88, 28.28)];
+            [bezierPath addLineToPoint: CGPointMake(20.77, 28.39)];
+            [bezierPath addLineToPoint: CGPointMake(15.11, 22.73)];
+            [bezierPath addLineToPoint: CGPointMake(17.23, 20.61)];
+            [bezierPath addLineToPoint: CGPointMake(21, 24.38)];
+            [bezierPath addLineToPoint: CGPointMake(28.89, 16.49)];
+            [bezierPath addLineToPoint: CGPointMake(31.01, 18.61)];
             [bezierPath closePath];
             [color setFill];
             [bezierPath fill];
             
-            
 
         }
             break;
-        case PtFtButtonNavigationTypeCancel:
+        case PtCoViewNavigationButtonTypeCancel:
         {
             
             //// Bezier Drawing

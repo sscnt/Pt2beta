@@ -94,6 +94,11 @@
     }
 }
 
+- (void)layoutViews
+{
+    [self.delegate.bottomBar layoutViews];
+}
+
 #pragma mark button
 
 - (void)settingsButtonDidTouchUpInside:(LmCmViewBarButton *)sender

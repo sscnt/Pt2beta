@@ -140,7 +140,7 @@ static PtFtSharedQueueManager* sharedPtFtSharedQueueManager = nil;
     if (imageSize.height > imageSize.width) {
         ty = imageSize.height / imageSize.width;
     }
-    float rm = imageSize.width / [PtSharedApp instance].sizeOfImageToProcess.width;
+    float rm = imageSize.width / [PtSharedApp instance].originalImageSize.width;
     [self setStartAndEndFiltersWithQueue:queue Multipliers:CGPointMake(1.0f, 1.0f) Adding:CGPointMake(0.0f, 0.0f) ImageSize:imageSize Transform:CGPointMake(tx, ty) RadiusMultiplier:rm];
     dispatch_queue_t q_main = dispatch_get_main_queue();
     __block __weak PtViewControllerFilters* _con = self.delegate;
@@ -159,7 +159,7 @@ static PtFtSharedQueueManager* sharedPtFtSharedQueueManager = nil;
 
 - (void)processQueueTypeOriginal:(PtFtObjectProcessQueue *)queue
 {
-    CGSize imageSize = [PtSharedApp instance].sizeOfImageToProcess;
+    CGSize imageSize = [PtSharedApp instance].originalImageSize;
     float tx = 1.0f;
     float ty = 1.0f;
     if (imageSize.width > imageSize.height) {
@@ -188,7 +188,7 @@ static PtFtSharedQueueManager* sharedPtFtSharedQueueManager = nil;
         dispatch_async(q_main, ^{
             [_con.progressView setProgress:1.0 / parts.count + _con.progressView.progress];
         });
-        if ([PtSharedApp instance].sizeOfImageToProcess.width > 3500.0f || [PtSharedApp instance].sizeOfImageToProcess.height > 3500.0f) {
+        if ([PtSharedApp instance].originalImageSize.width > 3500.0f || [PtSharedApp instance].originalImageSize.height > 3500.0f) {
             [NSThread sleepForTimeInterval:0.25f];
         }
     }
@@ -204,7 +204,7 @@ static PtFtSharedQueueManager* sharedPtFtSharedQueueManager = nil;
     PtFtViewManagerSliders* sm = self.delegate.slidersManager;
     
     if (fm.currentColorButton) {
-        PtFtButtonLayerBar* button = fm.currentColorButton;
+        PtFtViewLayerBarButton* button = fm.currentColorButton;
         VnEffect* effect = [PtFtSharedFilterManager effectByEffectId:button.effectId];
         if (effect) {
             effect.multiplierX = mult.x;
@@ -229,7 +229,7 @@ static PtFtSharedQueueManager* sharedPtFtSharedQueueManager = nil;
     }
     
     if (fm.currentArtisticButton) {
-        PtFtButtonLayerBar* button = fm.currentArtisticButton;
+        PtFtViewLayerBarButton* button = fm.currentArtisticButton;
         VnEffect* effect = [PtFtSharedFilterManager effectByEffectId:button.effectId];
         if (effect) {
             effect.multiplierX = mult.x;
@@ -262,7 +262,7 @@ static PtFtSharedQueueManager* sharedPtFtSharedQueueManager = nil;
     }
     
     if (fm.currentOverlayButton) {
-        PtFtButtonLayerBar* button = fm.currentOverlayButton;
+        PtFtViewLayerBarButton* button = fm.currentOverlayButton;
         VnEffect* effect = [PtFtSharedFilterManager effectByEffectId:button.effectId];
         if (effect) {
             effect.multiplierX = mult.x;

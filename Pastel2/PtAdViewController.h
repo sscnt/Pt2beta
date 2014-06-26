@@ -10,7 +10,7 @@
 #import "PtAdViewSliderBar.h"
 #import "PtAdViewPercentage.h"
 #import "PtCoViewControllerProcessing.h"
-#import "PtFtViewNavigationBar.h"
+#import "PtCoViewNavigationBar.h"
 #import "PtFtObjectProcessQueue.h"
 #import "PtFtViewBlur.h"
 #import "PtFtViewTapRecognizer.h"
@@ -28,9 +28,9 @@
 @property (nonatomic, weak) PtViewControllerEditor* editorController;
 @property (nonatomic, strong) PtFtViewTapRecognizer* tapRecognizerView;
 
-@property (nonatomic, strong) PtFtViewNavigationBar* navigationBar;
-@property (nonatomic, strong) PtFtButtonNavigation* cancelButton;
-@property (nonatomic, strong) PtFtButtonNavigation* doneButton;
+@property (nonatomic, strong) PtCoViewNavigationBar* navigationBar;
+@property (nonatomic, strong) PtCoViewNavigationButton* cancelButton;
+@property (nonatomic, strong) PtCoViewNavigationButton* doneButton;
 
 @property (nonatomic, strong) PtAdViewSliderBar* sliderBar;
 @property (nonatomic, strong) PtAdViewPercentage* percentageBar;
@@ -38,8 +38,8 @@
 - (void)applyFiltersToOriginalImage;
 - (void)applyCurrentFiltersToOriginalImage;
 
-- (void)navigationDoneDidTouchUpInside:(PtFtButtonNavigation*)button;
-- (void)navigationCancelDidTouchUpInside:(PtFtButtonNavigation*)button;
+- (void)navigationDoneDidTouchUpInside:(PtCoViewNavigationButton*)button;
+- (void)navigationCancelDidTouchUpInside:(PtCoViewNavigationButton*)button;
 
 - (void)registerQueue;
 

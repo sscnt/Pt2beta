@@ -129,7 +129,7 @@
 {
     PtSharedApp* app = [PtSharedApp instance];
     @autoreleasepool {
-        NSData* data = [PtUtilImage mergeSplitImage25:self.originalImageParts WithSize:app.sizeOfImageToProcess];
+        NSData* data = [PtUtilImage mergeSplitImage25:self.originalImageParts WithSize:app.originalImageSize];
         [PtSharedApp saveOriginalImageDataToFile:data];
         [PtSharedApp instance].imageToProcess = [UIImage imageWithData:data];
     }
@@ -142,7 +142,7 @@
 
 #pragma mark filter button
 
-- (void)filterButtonDidTouchUpInside:(PtFtButtonLayerBar *)button
+- (void)filterButtonDidTouchUpInside:(PtFtViewLayerBarButton *)button
 {
     PtFtViewManagerSliders* sm = self.slidersManager;
     VnEffect* effect = [PtFtSharedFilterManager effectByEffectId:button.effectId];

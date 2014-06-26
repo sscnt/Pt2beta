@@ -465,6 +465,15 @@
     [self.toolsManager lastPhotoButtonSetAsset:asset];
 }
 
+#pragma mark settings
+
+- (void)presetnToSettings
+{
+    PtViewControllerSettings* con = [[PtViewControllerSettings alloc] init];
+    [self.navigationController pushViewController:con animated:NO];
+}
+
+
 #pragma mark volume
 
 - (void)initVolumeHandling

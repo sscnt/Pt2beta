@@ -47,6 +47,7 @@
 		580E4F0F19475F3D0014B7C8 /* ad001.pst in Resources */ = {isa = PBXBuildFile; fileRef = 580E4F0E19475F3D0014B7C8 /* ad001.pst */; };
 		580E4F11194760110014B7C8 /* ar001.pst in Resources */ = {isa = PBXBuildFile; fileRef = 580E4F10194760110014B7C8 /* ar001.pst */; };
 		580E4F1319476B7B0014B7C8 /* ao001.pst in Resources */ = {isa = PBXBuildFile; fileRef = 580E4F1219476B7B0014B7C8 /* ao001.pst */; };
+		580E5ADF195C1DEA00A539B6 /* PtStConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 580E5ADE195C1DEA00A539B6 /* PtStConfig.m */; };
 		580E727419484D4400615D31 /* LUKeychainAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 580E727319484D4400615D31 /* LUKeychainAccess.m */; };
 		580E727A1948574700615D31 /* VnEffectHappy.m in Sources */ = {isa = PBXBuildFile; fileRef = 580E72791948574700615D31 /* VnEffectHappy.m */; };
 		580E727C19485B6E00615D31 /* bg001.pst in Resources */ = {isa = PBXBuildFile; fileRef = 580E727B19485B6E00615D31 /* bg001.pst */; };
@@ -351,6 +352,7 @@
 		58F78EF91952BEF60051562F /* cp001.pst in Resources */ = {isa = PBXBuildFile; fileRef = 58F78EF61952BEF60051562F /* cp001.pst */; };
 		58F78EFA1952BEF60051562F /* cp002.pst in Resources */ = {isa = PBXBuildFile; fileRef = 58F78EF71952BEF60051562F /* cp002.pst */; };
 		58F78EFB1952BEF60051562F /* cp003.pst in Resources */ = {isa = PBXBuildFile; fileRef = 58F78EF81952BEF60051562F /* cp003.pst */; };
+		58F7DA28195C39CE00AF8E7D /* PtStViewSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F7DA27195C39CE00AF8E7D /* PtStViewSwitch.m */; };
 		58F8A55119593A9A00A6746E /* VnFilterGaussianBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F8A55019593A9A00A6746E /* VnFilterGaussianBlur.m */; };
 		58F8A55719593F3600A6746E /* VnImageMaskBlendFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F8A55619593F3600A6746E /* VnImageMaskBlendFilter.m */; };
 		58F8A5591959490A00A6746E /* cq003.pst in Resources */ = {isa = PBXBuildFile; fileRef = 58F8A5581959490A00A6746E /* cq003.pst */; };
@@ -475,6 +477,8 @@
 		580E4F0E19475F3D0014B7C8 /* ad001.pst */ = {isa = PBXFileReference; lastKnownFileType = file; path = ad001.pst; sourceTree = "<group>"; };
 		580E4F10194760110014B7C8 /* ar001.pst */ = {isa = PBXFileReference; lastKnownFileType = file; path = ar001.pst; sourceTree = "<group>"; };
 		580E4F1219476B7B0014B7C8 /* ao001.pst */ = {isa = PBXFileReference; lastKnownFileType = file; path = ao001.pst; sourceTree = "<group>"; };
+		580E5ADD195C1DEA00A539B6 /* PtStConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtStConfig.h; sourceTree = "<group>"; };
+		580E5ADE195C1DEA00A539B6 /* PtStConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PtStConfig.m; sourceTree = "<group>"; };
 		580E727219484D4400615D31 /* LUKeychainAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LUKeychainAccess.h; sourceTree = "<group>"; };
 		580E727319484D4400615D31 /* LUKeychainAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LUKeychainAccess.m; sourceTree = "<group>"; };
 		580E72781948574700615D31 /* VnEffectHappy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectHappy.h; sourceTree = "<group>"; };
@@ -982,6 +986,8 @@
 		58F78EF61952BEF60051562F /* cp001.pst */ = {isa = PBXFileReference; lastKnownFileType = file; path = cp001.pst; sourceTree = "<group>"; };
 		58F78EF71952BEF60051562F /* cp002.pst */ = {isa = PBXFileReference; lastKnownFileType = file; path = cp002.pst; sourceTree = "<group>"; };
 		58F78EF81952BEF60051562F /* cp003.pst */ = {isa = PBXFileReference; lastKnownFileType = file; path = cp003.pst; sourceTree = "<group>"; };
+		58F7DA26195C39CE00AF8E7D /* PtStViewSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtStViewSwitch.h; sourceTree = "<group>"; };
+		58F7DA27195C39CE00AF8E7D /* PtStViewSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PtStViewSwitch.m; sourceTree = "<group>"; };
 		58F8A54F19593A9A00A6746E /* VnFilterGaussianBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnFilterGaussianBlur.h; sourceTree = "<group>"; };
 		58F8A55019593A9A00A6746E /* VnFilterGaussianBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnFilterGaussianBlur.m; sourceTree = "<group>"; };
 		58F8A55519593F3600A6746E /* VnImageMaskBlendFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnImageMaskBlendFilter.h; sourceTree = "<group>"; };
@@ -1069,6 +1075,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		580E5AD9195C1DBB00A539B6 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				580E5ADD195C1DEA00A539B6 /* PtStConfig.h */,
+				580E5ADE195C1DEA00A539B6 /* PtStConfig.m */,
+			);
+			name = Config;
+			sourceTree = "<group>";
+		};
 		58121A80195AEAEC0014E5E3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1910,6 +1925,8 @@
 			children = (
 				58F3E4971940C764001AEB8D /* PtViewControllerSettings.h */,
 				58F3E4981940C764001AEB8D /* PtViewControllerSettings.m */,
+				58F7DA22195C398A00AF8E7D /* Views */,
+				580E5AD9195C1DBB00A539B6 /* Config */,
 			);
 			name = SettingsModule;
 			sourceTree = "<group>";
@@ -2161,6 +2178,15 @@
 				58F3E5271940C9E9001AEB8D /* GPUImageTests.octest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		58F7DA22195C398A00AF8E7D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				58F7DA26195C39CE00AF8E7D /* PtStViewSwitch.h */,
+				58F7DA27195C39CE00AF8E7D /* PtStViewSwitch.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		58FD70131941B97C00D1E64F /* Util */ = {
@@ -2543,6 +2569,7 @@
 				58F3E4881940C72F001AEB8D /* PtFtConfig.m in Sources */,
 				583668F31942AE9D00E55C7C /* VnEffectBluishRose.m in Sources */,
 				58F78EEC1952B0B80051562F /* VnEffectPosh.m in Sources */,
+				58F7DA28195C39CE00AF8E7D /* PtStViewSwitch.m in Sources */,
 				58F3E4901940C743001AEB8D /* PtFtViewManagerFilters.m in Sources */,
 				58FFA82D1956FE0900B35A6C /* VnFilterGammaCorection.m in Sources */,
 				58F3E4731940C6D3001AEB8D /* PtFtViewLayerBarButton.m in Sources */,
@@ -2606,6 +2633,7 @@
 				5805359C1951B983008F0AAE /* VnEffectOverlayBlueExclusion.m in Sources */,
 				58F3E4911940C743001AEB8D /* PtFtViewManagerSliders.m in Sources */,
 				58F3E34A1940C56A001AEB8D /* VnAdjustmentLayerPhotoFilter.m in Sources */,
+				580E5ADF195C1DEA00A539B6 /* PtStConfig.m in Sources */,
 				58F3E2F41940C502001AEB8D /* AppDelegate.m in Sources */,
 				583669161942AE9D00E55C7C /* VnEffectXPro2Faded.m in Sources */,
 				580E727419484D4400615D31 /* LUKeychainAccess.m in Sources */,

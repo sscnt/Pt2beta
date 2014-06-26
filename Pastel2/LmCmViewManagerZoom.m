@@ -36,10 +36,10 @@
 
 - (void)layoutViews
 {
-    float sliderWidth = 30.0f;
     if ([PtSharedApp instance].leftHandedUI) {
-        [_zoomSlider setX:sliderWidth - 16.0f];
+        [_zoomSlider setX:0.0f];
     }else{
+        float sliderWidth = 30.0f;
         [_zoomSlider setX:[UIScreen width] - sliderWidth];        
     }
 }

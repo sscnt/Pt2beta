@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PtStViewSwitch.h"
 
 @interface PtViewControllerSettings : UIViewController
 

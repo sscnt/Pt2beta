@@ -159,7 +159,7 @@
 
 - (void)generalSettingsButtonDidTouchUpInside:(LmCmViewBarButton *)sender
 {
-
+    [self.delegate presetnToSettings];
 }
 
 - (void)flashButtonDidTouchUpInside:(LmCmViewBarButton *)sender

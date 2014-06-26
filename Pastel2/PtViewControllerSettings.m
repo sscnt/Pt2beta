@@ -18,7 +18,12 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        self.view.backgroundColor = [PtStConfig bgColor];
+        
+        //// Test
+        PtStViewSwitch* sw = [[PtStViewSwitch alloc] initWithFrame:CGRectMake(100.0f, 100.0f, 70.0f, 30.0f)];
+        sw.on = YES;
+        [self.view addSubview:sw];
     }
     return self;
 }

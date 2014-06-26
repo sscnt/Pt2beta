@@ -345,10 +345,17 @@ static PtAdSharedQueueManager* sharedPtAdSharedQueueManager = nil;
             return;
         case PtAdProcessQueueAdjustmentTypeExposure:
         {
-            VnFilterExposure* filter = [[VnFilterExposure alloc] init];
-            filter.exposure = queue.strength;
-            
-            self.startFilter = self.endFilter = filter;
+            if(queue.strength < 0.0f){
+                VnFilterGammaCorection* gamma = [[VnFilterGammaCorection alloc] init];
+                gamma.gamma = 1.0 + queue.strength;
+                
+                self.startFilter = self.endFilter = gamma;
+            }else{
+                VnFilterExposure* filter = [[VnFilterExposure alloc] init];
+                filter.exposure = queue.strength;
+                
+                self.startFilter = self.endFilter = filter;
+            }
         }
             break;
         case PtAdProcessQueueAdjustmentTypeVignetteAllAround:

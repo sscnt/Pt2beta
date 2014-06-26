@@ -21,6 +21,7 @@
 #import "LmCmViewManagerTools.h"
 #import "LmCmViewCropBlackRect.h"
 #import "PtViewControllerEditor.h"
+#import "PtViewControllerSettings.h"
 
 typedef NS_ENUM(NSInteger, LmCmViewControllerState){
     LmCmViewControllerStateDefault = 1,
@@ -66,6 +67,8 @@ typedef NS_ENUM(NSInteger, LmCmViewControllerState){
 - (void)flashScreen;
 
 - (void)layoutViews;
+
+- (void)presetnToSettings;
 
 - (void)presentEditorViewControllerFromLastAsset;
 - (void)presentEditorViewControllerWithImage:(UIImage*)image;

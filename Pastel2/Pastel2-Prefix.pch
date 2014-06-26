@@ -258,4 +258,5 @@ typedef NS_ENUM(NSInteger, LmCmViewBarButtonFlashMode){
 #import "PtEdConfig.h"
 #import "PtAdConfig.h"
 #import "PtFtConfig.h"
+#import "PtStConfig.h"
 #import "MotionOrientation.h"

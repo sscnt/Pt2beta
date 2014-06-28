@@ -67,7 +67,10 @@ typedef NS_ENUM(NSInteger, PtViewControllerEditorWorkflowAfterSavingPhoto){
 @property (nonatomic, strong) VnViewProgress* progressView;
 @property (nonatomic, strong) PtFtViewBlur* blurView;
 
+@property (nonatomic, strong) ALAsset* asset;
+
 - (void)initPreview;
+- (void)resizeAsset;
 - (void)removePreview;
 
 - (void)reloadImage;

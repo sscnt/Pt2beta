@@ -54,7 +54,7 @@ NSString* const keyChainKeyPremiumFilterPack1 = @"jp.shelbyapps.pastel2.keychain
         return;
     }
     _imageToProcess = imageToProcess;
-    _originalImageSize = _imageToProcess.size;
+    self.originalImageSize = _imageToProcess.size;
     LOG_SIZE(_originalImageSize);
 }
 

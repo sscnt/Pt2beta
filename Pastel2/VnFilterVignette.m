@@ -135,7 +135,7 @@ NSString *const kVnFilterVignetteFragmentShaderString = SHADER_STRING
      }
      
      mediump float w = texture2D(toneCurveTexture, vec2(d, 0.0)).r;
-          
+     
      gl_FragColor = blendWithBlendingMode(pixel, vec4(vec3(0.0), topLayerOpacity * w), blendingMode);
  }
  );

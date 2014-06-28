@@ -230,16 +230,12 @@
 
 #pragma mark present
 
-- (void)presentEditorViewController
+- (void)presentEditorViewControllerWithAsset:(ALAsset *)asset
 {
     if (self.isPresenting) {
         return;
     }
     if (self.isCameraInitializing) {
-        return;
-    }
-    if ([PtSharedApp instance].imageToProcess == nil) {
-        _blackoutView.isBlurred = NO;
         return;
     }
     self.isPresenting = YES;
@@ -253,58 +249,9 @@
         }
     });
     PtViewControllerEditor* con = [[PtViewControllerEditor alloc] init];
-    [self.navigationController pushViewController:con animated:NO];
+    con.asset = asset;
     _state = LmCmViewControllerStatePresentedEditorController;
-    
-
-    
-}
-
-- (void)presentEditorViewControllerWithAsset:(ALAsset *)asset
-{
-    
-    if (self.isPresenting) {
-        return;
-    }
-    if (self.isCameraInitializing) {
-        return;
-    }
-    _blackoutView.isBlurred = YES;
-    __block __weak LmCmViewController* _self = self;
-    
-    dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_queue_t q_main = dispatch_get_main_queue();
-    dispatch_async(q_global, ^{
-        @autoreleasepool {
-            ALAssetRepresentation *rep = [asset defaultRepresentation];
-            Byte *buffer = (Byte*)malloc(rep.size);
-            NSUInteger buffered = [rep getBytes:buffer fromOffset:0 length:rep.size error:nil];
-            NSData *data = [NSData dataWithBytesNoCopy:buffer length:buffered freeWhenDone:YES];
-            [PtSharedApp saveOriginalImageDataToFile:data];
-            
-            UIImage* image = [UIImage imageWithData:data];
-            if ([PtSharedApp instance].useFullResolutionImage) {
-                
-            }else{
-                float length = MAX(image.size.width, image.size.height);
-                if (length > 1920.0f) {
-                    float scale = image.size.width / 1920.0f;
-                    if (image.size.height > image.size.width) {
-                        scale = image.size.height / 1920.0f;
-                    }
-                    image = [image resizedImage:CGSizeMake(image.size.width / scale, image.size.height / scale) interpolationQuality:kCGInterpolationHigh];
-                    
-                }
-            }
-            [PtSharedApp instance].imageToProcess = image;
-            
-            dispatch_async(q_main, ^{
-                [_self presentEditorViewController];
-            });
-        }
-        
-    });
-
+    [self.navigationController pushViewController:con animated:NO];
 }
 
 - (void)presentEditorViewControllerFromLastAsset
@@ -377,7 +324,7 @@
 {
     _state = LmCmViewControllerStateDefault;
     _isKeepingDisabled = NO;
-    [picker dismissViewControllerAnimated:YES completion:nil];
+    [picker dismissViewControllerAnimated:NO completion:nil];
 }
 
 - (void)orientationDidChange

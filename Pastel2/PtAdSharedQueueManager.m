@@ -190,7 +190,7 @@ static PtAdSharedQueueManager* sharedPtAdSharedQueueManager = nil;
             [_con.progressView setProgress:1.0 / parts.count + _con.progressView.progress];
         });
         if ([PtSharedApp instance].originalImageSize.width > 3500.0f || [PtSharedApp instance].originalImageSize.height > 3500.0f) {
-            [NSThread sleepForTimeInterval:0.25f];
+            //[NSThread sleepForTimeInterval:0.125f];
         }
     }
 }

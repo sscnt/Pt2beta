@@ -84,212 +84,6 @@ static PtUtilImage* sharedPtUtilImage = nil;
     return newImage;
 }
 
-#pragma mark split
-#pragma mark 9
-
-+ (NSMutableArray*)splitImageIn9Parts:(UIImage *)image
-{
-    PtUtilImage* util = [self instance];
-    if (util.lastSplittedImageMultipliers) {
-        [util.lastSplittedImageMultipliers removeAllObjects];
-    }
-    util.lastSplittedImageMultipliers = [NSMutableArray array];
-    
-    if (util.lastSplittedImageAddings) {
-        [util.lastSplittedImageAddings removeAllObjects];
-    }
-    util.lastSplittedImageAddings = [NSMutableArray array];
-    
-    float cropWidth = floor(image.size.width / 3.0f);
-    float cropHeight = floor(image.size.height / 3.0f);
-    
-    float width1 = cropWidth;
-    float width2 = cropWidth;
-    float width3 = image.size.width - width1 - width2;
-    float height1 = cropHeight;
-    float height2 = cropHeight;
-    float height3 = image.size.height - height1 - height2;
-    
-    //// Multiplier
-    
-    NSMutableArray* arr = util.lastSplittedImageMultipliers;
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width1 / image.size.width, height1 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width2 / image.size.width, height1 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width3 / image.size.width, height1 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width1 / image.size.width, height2 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width2 / image.size.width, height2 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width3 / image.size.width, height2 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width1 / image.size.width, height3 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width2 / image.size.width, height3 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width3 / image.size.width, height3 / image.size.height)]];
-    
-    //// Multiplier
-    
-    arr = util.lastSplittedImageAddings;
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(0.0f, 0.0f)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width1 / image.size.width, 0.0f)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2) / image.size.width, 0.0f)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(0.0f, height1 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width1 / image.size.width, height1 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2) / image.size.width, height1 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(0.0f, (height1 + height2) / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width1 / image.size.width, (height1 + height2) / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2) / image.size.width, (height1 + height2) / image.size.height)]];
-    
-    
-    NSMutableArray* array = [NSMutableArray array];
-    
-    //// 1
-    @autoreleasepool {
-        UIImage* piece = [image croppedImage:CGRectMake(0.0f, 0.0f, width1, height1)];
-        [array addObject:piece];
-    }
-    //// 2
-    @autoreleasepool {
-        UIImage* piece = [image croppedImage:CGRectMake(width1, 0.0f, width2, height1)];
-        [array addObject:piece];
-    }
-    //// 3
-    @autoreleasepool {
-        UIImage* piece = [image croppedImage:CGRectMake(width1 + width2, 0.0f, width3, height1)];
-        [array addObject:piece];
-    }
-    //// 4
-    @autoreleasepool {
-        UIImage* piece = [image croppedImage:CGRectMake(0.0f, height1, width1, height2)];
-        [array addObject:piece];
-    }
-    //// 5
-    @autoreleasepool {
-        UIImage* piece = [image croppedImage:CGRectMake(width1, height1, width2, height2)];
-        [array addObject:piece];
-    }
-    //// 6
-    @autoreleasepool {
-        UIImage* piece = [image croppedImage:CGRectMake(width1 + width2, height1, width3, height2)];
-        [array addObject:piece];
-    }
-    //// 7
-    @autoreleasepool {
-        UIImage* piece = [image croppedImage:CGRectMake(0.0f, height1 + height2, width1, height3)];
-        [array addObject:piece];
-    }
-    //// 8
-    @autoreleasepool {
-        UIImage* piece = [image croppedImage:CGRectMake(width1, height1 + height2, width2, height3)];
-        [array addObject:piece];
-    }
-    //// 9
-    @autoreleasepool {
-        UIImage* piece = [image croppedImage:CGRectMake(width1 + width2, height1 + height2, width3, height3)];
-        [array addObject:piece];
-    }
-    
-    return  array;
-}
-
-
-
-+ (NSData*)mergeSplitImage9:(NSMutableArray*)array WithSize:(CGSize)size
-{
-    
-    float cropWidth = floor(size.width / 3.0f);
-    float cropHeight = floor(size.height / 3.0f);
-    
-    float width1 = cropWidth;
-    float width2 = cropWidth;
-    float width3 = size.width - width1 - width2;
-    float height1 = cropHeight;
-    float height2 = cropHeight;
-    float height3 = size.height - height1 - height2;
-    
-    size_t width = size.width;
-    size_t height = size.height;
-    size_t bitsPerComponent = 8;
-    size_t bytesPerRow = align16(4 * width);
-    size_t bufferSize = bytesPerRow * height;
-    uint8_t *bytes = malloc(bufferSize);
-    CGBitmapInfo bitmapInfo = kCGImageAlphaPremultipliedFirst | kCGBitmapByteOrderDefault;
-    
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    
-    CGContextRef context = CGBitmapContextCreate(bytes, width, height, bitsPerComponent, bytesPerRow, colorSpace, bitmapInfo);
-    CGContextClearRect(context, CGRectMake(0, 0, width, height));
-    
-    //// 座標系に注意
-    //// 1
-    @autoreleasepool {
-        UIImage* image = [array objectAtIndex:0];
-        CGContextDrawImage(context, CGRectMake(0.0f, height - image.size.height, image.size.width, image.size.height), image.CGImage);
-        [array removeObjectAtIndex:0];
-    }
-    //// 2
-    @autoreleasepool {
-        UIImage* image = [array objectAtIndex:0];
-        CGContextDrawImage(context, CGRectMake(width1, height - image.size.height, image.size.width, image.size.height), image.CGImage);
-        [array removeObjectAtIndex:0];
-    }
-    //// 3
-    @autoreleasepool {
-        UIImage* image = [array objectAtIndex:0];
-        CGContextDrawImage(context, CGRectMake(width1 + width2, height - image.size.height, image.size.width, image.size.height), image.CGImage);
-        [array removeObjectAtIndex:0];
-    }
-    //// 4
-    @autoreleasepool {
-        UIImage* image = [array objectAtIndex:0];
-        CGContextDrawImage(context, CGRectMake(0.0f, height3, image.size.width, image.size.height), image.CGImage);
-        [array removeObjectAtIndex:0];
-    }
-    //// 5
-    @autoreleasepool {
-        UIImage* image = [array objectAtIndex:0];
-        CGContextDrawImage(context, CGRectMake(width1, height3, image.size.width, image.size.height), image.CGImage);
-        [array removeObjectAtIndex:0];
-    }
-    //// 6
-    @autoreleasepool {
-        UIImage* image = [array objectAtIndex:0];
-        CGContextDrawImage(context, CGRectMake(width1 + width2, height3, image.size.width, image.size.height), image.CGImage);
-        [array removeObjectAtIndex:0];
-    }
-    //// 7
-    @autoreleasepool {
-        UIImage* image = [array objectAtIndex:0];
-        CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, image.size.width, image.size.height), image.CGImage);
-        [array removeObjectAtIndex:0];
-    }
-    //// 8
-    @autoreleasepool {
-        UIImage* image = [array objectAtIndex:0];
-        CGContextDrawImage(context, CGRectMake(width1, 0.0f, image.size.width, image.size.height), image.CGImage);
-        [array removeObjectAtIndex:0];
-    }
-    //// 9
-    @autoreleasepool {
-        UIImage* image = [array objectAtIndex:0];
-        CGContextDrawImage(context, CGRectMake(width1 + width2, 0.0f, image.size.width, image.size.height), image.CGImage);
-        [array removeObjectAtIndex:0];
-    }
-    
-    [array removeAllObjects];
-    
-    CGContextRelease(context);
-    context = NULL;
-    
-    CGDataProviderRef dataProvider = CGDataProviderCreateWithData(NULL, bytes, bufferSize, NULL);
-    size_t bitsPerPixel = 32;
-    CGImageRef image = CGImageCreate(width, height, bitsPerComponent, bitsPerPixel, bytesPerRow, colorSpace, bitmapInfo, dataProvider, NULL, NO, kCGRenderingIntentDefault);
-    CGDataProviderRelease(dataProvider);
-    dataProvider = NULL;
-    CGColorSpaceRelease(colorSpace);
-    colorSpace = NULL;
-    UIImage* mergedImage = [UIImage imageWithCGImage:image scale:1.0f orientation:UIImageOrientationUp];
-    NSData* data = UIImageJPEGRepresentation(mergedImage, 0.99);
-    CGImageRelease(image);
-    free(bytes);
-    return data;
-}
 
 #pragma mark 25
 
@@ -321,63 +115,72 @@ static PtUtilImage* sharedPtUtilImage = nil;
     float height4 = cropHeight;
     float height5 = image.size.height - height1 - height2 - height3 - height4;
     
-    //// Multiplier
+    float mx1 = (width1 + padding) / image.size.width;
+    float mx2 = (width2 + padding * 2.0f) / image.size.width;
+    float mx3 = (width3 + padding * 2.0f) / image.size.width;
+    float mx4 = (width4 + padding * 2.0f) / image.size.width;
+    float mx5 = (width5 + padding) / image.size.width;
+    float mh1 = (height1 + padding) / image.size.height;
+    float mh2 = (height2 + padding * 2.0f) / image.size.height;
+    float mh3 = (height3 + padding * 2.0f) / image.size.height;
+    float mh4 = (height4 + padding * 2.0f) / image.size.height;
+    float mh5 = (height5 + padding) / image.size.height;
     
+    //// Multiplier
     NSMutableArray* arr = util.lastSplittedImageMultipliers;
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width1 / image.size.width, height1 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width2 / image.size.width, height1 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width3 / image.size.width, height1 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width4 / image.size.width, height1 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width5 / image.size.width, height1 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width1 / image.size.width, height2 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width2 / image.size.width, height2 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width3 / image.size.width, height2 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width4 / image.size.width, height2 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width5 / image.size.width, height2 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width1 / image.size.width, height3 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width2 / image.size.width, height3 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width3 / image.size.width, height3 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width4 / image.size.width, height3 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width5 / image.size.width, height3 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width1 / image.size.width, height4 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width2 / image.size.width, height4 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width3 / image.size.width, height4 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width4 / image.size.width, height4 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width5 / image.size.width, height4 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width1 / image.size.width, height5 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width2 / image.size.width, height5 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width3 / image.size.width, height5 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width4 / image.size.width, height5 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width5 / image.size.width, height5 / image.size.height)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(mx1, mh1)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(mx2, mh1)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(mx3, mh1)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(mx4, mh1)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(mx5, mh1)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(mx1, mh2)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(mx2, mh2)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(mx3, mh2)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(mx4, mh2)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(mx5, mh2)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(mx1, mh3)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(mx2, mh3)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(mx3, mh3)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(mx4, mh3)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(mx5, mh3)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(mx1, mh4)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(mx2, mh4)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(mx3, mh4)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(mx4, mh4)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(mx5, mh4)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(mx1, mh5)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(mx2, mh5)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(mx3, mh5)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(mx4, mh5)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(mx5, mh5)]];
     
-    //// Multiplier
-    
+    //// adder
     arr = util.lastSplittedImageAddings;
     [arr addObject:[NSValue valueWithCGPoint:CGPointMake(0.0f, 0.0f)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width1 / image.size.width, 0.0f)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2) / image.size.width, 0.0f)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2 + width3) / image.size.width, 0.0f)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2 + width3 + width4) / image.size.width, 0.0f)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(0.0f, height1 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width1 / image.size.width, height1 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2) / image.size.width, height1 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2 + width3) / image.size.width, height1 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2 + width3 + width4) / image.size.width, height1 / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(0.0f, (height1 + height2) / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width1 / image.size.width, (height1 + height2) / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2) / image.size.width, (height1 + height2) / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2 + width3) / image.size.width, (height1 + height2) / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2 + width3 + width4) / image.size.width, (height1 + height2) / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(0.0f, (height1 + height2 + height3) / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width1 / image.size.width, (height1 + height2 + height3) / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2) / image.size.width, (height1 + height2 + height3) / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2 + width3) / image.size.width, (height1 + height2 + height3) / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2 + width3 + width4) / image.size.width, (height1 + height2 + height3) / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(0.0f, (height1 + height2 + height3 + height4) / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(width1 / image.size.width, (height1 + height2 + height3 + height4) / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2) / image.size.width, (height1 + height2 + height3 + height4) / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2 + width3) / image.size.width, (height1 + height2 + height3 + height4) / image.size.height)]];
-    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2 + width3 + width4) / image.size.width, (height1 + height2 + height3 + height4) / image.size.height)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 - padding) / image.size.width, 0.0f)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2 - padding) / image.size.width, 0.0f)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2 + width3 - padding) / image.size.width, 0.0f)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2 + width3 + width4 - padding) / image.size.width, 0.0f)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(0.0f, (height1 - padding) / image.size.height)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 - padding) / image.size.width, (height1 - padding) / image.size.height)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2 - padding) / image.size.width, (height1 - padding) / image.size.height)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2 + width3 - padding) / image.size.width, (height1 - padding) / image.size.height)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2 + width3 + width4 - padding) / image.size.width, (height1 - padding) / image.size.height)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(0.0f, (height1 + height2 - padding) / image.size.height)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 - padding) / image.size.width, (height1 + height2 - padding) / image.size.height)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2 - padding) / image.size.width, (height1 + height2 - padding) / image.size.height)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2 + width3 - padding) / image.size.width, (height1 + height2 - padding) / image.size.height)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2 + width3 + width4 - padding) / image.size.width, (height1 + height2 - padding) / image.size.height)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(0.0f, (height1 + height2 + height3 - padding) / image.size.height)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 - padding) / image.size.width, (height1 + height2 + height3 - padding) / image.size.height)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2 - padding) / image.size.width, (height1 + height2 + height3 - padding) / image.size.height)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2 + width3 - padding) / image.size.width, (height1 + height2 + height3 - padding) / image.size.height)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2 + width3 + width4 - padding) / image.size.width, (height1 + height2 + height3 - padding) / image.size.height)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake(0.0f, (height1 + height2 + height3 + height4 - padding) / image.size.height)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 - padding) / image.size.width, (height1 + height2 + height3 + height4 - padding) / image.size.height)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2 - padding) / image.size.width, (height1 + height2 + height3 + height4 - padding) / image.size.height)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2 + width3 - padding) / image.size.width, (height1 + height2 + height3 + height4 - padding) / image.size.height)]];
+    [arr addObject:[NSValue valueWithCGPoint:CGPointMake((width1 + width2 + width3 + width4 - padding) / image.size.width, (height1 + height2 + height3 + height4 - padding) / image.size.height)]];
     
     
     NSMutableArray* array = [NSMutableArray array];

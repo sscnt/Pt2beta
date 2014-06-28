@@ -18,7 +18,7 @@
         self.backgroundColor = [UIColor clearColor];
         
         _label = [[VnViewLabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, frame.size.height)];
-        _label.fontSize = 16.0f;
+        _label.fontSize = frame.size.height - 12.0f;
         [self addSubview:_label];
         
         self.on = NO;
@@ -32,11 +32,11 @@
     if (on) {
         _label.text = NSLocalizedString(@"ON", nil);
         _label.textColor = [UIColor whiteColor];
-        _label.center = CGPointMake(self.width / 8.0f * 3.0f, self.height / 2.0f);
+        _label.center = CGPointMake(self.width / 8.0f * 3.0f, self.height / 2.0f - 1.0f);
     }else{
         _label.text = NSLocalizedString(@"OFF", nil);
         _label.textColor = [UIColor colorWithWhite:142.0f/255.0f alpha:1.0f];
-        _label.center = CGPointMake(self.width / 8.0f * 5.0f, self.height / 2.0f);
+        _label.center = CGPointMake(self.width / 8.0f * 5.0f, self.height / 2.0f - 1.0f);
     }
     [self setNeedsDisplay];
 }

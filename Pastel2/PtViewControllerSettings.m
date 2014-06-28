@@ -34,17 +34,26 @@
         
         //// Switches
         PtStViewSwitch* sw;
+        PtStViewOptionItem* item;
         PtSharedApp* app = [PtSharedApp instance];
         
-        sw = [[PtStViewSwitch alloc] initWithFrame:CGRectMake(100.0f, 100.0f, 70.0f, 30.0f)];
+        //// Use Full Resolution
+        item = [[PtStViewOptionItem alloc] initWithFrame:CGRectMake(0.0f, 50.0f, self.view.width, 50.0f)];
+        sw = [[PtStViewSwitch alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 60.0f, 26.0f)];
         sw.on = app.useFullResolutionImage;
         [sw addTarget:self selector:@selector(switchFullResolutionDidToggle:)];
-        [self.view addSubview:sw];
+        [item addSwitch:sw];
+        [item setTitle:NSLocalizedString(@"Use full resolution image", nil)];
+        [self.view addSubview:item];
         
-        sw = [[PtStViewSwitch alloc] initWithFrame:CGRectMake(100.0f, 200.0f, 70.0f, 30.0f)];
+        //// Left handed mode
+        item = [[PtStViewOptionItem alloc] initWithFrame:CGRectMake(0.0f, item.bottom, self.view.width, 50.0f)];
+        sw = [[PtStViewSwitch alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 60.0f, 26.0f)];
         sw.on = app.leftHandedUI;
         [sw addTarget:self selector:@selector(switchLeftHandedDidToggle:)];
-        [self.view addSubview:sw];
+        [item addSwitch:sw];
+        [item setTitle:NSLocalizedString(@"Left-handed mode", nil)];
+        [self.view addSubview:item];
     }
     return self;
 }
@@ -62,7 +71,7 @@
 
 - (void)switchFullResolutionDidToggle:(PtStViewSwitch *)switdh
 {
-    
+    [PtSharedApp instance].useFullResolutionImage = switdh.on;
 }
 
 #pragma mark navigation

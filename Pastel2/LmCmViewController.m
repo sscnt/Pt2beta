@@ -230,7 +230,7 @@
 
 #pragma mark present
 
-- (void)presentEditorViewControllerWithImage:(UIImage *)image
+- (void)presentEditorViewController
 {
     if (self.isPresenting) {
         return;
@@ -238,7 +238,7 @@
     if (self.isCameraInitializing) {
         return;
     }
-    if (image == nil) {
+    if ([PtSharedApp instance].imageToProcess == nil) {
         _blackoutView.isBlurred = NO;
         return;
     }
@@ -246,53 +246,23 @@
     _blackoutView.isBlurred = YES;
     __block __weak LmCmViewController* _self = self;
     
-    if ([PtSharedApp instance].useFullResolutionImage) {
-        dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-        dispatch_async(q_global, ^{
-            @autoreleasepool {
-                [_self disableCamera];
-            }
-        });
-        [PtSharedApp instance].imageToProcess = image;
-        PtViewControllerEditor* con = [[PtViewControllerEditor alloc] init];
-        [self.navigationController pushViewController:con animated:NO];
-        _state = LmCmViewControllerStatePresentedEditorController;
-    }else{
-        __block UIImage* _image = image;
-        dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-        dispatch_queue_t q_main = dispatch_get_main_queue();
-        dispatch_async(q_global, ^{
-            @autoreleasepool {
-                [_self disableCamera];
-                if ([PtSharedApp instance].useFullResolutionImage == NO) {
-                    float length = MAX(_image.size.width, _image.size.height);
-                    if (length > 1920.0f) {
-                        float scale = _image.size.width / 1920.0f;
-                        if (_image.size.height > _image.size.width) {
-                            scale = image.size.height / 1920.0f;
-                        }
-                        _image = [_image resizedImage:CGSizeMake(_image.size.width / scale, _image.size.height / scale) interpolationQuality:kCGInterpolationHigh];
-                    }
-                }
-                [PtSharedApp instance].imageToProcess = _image;
-                dispatch_async(q_main, ^{
-                    PtViewControllerEditor* con = [[PtViewControllerEditor alloc] init];
-                    [_self.navigationController pushViewController:con animated:NO];
-                    _self.state = LmCmViewControllerStatePresentedEditorController;
-                });
-                
-            }
-        });
-    }
+    dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(q_global, ^{
+        @autoreleasepool {
+            [_self disableCamera];
+        }
+    });
+    PtViewControllerEditor* con = [[PtViewControllerEditor alloc] init];
+    [self.navigationController pushViewController:con animated:NO];
+    _state = LmCmViewControllerStatePresentedEditorController;
     
+
     
 }
 
-- (void)presentEditorViewControllerFromLastAsset
+- (void)presentEditorViewControllerWithAsset:(ALAsset *)asset
 {
-    if (self.lastAsset == nil) {
-        return;
-    }
+    
     if (self.isPresenting) {
         return;
     }
@@ -301,72 +271,70 @@
     }
     _blackoutView.isBlurred = YES;
     __block __weak LmCmViewController* _self = self;
-    __block UIImage* image;
+    
     dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t q_main = dispatch_get_main_queue();
     dispatch_async(q_global, ^{
         @autoreleasepool {
-            ALAssetRepresentation *rep = [self.lastAsset defaultRepresentation];
+            ALAssetRepresentation *rep = [asset defaultRepresentation];
             Byte *buffer = (Byte*)malloc(rep.size);
             NSUInteger buffered = [rep getBytes:buffer fromOffset:0 length:rep.size error:nil];
             NSData *data = [NSData dataWithBytesNoCopy:buffer length:buffered freeWhenDone:YES];
             [PtSharedApp saveOriginalImageDataToFile:data];
-            image = [UIImage imageWithContentsOfFile:[PtSharedApp originalImageUrl].path];
             
+            UIImage* image = [UIImage imageWithData:data];
+            if ([PtSharedApp instance].useFullResolutionImage) {
+                
+            }else{
+                float length = MAX(image.size.width, image.size.height);
+                if (length > 1920.0f) {
+                    float scale = image.size.width / 1920.0f;
+                    if (image.size.height > image.size.width) {
+                        scale = image.size.height / 1920.0f;
+                    }
+                    image = [image resizedImage:CGSizeMake(image.size.width / scale, image.size.height / scale) interpolationQuality:kCGInterpolationHigh];
+                    
+                }
+            }
+            [PtSharedApp instance].imageToProcess = image;
             
-            /*
-            UIImage* rawImage = [UIImage imageWithCGImage:[rep fullResolutionImage]
-                                        scale:[rep scale]
-                                  orientation:[rep orientation]];
-            NSData* data = UIImageJPEGRepresentation(rawImage, 0.99f);
-            [PtSharedApp saveOriginalImageDataToFile:data];
-            image = [UIImage imageWithData:data];
-            image = rawImage;
-            Byte *buffer = (Byte*)malloc(rep.size);
-            NSUInteger buffered = [rep getBytes:buffer fromOffset:0.0 length:rep.size error:nil];
-            NSData *data = [NSData dataWithBytesNoCopy:buffer length:buffered freeWhenDone:YES];
-            [PtSharedApp saveOriginalImageDataToFile:data];
-             */
             dispatch_async(q_main, ^{
-                [_self presentEditorViewControllerWithImage:image];
+                [_self presentEditorViewController];
             });
         }
         
     });
-    
+
+}
+
+- (void)presentEditorViewControllerFromLastAsset
+{
+    if (self.lastAsset == nil) {
+        return;
+    }
+    [self presentEditorViewControllerWithAsset:self.lastAsset];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     [picker dismissViewControllerAnimated:NO completion:nil];
-    self.loadedImageFromPickerController = [info objectForKey:UIImagePickerControllerOriginalImage];
     NSURL* url = [info objectForKey:UIImagePickerControllerReferenceURL];
     
-    UIImage* imageOriginal = [info objectForKey:UIImagePickerControllerOriginalImage];
-    self.loadedImageFromPickerController = imageOriginal;
-    
-    if(picker.sourceType == UIImagePickerControllerSourceTypeCamera){
-        UIImageWriteToSavedPhotosAlbum(imageOriginal, nil, nil, nil);
-    }
-    
-    __block __weak LmCmViewController* _self = self;
-    [self.assetLibrary assetForURL:url resultBlock:^(ALAsset *asset) {
-        if(_self.loadedImageFromPickerController){            
-            ALAssetRepresentation *rep = [asset defaultRepresentation];
-            
-            @autoreleasepool {
-                Byte *buffer = (Byte*)malloc(rep.size);
-                NSUInteger buffered = [rep getBytes:buffer fromOffset:0.0 length:rep.size error:nil];
-                NSData *data = [NSData dataWithBytesNoCopy:buffer length:buffered freeWhenDone:YES];
-                [PtSharedApp saveOriginalImageDataToFile:data];
-            }
-            
-            //// Do your stuff
-            [_self presentEditorViewControllerWithImage:_self.loadedImageFromPickerController];
+    if ([info objectForKey:UIImagePickerControllerOriginalImage]) {
+        if(picker.sourceType == UIImagePickerControllerSourceTypeCamera){
+            UIImageWriteToSavedPhotosAlbum([info objectForKey:UIImagePickerControllerOriginalImage], nil, nil, nil);
         }
-    } failureBlock:^(NSError *error) {
-        [_self showAlertViewWithTitle:NSLocalizedString(@"Error", nil) Message:NSLocalizedString(@"Coudn't open the photo.", nil)];
-    }];
+        
+        __block __weak LmCmViewController* _self = self;
+        [self.assetLibrary assetForURL:url resultBlock:^(ALAsset *asset) {
+            [_self presentEditorViewControllerWithAsset:asset];
+            
+        } failureBlock:^(NSError *error) {
+            [_self showAlertViewWithTitle:nil Message:NSLocalizedString(@"Error opening image.", nil)];
+        }];
+    }else{
+        [self showAlertViewWithTitle:nil Message:NSLocalizedString(@"Error opening image.", nil)];
+    }
 }
 
 #pragma mark camera roll
@@ -469,6 +437,17 @@
 
 - (void)presetnToSettings
 {
+    _blackoutView.isBlurred = YES;
+    _state = LmCmViewControllerStateSettingsScreen;
+    
+    __block __weak LmCmViewController* _self = self;
+    dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(q_global, ^{
+        @autoreleasepool {
+            [_self disableCamera];
+        }
+    });
+
     PtViewControllerSettings* con = [[PtViewControllerSettings alloc] init];
     con.cameraController = self;
     [self.navigationController pushViewController:con animated:NO];

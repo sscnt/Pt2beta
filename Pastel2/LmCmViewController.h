@@ -26,7 +26,8 @@
 typedef NS_ENUM(NSInteger, LmCmViewControllerState){
     LmCmViewControllerStateDefault = 1,
     LmCmViewControllerStatePhotoLibraryIsOpening,
-    LmCmViewControllerStatePresentedEditorController
+    LmCmViewControllerStatePresentedEditorController,
+    LmCmViewControllerStateSettingsScreen
 };
 
 
@@ -56,8 +57,6 @@ typedef NS_ENUM(NSInteger, LmCmViewControllerState){
 @property (nonatomic, strong) ALAssetsLibrary* assetLibrary;
 @property (nonatomic, strong) ALAsset* lastAsset;
 
-@property (nonatomic, strong) UIImage* loadedImageFromPickerController;
-
 - (void)initCameraManager;
 - (void)didShutterButtonTouchUpInside:(id)sender;
 - (void)didShutterButtonTouchCancel:(id)sender;
@@ -70,8 +69,9 @@ typedef NS_ENUM(NSInteger, LmCmViewControllerState){
 
 - (void)presetnToSettings;
 
+- (void)presentEditorViewController;
 - (void)presentEditorViewControllerFromLastAsset;
-- (void)presentEditorViewControllerWithImage:(UIImage*)image;
+- (void)presentEditorViewControllerWithAsset:(ALAsset*)asset;
 
 - (void)imageDidSave:(ALAsset*)alAsset;
 

@@ -42,7 +42,10 @@
         float width = 240.0f;
         float right = [_self.zoomViewManager.zoomSlider width];
         float x = [_self.cameraPreviewOverlay width] - width - right;
-        float height = 44.0f * 2.0f;
+        float height = 44.0f;
+        if ([UIDevice isCurrentLanguageJapanese]) {
+            height = 44.0 * 2.0;
+        }
         float y = _self.bottomBar.frame.origin.y - height - _self.cameraPreviewOverlay.frame.origin.y;
         _settingsList = [[LmCmViewSettingsList alloc] initWithFrame:CGRectMake(x, y, width, height)];
         _settingsList.hidden = YES;

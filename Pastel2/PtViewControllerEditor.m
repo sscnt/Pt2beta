@@ -341,6 +341,20 @@
     UIImageWriteToSavedPhotosAlbum([PtSharedApp instance].imageToProcess, self, @selector(imageDidSaveToCameraRoll:didFinishSavingWithError:contextInfo:), NULL);
 }
 
+#pragma mark events
+
+- (void)imageDidSaveToCameraRoll:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
+{
+    
+    [_progressView setProgress:1.0f];
+    __block __weak PtViewControllerEditor* _self = self;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        _self.progressView.hidden = YES;
+        _self.blurView.hidden = YES;
+        [_self didSaveImage];
+    });
+}
+
 - (void)didSaveImage
 {
     self.currentImageDidChange = NO;
@@ -436,29 +450,5 @@
     self.view.userInteractionEnabled = YES;
 }
 
-#pragma mark events
-
-- (void)imageDidSaveToCameraRoll:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
-{
-    
-    [_progressView setProgress:1.0f];
-    __block __weak PtViewControllerEditor* _self = self;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-        _self.progressView.hidden = YES;
-        _self.blurView.hidden = YES;
-        [_self didSaveImage];
-    });
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

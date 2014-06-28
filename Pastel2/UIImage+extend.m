@@ -9,6 +9,14 @@
 #import "UIImage+extend.h"
 #import <ImageIO/ImageIO.h>
 
+static size_t align16(size_t size)
+{
+    if(size == 0)
+        return 0;
+    
+    return (((size - 1) >> 4) << 4) + 16;
+}
+
 @implementation UIImage (extend)
 
 - (UIImage *)croppedImage:(CGRect)bounds {
@@ -90,19 +98,23 @@
     CGRect transposedRect = CGRectMake(0, 0, newRect.size.height, newRect.size.width);
     CGImageRef imageRef = self.CGImage;
     
+    
+    size_t width = newRect.size.width;
+    size_t height = newRect.size.height;
+    size_t bitsPerComponent = 8;
+    size_t bytesPerRow = align16(4 * width);
+    size_t bufferSize = bytesPerRow * height;
+    uint8_t *bytes = (uint8_t*)malloc(bufferSize);
+    CGBitmapInfo bitmapInfo = kCGImageAlphaPremultipliedFirst | kCGBitmapByteOrderDefault;
+    
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    
+    CGContextRef bitmap = CGBitmapContextCreate(bytes, width, height, bitsPerComponent, bytesPerRow, colorSpace, bitmapInfo);
+    
     // Fix for a colorspace / transparency issue that affects some types of
     // images. See here: http://vocaro.com/trevor/blog/2009/10/12/resize-a-uiimage-the-right-way/comment-page-2/#comment-39951
     
-	CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    CGContextRef bitmap = CGBitmapContextCreate(
-                                                NULL,
-                                                newRect.size.width,
-                                                newRect.size.height,
-                                                8, /* bits per channel */
-                                                (newRect.size.width * 4), /* 4 channels per pixel * numPixels/row */
-                                                colorSpace,
-                                                kCGImageAlphaPremultipliedLast
-                                                );
+
     CGColorSpaceRelease(colorSpace);
 	
     // Rotate and/or flip the image if required by its orientation
@@ -122,6 +134,7 @@
     // Clean up
     CGContextRelease(bitmap);
     CGImageRelease(newImageRef);
+    free(bytes);
     
     return resultImage;
 }

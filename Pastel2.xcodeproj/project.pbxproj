@@ -79,6 +79,7 @@
 		581E82EA1959BF0F0048B724 /* VnFilterContrast.m in Sources */ = {isa = PBXBuildFile; fileRef = 581E82E91959BF0F0048B724 /* VnFilterContrast.m */; };
 		581E82F11959C5BD0048B724 /* PtAdViewControllerVignette.m in Sources */ = {isa = PBXBuildFile; fileRef = 581E82F01959C5BD0048B724 /* PtAdViewControllerVignette.m */; };
 		581E82F51959C9BA0048B724 /* VnFilterVignette.m in Sources */ = {isa = PBXBuildFile; fileRef = 581E82F41959C9BA0048B724 /* VnFilterVignette.m */; };
+		581EFF13195DAA04005ABF4F /* PtStViewOptionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 581EFF12195DAA04005ABF4F /* PtStViewOptionItem.m */; };
 		5825A1B319500D3D00128F52 /* VnEffectOverlayFilm.m in Sources */ = {isa = PBXBuildFile; fileRef = 5825A1B219500D3D00128F52 /* VnEffectOverlayFilm.m */; };
 		5825A1B919500F3D00128F52 /* VnEffectOverlayDusk.m in Sources */ = {isa = PBXBuildFile; fileRef = 5825A1B819500F3D00128F52 /* VnEffectOverlayDusk.m */; };
 		5825A1BC1950120F00128F52 /* VnEffectOverlayFeelsLikeHome.m in Sources */ = {isa = PBXBuildFile; fileRef = 5825A1BB1950120F00128F52 /* VnEffectOverlayFeelsLikeHome.m */; };
@@ -528,6 +529,8 @@
 		581E82F01959C5BD0048B724 /* PtAdViewControllerVignette.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PtAdViewControllerVignette.m; sourceTree = "<group>"; };
 		581E82F31959C9BA0048B724 /* VnFilterVignette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnFilterVignette.h; sourceTree = "<group>"; };
 		581E82F41959C9BA0048B724 /* VnFilterVignette.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnFilterVignette.m; sourceTree = "<group>"; };
+		581EFF11195DAA04005ABF4F /* PtStViewOptionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtStViewOptionItem.h; sourceTree = "<group>"; };
+		581EFF12195DAA04005ABF4F /* PtStViewOptionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PtStViewOptionItem.m; sourceTree = "<group>"; };
 		5825A1B119500D3D00128F52 /* VnEffectOverlayFilm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectOverlayFilm.h; sourceTree = "<group>"; };
 		5825A1B219500D3D00128F52 /* VnEffectOverlayFilm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectOverlayFilm.m; sourceTree = "<group>"; };
 		5825A1B719500F3D00128F52 /* VnEffectOverlayDusk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectOverlayDusk.h; sourceTree = "<group>"; };
@@ -2185,6 +2188,8 @@
 			children = (
 				58F7DA26195C39CE00AF8E7D /* PtStViewSwitch.h */,
 				58F7DA27195C39CE00AF8E7D /* PtStViewSwitch.m */,
+				581EFF11195DAA04005ABF4F /* PtStViewOptionItem.h */,
+				581EFF12195DAA04005ABF4F /* PtStViewOptionItem.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -2574,6 +2579,7 @@
 				58FFA82D1956FE0900B35A6C /* VnFilterGammaCorection.m in Sources */,
 				58F3E4731940C6D3001AEB8D /* PtFtViewLayerBarButton.m in Sources */,
 				5819A113194DB9D0002C6F3E /* VnEffectVSCOSummer.m in Sources */,
+				581EFF13195DAA04005ABF4F /* PtStViewOptionItem.m in Sources */,
 				58F3E4BA1940C7F3001AEB8D /* PtViewControllerExportToInstagram.m in Sources */,
 				583669121942AE9D00E55C7C /* VnEffectBrannanFaded.m in Sources */,
 				58FC4233194B53CF005D63EA /* VnEffectBWTone1.m in Sources */,

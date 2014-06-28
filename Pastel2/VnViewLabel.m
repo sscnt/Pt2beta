@@ -25,6 +25,22 @@
     return self;
 }
 
+- (void)drawTextInRect:(CGRect)rect {
+    if ([UIDevice isIOS6]) {
+        if ([UIDevice isCurrentLanguageJapanese]) {
+            [super drawTextInRect:UIEdgeInsetsInsetRect(rect, UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f))];
+        }else{
+            [super drawTextInRect:UIEdgeInsetsInsetRect(rect, UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f))];
+        }
+    }else{
+        if ([UIDevice isCurrentLanguageJapanese]) {
+            [super drawTextInRect:UIEdgeInsetsInsetRect(rect, UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f))];
+        }else{
+            [super drawTextInRect:UIEdgeInsetsInsetRect(rect, UIEdgeInsetsMake(-1.0f, 0.0f, 0.0f, 0.0f))];
+        }
+    }
+}
+
 - (void)setFontSize:(float)fontSize
 {
     if([UIDevice isCurrentLanguageJapanese]) {
@@ -33,14 +49,5 @@
         self.font = [UIFont fontWithName:@"ClearSans-Bold" size:fontSize];
     }
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

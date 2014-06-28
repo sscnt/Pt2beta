@@ -8,14 +8,19 @@
 
 #import <Foundation/Foundation.h>
 #import "PtFtViewSliderWrapper.h"
+#import "PtAdViewSliderBar.h"
 
 @class PtViewControllerFilters;
 
-@interface PtFtViewManagerSliders : NSObject
+@interface PtFtViewManagerSliders : NSObject <PtAdViewSliderBarDelegate>
 
 @property (nonatomic, weak) UIView* view;
 @property (nonatomic, weak) PtViewControllerFilters* delegate;
 @property (nonatomic, strong) PtFtViewSliderWrapper* sliderWrapper;
+
+@property (nonatomic, strong) PtAdViewSliderBar* colorSlider;
+@property (nonatomic, strong) PtAdViewSliderBar* artisticSlider;
+@property (nonatomic, strong) PtAdViewSliderBar* overlaySlider;
 
 @property (nonatomic, assign) float overlayOpacity;
 @property (nonatomic, assign) float colorOpacity;

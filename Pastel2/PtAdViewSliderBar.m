@@ -29,6 +29,15 @@
     }
     return self;
 }
+- (float)value
+{
+    return _slider.value;
+}
+
+- (void)setValue:(float)value
+{
+    _slider.value = value;
+}
 
 - (void)slider:(PtAdViewSlider *)slider DidValueChange:(CGFloat)value
 {

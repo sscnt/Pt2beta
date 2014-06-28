@@ -19,6 +19,33 @@
     _sliderWrapper.hidden = YES;
     [self.view addSubview:_sliderWrapper];
     
+    //// Slider
+    _colorSlider = [[PtAdViewSliderBar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.width - [PtFtConfig artisticLayerButtonSize].width - 10.0f, [PtFtConfig colorBarHeight] * 1.7)];
+    _colorSlider.backgroundColor = [UIColor clearColor];
+    _colorSlider.slider.zeroPointAtCenter = NO;
+    _colorSlider.slider.value = 0.0f;
+    _colorSlider.delegate = self;
+    _colorSlider.slider.thumbBgColor = [PtFtConfig colorBarBgColor];
+    _colorSlider.tag = 1;
+    [_sliderWrapper addColorSliderBar:_colorSlider];
+    
+    _artisticSlider = [[PtAdViewSliderBar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.width - [PtFtConfig artisticLayerButtonSize].width - 10.0f, [PtFtConfig colorBarHeight] * 1.7)];
+    _artisticSlider.backgroundColor = [UIColor clearColor];
+    _artisticSlider.slider.zeroPointAtCenter = NO;
+    _artisticSlider.slider.value = 0.0f;
+    _artisticSlider.delegate = self;
+    _artisticSlider.slider.thumbBgColor = [PtFtConfig artisticBarBgColor];
+    _artisticSlider.tag = 1;
+    [_sliderWrapper addArtisticSliderBar:_artisticSlider];
+    
+    _overlaySlider = [[PtAdViewSliderBar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.width - [PtFtConfig artisticLayerButtonSize].width - 10.0f, [PtFtConfig colorBarHeight] * 1.7)];
+    _overlaySlider.backgroundColor = [UIColor clearColor];
+    _overlaySlider.slider.zeroPointAtCenter = NO;
+    _overlaySlider.slider.value = 0.0f;
+    _overlaySlider.delegate = self;
+    _overlaySlider.slider.thumbBgColor = [PtFtConfig overlayBarBgColor];
+    _overlaySlider.tag = 1;
+    [_sliderWrapper addOverlaySliderBar:_overlaySlider];
 }
 
 - (void)toggleSliders
@@ -43,6 +70,11 @@
 
 - (void)showCurrentSelectedColorFilter:(VnEffectId)filterId
 {
+    if (filterId == VnEffectIdColorNone) {
+        _sliderWrapper.colorHidden = YES;
+        return;
+    }
+    _sliderWrapper.colorHidden = NO;
     PtFtObjectFilterItem* item;
     CGSize size = [PtFtConfig colorLayerButtonSize];
     
@@ -68,7 +100,11 @@
 
 - (void)showCurrentSelectedArtisticFilter:(VnEffectId)filterId
 {
-    
+    if (filterId == VnEffectIdNone) {
+        _sliderWrapper.artisticHidden = YES;
+        return;
+    }
+    _sliderWrapper.artisticHidden = NO;
     PtFtObjectFilterItem* item;
     CGSize size = [PtFtConfig artisticLayerButtonSize];
     
@@ -95,6 +131,11 @@
 
 - (void)showCurrentSelectedOverlayFilter:(VnEffectId)filterId
 {
+    if (filterId == VnEffectIdOverlayNone) {
+        _sliderWrapper.overlayHidden = YES;
+        return;
+    }
+    _sliderWrapper.overlayHidden = NO;
     PtFtObjectFilterItem* item;
     CGSize size = [PtFtConfig colorLayerButtonSize];
     
@@ -116,6 +157,20 @@
             break;
         }
     }
+}
+
+#pragma mark delegate
+
+- (void)sliderDidValueChange:(CGFloat)value
+{
+    _sliderWrapper.colorOpacity = _colorSlider.value;
+    _sliderWrapper.artisticOpacity = _artisticSlider.value;
+    _sliderWrapper.overlayOpacity = _overlaySlider.value;
+}
+
+- (void)sliderDidTouchUpInside
+{
+    
 }
 
 @end

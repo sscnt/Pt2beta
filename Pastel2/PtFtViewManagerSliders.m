@@ -211,7 +211,7 @@
 }
 
 - (void)sliderDidTouchUpInside
-{    
+{
     PtFtObjectProcessQueue* queue = [[PtFtObjectProcessQueue alloc] init];
     queue.type = PtFtProcessQueueTypePreview;
     queue.image = self.delegate.originalPreviewImage;

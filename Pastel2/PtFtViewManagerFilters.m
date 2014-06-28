@@ -183,7 +183,40 @@
 
 - (void)shuffleButtonDidTouchUpInside:(PtFtViewToolBarButton *)button
 {
+    PtFtViewLayerBarButton* b;
+    VnEffect* effect;
+    PtFtObjectFilterItem* item;
+    PtFtViewManagerSliders* sm = self.delegate.slidersManager;
+    int index = arc4random_uniform((u_int32_t)[PtFtSharedFilterManager instance].overlayFilters.count);
+    item = [[PtFtSharedFilterManager instance].overlayFilters objectAtIndex:index];
+    if (item) {
+        b = [self buttonByEffectId:item.effectId];
+        [_overlayBar scrollToLayerButton:b];
+        [self selectLayerButtonWithButton:b];
+        effect = [PtFtSharedFilterManager effectByEffectId:item.effectId];
+        sm.overlayOpacity = effect.defaultOpacity * 0.60f;
+    }
+    index = arc4random_uniform((u_int32_t)[PtFtSharedFilterManager instance].colorFilters.count);
+    item = [[PtFtSharedFilterManager instance].colorFilters objectAtIndex:index];
+    if (item) {
+        b = [self buttonByEffectId:item.effectId];
+        [_colorBar scrollToLayerButton:b];
+        [self selectLayerButtonWithButton:b];
+        effect = [PtFtSharedFilterManager effectByEffectId:item.effectId];
+        sm.colorOpacity = effect.defaultOpacity * 0.70f;
+    }
     
+    index = arc4random_uniform((u_int32_t)[PtFtSharedFilterManager instance].artisticFilters.count);
+    item = [[PtFtSharedFilterManager instance].artisticFilters objectAtIndex:index];
+    if (item) {
+        b = [self buttonByEffectId:item.effectId];
+        [_artisticBar scrollToLayerButton:b];
+        [self selectLayerButtonWithButton:b];
+        effect = [PtFtSharedFilterManager effectByEffectId:item.effectId];
+        sm.artisticOpacity = effect.defaultOpacity * 0.60f;
+    }
+    
+    [self.delegate filterButtonDidTouchUpInside:b];
 }
 
 - (PtFtViewLayerBarButton*)buttonByEffectId:(VnEffectId)effectId

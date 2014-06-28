@@ -158,28 +158,13 @@
     VnEffect* effect = [PtFtSharedFilterManager effectByEffectId:button.effectId];
     switch (button.group) {
         case VnEffectGroupColor:
-        {
             sm.colorOpacity = effect.defaultOpacity;
-            if (self.faceDetected) {
-                sm.colorOpacity = effect.faceOpacity;
-            }
-        }
             break;
         case VnEffectGroupEffects:
-        {
             sm.artisticOpacity = effect.defaultOpacity;
-            if (self.faceDetected) {
-                sm.artisticOpacity = effect.faceOpacity;
-            }
-        }
             break;
         case VnEffectGroupOverlays:
-        {
-            sm.overlayOpacity = effect.defaultOpacity;
-            if (self.faceDetected) {
-                sm.overlayOpacity = effect.faceOpacity;
-            }
-        }
+            sm.overlayOpacity = effect.defaultOpacity;            
             break;
         default:
             break;

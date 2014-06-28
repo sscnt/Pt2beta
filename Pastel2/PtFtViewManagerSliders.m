@@ -159,6 +159,40 @@
     }
 }
 
+#pragma mark setter
+
+- (void)setColorOpacity:(float)colorOpacity
+{
+    _colorSlider.value = colorOpacity;
+}
+
+- (void)setArtisticOpacity:(float)artisticOpacity
+{
+    _artisticSlider.value = artisticOpacity;
+}
+
+- (void)setOverlayOpacity:(float)overlayOpacity
+{
+    _overlaySlider.value = overlayOpacity;
+}
+
+#pragma mark getter
+
+- (float)colorOpacity
+{
+    return _colorSlider.value;
+}
+
+- (float)artisticOpacity
+{
+    return _artisticSlider.value;
+}
+
+- (float)overlayOpacity
+{
+    return _overlaySlider.value;
+}
+
 #pragma mark delegate
 
 - (void)sliderDidValueChange:(CGFloat)value
@@ -166,11 +200,22 @@
     _sliderWrapper.colorOpacity = _colorSlider.value;
     _sliderWrapper.artisticOpacity = _artisticSlider.value;
     _sliderWrapper.overlayOpacity = _overlaySlider.value;
+    
+    if ([PtFtSharedQueueManager instance].processing) {
+        return;
+    }
+    PtFtObjectProcessQueue* queue = [[PtFtObjectProcessQueue alloc] init];
+    queue.type = PtFtProcessQueueTypePreview;
+    queue.image = self.delegate.originalPreviewImage;
+    [[PtFtSharedQueueManager instance] addQueue:queue];
 }
 
 - (void)sliderDidTouchUpInside
-{
-    
+{    
+    PtFtObjectProcessQueue* queue = [[PtFtObjectProcessQueue alloc] init];
+    queue.type = PtFtProcessQueueTypePreview;
+    queue.image = self.delegate.originalPreviewImage;
+    [[PtFtSharedQueueManager instance] addQueue:queue];
 }
 
 @end

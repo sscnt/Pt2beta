@@ -14,7 +14,7 @@
 {
     self = [super init];
     if(self){
-        self.defaultOpacity = 0.25f;
+        self.defaultOpacity = 0.50f;
         self.effectId = VnEffectIdOverlayPureMilk;
     }
     return self;
@@ -27,6 +27,7 @@
     VnFilterSolidColor* solidColor1 = [[VnFilterSolidColor alloc] init];
     [solidColor1 setColorRed:245.0f/255.0f green:237.0f/255.0f blue:234.0f/255.0 alpha:1.0f];
     solidColor1.blendingMode = VnBlendingModeScreen;
+    solidColor1.topLayerOpacity = 0.50f;
     
     self.startFilter = self.endFilter = solidColor1;
 }

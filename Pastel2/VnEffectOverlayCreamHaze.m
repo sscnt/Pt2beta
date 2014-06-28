@@ -14,7 +14,7 @@
 {
     self = [super init];
     if(self){
-        self.defaultOpacity = 0.15f;
+        self.defaultOpacity = 0.50f;
         self.effectId = VnEffectIdOverlayCreamHaze;
     }
     return self;
@@ -27,6 +27,7 @@
     VnFilterSolidColor* solidColor1 = [[VnFilterSolidColor alloc] init];
     [solidColor1 setColorRed:s255(255.0f) green:s255(255.0f) blue:s255(255.0f) alpha:1.0f];
     solidColor1.blendingMode = VnBlendingModeDifference;
+    solidColor1.topLayerOpacity = 0.30f;
 
     self.startFilter = self.endFilter = solidColor1;
     

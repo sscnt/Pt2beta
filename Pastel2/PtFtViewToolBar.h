@@ -10,6 +10,10 @@
 #import "PtFtViewToolBarButton.h"
 
 @interface PtFtViewToolBar : UIView
+{
+    float _lx;
+    float _rx;
+}
 
 - (void)appendButtonToLeft:(PtFtViewToolBarButton*)button;
 - (void)appendButtonToRight:(PtFtViewToolBarButton*)button;

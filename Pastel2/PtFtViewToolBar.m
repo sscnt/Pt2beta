@@ -16,17 +16,24 @@
     if (self) {
         // Initialization code
         self.backgroundColor = [PtFtConfig toolBarBgColor];
+        _lx = 0.0f;
+        _rx = frame.size.width;
     }
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+- (void)appendButtonToLeft:(PtFtViewToolBarButton *)button
 {
-    // Drawing code
+    button.center = CGPointMake(_lx + button.width / 2.0f, self.height / 2.0f);
+    [self addSubview:button];
+    _lx += button.width;
 }
-*/
+
+- (void)appendButtonToRight:(PtFtViewToolBarButton *)button
+{
+    button.center = CGPointMake(_rx - button.width / 2.0f, self.height / 2.0f);
+    [self addSubview:button];
+    _rx -= button.width;
+}
 
 @end

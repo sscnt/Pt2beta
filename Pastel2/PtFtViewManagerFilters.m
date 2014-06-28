@@ -44,6 +44,7 @@
 
 - (void)layoutButtons
 {
+    [self layoutToolButtons];
     [self layoutColorButtons];
     [self layoutOverlayButtons];
     [self layoutArtisticButtons];
@@ -130,7 +131,33 @@
             [_artisticButtonsDictionary setObject:button forKey:[NSString stringWithFormat:@"%d", (int)item.effectId]];
         }
     }
+}
 
+- (void)layoutToolButtons
+{
+    PtFtViewToolBarButton* button;
+    CGSize size = [PtFtConfig toolBarButtonSize];
+    PtSharedApp* app = [PtSharedApp instance];
+    
+    //// Slider
+    button = [[PtFtViewToolBarButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, size.width, size.height)];
+    button.type = PtFtViewToolBarButtonTypeSlider;
+    [button addTarget:self action:@selector(sliderButtonDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
+    if (app.leftHandedUI) {
+        [_toolBar appendButtonToLeft:button];
+    }else{
+        [_toolBar appendButtonToRight:button];
+    }
+    
+    //// Slider
+    button = [[PtFtViewToolBarButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, size.width, size.height)];
+    button.type = PtFtViewToolBarButtonTypeShuffle;
+    [button addTarget:self action:@selector(shuffleButtonDidTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
+    if (app.leftHandedUI) {
+        [_toolBar appendButtonToLeft:button];
+    }else{
+        [_toolBar appendButtonToRight:button];
+    }
 }
 
 #pragma mark button
@@ -147,6 +174,16 @@
     if (button) {
         button.previewImage = image;
     }
+}
+
+- (void)sliderButtonDidTouchUpInside:(PtFtViewToolBarButton *)button
+{
+    [self.delegate.slidersManager toggleSliders];
+}
+
+- (void)shuffleButtonDidTouchUpInside:(PtFtViewToolBarButton *)button
+{
+    
 }
 
 - (PtFtViewLayerBarButton*)buttonByEffectId:(VnEffectId)effectId

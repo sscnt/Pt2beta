@@ -39,11 +39,15 @@
 - (void)layoutOverlayButtons;
 - (void)layoutColorButtons;
 - (void)layoutArtisticButtons;
+- (void)layoutToolButtons;
 
 - (void)setPresetImage:(UIImage*)image ToEffect:(VnEffectId)effectId;
 - (PtFtViewLayerBarButton*)buttonByEffectId:(VnEffectId)effectId;
 - (void)selectLayerButtonWithButton:(PtFtViewLayerBarButton*)button;
 - (void)selectLayerButtonWithEffectId:(VnEffectId)effectId;
+
+- (void)sliderButtonDidTouchUpInside:(PtFtViewToolBarButton*)button;
+- (void)shuffleButtonDidTouchUpInside:(PtFtViewToolBarButton*)button;
 
 - (void)didLayerBarButtonTouchUpInside:(PtFtViewLayerBarButton*)button;
 - (void)deallocArtisticButtonImages;

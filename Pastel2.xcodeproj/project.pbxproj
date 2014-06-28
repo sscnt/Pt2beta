@@ -347,6 +347,7 @@
 		58F772051951648B000179F7 /* co001.pst in Resources */ = {isa = PBXBuildFile; fileRef = 58F772041951648B000179F7 /* co001.pst */; };
 		58F7720819518516000179F7 /* VnEffectLove.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F7720719518516000179F7 /* VnEffectLove.m */; };
 		58F7720B195191A8000179F7 /* VnEffectWashedMemories.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F7720A195191A8000179F7 /* VnEffectWashedMemories.m */; };
+		58F784F8195ED7AB00957E45 /* PtFtViewSliderWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F784F7195ED7AB00957E45 /* PtFtViewSliderWrapper.m */; };
 		58F78EEC1952B0B80051562F /* VnEffectPosh.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F78EEB1952B0B80051562F /* VnEffectPosh.m */; };
 		58F78EF21952B7980051562F /* VnEffectBlush.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F78EF11952B7980051562F /* VnEffectBlush.m */; };
 		58F78EF51952BD990051562F /* VnEffectCaramel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F78EF41952BD990051562F /* VnEffectCaramel.m */; };
@@ -980,6 +981,8 @@
 		58F7720719518516000179F7 /* VnEffectLove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectLove.m; sourceTree = "<group>"; };
 		58F77209195191A8000179F7 /* VnEffectWashedMemories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectWashedMemories.h; sourceTree = "<group>"; };
 		58F7720A195191A8000179F7 /* VnEffectWashedMemories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectWashedMemories.m; sourceTree = "<group>"; };
+		58F784F6195ED7AB00957E45 /* PtFtViewSliderWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtFtViewSliderWrapper.h; sourceTree = "<group>"; };
+		58F784F7195ED7AB00957E45 /* PtFtViewSliderWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PtFtViewSliderWrapper.m; sourceTree = "<group>"; };
 		58F78EEA1952B0B70051562F /* VnEffectPosh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectPosh.h; sourceTree = "<group>"; };
 		58F78EEB1952B0B80051562F /* VnEffectPosh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectPosh.m; sourceTree = "<group>"; };
 		58F78EF01952B7980051562F /* VnEffectBlush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectBlush.h; sourceTree = "<group>"; };
@@ -1886,6 +1889,8 @@
 				58F3E47B1940C6F9001AEB8D /* PtFtViewSliderThumb.m */,
 				58F3E47C1940C6F9001AEB8D /* PtFtViewLayerStrengthSlider.h */,
 				58F3E47D1940C6F9001AEB8D /* PtFtViewLayerStrengthSlider.m */,
+				58F784F6195ED7AB00957E45 /* PtFtViewSliderWrapper.h */,
+				58F784F7195ED7AB00957E45 /* PtFtViewSliderWrapper.m */,
 			);
 			name = Slider;
 			sourceTree = "<group>";
@@ -2622,6 +2627,7 @@
 				58F78EF51952BD990051562F /* VnEffectCaramel.m in Sources */,
 				58F3E3331940C546001AEB8D /* VnFilterLensBlur.m in Sources */,
 				58F3E4CD1940C834001AEB8D /* LmCmViewTopBar.m in Sources */,
+				58F784F8195ED7AB00957E45 /* PtFtViewSliderWrapper.m in Sources */,
 				5819A11F194DC5A8002C6F3E /* VnEffectVSCODarkfilm.m in Sources */,
 				581E82EA1959BF0F0048B724 /* VnFilterContrast.m in Sources */,
 				5883F35E1955FFC0001ABCE3 /* PtAdViewSlider.m in Sources */,
